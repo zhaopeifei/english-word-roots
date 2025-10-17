@@ -1,0 +1,52 @@
+@import 'tailwindcss';
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+  --color-background: #ffffff;
+  --color-surface: #f8fafc;
+  --color-foreground: #0f172a;
+  --color-border: rgba(15, 23, 42, 0.12);
+  --color-muted: #e2e8f0;
+  --color-muted-foreground: #475569;
+  --color-brand: #2563eb;
+  --color-brand-light: #60a5fa;
+  --color-brand-dark: #1d4ed8;
+}
+
+@layer base {
+  [data-theme='dark'] {
+    --color-background: #020617;
+    --color-surface: rgba(15, 23, 42, 0.92);
+    --color-foreground: #f8fafc;
+    --color-border: rgba(148, 163, 184, 0.24);
+    --color-muted: rgba(51, 65, 85, 0.6);
+    --color-muted-foreground: #cbd5f5;
+    --color-brand: #60a5fa;
+    --color-brand-light: #93c5fd;
+    --color-brand-dark: #1e3a8a;
+  }
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-smooth: antialiased;
+  }
+
+  a {
+    @apply transition-colors;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
