@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { RootDetail } from '@/components/root-detail';
+import { RootDetail } from './root-detail';
 import { SITE_NAME } from '@/content/site';
 import { getRootBySlug, getRootPaths } from '@/lib/content';
 

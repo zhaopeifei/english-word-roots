@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { ExploreScreen } from '@/components/explore-screen';
+import { ExploreScreen } from './explore-screen';
 import { ROOTS, WORDS } from '@/lib/content';
 import { SITE_NAME } from '@/content/site';
 

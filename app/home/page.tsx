@@ -1,4 +1,4 @@
-import { HomeScreen } from '@/components/home-screen';
+import { HomeScreen } from './home-screen';
 import { getFeaturedRoots, getTrendingWords } from '@/lib/content';
 
 const HomePage = () => {

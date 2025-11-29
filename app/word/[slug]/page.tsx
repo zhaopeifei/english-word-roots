@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { WordDetail } from '@/components/word-detail';
+import { WordDetail } from './word-detail';
 import { SITE_NAME } from '@/content/site';
 import { getWordBySlug, getWordPaths } from '@/lib/content';
 

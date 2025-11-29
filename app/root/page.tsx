@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { RootsIndex } from '@/components/roots-index';
+import { RootsIndex } from './roots-index';
 import { ROOTS } from '@/lib/content';
 import { SITE_NAME } from '@/content/site';
 
