@@ -9,7 +9,7 @@ export const DEFAULT_LOCALE: Locale = 'en';
 
 export const NAV_LINKS = [
   { href: '/home', label: { en: 'Home', zh: '首页' } },
-  { href: '/explore', label: { en: 'Explore', zh: '探索' } },
+  // { href: '/explore', label: { en: 'Explore', zh: '探索' } },
   { href: '/root', label: { en: 'Roots', zh: '词根' } },
-  { href: '/about', label: { en: 'About', zh: '关于我们' } }
+  { href: '/about', label: { en: 'About', zh: '关于我们' } },
 ];
