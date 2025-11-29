@@ -8,8 +8,7 @@ export const dictionaries: Dictionaries = {
   en: {
     tagline: 'Build vocabulary from the root up.',
     heroSubtitle: 'Root-driven discovery, multilingual context, and SEO-first performance.',
-    featuredRoots: 'Featured Roots',
-    trendingWords: 'Trending Words',
+
     origin: 'Origin',
     popularity: 'Popularity',
     relatedRoots: 'Related Roots',
@@ -17,9 +16,10 @@ export const dictionaries: Dictionaries = {
     relatedWords: 'Related Words',
     backToRoots: 'Browse all roots',
     backToWords: 'Browse all words',
-    globalExploreCta: 'Browse the full catalog of roots and words.',
+
     aboutTitle: 'About English Word Roots',
-    aboutMission: 'Our mission is to make etymology-driven learning accessible to every language learner.',
+    aboutMission:
+      'Our mission is to make etymology-driven learning accessible to every language learner.',
     translatedBy: 'Translated copy (beta)',
     language: 'Language',
     theme: 'Theme',
@@ -31,16 +31,11 @@ export const dictionaries: Dictionaries = {
     wordBreakdown: 'Root Breakdown',
     example: 'Example Sentence',
     exploreIntro: 'Filterable catalog of every root and word in the static dataset.',
-    roots: 'Roots',
-    words: 'Words',
-    all: 'All',
-    noContent: 'No content available yet. Check back soon.'
   },
   zh: {
     tagline: '从词根出发，拓展词汇。',
     heroSubtitle: '词根驱动的探索，多语言上下文，以及以 SEO 为核心的性能。',
-    featuredRoots: '精选词根',
-    trendingWords: '热度单词',
+
     origin: '来源',
     popularity: '热度',
     relatedRoots: '相关词根',
@@ -48,7 +43,7 @@ export const dictionaries: Dictionaries = {
     relatedWords: '相关词汇',
     backToRoots: '浏览全部词根',
     backToWords: '浏览全部词汇',
-    globalExploreCta: '浏览完整的词根和词汇目录。',
+
     aboutTitle: '关于 English Word Roots',
     aboutMission: '我们的使命是让词源驱动的学习惠及每一位语言学习者。',
     translatedBy: '翻译文本（测试版）',
@@ -62,11 +57,7 @@ export const dictionaries: Dictionaries = {
     wordBreakdown: '词根拆分',
     example: '例句',
     exploreIntro: '可过滤的静态数据集目录，涵盖所有词根与单词。',
-    roots: '词根',
-    words: '词汇',
-    all: '全部',
-    noContent: '暂无内容，敬请期待。'
-  }
+  },
 };
 
 export const getDictionary = (locale: Locale): Dictionary => dictionaries[locale];
