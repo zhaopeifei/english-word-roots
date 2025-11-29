@@ -21,17 +21,33 @@ export const RootsIndex = ({ roots }: RootsIndexProps) => {
         {roots.map((root) => (
           <article key={root.slug} className="rounded-xl border border-border bg-surface p-6 shadow-sm">
             <h2 className="text-2xl font-semibold text-foreground">
-              <Link href={`/root/${root.slug}`}>{root.canonicalForm}</Link>
+              <Link href={`/root/${root.slug}`}>{root.variants[0] ?? root.slug}</Link>
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">{root.overview[locale]}</p>
-            <dl className="mt-4 space-y-1 text-sm text-muted-foreground">
+            <div className="mt-3 space-y-2 text-sm text-muted-foreground">
+              <p className="text-xs uppercase tracking-wide text-brand">{dictionary.variants}</p>
+              <div className="flex flex-wrap gap-2">
+                {root.variants.map((variant) => (
+                  <span key={variant} className="rounded-full border border-border px-2 py-0.5">
+                    {variant}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <dl className="mt-4 space-y-3 text-sm text-muted-foreground">
               <div className="flex justify-between">
                 <dt>{dictionary.origin}</dt>
                 <dd>{root.languageOfOrigin}</dd>
               </div>
-              <div className="flex justify-between">
-                <dt>{dictionary.popularity}</dt>
-                <dd>{root.popularityScore}</dd>
+              <div>
+                <dt className="font-medium text-foreground">{dictionary.domains}</dt>
+                <dd className="mt-2 flex flex-wrap gap-2">
+                  {root.semanticDomains.map((domain) => (
+                    <span key={domain} className="rounded-full border border-border px-2 py-0.5 text-xs">
+                      {domain}
+                    </span>
+                  ))}
+                </dd>
               </div>
             </dl>
           </article>

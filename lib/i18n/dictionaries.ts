@@ -14,6 +14,9 @@ export const dictionaries: Dictionaries = {
     relatedRoots: 'Related Roots',
     associatedWords: 'Associated Words',
     relatedWords: 'Related Words',
+    variants: 'Variants',
+    domains: 'Semantic Domains',
+    details: 'Root Details',
     backToRoots: 'Browse all roots',
     backToWords: 'Browse all words',
 
@@ -29,7 +32,7 @@ export const dictionaries: Dictionaries = {
     rootOverview: 'Root Overview',
     wordOverview: 'Word Overview',
     wordBreakdown: 'Root Breakdown',
-    example: 'Example Sentence',
+    examples: 'Example Sentences',
     exploreIntro: 'Filterable catalog of every root and word in the static dataset.',
   },
   zh: {
@@ -41,6 +44,9 @@ export const dictionaries: Dictionaries = {
     relatedRoots: '相关词根',
     associatedWords: '关联词汇',
     relatedWords: '相关词汇',
+    variants: '变体',
+    domains: '语义领域',
+    details: '词根信息',
     backToRoots: '浏览全部词根',
     backToWords: '浏览全部词汇',
 
@@ -55,7 +61,7 @@ export const dictionaries: Dictionaries = {
     rootOverview: '词根概览',
     wordOverview: '单词概览',
     wordBreakdown: '词根拆分',
-    example: '例句',
+    examples: '例句',
     exploreIntro: '可过滤的静态数据集目录，涵盖所有词根与单词。',
   },
 };

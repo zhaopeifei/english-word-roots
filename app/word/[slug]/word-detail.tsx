@@ -10,23 +10,32 @@ interface WordDetailProps {
 
 export const WordDetail = ({ word }: WordDetailProps) => {
   const { dictionary, locale } = useLanguage();
+  const localizedDefinition = word.definition[locale] ?? word.definition.en;
+  const localizedExamples = word.examples[locale] ?? word.examples.en;
+  const breakdownDisplay = word.rootBreakdown.map((segment) => segment.surface).join(' + ');
 
   return (
     <article className="space-y-8">
       <header className="space-y-3">
         <p className="text-sm uppercase tracking-widest text-brand">{dictionary.wordOverview}</p>
         <h1 className="text-4xl font-semibold text-foreground">{word.lemma}</h1>
-        <p className="text-lg text-muted-foreground">{word.definitions[locale]}</p>
+        <p className="text-lg text-muted-foreground">{localizedDefinition}</p>
       </header>
 
       <section className="rounded-xl border border-border bg-surface p-6 shadow-sm">
         <h2 className="text-xl font-semibold text-foreground">{dictionary.wordBreakdown}</h2>
-        <p className="mt-2 text-sm text-muted-foreground">{word.rootBreakdown.join(' + ')}</p>
+        <p className="mt-2 text-sm text-muted-foreground">{breakdownDisplay}</p>
       </section>
 
       <section className="rounded-xl border border-border bg-surface p-6 shadow-sm">
-        <h2 className="text-xl font-semibold text-foreground">{dictionary.example}</h2>
-        <p className="mt-2 text-sm text-muted-foreground">{word.example[locale]}</p>
+        <h2 className="text-xl font-semibold text-foreground">{dictionary.examples}</h2>
+        <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
+          {localizedExamples.map((sentence) => (
+            <li key={sentence} className="rounded-lg bg-muted/30 px-3 py-2">
+              {sentence}
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="space-y-3">
@@ -42,11 +51,6 @@ export const WordDetail = ({ word }: WordDetailProps) => {
             </Link>
           ))}
         </div>
-      </section>
-
-      <section className="rounded-xl border border-border bg-surface p-6 shadow-sm">
-        <h2 className="text-xl font-semibold text-foreground">{dictionary.popularity}</h2>
-        <p className="mt-2 text-sm text-muted-foreground">{word.popularityScore}</p>
       </section>
 
       <Link

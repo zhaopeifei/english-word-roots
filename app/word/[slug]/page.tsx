@@ -1,29 +1,25 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { WordDetail } from './word-detail';
-import { SITE_NAME } from '@/content/site';
-import { getWordBySlug, getWordPaths } from '@/lib/content';
-
-export const dynamicParams = false;
-
-export const generateStaticParams = () => getWordPaths();
+import { DEFAULT_LOCALE, SITE_NAME } from '@/content/site';
+import { getWordBySlug } from '@/lib/content';
 
 export const generateMetadata = ({ params }: { params: { slug: string } }): Metadata => {
   const word = getWordBySlug(params.slug);
 
   if (!word) {
     return {
-      title: SITE_NAME
+      title: SITE_NAME,
     };
   }
 
   return {
     title: `${word.lemma} | ${SITE_NAME}`,
-    description: word.definitions.en,
+    description: word.definition[DEFAULT_LOCALE],
     openGraph: {
       title: word.lemma,
-      description: word.definitions.en
-    }
+      description: word.definition[DEFAULT_LOCALE],
+    },
   };
 };
 

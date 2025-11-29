@@ -19,8 +19,8 @@ English Word Roots is an SEO-first vocabulary learning web application focused o
 - **About (`/about`):** Mission statement, stack overview, editorial guardrails, and credibility signals.
 
 ## Data Model Overview
-- **Root entry:** `slug`, `canonicalForm`, `languageOfOrigin`, `originSummary`, `semanticDomain`, `popularityScore`, `relatedRoots`, `associatedWords`, `overview` (localized copy).
-- **Word entry:** `slug`, `lemma`, `definitions` (localized copy), `example` (localized copy), `rootBreakdown`, `relatedWords`, `popularityScore`.
+- **Root entry:** `slug`, `variants`, `languageOfOrigin`, `overview` (localized copy), `originSummary` (localized copy), `semanticDomains`, `relatedRoots`, `associatedWords`.
+- **Word entry:** `slug`, `lemma`, `definition` (localized copy), `examples` (localized copy, multiple sentences), `rootBreakdown` (structured morpheme segments), `relatedWords`.
 - **Content helpers:** Static loaders in `lib/content.ts` expose featured roots, trending words, and static params for SSG.
 
 ## SEO Strategy

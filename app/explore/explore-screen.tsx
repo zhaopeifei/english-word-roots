@@ -18,7 +18,13 @@ export const ExploreScreen = ({ roots, words }: ExploreScreenProps) => {
   const [query, setQuery] = useState('');
 
   const filteredRoots = useMemo(() => {
-    return roots.filter((root) => root.canonicalForm.toLowerCase().includes(query.toLowerCase()));
+    const normalizedQuery = query.toLowerCase().trim();
+    if (!normalizedQuery) return roots;
+
+    return roots.filter((root) => {
+      const searchTarget = [root.slug, ...root.variants].join(' ').toLowerCase();
+      return searchTarget.includes(normalizedQuery);
+    });
   }, [roots, query]);
 
   const filteredWords = useMemo(() => {

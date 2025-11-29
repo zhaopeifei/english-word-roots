@@ -2,13 +2,13 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  output: 'export',
+  // output: 'export',
   images: {
-    unoptimized: true
+    unoptimized: true,
   },
   experimental: {
-    optimizePackageImports: ['next-themes']
-  }
+    optimizePackageImports: ['next-themes'],
+  },
 };
 
 export default nextConfig;
