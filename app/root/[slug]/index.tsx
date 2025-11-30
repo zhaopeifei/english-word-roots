@@ -5,7 +5,9 @@ import { ArrowLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/components/language-provider';
+import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import type { RootEntry } from '@/types/content';
+import { WORDS_BY_ROOT } from '@/content/words/index';
 
 interface RootDetailProps {
   root: RootEntry;
@@ -16,6 +18,7 @@ export const RootDetail = ({ root }: RootDetailProps) => {
   const { dictionary, locale } = useLanguage();
   const localizedOverview = root.overview[locale] ?? root.overview.en;
   const localizedOrigin = root.originSummary[locale] ?? root.originSummary.en;
+  const associatedWordEntries = WORDS_BY_ROOT[root.slug] ?? [];
 
   return (
     <article className="space-y-10">
@@ -62,7 +65,7 @@ export const RootDetail = ({ root }: RootDetailProps) => {
                 <Link
                   key={slug}
                   href={`/root/${slug}`}
-                  className="text-foreground hover:text-primary text-xl underline"
+                  className="text-foreground hover:text-primary text-xl hover:underline"
                 >
                   {slug}
                 </Link>
@@ -84,17 +87,35 @@ export const RootDetail = ({ root }: RootDetailProps) => {
 
       <section className="space-y-4">
         <h3 className="text-primary/60 text-xs">{dictionary.associatedWords}</h3>
-        <div className="flex flex-wrap gap-2">
-          {root.associatedWords.map((wordSlug) => (
-            <Link
-              key={wordSlug}
-              href={`/word/${wordSlug}`}
-              className="border-border text-muted-foreground hover:border-brand hover:text-foreground rounded-full border px-3 py-1 text-sm transition-colors"
-            >
-              {wordSlug}
-            </Link>
-          ))}
-        </div>
+        {associatedWordEntries.length > 0 ? (
+          <div className="border-border bg-surface/60 rounded-2xl border">
+            <Table className="text-base">
+              <TableBody>
+                {associatedWordEntries.map((word) => {
+                  const localizedDefinition = word.definition[locale] ?? word.definition.en;
+
+                  return (
+                    <TableRow key={word.slug}>
+                      <TableCell className="w-50 whitespace-nowrap px-6 align-top">
+                        <Link
+                          href={`/word/${word.slug}`}
+                          className="text-primary hover:text-brand font-medium transition-colors"
+                        >
+                          {word.lemma}
+                        </Link>
+                      </TableCell>
+                      <TableCell className="text-foreground text-base leading-snug">
+                        {localizedDefinition}
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </div>
+        ) : (
+          <div className="text-muted-foreground text-sm">No associated words recorded yet.</div>
+        )}
       </section>
     </article>
   );
