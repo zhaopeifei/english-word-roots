@@ -16,11 +16,16 @@ export interface RootEntry {
 export interface WordEntry {
   slug: string; // Word 的 ID，例如 "biology"
   lemma: string; // 词形原型
+  pronunciation: {
+    uk: { ipa: string }; // 英国英语发音
+    us: { ipa: string }; // 美国英语发音
+  };
 
   definition: Record<Locale, string>; // 多语言释义（建议单数）
-  examples: Record<Locale, string[]>; // 多语言例句，可放多个
+  examples: Array<Record<Locale, string[]>>; // 多语言例句，可放多个
 
   rootBreakdown: MorphemeSegment[]; // 词的构词拆解
+  morphologyNote: Record<Locale, string>; // 解释词根如何组合出当前词义，多语言
   relatedWords: string[]; // 与该词语义或构词相关的兄弟词，["biological", "biologist"]
 }
 

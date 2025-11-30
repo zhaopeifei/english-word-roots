@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { RootDetail } from './root-detail';
+import { RootDetail } from './index';
 import { DEFAULT_LOCALE, SITE_NAME } from '@/content/site';
 import { getRootBySlug } from '@/lib/content';
 
