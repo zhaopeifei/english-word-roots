@@ -12,6 +12,17 @@ export const getFeaturedRoots = () => ROOTS.slice(0, 6);
 
 export const getTrendingWords = () => WORDS.slice(0, 6);
 
+export const getBestBreakdownWord = () => {
+  const ideal = WORDS.find(
+    (w) =>
+      w.rootBreakdown.length >= 3 &&
+      w.rootBreakdown.some((s) => s.type === 'prefix') &&
+      w.rootBreakdown.some((s) => s.type === 'root') &&
+      w.rootBreakdown.some((s) => s.type === 'suffix'),
+  );
+  return ideal ?? WORDS.find((w) => w.rootBreakdown.length >= 3) ?? WORDS[0];
+};
+
 export const getRootPaths = (): SlugParam[] =>
   ROOTS.map((root) => ({ params: { slug: root.slug } }));
 

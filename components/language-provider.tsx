@@ -21,7 +21,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
       locale,
       dictionary: getDictionary(locale),
       setLocale,
-      availableLocales: SUPPORTED_LANGUAGES
+      availableLocales: SUPPORTED_LANGUAGES,
     } satisfies LanguageContextValue;
   }, [locale]);
 

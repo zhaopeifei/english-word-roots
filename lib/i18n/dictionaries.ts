@@ -22,7 +22,7 @@ export const dictionaries: Dictionaries = {
 
     aboutTitle: 'About English Word Roots',
     aboutMission:
-      'Our mission is to make etymology-driven learning accessible to every language learner.',
+      'A bilingual etymology atlas powered by Grimm\'s Law, mapping how English words grow from shared roots.',
     translatedBy: 'Translated copy (beta)',
     language: 'Language',
     theme: 'Theme',
@@ -51,7 +51,7 @@ export const dictionaries: Dictionaries = {
     backToWords: '浏览全部词汇',
 
     aboutTitle: '关于 English Word Roots',
-    aboutMission: '我们的使命是让词源驱动的学习惠及每一位语言学习者。',
+    aboutMission: '以格林法则为核心，梳理英语单词如何从共同词根生长的双语词源导图。',
     translatedBy: '翻译文本（测试版）',
     language: '语言',
     theme: '主题',

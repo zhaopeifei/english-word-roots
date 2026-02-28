@@ -10,11 +10,11 @@ export const SiteHeader = () => {
   const { locale } = useLanguage();
 
   return (
-    <header className="sticky top-0 z-50 border-b-[1.5px] border-border bg-background/90 backdrop-blur-xl">
+    <header className="border-border bg-background/90 sticky top-0 z-50 border-b-[1.5px] backdrop-blur-xl">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
         <Link
           href="/home"
-          className="flex items-center gap-2 font-heading text-xl font-bold text-primary"
+          className="font-heading text-primary flex items-center gap-2 text-xl font-bold"
           aria-label={SITE_NAME}
         >
           <span className="text-xl">🌿</span>
@@ -25,7 +25,7 @@ export const SiteHeader = () => {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-full px-4 py-2 text-sm font-bold text-muted-foreground transition-all hover:bg-card hover:text-primary"
+              className="text-muted-foreground hover:bg-card hover:text-primary rounded-full px-4 py-2 text-sm font-bold transition-all"
             >
               {link.label[locale]}
             </Link>

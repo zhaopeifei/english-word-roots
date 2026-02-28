@@ -7,6 +7,10 @@ import type { RootEntry, WordEntry, SemanticDomain, MorphemeSegment } from '@/ty
 interface HomeScreenProps {
   roots: RootEntry[];
   words: WordEntry[];
+  totalRoots: number;
+  totalWords: number;
+  totalAffixes: number;
+  breakdownWord: WordEntry;
 }
 
 /* ------------------------------------------------------------------ */
@@ -100,33 +104,69 @@ function morphemeLabel(type: MorphemeSegment['type'], locale: string): string {
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
 
-export const HomeScreen = ({ roots, words }: HomeScreenProps) => {
+export const HomeScreen = ({
+  roots,
+  words,
+  totalRoots,
+  totalWords,
+  totalAffixes,
+  breakdownWord,
+}: HomeScreenProps) => {
   const { dictionary, locale } = useLanguage();
 
   /* ---- bilingual copy ---- */
   const copy = {
     en: {
       hero: {
-        pills: ['Root-Based', 'Visual', 'Bilingual'],
-        titleBefore: 'Learn English ',
-        titleHighlight: 'smarter',
-        titleAfter: ', not harder.',
+        pills: ['Root-Based', "Grimm's Law", 'Bilingual'],
+        titleBefore: 'Every English word ',
+        titleHighlight: 'has a story',
+        titleAfter: '.',
         description:
-          'We combine modern UI patterns with visual etymology so you begin from meaning, not rote memorization.',
+          'Powered by Grimm\'s Law and systematic root analysis, this atlas reveals the hidden connections inside everyday vocabulary.',
         primaryCta: 'Explore roots index',
         secondaryCta: 'Understand our method',
       },
       stats: {
         roots: 'Word Roots',
         words: 'Vocabulary',
-        languages: 'Languages',
+        affixes: 'Affixes',
+      },
+      method: {
+        label: 'The Method',
+        title: "Grimm's Law at a glance",
+        description:
+          'Three core sound-shift patterns explain how one root can appear in dozens of different English words.',
+        cards: [
+          {
+            icon: 'V',
+            title: 'Vowel Interchange',
+            example: 'sit / seat / set',
+            description:
+              'Vowels (a-e-i-o-u) regularly swap between related words, preserving the root meaning.',
+          },
+          {
+            icon: 'C',
+            title: 'Consonant Voicing',
+            example: 'describe → description',
+            description:
+              'Consonants shift along predictable voice pairs: b/p/f/v, d/t/s/z, g/k/c/q.',
+          },
+          {
+            icon: 'N',
+            title: 'Nasal Interchange',
+            example: 'in- + possible → impossible',
+            description:
+              'Nasal sounds (m, n) substitute for each other at morpheme boundaries.',
+          },
+        ],
+        cta: 'See all 6 patterns',
       },
       featured: {
         label: 'Featured Roots',
         title: 'Start with the building blocks',
-        description:
-          'Each root connects to dozens of English words. Master the root, and the vocabulary follows.',
-        viewAll: 'View all roots',
+        description: `Each root connects to dozens of English words. Explore ${totalRoots} roots and the vocabulary follows.`,
+        viewAll: `View all ${totalRoots} roots`,
       },
       breakdown: {
         label: 'Morpheme Breakdown',
@@ -139,32 +179,56 @@ export const HomeScreen = ({ roots, words }: HomeScreenProps) => {
     },
     zh: {
       hero: {
-        pills: ['词根驱动', '可视化', '双语'],
-        titleBefore: '更',
-        titleHighlight: '聪明',
-        titleAfter: '地学英语，而不是更辛苦。',
+        pills: ['词根驱动', '格林法则', '双语'],
+        titleBefore: '每个英语单词都',
+        titleHighlight: '有故事',
+        titleAfter: '。',
         description:
-          '现代化界面搭配可视化词源，让每一次记忆都从理解出发，而不是死记硬背。',
+          '以格林法则和系统化词根分析为核心，这份导图揭示日常词汇背后的隐藏关联。',
         primaryCta: '进入词根索引',
         secondaryCta: '了解方法论',
       },
       stats: {
         roots: '个词根',
         words: '个词汇',
-        languages: '种语言',
+        affixes: '个词缀',
+      },
+      method: {
+        label: '方法论',
+        title: '格林法则一览',
+        description: '三大核心音变规律，解释一个词根如何衍生出数十个不同的英语单词。',
+        cards: [
+          {
+            icon: 'V',
+            title: '元音互换',
+            example: 'sit / seat / set',
+            description: '元音 (a-e-i-o-u) 在同源词之间有规律地交替，词根含义不变。',
+          },
+          {
+            icon: 'C',
+            title: '辅音浊化',
+            example: 'describe → description',
+            description: '辅音沿可预测的清浊对应关系变换：b/p/f/v、d/t/s/z、g/k/c/q。',
+          },
+          {
+            icon: 'N',
+            title: '鼻音互换',
+            example: 'in- + possible → impossible',
+            description: '鼻音 (m, n) 在语素边界处相互替代。',
+          },
+        ],
+        cta: '查看全部 6 种规律',
       },
       featured: {
         label: '精选词根',
         title: '从构词基石开始',
-        description:
-          '每个词根关联数十个英文单词。掌握词根，词汇量自然增长。',
-        viewAll: '查看全部词根',
+        description: `每个词根关联数十个英文单词。探索 ${totalRoots} 个词根，词汇量自然增长。`,
+        viewAll: `查看全部 ${totalRoots} 个词根`,
       },
       breakdown: {
         label: '构词拆解',
         title: '看看单词是怎么组装的',
-        description:
-          '每个单词都被拆解为拉丁或希腊语构件，按类型着色标注。',
+        description: '每个单词都被拆解为拉丁或希腊语构件，按类型着色标注。',
         result: '结果',
         viewWord: '查看完整词条',
       },
@@ -175,9 +239,6 @@ export const HomeScreen = ({ roots, words }: HomeScreenProps) => {
 
   /* ---- data slices ---- */
   const featuredRoots = roots.slice(0, 6);
-  const breakdownWord =
-    words.find((w) => w.rootBreakdown.length >= 3) ?? words[0];
-  const languageCount = 2; // en + zh
 
   /* ---- pill badge colors ---- */
   const pillColors = [
@@ -186,12 +247,34 @@ export const HomeScreen = ({ roots, words }: HomeScreenProps) => {
     'bg-[var(--surface-warm)] text-secondary border border-secondary/20',
   ];
 
+  /* ---- method card styles ---- */
+  const methodStyles = [
+    {
+      iconBg: 'bg-primary/10',
+      iconText: 'text-primary',
+      border: 'border-primary/20',
+      bg: 'bg-card',
+    },
+    {
+      iconBg: 'bg-accent/10',
+      iconText: 'text-accent',
+      border: 'border-accent/20',
+      bg: 'bg-[var(--surface-purple)]',
+    },
+    {
+      iconBg: 'bg-secondary/10',
+      iconText: 'text-secondary',
+      border: 'border-secondary/20',
+      bg: 'bg-[var(--surface-warm)]',
+    },
+  ];
+
   return (
     <div className="space-y-16">
       {/* ============================================================ */}
       {/*  HERO                                                        */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden rounded-3xl border border-border bg-card px-6 py-16 text-center sm:px-12 sm:py-24">
+      <section className="border-border bg-card relative overflow-hidden rounded-3xl border px-6 py-16 text-center sm:px-12 sm:py-24">
         {/* decorative background dots */}
         <div className="bg-dots pointer-events-none absolute inset-0 opacity-40" />
 
@@ -212,29 +295,27 @@ export const HomeScreen = ({ roots, words }: HomeScreenProps) => {
           </div>
 
           {/* headline */}
-          <h1 className="font-heading text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+          <h1 className="font-heading text-foreground text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
             {t.hero.titleBefore}
             <span className="text-primary">{t.hero.titleHighlight}</span>
             {t.hero.titleAfter}
           </h1>
 
           {/* subtitle */}
-          <p className="mx-auto max-w-xl text-lg text-muted-foreground">
-            {t.hero.description}
-          </p>
+          <p className="text-muted-foreground mx-auto max-w-xl text-lg">{t.hero.description}</p>
 
           {/* CTAs */}
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Link
               href="/roots"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-md transition hover:opacity-90"
+              className="bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold shadow-md transition hover:opacity-90"
             >
               {t.hero.primaryCta}
               <span aria-hidden="true">→</span>
             </Link>
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-accent-foreground shadow-md transition hover:opacity-90"
+              className="bg-accent text-accent-foreground inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold shadow-md transition hover:opacity-90"
             >
               {t.hero.secondaryCta}
             </Link>
@@ -243,39 +324,81 @@ export const HomeScreen = ({ roots, words }: HomeScreenProps) => {
       </section>
 
       {/* ============================================================ */}
-      {/*  STATS ROW                                                   */}
+      {/*  STATS ROW (4 items)                                         */}
       {/* ============================================================ */}
       <section className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         {[
           {
-            value: roots.length,
+            value: totalRoots,
             label: t.stats.roots,
             bg: 'bg-card',
             text: 'text-primary',
           },
           {
-            value: words.length,
+            value: totalWords,
             label: t.stats.words,
             bg: 'bg-[var(--surface-purple)]',
             text: 'text-accent',
           },
           {
-            value: languageCount,
-            label: t.stats.languages,
+            value: totalAffixes,
+            label: t.stats.affixes,
             bg: 'bg-[var(--surface-warm)]',
             text: 'text-secondary',
           },
         ].map((stat) => (
           <div
             key={stat.label}
-            className={`rounded-2xl border border-border ${stat.bg} px-6 py-6 text-center`}
+            className={`border-border rounded-2xl border ${stat.bg} px-6 py-6 text-center`}
           >
-            <p className={`font-heading text-4xl font-bold ${stat.text}`}>
-              {stat.value}
-            </p>
-            <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
+            <p className={`font-heading text-4xl font-bold ${stat.text}`}>{stat.value}</p>
+            <p className="text-muted-foreground mt-1 text-sm">{stat.label}</p>
           </div>
         ))}
+      </section>
+
+      {/* ============================================================ */}
+      {/*  THE METHOD (Grimm's Law preview)                            */}
+      {/* ============================================================ */}
+      <section className="space-y-8">
+        <div className="space-y-2">
+          <p className="text-accent text-sm font-semibold uppercase tracking-widest">
+            {t.method.label}
+          </p>
+          <h2 className="font-heading text-foreground text-3xl font-bold">{t.method.title}</h2>
+          <p className="text-muted-foreground max-w-xl text-base">{t.method.description}</p>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {t.method.cards.map((card, i) => {
+            const s = methodStyles[i];
+            return (
+              <div
+                key={card.icon}
+                className={`rounded-2xl border ${s.border} ${s.bg} p-6 space-y-3`}
+              >
+                <div
+                  className={`inline-flex h-10 w-10 items-center justify-center rounded-xl ${s.iconBg} font-heading text-lg font-bold ${s.iconText}`}
+                >
+                  {card.icon}
+                </div>
+                <h3 className="text-foreground text-lg font-semibold">{card.title}</h3>
+                <p className="text-muted-foreground text-sm font-mono">{card.example}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">{card.description}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="text-center">
+          <Link
+            href="/about"
+            className="border-border bg-background text-foreground hover:border-accent/40 hover:text-accent inline-flex items-center gap-1 rounded-full border px-5 py-2 text-sm font-semibold transition"
+          >
+            {t.method.cta}
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
       </section>
 
       {/* ============================================================ */}
@@ -283,15 +406,11 @@ export const HomeScreen = ({ roots, words }: HomeScreenProps) => {
       {/* ============================================================ */}
       <section className="space-y-8">
         <div className="space-y-2">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+          <p className="text-primary text-sm font-semibold uppercase tracking-widest">
             {t.featured.label}
           </p>
-          <h2 className="font-heading text-3xl font-bold text-foreground">
-            {t.featured.title}
-          </h2>
-          <p className="max-w-xl text-base text-muted-foreground">
-            {t.featured.description}
-          </p>
+          <h2 className="font-heading text-foreground text-3xl font-bold">{t.featured.title}</h2>
+          <p className="text-muted-foreground max-w-xl text-base">{t.featured.description}</p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -328,15 +447,14 @@ export const HomeScreen = ({ roots, words }: HomeScreenProps) => {
                 </div>
 
                 {/* overview */}
-                <p className="line-clamp-2 text-sm text-muted-foreground">
+                <p className="text-muted-foreground line-clamp-2 text-sm">
                   {root.overview[locale as 'en' | 'zh'] ?? root.overview.en}
                 </p>
 
                 {/* word count + arrow */}
                 <div className="mt-auto flex items-center justify-between">
-                  <span className="text-xs text-muted-foreground">
-                    {root.associatedWords.length}{' '}
-                    {locale === 'zh' ? '个单词' : 'words'}
+                  <span className="text-muted-foreground text-xs">
+                    {root.associatedWords.length} {locale === 'zh' ? '个单词' : 'words'}
                   </span>
                   <span
                     className={`${c.text} text-sm transition-transform group-hover:translate-x-1`}
@@ -353,7 +471,7 @@ export const HomeScreen = ({ roots, words }: HomeScreenProps) => {
         <div className="text-center">
           <Link
             href="/roots"
-            className="inline-flex items-center gap-1 rounded-full border border-border bg-background px-5 py-2 text-sm font-semibold text-foreground transition hover:border-primary/40 hover:text-primary"
+            className="border-border bg-background text-foreground hover:border-primary/40 hover:text-primary inline-flex items-center gap-1 rounded-full border px-5 py-2 text-sm font-semibold transition"
           >
             {t.featured.viewAll}
             <span aria-hidden="true">→</span>
@@ -365,18 +483,16 @@ export const HomeScreen = ({ roots, words }: HomeScreenProps) => {
       {/*  MORPHEME BREAKDOWN                                          */}
       {/* ============================================================ */}
       {breakdownWord && (
-        <section className="overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-card via-[var(--surface-purple)] to-[var(--surface-warm)] p-8 sm:p-12">
+        <section className="border-border from-card overflow-hidden rounded-3xl border bg-gradient-to-br via-[var(--surface-purple)] to-[var(--surface-warm)] p-8 sm:p-12">
           <div className="mx-auto max-w-2xl space-y-8 text-center">
             <div className="space-y-2">
-              <p className="text-sm font-semibold uppercase tracking-widest text-accent">
+              <p className="text-accent text-sm font-semibold uppercase tracking-widest">
                 {t.breakdown.label}
               </p>
-              <h2 className="font-heading text-3xl font-bold text-foreground">
+              <h2 className="font-heading text-foreground text-3xl font-bold">
                 {t.breakdown.title}
               </h2>
-              <p className="text-base text-muted-foreground">
-                {t.breakdown.description}
-              </p>
+              <p className="text-muted-foreground text-base">{t.breakdown.description}</p>
             </div>
 
             {/* morpheme blocks */}
@@ -388,7 +504,7 @@ export const HomeScreen = ({ roots, words }: HomeScreenProps) => {
                   >
                     {seg.surface}
                   </span>
-                  <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
+                  <span className="text-muted-foreground text-[10px] font-medium uppercase tracking-wider">
                     {morphemeLabel(seg.type, locale)}
                   </span>
                 </div>
@@ -397,23 +513,22 @@ export const HomeScreen = ({ roots, words }: HomeScreenProps) => {
 
             {/* result */}
             <div className="space-y-1">
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              <p className="text-muted-foreground text-xs font-semibold uppercase tracking-widest">
                 {t.breakdown.result}
               </p>
               <p className="font-heading text-3xl font-bold">
-                <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+                <span className="from-primary via-accent to-secondary bg-gradient-to-r bg-clip-text text-transparent">
                   {breakdownWord.lemma}
                 </span>
               </p>
-              <p className="text-sm text-muted-foreground">
-                {breakdownWord.definition[locale as 'en' | 'zh'] ??
-                  breakdownWord.definition.en}
+              <p className="text-muted-foreground text-sm">
+                {breakdownWord.definition[locale as 'en' | 'zh'] ?? breakdownWord.definition.en}
               </p>
             </div>
 
             <Link
               href={`/word/${breakdownWord.slug}`}
-              className="inline-flex items-center gap-1 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground shadow transition hover:opacity-90"
+              className="bg-primary text-primary-foreground inline-flex items-center gap-1 rounded-full px-5 py-2 text-sm font-semibold shadow transition hover:opacity-90"
             >
               {t.breakdown.viewWord}
               <span aria-hidden="true">→</span>

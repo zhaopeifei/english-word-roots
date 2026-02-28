@@ -104,7 +104,12 @@
   body {
     @apply bg-background text-foreground font-body;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-heading), serif;
   }
 }
@@ -120,15 +125,45 @@
 }
 
 /* Card color rotation for lists */
-.card-color-1 { --card-accent: var(--primary); --card-surface: var(--card); }
-.card-color-2 { --card-accent: var(--accent); --card-surface: var(--surface-purple); }
-.card-color-3 { --card-accent: var(--secondary); --card-surface: var(--surface-warm); }
+.card-color-1 {
+  --card-accent: var(--primary);
+  --card-surface: var(--card);
+}
+.card-color-2 {
+  --card-accent: var(--accent);
+  --card-surface: var(--surface-purple);
+}
+.card-color-3 {
+  --card-accent: var(--secondary);
+  --card-surface: var(--surface-warm);
+}
 
 /* Morpheme type colors */
-.morpheme-root { background: var(--primary); color: #fff; }
-.morpheme-prefix { background: var(--background); color: #0891b2; border: 2px solid #0891b2; }
-.morpheme-suffix { background: var(--background); color: var(--accent); border: 2px solid var(--accent); }
-.morpheme-connector { background: var(--background); color: var(--muted-foreground); border: 2px solid var(--border); }
+.morpheme-root {
+  background: var(--primary);
+  color: #fff;
+}
+.morpheme-prefix {
+  background: var(--background);
+  color: #0891b2;
+  border: 2px solid #0891b2;
+}
+.morpheme-suffix {
+  background: var(--background);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+.morpheme-connector {
+  background: var(--background);
+  color: var(--muted-foreground);
+  border: 2px solid var(--border);
+}
 
-.dark .morpheme-prefix { color: #22d3ee; border-color: #22d3ee; }
-.dark .morpheme-suffix { color: var(--accent); border-color: var(--accent); }
+.dark .morpheme-prefix {
+  color: #22d3ee;
+  border-color: #22d3ee;
+}
+.dark .morpheme-suffix {
+  color: var(--accent);
+  border-color: var(--accent);
+}

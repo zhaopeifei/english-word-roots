@@ -77,13 +77,11 @@ export const RootsIndex = ({ roots }: RootsIndexProps) => {
     <div className="space-y-10">
       {/* Section header */}
       <header className="space-y-3">
-        <h1 className="font-heading text-4xl font-bold text-foreground sm:text-5xl">
+        <h1 className="font-heading text-foreground text-4xl font-bold sm:text-5xl">
           <span className="mr-3 inline-block">🌳</span>
           {dictionary.roots}
         </h1>
-        <p className="max-w-2xl text-lg text-muted-foreground">
-          {dictionary.rootOverview}
-        </p>
+        <p className="text-muted-foreground max-w-2xl text-lg">{dictionary.rootOverview}</p>
       </header>
 
       {/* Root cards grid */}
@@ -93,11 +91,7 @@ export const RootsIndex = ({ roots }: RootsIndexProps) => {
           const emoji = getEmoji(root.semanticDomains);
 
           return (
-            <Link
-              key={root.slug}
-              href={`/root/${root.slug}`}
-              className="group block"
-            >
+            <Link key={root.slug} href={`/root/${root.slug}`} className="group block">
               <article
                 className={`${style.bg} ${style.border} flex h-full cursor-pointer flex-col rounded-[20px] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg`}
               >
@@ -107,7 +101,7 @@ export const RootsIndex = ({ roots }: RootsIndexProps) => {
                     {emoji}
                   </span>
                   <div className="min-w-0 flex-1">
-                    <h2 className="font-heading text-2xl font-bold text-foreground">
+                    <h2 className="font-heading text-foreground text-2xl font-bold">
                       {root.variants[0] ?? root.slug}
                     </h2>
                     {/* Origin pill */}
@@ -120,7 +114,7 @@ export const RootsIndex = ({ roots }: RootsIndexProps) => {
                 </div>
 
                 {/* Overview */}
-                <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-muted-foreground">
+                <p className="text-muted-foreground mt-4 line-clamp-3 text-sm leading-relaxed">
                   {root.overview[locale]}
                 </p>
 

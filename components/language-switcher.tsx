@@ -14,7 +14,7 @@ export const LanguageSwitcher = () => {
     <select
       value={locale}
       onChange={handleChange}
-      className="h-9 cursor-pointer rounded-full border-[1.5px] border-border bg-background px-3 text-xs font-bold text-muted-foreground shadow-none transition-colors hover:border-primary hover:text-primary"
+      className="border-border bg-background text-muted-foreground hover:border-primary hover:text-primary h-9 cursor-pointer rounded-full border-[1.5px] px-3 text-xs font-bold shadow-none transition-colors"
       aria-label="Language"
     >
       {availableLocales.map((lng) => (

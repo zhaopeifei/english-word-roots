@@ -5,12 +5,12 @@ module.exports = {
   rules: {
     'tailwindcss/classnames-order': 'warn',
     'tailwindcss/enforces-negative-arbitrary-values': 'warn',
-    'tailwindcss/no-custom-classname': 'off'
+    'tailwindcss/no-custom-classname': 'off',
   },
   settings: {
     tailwindcss: {
       groupByResponsive: true,
-      callees: ['classnames', 'clsx', 'ctl']
-    }
-  }
+      callees: ['classnames', 'clsx', 'ctl'],
+    },
+  },
 };

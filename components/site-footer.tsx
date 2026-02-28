@@ -8,8 +8,8 @@ export const SiteFooter = () => {
   const { locale, dictionary } = useLanguage();
 
   return (
-    <footer className="border-t-[1.5px] border-border bg-background">
-      <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-8 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
+    <footer className="border-border bg-background border-t-[1.5px]">
+      <div className="text-muted-foreground mx-auto flex max-w-5xl flex-col gap-4 px-4 py-8 text-sm md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col gap-1">
           <span className="text-xl tracking-widest">🌱🌿🌳🍀</span>
           <p className="font-bold">
@@ -21,7 +21,7 @@ export const SiteFooter = () => {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-full px-3 py-1 font-bold transition-colors hover:bg-card hover:text-foreground"
+              className="hover:bg-card hover:text-foreground rounded-full px-3 py-1 font-bold transition-colors"
             >
               {link.label[locale]}
             </Link>

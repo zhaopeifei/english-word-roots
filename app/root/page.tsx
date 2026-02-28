@@ -4,7 +4,7 @@ import { ROOTS } from '@/lib/content';
 import { SITE_NAME } from '@/content/site';
 
 export const metadata: Metadata = {
-  title: `Roots | ${SITE_NAME}`
+  title: `Roots | ${SITE_NAME}`,
 };
 
 const RootIndexPage = () => {

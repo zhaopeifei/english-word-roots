@@ -29,8 +29,7 @@ export const WordDetail = ({ word }: WordDetailProps) => {
   const router = useRouter();
   const { dictionary, locale } = useLanguage();
   const localizedDefinition = word.definition[locale] ?? word.definition.en;
-  const localizedMorphology =
-    word.morphologyNote[locale] ?? word.morphologyNote.en;
+  const localizedMorphology = word.morphologyNote[locale] ?? word.morphologyNote.en;
 
   return (
     <article className="space-y-10">
@@ -38,7 +37,7 @@ export const WordDetail = ({ word }: WordDetailProps) => {
       <button
         type="button"
         onClick={() => router.back()}
-        className="bg-card hover:bg-primary hover:text-white inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition"
+        className="bg-card hover:bg-primary inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition hover:text-white"
       >
         ← {locale === 'zh' ? '返回' : 'Back'}
       </button>
@@ -52,15 +51,11 @@ export const WordDetail = ({ word }: WordDetailProps) => {
       <div className="flex flex-wrap gap-3">
         <span className="bg-card border-border inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm">
           <span>🇬🇧 UK</span>
-          <span className="font-mono text-foreground">
-            {word.pronunciation.uk.ipa}
-          </span>
+          <span className="text-foreground font-mono">{word.pronunciation.uk.ipa}</span>
         </span>
         <span className="bg-card border-border inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm">
           <span>🇺🇸 US</span>
-          <span className="font-mono text-foreground">
-            {word.pronunciation.us.ipa}
-          </span>
+          <span className="text-foreground font-mono">{word.pronunciation.us.ipa}</span>
         </span>
       </div>
 
@@ -74,9 +69,7 @@ export const WordDetail = ({ word }: WordDetailProps) => {
 
       {/* Root Breakdown */}
       <section className="space-y-4">
-        <h2 className="font-heading text-foreground text-2xl">
-          🧩 {dictionary.wordBreakdown}
-        </h2>
+        <h2 className="font-heading text-foreground text-2xl">🧩 {dictionary.wordBreakdown}</h2>
 
         <div className="flex flex-wrap items-center gap-3">
           {word.rootBreakdown.map((segment, idx) => {
@@ -100,11 +93,7 @@ export const WordDetail = ({ word }: WordDetailProps) => {
 
             return (
               <div key={`wrap-${idx}`} className="flex items-center gap-3">
-                {idx > 0 && (
-                  <span className="text-muted-foreground text-xl font-bold">
-                    +
-                  </span>
-                )}
+                {idx > 0 && <span className="text-muted-foreground text-xl font-bold">+</span>}
                 {content}
               </div>
             );
@@ -122,9 +111,7 @@ export const WordDetail = ({ word }: WordDetailProps) => {
 
       {/* Examples */}
       <section className="space-y-4">
-        <h2 className="font-heading text-foreground text-2xl">
-          {dictionary.examples}
-        </h2>
+        <h2 className="font-heading text-foreground text-2xl">{dictionary.examples}</h2>
 
         <ul className="space-y-4">
           {word.examples.map((example, idx) => {
@@ -135,10 +122,7 @@ export const WordDetail = ({ word }: WordDetailProps) => {
             const showTranslation = locale !== 'en' && localizedText.length > 0;
 
             return (
-              <li
-                key={`${englishText}-${idx}`}
-                className="flex items-start gap-4"
-              >
+              <li key={`${englishText}-${idx}`} className="flex items-start gap-4">
                 <span
                   className={`${badgeColors[idx % badgeColors.length]} flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold`}
                 >
@@ -147,9 +131,7 @@ export const WordDetail = ({ word }: WordDetailProps) => {
                 <div className="space-y-1">
                   <p className="text-foreground text-lg">{englishText}</p>
                   {showTranslation && (
-                    <p className="text-muted-foreground text-sm">
-                      {localizedText}
-                    </p>
+                    <p className="text-muted-foreground text-sm">{localizedText}</p>
                   )}
                 </div>
               </li>
@@ -160,9 +142,7 @@ export const WordDetail = ({ word }: WordDetailProps) => {
 
       {/* Related Words */}
       <section className="space-y-4">
-        <h2 className="font-heading text-foreground text-2xl">
-          {dictionary.relatedWords}
-        </h2>
+        <h2 className="font-heading text-foreground text-2xl">{dictionary.relatedWords}</h2>
         <div className="flex flex-wrap gap-2">
           {word.relatedWords.map((related) => (
             <Link
@@ -179,7 +159,7 @@ export const WordDetail = ({ word }: WordDetailProps) => {
       {/* Bottom back link */}
       <Link
         href="/explore"
-        className="bg-card hover:bg-primary hover:text-white inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition"
+        className="bg-card hover:bg-primary inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition hover:text-white"
       >
         ← {dictionary.backToWords}
       </Link>
