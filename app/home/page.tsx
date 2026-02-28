@@ -1,4 +1,6 @@
+import type { Metadata } from 'next';
 import { HomeScreen } from './index';
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/content/site';
 import {
   ROOTS,
   WORDS,
@@ -7,6 +9,17 @@ import {
   getTrendingWords,
   getBestBreakdownWord,
 } from '@/lib/content';
+
+export const metadata: Metadata = {
+  title: `Home | ${SITE_NAME}`,
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: `${SITE_URL}/home` },
+  openGraph: {
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    url: `${SITE_URL}/home`,
+  },
+};
 
 const HomePage = () => {
   const roots = getFeaturedRoots();

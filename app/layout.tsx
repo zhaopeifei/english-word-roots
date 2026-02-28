@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Lora, Nunito } from 'next/font/google';
 import { Providers } from '@/app/providers';
 import '@/app/globals.css';
-import { SITE_DESCRIPTION, SITE_NAME } from '@/content/site';
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/content/site';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 
@@ -15,16 +15,36 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
-  metadataBase: new URL('https://www.englishwordroots.com'),
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: '/',
+    languages: {
+      en: '/',
+      zh: '/',
+    },
+  },
+  manifest: '/manifest.json',
   openGraph: {
     type: 'website',
+    siteName: SITE_NAME,
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    locale: 'en_US',
+    images: [
+      {
+        url: '/android-chrome-512x512.png',
+        width: 512,
+        height: 512,
+        alt: SITE_NAME,
+      },
+    ],
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary',
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
+    images: ['/android-chrome-512x512.png'],
   },
   icons: {
     icon: [
@@ -36,12 +56,25 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  inLanguage: ['en', 'zh'],
+};
+
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${lora.variable} ${nunito.variable} bg-background text-foreground font-body antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Providers>
           <div className="bg-dots pointer-events-none fixed inset-0 z-0 opacity-20" aria-hidden />
           <div className="relative z-10 flex min-h-screen flex-col">

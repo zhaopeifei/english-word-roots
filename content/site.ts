@@ -1,4 +1,5 @@
 export const SITE_NAME = 'English Word Roots';
+export const SITE_URL = 'https://www.englishwordroots.com';
 export const SITE_DESCRIPTION =
   'Explore English vocabulary through root-based navigation, bilingual explanations, and static SEO-friendly pages.';
 export const SUPPORTED_LANGUAGES = ['en', 'zh'] as const;
