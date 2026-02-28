@@ -4,6 +4,7 @@ export const BIO_WORDS: WordEntry[] = [
   {
     slug: 'biology',
     lemma: 'biology',
+    partOfSpeech: ['n.'],
     pronunciation: {
       uk: { ipa: '/baɪˈɒl.ə.dʒi/' },
       us: { ipa: '/baɪˈɑː.lə.dʒi/' },
@@ -39,6 +40,7 @@ export const BIO_WORDS: WordEntry[] = [
   {
     slug: 'biologist',
     lemma: 'biologist',
+    partOfSpeech: ['n.'],
     pronunciation: {
       uk: { ipa: '/baɪˈɒl.ə.dʒɪst/' },
       us: { ipa: '/baɪˈɑː.lə.dʒɪst/' },
@@ -71,6 +73,7 @@ export const BIO_WORDS: WordEntry[] = [
   {
     slug: 'biological',
     lemma: 'biological',
+    partOfSpeech: ['adj.'],
     pronunciation: {
       uk: { ipa: '/ˌbaɪ.əˈlɒdʒ.ɪ.kəl/' },
       us: { ipa: '/ˌbaɪ.əˈlɑː.dʒɪ.kəl/' },
@@ -104,6 +107,7 @@ export const BIO_WORDS: WordEntry[] = [
   {
     slug: 'biography',
     lemma: 'biography',
+    partOfSpeech: ['n.'],
     pronunciation: {
       uk: { ipa: '/baɪˈɒɡ.rə.fi/' },
       us: { ipa: '/baɪˈɑː.ɡrə.fi/' },
@@ -136,6 +140,7 @@ export const BIO_WORDS: WordEntry[] = [
   {
     slug: 'autobiography',
     lemma: 'autobiography',
+    partOfSpeech: ['n.'],
     pronunciation: {
       uk: { ipa: '/ˌɔː.təʊ.baɪˈɒɡ.rə.fi/' },
       us: { ipa: '/ˌɔː.t̬oʊ.baɪˈɑː.ɡrə.fi/' },
@@ -169,6 +174,7 @@ export const BIO_WORDS: WordEntry[] = [
   {
     slug: 'biosphere',
     lemma: 'biosphere',
+    partOfSpeech: ['n.'],
     pronunciation: {
       uk: { ipa: '/ˈbaɪ.əʊ.sfɪər/' },
       us: { ipa: '/ˈbaɪ.oʊ.sfɪr/' },
@@ -200,6 +206,7 @@ export const BIO_WORDS: WordEntry[] = [
   {
     slug: 'biodiversity',
     lemma: 'biodiversity',
+    partOfSpeech: ['n.'],
     pronunciation: {
       uk: { ipa: '/ˌbaɪ.əʊ.daɪˈvɜː.sə.ti/' },
       us: { ipa: '/ˌbaɪ.oʊ.daɪˈvɝː.sə.t̬i/' },
@@ -232,6 +239,7 @@ export const BIO_WORDS: WordEntry[] = [
   {
     slug: 'biotechnology',
     lemma: 'biotechnology',
+    partOfSpeech: ['n.'],
     pronunciation: {
       uk: { ipa: '/ˌbaɪ.əʊ.tekˈnɒl.ə.dʒi/' },
       us: { ipa: '/ˌbaɪ.oʊ.tekˈnɑː.lə.dʒi/' },
@@ -264,6 +272,7 @@ export const BIO_WORDS: WordEntry[] = [
   {
     slug: 'biochemistry',
     lemma: 'biochemistry',
+    partOfSpeech: ['n.'],
     pronunciation: {
       uk: { ipa: '/ˌbaɪ.əʊˈkem.ɪ.stri/' },
       us: { ipa: '/ˌbaɪ.oʊˈkem.ə.stri/' },
@@ -296,6 +305,7 @@ export const BIO_WORDS: WordEntry[] = [
   {
     slug: 'microbiology',
     lemma: 'microbiology',
+    partOfSpeech: ['n.'],
     pronunciation: {
       uk: { ipa: '/ˌmaɪ.krəʊ.baɪˈɒl.ə.dʒi/' },
       us: { ipa: '/ˌmaɪ.kroʊ.baɪˈɑː.lə.dʒi/' },
@@ -328,6 +338,7 @@ export const BIO_WORDS: WordEntry[] = [
   {
     slug: 'symbiosis',
     lemma: 'symbiosis',
+    partOfSpeech: ['n.'],
     pronunciation: {
       uk: { ipa: '/ˌsɪm.baɪˈəʊ.sɪs/' },
       us: { ipa: '/ˌsɪm.baɪˈoʊ.sɪs/' },

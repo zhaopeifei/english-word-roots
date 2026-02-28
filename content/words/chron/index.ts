@@ -4,6 +4,7 @@ export const CHRON_WORDS: WordEntry[] = [
   {
     slug: 'chronicle',
     lemma: 'chronicle',
+    partOfSpeech: ['n.', 'v.'],
     pronunciation: {
       uk: { ipa: '/ˈkrɒn.ɪ.kəl/' },
       us: { ipa: '/ˈkrɑː.nɪ.kəl/' },

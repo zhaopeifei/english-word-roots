@@ -2,15 +2,18 @@ import type { Locale } from '@/content/site';
 
 export interface RootEntry {
   slug: string; // 词根的唯一标识符
-  variants: string[]; // 词根的变体，例如 ["hydr", "hydro", "hydra"]
+  variants: string[]; // 词根的变体，例如 [“hydr”, “hydro”, “hydra”]
 
+  meaning: Record<Locale, string>; // 核心简义 (en:”do, act, drive”, zh:”干/做/动”)
   languageOfOrigin: LanguageOfOrigin; // 词源语言，Greek / Latin / ...
+  etymology?: string; // 原始词源形式 (如 “Greek βίος”, “Latin agere”)
   overview: Record<Locale, string>; // 通俗的整体介绍，多语言
   originSummary: Record<Locale, string>; // 词源解释，来自哪种语言、原始形式、含义，多语言
 
-  semanticDomains: SemanticDomain[]; // 词根的语义领域，代表“这个词根跟什么有关”，比如：["water", "science"]
+  semanticDomains: SemanticDomain[]; // 词根的语义领域，代表”这个词根跟什么有关”，比如：[“water”, “science”]
   relatedRoots: string[]; // 相关词根（同语义 or 同学科），存 root 的 slug
   associatedWords: string[]; // 派生单词（包含这个词根的词），存 word 的 slug
+  grimmLawGroup?: string; // 格林法则分组 (如 “b/p/f/v”, “d/t/s/z”)
 }
 
 export interface WordEntry {
@@ -21,18 +24,35 @@ export interface WordEntry {
     us: { ipa: string }; // 美国英语发音
   };
 
+  partOfSpeech: string[]; // 词性 ["n.", "v.", "adj."]
   definition: Record<Locale, string>; // 多语言释义（建议单数）
   examples: Array<Record<Locale, string[]>>; // 多语言例句，可放多个
 
   rootBreakdown: MorphemeSegment[]; // 词的构词拆解
   morphologyNote: Record<Locale, string>; // 解释词根如何组合出当前词义，多语言
   relatedWords: string[]; // 与该词语义或构词相关的兄弟词，["biological", "biologist"]
+
+  collocations?: Record<Locale, string[]>; // 常见搭配 (en:["take action"], zh:["采取行动"])
+  frequency?: 'common' | 'academic' | 'advanced' | 'rare'; // 词频分级
+  tags?: string[]; // 标签 ["CET-4", "IELTS", "GRE"]
 }
 
 export interface MorphemeSegment {
   surface: string; // 该片段在单词中的表面形式，比如 "bio" / "logy" / "o"
   type: 'root' | 'prefix' | 'suffix' | 'connector' | 'other'; // 该片段的类型：root / prefix / suffix / connector / other
   rootSlug?: string; // 仅在有对应 RootEntry 时填写，例如 type === 'root'
+  affixSlug?: string; // 关联到 AffixEntry，例如 type === 'prefix' | 'suffix'
+}
+
+export interface AffixEntry {
+  slug: string; // 如 "pre", "tion", "able"
+  form: string; // 显示形式 "pre-", "-tion", "-able/-ible"
+  type: 'prefix' | 'suffix';
+  meaning: Record<Locale, string>; // en:"before", zh:"在...之前"
+  overview: Record<Locale, string>; // 较长说明
+  languageOfOrigin: LanguageOfOrigin;
+  examples: string[]; // 示例单词 slug: ["predict", "prepare"]
+  grimmLawGroup?: string;
 }
 
 // 词源语言（有限集）
@@ -64,8 +84,8 @@ export type SemanticDomain =
   | 'earth' // geo
   | 'fire' // pyro
   | 'air' // aero
-  | 'light' // photo
-  | 'sound' // phon
+  | 'light' // photo, luc
+  | 'sound' // phon, son, voc
   | 'color' // chrom
 
   // 抽象概念
@@ -73,18 +93,54 @@ export type SemanticDomain =
   | 'space' // tele
   | 'number' // mono, poly
   | 'position' // sub-, super-
-  | 'movement' // mot/mob, grad
+  | 'movement' // mot/mob, grad, ven/vent
   | 'change' // morph, meta
-  | 'amount' // hyper, hypo
+  | 'amount' // hyper, hypo, min, max
 
   // 认知 & 人类社会
-  | 'mind' // psych
+  | 'mind' // psych, cogn
   | 'emotion' // pathos, anim
-  | 'speech' // dict, log
-  | 'knowledge' // sci, cogn
-  | 'power' // dyn, poten
-  | 'law' // nom, jur
+  | 'speech' // dict, log, voc, clam
+  | 'knowledge' // sci, cogn, lect
+  | 'power' // dyn, poten, fort, val
+  | 'law' // nom, jur, leg
   | 'society' // socio, demo
+
+  // 动作 & 行为
+  | 'action' // act, ag, fac
+  | 'transport' // port, fer, car
+  | 'making' // fac, fec, fic
+  | 'writing' // scrib, script, graph
+  | 'seeing' // vis, vid, spec, spy
+  | 'holding' // cap, cep, cip, ten
+  | 'cutting' // cis, sect, tom
+  | 'pushing' // pel, puls
+  | 'pulling' // tract, tra
+  | 'standing' // st, sist, stat
+  | 'sitting' // sit, sid, sed
+  | 'walking' // grad, gress, amb
+  | 'eating' // vor, phag
+  | 'breathing' // spir, anim
+  | 'binding' // lig, nect, string
+  | 'pressing' // press
+  | 'flowing' // flu, flux, fus
+  | 'turning' // vert, vers, tort
+  | 'building' // struct
+  | 'breaking' // frag, rupt, fract
+  | 'choosing' // lect, opt, cern
+  | 'giving' // don, dat
+  | 'sending' // miss, mit
+  | 'ordering' // ord, mand
+  | 'measuring' // metr, mens
+
+  // 性质 & 状态
+  | 'size' // min, max, magn
+  | 'similarity' // sim, sem, simil
+  | 'strength' // fort, val, rob
+  | 'death' // mort, nec
+  | 'birth' // gen, nat, nasc
+  | 'sleep' // somn, dorm
+  | 'food' // nutr, alim
 
   // 其他
   | 'other';

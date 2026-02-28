@@ -4,6 +4,7 @@ export const GEO_WORDS: WordEntry[] = [
   {
     slug: 'geology',
     lemma: 'geology',
+    partOfSpeech: ['n.'],
     pronunciation: {
       uk: { ipa: '/dʒiˈɒl.ə.dʒi/' },
       us: { ipa: '/dʒiˈɑː.lə.dʒi/' },

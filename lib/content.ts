@@ -1,5 +1,6 @@
 import { ROOTS, getRootBySlug } from '@/content/roots';
 import { WORDS, getWordBySlug } from '@/content/words';
+import { AFFIXES, getAffixBySlug, getPrefixes, getSuffixes } from '@/content/affixes';
 
 type SlugParam = {
   params: {
@@ -7,12 +8,26 @@ type SlugParam = {
   };
 };
 
-export const getFeaturedRoots = () => ROOTS.slice(0, 3);
+export const getFeaturedRoots = () => ROOTS.slice(0, 6);
 
-export const getTrendingWords = () => WORDS.slice(0, 3);
+export const getTrendingWords = () => WORDS.slice(0, 6);
 
-export const getRootPaths = (): SlugParam[] => ROOTS.map((root) => ({ params: { slug: root.slug } }));
+export const getRootPaths = (): SlugParam[] =>
+  ROOTS.map((root) => ({ params: { slug: root.slug } }));
 
-export const getWordPaths = (): SlugParam[] => WORDS.map((word) => ({ params: { slug: word.slug } }));
+export const getWordPaths = (): SlugParam[] =>
+  WORDS.map((word) => ({ params: { slug: word.slug } }));
 
-export { ROOTS, WORDS, getRootBySlug, getWordBySlug };
+export const getAffixPaths = (): SlugParam[] =>
+  AFFIXES.map((affix) => ({ params: { slug: affix.slug } }));
+
+export {
+  ROOTS,
+  WORDS,
+  AFFIXES,
+  getRootBySlug,
+  getWordBySlug,
+  getAffixBySlug,
+  getPrefixes,
+  getSuffixes,
+};
