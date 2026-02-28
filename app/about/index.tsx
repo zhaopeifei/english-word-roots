@@ -83,47 +83,106 @@ const aboutCopy = {
   },
 } as const;
 
+const pillarIcons = ['📚', '🔍', '🎨'];
+
+const pillarStyles = [
+  {
+    card: 'bg-card border-primary/15',
+    accent: 'text-primary',
+  },
+  {
+    card: 'bg-[var(--surface-purple)] border-accent/15',
+    accent: 'text-accent',
+  },
+  {
+    card: 'bg-[var(--surface-warm)] border-secondary/15',
+    accent: 'text-secondary',
+  },
+];
+
+const stepBadgeColors = [
+  'bg-primary text-white',
+  'bg-accent text-white',
+  'bg-secondary text-white',
+];
+
 export const AboutSection = () => {
   const { dictionary, locale } = useLanguage();
   const localeCopy = aboutCopy[locale as keyof typeof aboutCopy] ?? aboutCopy.en;
 
   return (
     <article className="space-y-10">
-      <header className="space-y-3">
-        <p className="text-sm uppercase tracking-widest text-brand">Etymology</p>
-        <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">
+      {/* Hero */}
+      <header className="space-y-4">
+        <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+          🌿 Etymology
+        </span>
+        <h1 className="font-heading text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
           {dictionary.aboutTitle}
         </h1>
-        <p className="text-lg text-muted-foreground">{dictionary.aboutMission}</p>
+        <p className="max-w-2xl text-lg text-muted-foreground">
+          {dictionary.aboutMission}
+        </p>
       </header>
-      <section className="space-y-4 rounded-2xl border border-border bg-surface p-6 shadow-sm">
-        {localeCopy.intro.map((paragraph) => (
-          <p key={paragraph} className="text-base leading-relaxed text-muted-foreground">
-            {paragraph}
-          </p>
-        ))}
+
+      {/* Intro */}
+      <section className="rounded-[24px] border border-border bg-gradient-to-br from-bg-card via-[var(--surface-warm)] to-[var(--surface-purple)] p-6">
+        <div className="space-y-4">
+          {localeCopy.intro.map((paragraph) => (
+            <p key={paragraph} className="text-base leading-relaxed text-muted-foreground">
+              {paragraph}
+            </p>
+          ))}
+        </div>
       </section>
+
+      {/* Pillars */}
       <section className="grid gap-4 md:grid-cols-3">
-        {localeCopy.pillars.map((pillar) => (
-          <div key={pillar.title} className="rounded-2xl border border-border bg-background p-5 shadow-sm">
-            <h3 className="text-lg font-semibold text-foreground">{pillar.title}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{pillar.description}</p>
+        {localeCopy.pillars.map((pillar, index) => (
+          <div
+            key={pillar.title}
+            className={`rounded-[20px] border p-6 ${pillarStyles[index].card}`}
+          >
+            <span className="text-2xl">{pillarIcons[index]}</span>
+            <h3 className={`mt-3 text-lg font-semibold ${pillarStyles[index].accent}`}>
+              {pillar.title}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              {pillar.description}
+            </p>
           </div>
         ))}
       </section>
-      <section className="space-y-4 rounded-2xl border border-border bg-gradient-to-br from-background to-surface p-6 shadow-sm">
-        <h2 className="text-2xl font-semibold text-foreground">{localeCopy.processTitle}</h2>
-        <div className="grid gap-4 md:grid-cols-3">
-          {localeCopy.process.map((item) => (
-            <div key={item.title} className="rounded-xl border border-border/70 bg-background/70 p-4">
-              <p className="text-base font-semibold text-foreground">{item.title}</p>
-              <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
+
+      {/* Process */}
+      <section className="rounded-[24px] border border-border bg-card p-6">
+        <h2 className="mb-6 text-2xl font-semibold text-foreground">
+          {localeCopy.processTitle}
+        </h2>
+        <div className="grid gap-6 md:grid-cols-3">
+          {localeCopy.process.map((item, index) => (
+            <div key={item.title} className="flex gap-4">
+              <span
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${stepBadgeColors[index]}`}
+              >
+                {index + 1}
+              </span>
+              <div>
+                <p className="text-base font-semibold text-foreground">{item.title}</p>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                  {item.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
       </section>
-      <section className="rounded-2xl border border-border bg-surface/80 p-6 shadow-sm">
-        <p className="text-base text-muted-foreground">{localeCopy.closing}</p>
+
+      {/* Closing */}
+      <section className="rounded-[20px] border border-border bg-card p-6">
+        <p className="text-base leading-relaxed text-muted-foreground">
+          {localeCopy.closing}
+        </p>
       </section>
     </article>
   );

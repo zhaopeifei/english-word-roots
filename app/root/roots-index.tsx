@@ -3,55 +3,169 @@
 import Link from 'next/link';
 import { useLanguage } from '@/components/language-provider';
 import type { RootEntry } from '@/types/content';
+import type { SemanticDomain } from '@/types/content';
 
 interface RootsIndexProps {
   roots: RootEntry[];
 }
 
+const domainEmojiMap: Partial<Record<SemanticDomain, string>> = {
+  life: '🧬',
+  animals: '🐾',
+  plants: '🌿',
+  body: '🫀',
+  health: '💊',
+  nature: '🌱',
+  water: '💧',
+  earth: '🌍',
+  fire: '🔥',
+  air: '🌬️',
+  light: '💡',
+  sound: '🔊',
+  color: '🎨',
+  time: '⏳',
+  space: '🚀',
+  number: '🔢',
+  position: '📍',
+  movement: '🏃',
+  change: '🔄',
+  amount: '📊',
+  mind: '🧠',
+  emotion: '💛',
+  speech: '💬',
+  knowledge: '📚',
+  power: '⚡',
+  law: '⚖️',
+  society: '🏛️',
+};
+
+function getEmoji(domains: SemanticDomain[]): string {
+  for (const domain of domains) {
+    if (domainEmojiMap[domain]) return domainEmojiMap[domain]!;
+  }
+  return '📖';
+}
+
+const cardStyles = [
+  {
+    bg: 'bg-card',
+    border: 'border-[1.5px] border-primary/15 hover:border-primary',
+    pill: 'bg-primary/10 text-primary',
+    accentText: 'text-primary',
+    tag: 'bg-primary/5 text-primary/80',
+  },
+  {
+    bg: 'bg-[var(--surface-purple)]',
+    border: 'border-[1.5px] border-accent/15 hover:border-accent',
+    pill: 'bg-accent/10 text-accent',
+    accentText: 'text-accent',
+    tag: 'bg-accent/5 text-accent/80',
+  },
+  {
+    bg: 'bg-[var(--surface-warm)]',
+    border: 'border-[1.5px] border-secondary/15 hover:border-secondary',
+    pill: 'bg-secondary/10 text-secondary',
+    accentText: 'text-secondary',
+    tag: 'bg-secondary/5 text-secondary/80',
+  },
+] as const;
+
 export const RootsIndex = ({ roots }: RootsIndexProps) => {
   const { dictionary, locale } = useLanguage();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
+      {/* Section header */}
       <header className="space-y-3">
-        <h1 className="text-4xl font-semibold text-foreground">{dictionary.roots}</h1>
-        <p className="text-lg text-muted-foreground">{dictionary.rootOverview}</p>
+        <h1 className="font-heading text-4xl font-bold text-foreground sm:text-5xl">
+          <span className="mr-3 inline-block">🌳</span>
+          {dictionary.roots}
+        </h1>
+        <p className="max-w-2xl text-lg text-muted-foreground">
+          {dictionary.rootOverview}
+        </p>
       </header>
-      <div className="grid gap-6 md:grid-cols-2">
-        {roots.map((root) => (
-          <article key={root.slug} className="rounded-xl border border-border bg-surface p-6 shadow-sm">
-            <h2 className="text-2xl font-semibold text-foreground">
-              <Link href={`/root/${root.slug}`}>{root.variants[0] ?? root.slug}</Link>
-            </h2>
-            <p className="mt-2 text-sm text-muted-foreground">{root.overview[locale]}</p>
-            <div className="mt-3 space-y-2 text-sm text-muted-foreground">
-              <p className="text-xs uppercase tracking-wide text-brand">{dictionary.variants}</p>
-              <div className="flex flex-wrap gap-2">
-                {root.variants.map((variant) => (
-                  <span key={variant} className="rounded-full border border-border px-2 py-0.5">
-                    {variant}
+
+      {/* Root cards grid */}
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {roots.map((root, index) => {
+          const style = cardStyles[index % 3];
+          const emoji = getEmoji(root.semanticDomains);
+
+          return (
+            <Link
+              key={root.slug}
+              href={`/root/${root.slug}`}
+              className="group block"
+            >
+              <article
+                className={`${style.bg} ${style.border} flex h-full cursor-pointer flex-col rounded-[20px] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg`}
+              >
+                {/* Icon + name row */}
+                <div className="flex items-start gap-4">
+                  <span className="text-4xl leading-none" role="img" aria-hidden="true">
+                    {emoji}
                   </span>
-                ))}
-              </div>
-            </div>
-            <dl className="mt-4 space-y-3 text-sm text-muted-foreground">
-              <div className="flex justify-between">
-                <dt>{dictionary.origin}</dt>
-                <dd>{root.languageOfOrigin}</dd>
-              </div>
-              <div>
-                <dt className="font-medium text-foreground">{dictionary.domains}</dt>
-                <dd className="mt-2 flex flex-wrap gap-2">
-                  {root.semanticDomains.map((domain) => (
-                    <span key={domain} className="rounded-full border border-border px-2 py-0.5 text-xs">
-                      {domain}
+                  <div className="min-w-0 flex-1">
+                    <h2 className="font-heading text-2xl font-bold text-foreground">
+                      {root.variants[0] ?? root.slug}
+                    </h2>
+                    {/* Origin pill */}
+                    <span
+                      className={`${style.pill} mt-2 inline-block rounded-full px-3 py-0.5 text-xs font-semibold`}
+                    >
+                      {root.languageOfOrigin}
                     </span>
-                  ))}
-                </dd>
-              </div>
-            </dl>
-          </article>
-        ))}
+                  </div>
+                </div>
+
+                {/* Overview */}
+                <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-muted-foreground">
+                  {root.overview[locale]}
+                </p>
+
+                {/* Semantic domain tags */}
+                {root.semanticDomains.length > 0 && (
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {root.semanticDomains.map((domain) => (
+                      <span
+                        key={domain}
+                        className={`${style.tag} rounded-full px-2.5 py-0.5 text-[11px] font-medium`}
+                      >
+                        {domain}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Footer: word count + arrow */}
+                <div className="mt-auto flex items-center justify-between pt-5">
+                  <span className={`${style.accentText} text-sm font-semibold`}>
+                    → {root.associatedWords.length} words
+                  </span>
+                  <span
+                    className={`${style.accentText} flex h-8 w-8 items-center justify-center rounded-full border-[1.5px] border-current opacity-0 transition-opacity duration-200 group-hover:opacity-100`}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
+              </article>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

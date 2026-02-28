@@ -1,74 +1,132 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/components/language-provider';
-import type { WordEntry } from '@/types/content';
+import type { WordEntry, MorphemeSegment } from '@/types/content';
 
 interface WordDetailProps {
   word: WordEntry;
 }
 
+const morphemeClass: Record<MorphemeSegment['type'], string> = {
+  root: 'morpheme-root',
+  prefix: 'morpheme-prefix',
+  suffix: 'morpheme-suffix',
+  connector: 'morpheme-connector',
+  other: 'morpheme-connector',
+};
+
+const badgeColors = [
+  'bg-primary text-primary-foreground',
+  'bg-accent text-accent-foreground',
+  'bg-secondary text-secondary-foreground',
+  'bg-primary text-primary-foreground',
+  'bg-accent text-accent-foreground',
+];
+
 export const WordDetail = ({ word }: WordDetailProps) => {
   const router = useRouter();
   const { dictionary, locale } = useLanguage();
   const localizedDefinition = word.definition[locale] ?? word.definition.en;
-  const localizedMorphology = word.morphologyNote[locale] ?? word.morphologyNote.en;
-  const breakdownDisplay = word.rootBreakdown.map((segment) => segment.surface).join(' + ');
+  const localizedMorphology =
+    word.morphologyNote[locale] ?? word.morphologyNote.en;
 
   return (
     <article className="space-y-10">
-      <header className="flex items-center justify-between gap-4">
-        <h1 className="text-foreground text-4xl font-semibold">{word.slug}</h1>
-        <Button
-          type="button"
-          variant="ghost"
-          size="icon"
-          onClick={() => router.back()}
-          className="text-brand hover:bg-primary/10 cursor-pointer rounded-full"
-          aria-label={locale === 'zh' ? '返回' : 'Back'}
-        >
-          <ArrowLeft className="h-5 w-5" aria-hidden />
-        </Button>
+      {/* Back button */}
+      <button
+        type="button"
+        onClick={() => router.back()}
+        className="bg-card hover:bg-primary hover:text-white inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition"
+      >
+        ← {locale === 'zh' ? '返回' : 'Back'}
+      </button>
+
+      {/* Header: lemma */}
+      <header>
+        <h1 className="font-heading text-foreground text-4xl">{word.lemma}</h1>
       </header>
 
-      <div className="space-y-1">
-        <p className="text-primary/60 text-xs font-medium uppercase tracking-wide">Lemma</p>
-        <p className="text-foreground text-3xl">{word.lemma}</p>
+      {/* Pronunciation pills */}
+      <div className="flex flex-wrap gap-3">
+        <span className="bg-card border-border inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm">
+          <span>🇬🇧 UK</span>
+          <span className="font-mono text-foreground">
+            {word.pronunciation.uk.ipa}
+          </span>
+        </span>
+        <span className="bg-card border-border inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm">
+          <span>🇺🇸 US</span>
+          <span className="font-mono text-foreground">
+            {word.pronunciation.us.ipa}
+          </span>
+        </span>
       </div>
 
-      <section className="border-border bg-surface space-y-6 rounded-2xl border p-6 shadow-sm">
-        <div className="space-y-4">
-          <div className="space-y-1">
-            <p className="text-primary/60 text-xs font-medium tracking-wide">Definition</p>
-            <p className="text-foreground text-xl">{localizedDefinition}</p>
-          </div>
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div className="space-y-1">
-            <p className="text-primary/60 text-xs font-medium tracking-wide">UK IPA</p>
-            <p className="text-foreground text-xl">{word.pronunciation.uk.ipa}</p>
-          </div>
-          <div className="space-y-1">
-            <p className="text-primary/60 text-xs font-medium tracking-wide">US IPA</p>
-            <p className="text-foreground text-xl">{word.pronunciation.us.ipa}</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="space-y-1">
-        <p className="text-primary/60 text-xs font-medium tracking-wide">
-          {dictionary.wordBreakdown}
+      {/* Definition card */}
+      <section className="bg-card border-border rounded-[20px] border p-6">
+        <p className="text-primary text-xs font-bold uppercase tracking-wide">
+          {dictionary.wordOverview}
         </p>
-        <p className="text-foreground text-2xl">{breakdownDisplay}</p>
-        <p className="text-muted-foreground text-lg">{localizedMorphology}</p>
+        <p className="text-foreground mt-2 text-xl">{localizedDefinition}</p>
       </section>
 
+      {/* Root Breakdown */}
       <section className="space-y-4">
-        <h2 className="text-primary/60 text-xs font-medium tracking-wide">{dictionary.examples}</h2>
-        <ul className="mt-2 list-disc space-y-3 pl-5">
+        <h2 className="font-heading text-foreground text-2xl">
+          🧩 {dictionary.wordBreakdown}
+        </h2>
+
+        <div className="flex flex-wrap items-center gap-3">
+          {word.rootBreakdown.map((segment, idx) => {
+            const block = (
+              <div
+                key={`${segment.surface}-${idx}`}
+                className={`${morphemeClass[segment.type]} flex flex-col items-center rounded-2xl px-6 py-4`}
+              >
+                <span className="text-lg font-bold">{segment.surface}</span>
+                <span className="mt-1 text-xs opacity-80">{segment.type}</span>
+              </div>
+            );
+
+            const content = segment.rootSlug ? (
+              <Link key={`${segment.surface}-${idx}`} href={`/root/${segment.rootSlug}`}>
+                {block}
+              </Link>
+            ) : (
+              block
+            );
+
+            return (
+              <div key={`wrap-${idx}`} className="flex items-center gap-3">
+                {idx > 0 && (
+                  <span className="text-muted-foreground text-xl font-bold">
+                    +
+                  </span>
+                )}
+                {content}
+              </div>
+            );
+          })}
+
+          <span className="text-muted-foreground text-xl font-bold">=</span>
+          <span className="from-primary to-accent bg-gradient-to-r bg-clip-text text-2xl font-bold text-transparent">
+            {word.lemma}
+          </span>
+        </div>
+
+        {/* Morphology note */}
+        <p className="text-muted-foreground">{localizedMorphology}</p>
+      </section>
+
+      {/* Examples */}
+      <section className="space-y-4">
+        <h2 className="font-heading text-foreground text-2xl">
+          {dictionary.examples}
+        </h2>
+
+        <ul className="space-y-4">
           {word.examples.map((example, idx) => {
             const englishSentences = example.en ?? [];
             const localizedSentences = example[locale] ?? [];
@@ -77,19 +135,32 @@ export const WordDetail = ({ word }: WordDetailProps) => {
             const showTranslation = locale !== 'en' && localizedText.length > 0;
 
             return (
-              <li key={`${englishText}-${idx}`} className="space-y-1">
-                <p className="text-foreground text-lg">{englishText}</p>
-                {showTranslation && (
-                  <p className="text-muted-foreground text-sm">{localizedText}</p>
-                )}
+              <li
+                key={`${englishText}-${idx}`}
+                className="flex items-start gap-4"
+              >
+                <span
+                  className={`${badgeColors[idx % badgeColors.length]} flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold`}
+                >
+                  {idx + 1}
+                </span>
+                <div className="space-y-1">
+                  <p className="text-foreground text-lg">{englishText}</p>
+                  {showTranslation && (
+                    <p className="text-muted-foreground text-sm">
+                      {localizedText}
+                    </p>
+                  )}
+                </div>
               </li>
             );
           })}
         </ul>
       </section>
 
-      <section className="space-y-3">
-        <h2 className="text-primary/60 text-xs font-medium tracking-wide">
+      {/* Related Words */}
+      <section className="space-y-4">
+        <h2 className="font-heading text-foreground text-2xl">
           {dictionary.relatedWords}
         </h2>
         <div className="flex flex-wrap gap-2">
@@ -97,7 +168,7 @@ export const WordDetail = ({ word }: WordDetailProps) => {
             <Link
               key={related}
               href={`/word/${related}`}
-              className="border-border text-muted-foreground hover:border-brand hover:text-foreground rounded-full border px-3 py-1 text-sm transition-colors"
+              className="border-border hover:border-primary hover:text-primary rounded-full border px-4 py-2 text-sm transition-colors"
             >
               {related}
             </Link>
@@ -105,9 +176,10 @@ export const WordDetail = ({ word }: WordDetailProps) => {
         </div>
       </section>
 
+      {/* Bottom back link */}
       <Link
         href="/explore"
-        className="text-brand inline-flex items-center text-sm font-medium transition-colors hover:underline"
+        className="bg-card hover:bg-primary hover:text-white inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition"
       >
         ← {dictionary.backToWords}
       </Link>

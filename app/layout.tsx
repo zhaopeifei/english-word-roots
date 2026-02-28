@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Lora, Nunito } from 'next/font/google';
 import { Providers } from '@/app/providers';
 import '@/app/globals.css';
 import { SITE_DESCRIPTION, SITE_NAME } from '@/content/site';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 
-const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
+const lora = Lora({ subsets: ['latin'], display: 'swap', variable: '--font-lora' });
+const nunito = Nunito({ subsets: ['latin'], display: 'swap', variable: '--font-nunito' });
 
 export const metadata: Metadata = {
   title: {
@@ -38,12 +39,15 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} bg-background text-foreground font-sans antialiased`}>
+      <body
+        className={`${lora.variable} ${nunito.variable} bg-background text-foreground font-body antialiased`}
+      >
         <Providers>
-          <div className="flex min-h-screen flex-col">
+          <div className="bg-dots pointer-events-none fixed inset-0 z-0 opacity-20" aria-hidden />
+          <div className="relative z-10 flex min-h-screen flex-col">
             <SiteHeader />
             <main className="flex-1">
-              <div className="mx-auto w-full max-w-6xl px-4 py-10">{children}</div>
+              <div className="mx-auto w-full max-w-5xl px-4 py-10">{children}</div>
             </main>
             <SiteFooter />
           </div>

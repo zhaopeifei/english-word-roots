@@ -2,7 +2,6 @@
 
 import { useTheme } from 'next-themes';
 import { useCallback, useEffect, useState } from 'react';
-import { RiSunLine, RiMoonLine } from '@remixicon/react';
 
 export const ThemeToggle = () => {
   const { setTheme, theme } = useTheme();
@@ -20,10 +19,10 @@ export const ThemeToggle = () => {
     <button
       type="button"
       onClick={toggleTheme}
-      className="cursor-pointer rounded-md p-2 transition-colors hover:bg-muted"
+      className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-xl border-[1.5px] border-border bg-background text-base transition-all hover:rotate-12 hover:border-[color:var(--secondary)]"
       aria-label="Toggle theme"
     >
-      {theme === 'dark' ? <RiMoonLine size={20} /> : <RiSunLine size={20} />}
+      {theme === 'dark' ? '🌙' : '☀️'}
     </button>
   );
 };

@@ -1,34 +1,37 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { NAV_LINKS, SITE_NAME } from '@/content/site';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { useLanguage } from '@/components/language-provider';
-import logo128 from '@/app/assets/logo_128.png';
 
 export const SiteHeader = () => {
   const { locale } = useLanguage();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <Link href="/home" className="flex items-center" aria-label={SITE_NAME}>
-          <Image src={logo128} alt={SITE_NAME} width={40} height={40} priority />
+    <header className="sticky top-0 z-50 border-b-[1.5px] border-border bg-background/90 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
+        <Link
+          href="/home"
+          className="flex items-center gap-2 font-heading text-xl font-bold text-primary"
+          aria-label={SITE_NAME}
+        >
+          <span className="text-xl">🌿</span>
+          WordRoots
         </Link>
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-1 md:flex">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="rounded-full px-4 py-2 text-sm font-bold text-muted-foreground transition-all hover:bg-card hover:text-primary"
             >
               {link.label[locale]}
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
           <LanguageSwitcher />
           <ThemeToggle />
         </div>
