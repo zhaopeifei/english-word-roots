@@ -3,7 +3,7 @@ import { HomeScreen } from './index';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/content/site';
 import { getRoots, getFeaturedWords, getBestBreakdownWord, getWordCount, getAffixCount } from '@/lib/db';
 
-export const revalidate = 3600;
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: `Home | ${SITE_NAME}`,

@@ -2,14 +2,10 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { RootDetail } from './index';
 import { DEFAULT_LOCALE, SITE_NAME, SITE_URL } from '@/content/site';
-import { getRootBySlug, getRootSlugs, getWordsByRootSlug } from '@/lib/db';
+import { getRootBySlug, getWordsByRootSlug } from '@/lib/db';
 
-export const revalidate = 3600;
+export const dynamic = 'force-dynamic';
 
-export async function generateStaticParams() {
-  const slugs = await getRootSlugs();
-  return slugs.map((slug) => ({ slug }));
-}
 
 export async function generateMetadata({
   params,

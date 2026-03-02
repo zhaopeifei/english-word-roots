@@ -2,15 +2,11 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { WordDetail } from './index';
 import { DEFAULT_LOCALE, SITE_NAME, SITE_URL } from '@/content/site';
-import { getWordBySlug, getWordSlugs } from '@/lib/db';
-import { getRootBySlug } from '@/lib/db';
+import { getWordBySlug, getRootBySlug } from '@/lib/db';
 
-export const revalidate = 3600;
+// 按需 SSR，不在 build 时预渲染
+export const dynamic = 'force-dynamic';
 
-export async function generateStaticParams() {
-  const slugs = await getWordSlugs();
-  return slugs.map((slug) => ({ slug }));
-}
 
 export async function generateMetadata({
   params,

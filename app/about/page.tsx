@@ -3,7 +3,7 @@ import { AboutSection } from './index';
 import { SITE_NAME, SITE_URL } from '@/content/site';
 import { getRootCount, getWordCount, getAffixCount } from '@/lib/db';
 
-export const revalidate = 3600;
+export const dynamic = 'force-dynamic';
 
 const description =
   "Learn about English Word Roots — a bilingual etymology atlas powered by Grimm's Law. Discover how one root unlocks an entire word family.";

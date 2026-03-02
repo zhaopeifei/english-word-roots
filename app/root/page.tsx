@@ -3,7 +3,7 @@ import { RootsIndex } from './roots-index';
 import { getRoots } from '@/lib/db';
 import { SITE_NAME, SITE_URL } from '@/content/site';
 
-export const revalidate = 3600;
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata(): Promise<Metadata> {
   const roots = await getRoots();

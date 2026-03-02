@@ -6,6 +6,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // eslint-plugin-tailwindcss v3 与 Tailwind CSS v4 不兼容，
+  // build 时跳过 ESLint（通过 pnpm lint 单独检查）
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   experimental: {
     optimizePackageImports: ['next-themes'],
   },
