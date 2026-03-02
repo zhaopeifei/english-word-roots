@@ -1,5 +1,28 @@
 import type { Locale } from '@/content/site';
 
+// 词源类型
+export type EtymologyType =
+  | 'root-derived'
+  | 'native'
+  | 'eponym'
+  | 'loanword'
+  | 'blend'
+  | 'onomatopoeia'
+  | 'unknown';
+
+// 标签（考试、CEFR、词频等分类标签）
+export interface Tag {
+  slug: string;
+  name: Record<Locale, string>;
+  type: 'exam' | 'cefr' | 'frequency';
+}
+
+// 带排序的多语言例句
+export interface WordExample {
+  content: Record<Locale, string>;
+  sortOrder: number;
+}
+
 export interface RootEntry {
   slug: string; // 词根的唯一标识符
   variants: string[]; // 词根的变体，例如 [“hydr”, “hydro”, “hydra”]
@@ -35,6 +58,13 @@ export interface WordEntry {
   collocations?: Record<Locale, string[]>; // 常见搭配 (en:["take action"], zh:["采取行动"])
   frequency?: 'common' | 'academic' | 'advanced' | 'rare'; // 词频分级
   tags?: string[]; // 标签 ["CET-4", "IELTS", "GRE"]
+
+  // 数据库扩展字段（来自 Supabase enrichment）
+  cefrLevel?: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2'; // CEFR 等级
+  collinsStars?: 1 | 2 | 3 | 4 | 5; // 柯林斯词频星级
+  oxfordFlag?: boolean; // 是否为牛津 3000 核心词
+  frequencyRank?: number; // 绝对词频排名
+  etymologyType?: EtymologyType; // 词源类型
 }
 
 export interface MorphemeSegment {
