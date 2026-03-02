@@ -158,10 +158,10 @@ export const WordDetail = ({ word }: WordDetailProps) => {
 
       {/* Bottom back link */}
       <Link
-        href="/explore"
+        href="/root"
         className="bg-card hover:bg-primary inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition hover:text-white"
       >
-        ← {dictionary.backToWords}
+        ← {dictionary.backToRoots}
       </Link>
     </article>
   );
