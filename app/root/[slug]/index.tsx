@@ -151,6 +151,26 @@ const WORD_CARD_ICON_COLORS = [
 
 const WORD_CARD_EMOJIS = ['📝', '🔤', '💬', '🏷️', '📖'];
 
+const EXAM_TAG_COLORS: Record<string, string> = {
+  'CET-4': 'bg-blue-50 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300',
+  'CET-6': 'bg-indigo-50 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300',
+  'TOEFL': 'bg-amber-50 text-amber-700 dark:bg-amber-900/50 dark:text-amber-300',
+  'IELTS': 'bg-red-50 text-red-700 dark:bg-red-900/50 dark:text-red-300',
+  'GRE': 'bg-purple-50 text-purple-700 dark:bg-purple-900/50 dark:text-purple-300',
+  'GMAT': 'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300',
+  'SAT': 'bg-orange-50 text-orange-700 dark:bg-orange-900/50 dark:text-orange-300',
+  'TOEIC': 'bg-cyan-50 text-cyan-700 dark:bg-cyan-900/50 dark:text-cyan-300',
+};
+
+const CEFR_COLORS: Record<string, string> = {
+  'A1': 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300',
+  'A2': 'bg-green-50 text-green-700 dark:bg-green-900/40 dark:text-green-300',
+  'B1': 'bg-yellow-50 text-yellow-700 dark:bg-yellow-900/50 dark:text-yellow-300',
+  'B2': 'bg-orange-50 text-orange-700 dark:bg-orange-900/50 dark:text-orange-300',
+  'C1': 'bg-red-50 text-red-700 dark:bg-red-900/50 dark:text-red-300',
+  'C2': 'bg-purple-50 text-purple-700 dark:bg-purple-900/50 dark:text-purple-300',
+};
+
 function getPrimaryEmoji(domains: SemanticDomain[]): string {
   if (domains.length === 0) return '✨';
   return DOMAIN_EMOJI[domains[0]] ?? '✨';
@@ -345,6 +365,26 @@ export const RootDetail = ({ root, associatedWords }: RootDetailProps) => {
                     <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
                       {localizedDefinition}
                     </p>
+                    {/* Exam tags + CEFR badges */}
+                    {((word.tags && word.tags.length > 0) || word.cefrLevel) && (
+                      <div className="mt-2 flex flex-wrap gap-1">
+                        {word.tags?.slice(0, 3).map((tag) => (
+                          <span
+                            key={tag}
+                            className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${EXAM_TAG_COLORS[tag] ?? 'bg-muted text-muted-foreground'}`}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                        {word.cefrLevel && (
+                          <span
+                            className={`rounded-md px-1.5 py-0.5 text-[10px] font-bold ${CEFR_COLORS[word.cefrLevel] ?? 'bg-muted text-muted-foreground'}`}
+                          >
+                            {word.cefrLevel}
+                          </span>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </Link>
               );
