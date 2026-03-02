@@ -3,16 +3,18 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { Menu, Search, X } from 'lucide-react';
 import { NAV_LINKS, SITE_NAME } from '@/content/site';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { useLanguage } from '@/components/language-provider';
+import { CommandSearch } from '@/components/command-search';
 
 export const SiteHeader = () => {
   const { locale } = useLanguage();
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   // Close mobile menu on pathname change (link navigation)
   useEffect(() => {
@@ -36,6 +38,18 @@ export const SiteHeader = () => {
     document.addEventListener('keydown', handler);
     return () => document.removeEventListener('keydown', handler);
   }, [mobileOpen]);
+
+  // Cmd/Ctrl+K to toggle search
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setSearchOpen((prev) => !prev);
+      }
+    };
+    document.addEventListener('keydown', handler);
+    return () => document.removeEventListener('keydown', handler);
+  }, []);
 
   return (
     <>
@@ -66,6 +80,14 @@ export const SiteHeader = () => {
 
           {/* Desktop controls (hidden on mobile) */}
           <div className="hidden items-center gap-2 md:flex">
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              className="border-border bg-background text-muted-foreground hover:border-primary hover:text-primary flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border-[1.5px] transition-colors"
+              aria-label="Search"
+            >
+              <Search className="h-4 w-4" />
+            </button>
             <LanguageSwitcher />
             <ThemeToggle />
           </div>
@@ -131,14 +153,27 @@ export const SiteHeader = () => {
             {/* Divider */}
             <div className="border-border mx-4 border-t-[1.5px]" />
 
-            {/* Controls: language switcher + theme toggle */}
+            {/* Controls: search + language switcher + theme toggle */}
             <div className="flex items-center gap-3 px-4 py-4">
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileOpen(false);
+                  setSearchOpen(true);
+                }}
+                className="border-border bg-background text-muted-foreground hover:border-primary hover:text-primary flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border-[1.5px] transition-colors"
+                aria-label="Search"
+              >
+                <Search className="h-4 w-4" />
+              </button>
               <LanguageSwitcher />
               <ThemeToggle />
             </div>
           </nav>
         </div>
       )}
+
+      <CommandSearch open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 };

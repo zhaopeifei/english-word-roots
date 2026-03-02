@@ -37,6 +37,10 @@ export const dictionaries: Dictionaries = {
     wordBreakdown: 'Root Breakdown',
     examples: 'Example Sentences',
     exploreIntro: 'Filterable catalog of every root and word in the static dataset.',
+    searchPlaceholder: 'Search roots and words...',
+    searchNoResults: 'No results found',
+    searchRoots: 'Roots',
+    searchWords: 'Words',
   },
   zh: {
     tagline: '从词根出发，拓展词汇。',
@@ -69,6 +73,10 @@ export const dictionaries: Dictionaries = {
     wordBreakdown: '词根拆分',
     examples: '例句',
     exploreIntro: '可过滤的静态数据集目录，涵盖所有词根与单词。',
+    searchPlaceholder: '搜索词根和单词...',
+    searchNoResults: '未找到结果',
+    searchRoots: '词根',
+    searchWords: '单词',
   },
 };
 
