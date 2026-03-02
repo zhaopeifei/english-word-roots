@@ -1,0 +1,4550 @@
+[
+  {
+    "root_slug": "act",
+    "word_slug": "act"
+  },
+  {
+    "root_slug": "act",
+    "word_slug": "actor"
+  },
+  {
+    "root_slug": "act",
+    "word_slug": "action"
+  },
+  {
+    "root_slug": "act",
+    "word_slug": "active"
+  },
+  {
+    "root_slug": "act",
+    "word_slug": "activity"
+  },
+  {
+    "root_slug": "act",
+    "word_slug": "activist"
+  },
+  {
+    "root_slug": "act",
+    "word_slug": "activate"
+  },
+  {
+    "root_slug": "act",
+    "word_slug": "enact"
+  },
+  {
+    "root_slug": "act",
+    "word_slug": "interact"
+  },
+  {
+    "root_slug": "act",
+    "word_slug": "hyperactive"
+  },
+  {
+    "root_slug": "ali",
+    "word_slug": "alien"
+  },
+  {
+    "root_slug": "ali",
+    "word_slug": "alienate"
+  },
+  {
+    "root_slug": "ali",
+    "word_slug": "alienation"
+  },
+  {
+    "root_slug": "ali",
+    "word_slug": "inalienable"
+  },
+  {
+    "root_slug": "ali",
+    "word_slug": "alter"
+  },
+  {
+    "root_slug": "ali",
+    "word_slug": "alternate"
+  },
+  {
+    "root_slug": "ali",
+    "word_slug": "alternative"
+  },
+  {
+    "root_slug": "ali",
+    "word_slug": "altruism"
+  },
+  {
+    "root_slug": "ali",
+    "word_slug": "alias"
+  },
+  {
+    "root_slug": "ali",
+    "word_slug": "alibi"
+  },
+  {
+    "root_slug": "ali",
+    "word_slug": "allergy"
+  },
+  {
+    "root_slug": "ali",
+    "word_slug": "ally"
+  },
+  {
+    "root_slug": "ali",
+    "word_slug": "alliance"
+  },
+  {
+    "root_slug": "am",
+    "word_slug": "amour"
+  },
+  {
+    "root_slug": "am",
+    "word_slug": "amateur"
+  },
+  {
+    "root_slug": "am",
+    "word_slug": "enemy"
+  },
+  {
+    "root_slug": "am",
+    "word_slug": "enmity"
+  },
+  {
+    "root_slug": "am",
+    "word_slug": "inimical"
+  },
+  {
+    "root_slug": "am",
+    "word_slug": "enamor"
+  },
+  {
+    "root_slug": "am",
+    "word_slug": "amorous"
+  },
+  {
+    "root_slug": "am",
+    "word_slug": "amiable"
+  },
+  {
+    "root_slug": "am",
+    "word_slug": "amity"
+  },
+  {
+    "root_slug": "am",
+    "word_slug": "amatory"
+  },
+  {
+    "root_slug": "anim",
+    "word_slug": "animal"
+  },
+  {
+    "root_slug": "anim",
+    "word_slug": "animate"
+  },
+  {
+    "root_slug": "anim",
+    "word_slug": "animated"
+  },
+  {
+    "root_slug": "anim",
+    "word_slug": "animation"
+  },
+  {
+    "root_slug": "anim",
+    "word_slug": "inanimate"
+  },
+  {
+    "root_slug": "anim",
+    "word_slug": "reanimate"
+  },
+  {
+    "root_slug": "anim",
+    "word_slug": "animosity"
+  },
+  {
+    "root_slug": "anim",
+    "word_slug": "magnanimous"
+  },
+  {
+    "root_slug": "anim",
+    "word_slug": "equanimity"
+  },
+  {
+    "root_slug": "apt",
+    "word_slug": "aptly"
+  },
+  {
+    "root_slug": "apt",
+    "word_slug": "inapt"
+  },
+  {
+    "root_slug": "apt",
+    "word_slug": "aptitude"
+  },
+  {
+    "root_slug": "apt",
+    "word_slug": "inept"
+  },
+  {
+    "root_slug": "apt",
+    "word_slug": "ineptitude"
+  },
+  {
+    "root_slug": "aster",
+    "word_slug": "star"
+  },
+  {
+    "root_slug": "aster",
+    "word_slug": "disaster"
+  },
+  {
+    "root_slug": "aster",
+    "word_slug": "disastrous"
+  },
+  {
+    "root_slug": "aster",
+    "word_slug": "catastrophe"
+  },
+  {
+    "root_slug": "aster",
+    "word_slug": "astronomy"
+  },
+  {
+    "root_slug": "aster",
+    "word_slug": "astronaut"
+  },
+  {
+    "root_slug": "aster",
+    "word_slug": "astrology"
+  },
+  {
+    "root_slug": "aster",
+    "word_slug": "asteroid"
+  },
+  {
+    "root_slug": "aster",
+    "word_slug": "asterisk"
+  },
+  {
+    "root_slug": "aster",
+    "word_slug": "astronomical"
+  },
+  {
+    "root_slug": "bar",
+    "word_slug": "barrier"
+  },
+  {
+    "root_slug": "bar",
+    "word_slug": "barricade"
+  },
+  {
+    "root_slug": "bar",
+    "word_slug": "embarrass"
+  },
+  {
+    "root_slug": "bar",
+    "word_slug": "embarrassment"
+  },
+  {
+    "root_slug": "bar",
+    "word_slug": "banish"
+  },
+  {
+    "root_slug": "bar",
+    "word_slug": "abandon"
+  },
+  {
+    "root_slug": "bar",
+    "word_slug": "balance"
+  },
+  {
+    "root_slug": "bar",
+    "word_slug": "banquet"
+  },
+  {
+    "root_slug": "bar",
+    "word_slug": "bank"
+  },
+  {
+    "root_slug": "bar",
+    "word_slug": "barbaric"
+  },
+  {
+    "root_slug": "bar",
+    "word_slug": "contraband"
+  },
+  {
+    "root_slug": "bio",
+    "word_slug": "biology"
+  },
+  {
+    "root_slug": "bio",
+    "word_slug": "biologist"
+  },
+  {
+    "root_slug": "bio",
+    "word_slug": "biological"
+  },
+  {
+    "root_slug": "bio",
+    "word_slug": "biography"
+  },
+  {
+    "root_slug": "bio",
+    "word_slug": "autobiography"
+  },
+  {
+    "root_slug": "bio",
+    "word_slug": "biosphere"
+  },
+  {
+    "root_slug": "bio",
+    "word_slug": "biodiversity"
+  },
+  {
+    "root_slug": "bio",
+    "word_slug": "biotechnology"
+  },
+  {
+    "root_slug": "bio",
+    "word_slug": "biochemistry"
+  },
+  {
+    "root_slug": "bio",
+    "word_slug": "microbiology"
+  },
+  {
+    "root_slug": "bio",
+    "word_slug": "symbiosis"
+  },
+  {
+    "root_slug": "bot",
+    "word_slug": "botany"
+  },
+  {
+    "root_slug": "bot",
+    "word_slug": "botanist"
+  },
+  {
+    "root_slug": "bot",
+    "word_slug": "botanic"
+  },
+  {
+    "root_slug": "bot",
+    "word_slug": "botanical"
+  },
+  {
+    "root_slug": "cand",
+    "word_slug": "candle"
+  },
+  {
+    "root_slug": "cand",
+    "word_slug": "candid"
+  },
+  {
+    "root_slug": "cand",
+    "word_slug": "candor"
+  },
+  {
+    "root_slug": "cand",
+    "word_slug": "candidate"
+  },
+  {
+    "root_slug": "cand",
+    "word_slug": "candidacy"
+  },
+  {
+    "root_slug": "cand",
+    "word_slug": "scandal"
+  },
+  {
+    "root_slug": "cand",
+    "word_slug": "scandalous"
+  },
+  {
+    "root_slug": "cap",
+    "word_slug": "capable"
+  },
+  {
+    "root_slug": "cap",
+    "word_slug": "capacity"
+  },
+  {
+    "root_slug": "cap",
+    "word_slug": "capture"
+  },
+  {
+    "root_slug": "cap",
+    "word_slug": "captive"
+  },
+  {
+    "root_slug": "cap",
+    "word_slug": "captivate"
+  },
+  {
+    "root_slug": "cap",
+    "word_slug": "accept"
+  },
+  {
+    "root_slug": "cap",
+    "word_slug": "concept"
+  },
+  {
+    "root_slug": "cap",
+    "word_slug": "perceive"
+  },
+  {
+    "root_slug": "cap",
+    "word_slug": "receive"
+  },
+  {
+    "root_slug": "cap",
+    "word_slug": "deceive"
+  },
+  {
+    "root_slug": "cap",
+    "word_slug": "escape"
+  },
+  {
+    "root_slug": "cap",
+    "word_slug": "occupy"
+  },
+  {
+    "root_slug": "cap",
+    "word_slug": "anticipate"
+  },
+  {
+    "root_slug": "cap",
+    "word_slug": "capital"
+  },
+  {
+    "root_slug": "car",
+    "word_slug": "car"
+  },
+  {
+    "root_slug": "car",
+    "word_slug": "carry"
+  },
+  {
+    "root_slug": "car",
+    "word_slug": "career"
+  },
+  {
+    "root_slug": "car",
+    "word_slug": "cart"
+  },
+  {
+    "root_slug": "car",
+    "word_slug": "cursor"
+  },
+  {
+    "root_slug": "car",
+    "word_slug": "cursory"
+  },
+  {
+    "root_slug": "car",
+    "word_slug": "incur"
+  },
+  {
+    "root_slug": "car",
+    "word_slug": "concur"
+  },
+  {
+    "root_slug": "car",
+    "word_slug": "discharge"
+  },
+  {
+    "root_slug": "car",
+    "word_slug": "corridor"
+  },
+  {
+    "root_slug": "carn",
+    "word_slug": "carnival"
+  },
+  {
+    "root_slug": "carn",
+    "word_slug": "carnal"
+  },
+  {
+    "root_slug": "carn",
+    "word_slug": "incarnate"
+  },
+  {
+    "root_slug": "carn",
+    "word_slug": "reincarnate"
+  },
+  {
+    "root_slug": "carn",
+    "word_slug": "carnivore"
+  },
+  {
+    "root_slug": "carn",
+    "word_slug": "carnivorous"
+  },
+  {
+    "root_slug": "carn",
+    "word_slug": "carnage"
+  },
+  {
+    "root_slug": "carn",
+    "word_slug": "carnation"
+  },
+  {
+    "root_slug": "ced",
+    "word_slug": "succeed"
+  },
+  {
+    "root_slug": "ced",
+    "word_slug": "success"
+  },
+  {
+    "root_slug": "ced",
+    "word_slug": "exceed"
+  },
+  {
+    "root_slug": "ced",
+    "word_slug": "access"
+  },
+  {
+    "root_slug": "ced",
+    "word_slug": "proceed"
+  },
+  {
+    "root_slug": "ced",
+    "word_slug": "process"
+  },
+  {
+    "root_slug": "ced",
+    "word_slug": "precede"
+  },
+  {
+    "root_slug": "ced",
+    "word_slug": "unprecedented"
+  },
+  {
+    "root_slug": "ced",
+    "word_slug": "recession"
+  },
+  {
+    "root_slug": "ced",
+    "word_slug": "concede"
+  },
+  {
+    "root_slug": "ced",
+    "word_slug": "necessary"
+  },
+  {
+    "root_slug": "ced",
+    "word_slug": "procedure"
+  },
+  {
+    "root_slug": "cern",
+    "word_slug": "secret"
+  },
+  {
+    "root_slug": "cern",
+    "word_slug": "secretary"
+  },
+  {
+    "root_slug": "cern",
+    "word_slug": "secrete"
+  },
+  {
+    "root_slug": "cern",
+    "word_slug": "discern"
+  },
+  {
+    "root_slug": "cern",
+    "word_slug": "discernible"
+  },
+  {
+    "root_slug": "cern",
+    "word_slug": "discrete"
+  },
+  {
+    "root_slug": "cern",
+    "word_slug": "discreet"
+  },
+  {
+    "root_slug": "cern",
+    "word_slug": "discernment"
+  },
+  {
+    "root_slug": "cid",
+    "word_slug": "decide"
+  },
+  {
+    "root_slug": "cid",
+    "word_slug": "decision"
+  },
+  {
+    "root_slug": "cid",
+    "word_slug": "decisive"
+  },
+  {
+    "root_slug": "cid",
+    "word_slug": "precise"
+  },
+  {
+    "root_slug": "cid",
+    "word_slug": "concise"
+  },
+  {
+    "root_slug": "cid",
+    "word_slug": "incisive"
+  },
+  {
+    "root_slug": "cid",
+    "word_slug": "suicide"
+  },
+  {
+    "root_slug": "cid",
+    "word_slug": "pesticide"
+  },
+  {
+    "root_slug": "cid",
+    "word_slug": "excise"
+  },
+  {
+    "root_slug": "cid",
+    "word_slug": "scissors"
+  },
+  {
+    "root_slug": "circ",
+    "word_slug": "circle"
+  },
+  {
+    "root_slug": "circ",
+    "word_slug": "circular"
+  },
+  {
+    "root_slug": "circ",
+    "word_slug": "circulate"
+  },
+  {
+    "root_slug": "circ",
+    "word_slug": "circuit"
+  },
+  {
+    "root_slug": "circ",
+    "word_slug": "encircle"
+  },
+  {
+    "root_slug": "circ",
+    "word_slug": "cycle"
+  },
+  {
+    "root_slug": "circ",
+    "word_slug": "recycle"
+  },
+  {
+    "root_slug": "circ",
+    "word_slug": "encyclopedia"
+  },
+  {
+    "root_slug": "claim",
+    "word_slug": "claim"
+  },
+  {
+    "root_slug": "claim",
+    "word_slug": "exclaim"
+  },
+  {
+    "root_slug": "claim",
+    "word_slug": "exclamation"
+  },
+  {
+    "root_slug": "claim",
+    "word_slug": "proclaim"
+  },
+  {
+    "root_slug": "claim",
+    "word_slug": "acclaim"
+  },
+  {
+    "root_slug": "claim",
+    "word_slug": "reclaim"
+  },
+  {
+    "root_slug": "claim",
+    "word_slug": "disclaim"
+  },
+  {
+    "root_slug": "claim",
+    "word_slug": "clamour"
+  },
+  {
+    "root_slug": "crim",
+    "word_slug": "crime"
+  },
+  {
+    "root_slug": "crim",
+    "word_slug": "criminal"
+  },
+  {
+    "root_slug": "crim",
+    "word_slug": "criminology"
+  },
+  {
+    "root_slug": "crim",
+    "word_slug": "discriminate"
+  },
+  {
+    "root_slug": "crim",
+    "word_slug": "discrimination"
+  },
+  {
+    "root_slug": "crim",
+    "word_slug": "incriminate"
+  },
+  {
+    "root_slug": "crim",
+    "word_slug": "indiscriminate"
+  },
+  {
+    "root_slug": "cult",
+    "word_slug": "culture"
+  },
+  {
+    "root_slug": "cult",
+    "word_slug": "cultural"
+  },
+  {
+    "root_slug": "cult",
+    "word_slug": "cultivate"
+  },
+  {
+    "root_slug": "cult",
+    "word_slug": "agriculture"
+  },
+  {
+    "root_slug": "cult",
+    "word_slug": "multicultural"
+  },
+  {
+    "root_slug": "cult",
+    "word_slug": "horticulture"
+  },
+  {
+    "root_slug": "cult",
+    "word_slug": "subculture"
+  },
+  {
+    "root_slug": "cult",
+    "word_slug": "cultured"
+  },
+  {
+    "root_slug": "dec",
+    "word_slug": "decade"
+  },
+  {
+    "root_slug": "dec",
+    "word_slug": "decorate"
+  },
+  {
+    "root_slug": "dec",
+    "word_slug": "decoration"
+  },
+  {
+    "root_slug": "dec",
+    "word_slug": "decorative"
+  },
+  {
+    "root_slug": "dec",
+    "word_slug": "decorous"
+  },
+  {
+    "root_slug": "dec",
+    "word_slug": "decor"
+  },
+  {
+    "root_slug": "dec",
+    "word_slug": "indecent"
+  },
+  {
+    "root_slug": "dic",
+    "word_slug": "dictionary"
+  },
+  {
+    "root_slug": "dic",
+    "word_slug": "dictator"
+  },
+  {
+    "root_slug": "dic",
+    "word_slug": "predict"
+  },
+  {
+    "root_slug": "dic",
+    "word_slug": "contradict"
+  },
+  {
+    "root_slug": "dic",
+    "word_slug": "indicate"
+  },
+  {
+    "root_slug": "dic",
+    "word_slug": "addict"
+  },
+  {
+    "root_slug": "dic",
+    "word_slug": "condition"
+  },
+  {
+    "root_slug": "dic",
+    "word_slug": "verdict"
+  },
+  {
+    "root_slug": "dic",
+    "word_slug": "predictable"
+  },
+  {
+    "root_slug": "dic",
+    "word_slug": "benediction"
+  },
+  {
+    "root_slug": "dit",
+    "word_slug": "donate"
+  },
+  {
+    "root_slug": "dit",
+    "word_slug": "donation"
+  },
+  {
+    "root_slug": "dit",
+    "word_slug": "pardon"
+  },
+  {
+    "root_slug": "dit",
+    "word_slug": "tradition"
+  },
+  {
+    "root_slug": "dit",
+    "word_slug": "traditional"
+  },
+  {
+    "root_slug": "dit",
+    "word_slug": "edition"
+  },
+  {
+    "root_slug": "dit",
+    "word_slug": "editor"
+  },
+  {
+    "root_slug": "dit",
+    "word_slug": "anecdote"
+  },
+  {
+    "root_slug": "dit",
+    "word_slug": "antidote"
+  },
+  {
+    "root_slug": "dit",
+    "word_slug": "data"
+  },
+  {
+    "root_slug": "dit",
+    "word_slug": "date"
+  },
+  {
+    "root_slug": "dit",
+    "word_slug": "condone"
+  },
+  {
+    "root_slug": "dom",
+    "word_slug": "dominate"
+  },
+  {
+    "root_slug": "dom",
+    "word_slug": "dominant"
+  },
+  {
+    "root_slug": "dom",
+    "word_slug": "domain"
+  },
+  {
+    "root_slug": "dom",
+    "word_slug": "domestic"
+  },
+  {
+    "root_slug": "dom",
+    "word_slug": "domesticate"
+  },
+  {
+    "root_slug": "dom",
+    "word_slug": "dome"
+  },
+  {
+    "root_slug": "dom",
+    "word_slug": "predominant"
+  },
+  {
+    "root_slug": "dom",
+    "word_slug": "danger"
+  },
+  {
+    "root_slug": "dorm",
+    "word_slug": "dorm"
+  },
+  {
+    "root_slug": "dorm",
+    "word_slug": "dormitory"
+  },
+  {
+    "root_slug": "dorm",
+    "word_slug": "dormant"
+  },
+  {
+    "root_slug": "dorm",
+    "word_slug": "dormancy"
+  },
+  {
+    "root_slug": "apt",
+    "word_slug": "adapt"
+  },
+  {
+    "root_slug": "apt",
+    "word_slug": "adaptive"
+  },
+  {
+    "root_slug": "apt",
+    "word_slug": "adaptable"
+  },
+  {
+    "root_slug": "apt",
+    "word_slug": "adept"
+  },
+  {
+    "root_slug": "apt",
+    "word_slug": "adopt"
+  },
+  {
+    "root_slug": "fac",
+    "word_slug": "fact"
+  },
+  {
+    "root_slug": "fac",
+    "word_slug": "factor"
+  },
+  {
+    "root_slug": "fac",
+    "word_slug": "factory"
+  },
+  {
+    "root_slug": "fac",
+    "word_slug": "affect"
+  },
+  {
+    "root_slug": "fac",
+    "word_slug": "effect"
+  },
+  {
+    "root_slug": "fac",
+    "word_slug": "infect"
+  },
+  {
+    "root_slug": "fac",
+    "word_slug": "perfect"
+  },
+  {
+    "root_slug": "fac",
+    "word_slug": "defect"
+  },
+  {
+    "root_slug": "fac",
+    "word_slug": "sufficient"
+  },
+  {
+    "root_slug": "fac",
+    "word_slug": "efficient"
+  },
+  {
+    "root_slug": "fac",
+    "word_slug": "artificial"
+  },
+  {
+    "root_slug": "fac",
+    "word_slug": "fiction"
+  },
+  {
+    "root_slug": "fac",
+    "word_slug": "office"
+  },
+  {
+    "root_slug": "fac",
+    "word_slug": "benefit"
+  },
+  {
+    "root_slug": "fer",
+    "word_slug": "prefer"
+  },
+  {
+    "root_slug": "fer",
+    "word_slug": "confer"
+  },
+  {
+    "root_slug": "fer",
+    "word_slug": "differ"
+  },
+  {
+    "root_slug": "fer",
+    "word_slug": "difference"
+  },
+  {
+    "root_slug": "fer",
+    "word_slug": "refer"
+  },
+  {
+    "root_slug": "fer",
+    "word_slug": "infer"
+  },
+  {
+    "root_slug": "fer",
+    "word_slug": "defer"
+  },
+  {
+    "root_slug": "fer",
+    "word_slug": "suffer"
+  },
+  {
+    "root_slug": "fer",
+    "word_slug": "transfer"
+  },
+  {
+    "root_slug": "fer",
+    "word_slug": "fertile"
+  },
+  {
+    "root_slug": "fer",
+    "word_slug": "conference"
+  },
+  {
+    "root_slug": "fess",
+    "word_slug": "confess"
+  },
+  {
+    "root_slug": "fess",
+    "word_slug": "confession"
+  },
+  {
+    "root_slug": "fess",
+    "word_slug": "profess"
+  },
+  {
+    "root_slug": "fess",
+    "word_slug": "professor"
+  },
+  {
+    "root_slug": "fess",
+    "word_slug": "profession"
+  },
+  {
+    "root_slug": "fess",
+    "word_slug": "professional"
+  },
+  {
+    "root_slug": "flu",
+    "word_slug": "fluent"
+  },
+  {
+    "root_slug": "flu",
+    "word_slug": "influence"
+  },
+  {
+    "root_slug": "flu",
+    "word_slug": "influential"
+  },
+  {
+    "root_slug": "flu",
+    "word_slug": "affluent"
+  },
+  {
+    "root_slug": "flu",
+    "word_slug": "confluence"
+  },
+  {
+    "root_slug": "flu",
+    "word_slug": "superfluous"
+  },
+  {
+    "root_slug": "flu",
+    "word_slug": "fluid"
+  },
+  {
+    "root_slug": "flu",
+    "word_slug": "confuse"
+  },
+  {
+    "root_slug": "flu",
+    "word_slug": "diffuse"
+  },
+  {
+    "root_slug": "flu",
+    "word_slug": "infuse"
+  },
+  {
+    "root_slug": "flu",
+    "word_slug": "transfusion"
+  },
+  {
+    "root_slug": "forc",
+    "word_slug": "force"
+  },
+  {
+    "root_slug": "forc",
+    "word_slug": "enforce"
+  },
+  {
+    "root_slug": "forc",
+    "word_slug": "reinforce"
+  },
+  {
+    "root_slug": "forc",
+    "word_slug": "fort"
+  },
+  {
+    "root_slug": "forc",
+    "word_slug": "fortify"
+  },
+  {
+    "root_slug": "forc",
+    "word_slug": "fortitude"
+  },
+  {
+    "root_slug": "forc",
+    "word_slug": "effort"
+  },
+  {
+    "root_slug": "forc",
+    "word_slug": "comfort"
+  },
+  {
+    "root_slug": "forc",
+    "word_slug": "comfortable"
+  },
+  {
+    "root_slug": "fortun",
+    "word_slug": "fortune"
+  },
+  {
+    "root_slug": "fortun",
+    "word_slug": "fortunate"
+  },
+  {
+    "root_slug": "fortun",
+    "word_slug": "fortunately"
+  },
+  {
+    "root_slug": "fortun",
+    "word_slug": "unfortunate"
+  },
+  {
+    "root_slug": "fortun",
+    "word_slug": "misfortune"
+  },
+  {
+    "root_slug": "fortun",
+    "word_slug": "fortuitous"
+  },
+  {
+    "root_slug": "fund",
+    "word_slug": "found"
+  },
+  {
+    "root_slug": "fund",
+    "word_slug": "foundation"
+  },
+  {
+    "root_slug": "fund",
+    "word_slug": "fundamental"
+  },
+  {
+    "root_slug": "fund",
+    "word_slug": "profound"
+  },
+  {
+    "root_slug": "fund",
+    "word_slug": "fund"
+  },
+  {
+    "root_slug": "fund",
+    "word_slug": "refund"
+  },
+  {
+    "root_slug": "fund",
+    "word_slug": "confound"
+  },
+  {
+    "root_slug": "fund",
+    "word_slug": "fundraise"
+  },
+  {
+    "root_slug": "gen",
+    "word_slug": "gene"
+  },
+  {
+    "root_slug": "gen",
+    "word_slug": "genetic"
+  },
+  {
+    "root_slug": "gen",
+    "word_slug": "generate"
+  },
+  {
+    "root_slug": "gen",
+    "word_slug": "generation"
+  },
+  {
+    "root_slug": "gen",
+    "word_slug": "generous"
+  },
+  {
+    "root_slug": "gen",
+    "word_slug": "genuine"
+  },
+  {
+    "root_slug": "gen",
+    "word_slug": "general"
+  },
+  {
+    "root_slug": "gen",
+    "word_slug": "gender"
+  },
+  {
+    "root_slug": "gen",
+    "word_slug": "genius"
+  },
+  {
+    "root_slug": "gen",
+    "word_slug": "ingenious"
+  },
+  {
+    "root_slug": "gen",
+    "word_slug": "gentle"
+  },
+  {
+    "root_slug": "gen",
+    "word_slug": "oxygen"
+  },
+  {
+    "root_slug": "gest",
+    "word_slug": "suggest"
+  },
+  {
+    "root_slug": "gest",
+    "word_slug": "suggestion"
+  },
+  {
+    "root_slug": "gest",
+    "word_slug": "digest"
+  },
+  {
+    "root_slug": "gest",
+    "word_slug": "congest"
+  },
+  {
+    "root_slug": "gest",
+    "word_slug": "gesture"
+  },
+  {
+    "root_slug": "gest",
+    "word_slug": "register"
+  },
+  {
+    "root_slug": "gest",
+    "word_slug": "ingest"
+  },
+  {
+    "root_slug": "gest",
+    "word_slug": "exaggerate"
+  },
+  {
+    "root_slug": "gest",
+    "word_slug": "gestate"
+  },
+  {
+    "root_slug": "glob",
+    "word_slug": "globe"
+  },
+  {
+    "root_slug": "glob",
+    "word_slug": "global"
+  },
+  {
+    "root_slug": "glob",
+    "word_slug": "globally"
+  },
+  {
+    "root_slug": "glob",
+    "word_slug": "globalize"
+  },
+  {
+    "root_slug": "glob",
+    "word_slug": "globalization"
+  },
+  {
+    "root_slug": "glob",
+    "word_slug": "globular"
+  },
+  {
+    "root_slug": "glob",
+    "word_slug": "globalism"
+  },
+  {
+    "root_slug": "grav",
+    "word_slug": "gravity"
+  },
+  {
+    "root_slug": "grav",
+    "word_slug": "grave"
+  },
+  {
+    "root_slug": "grav",
+    "word_slug": "gravitate"
+  },
+  {
+    "root_slug": "grav",
+    "word_slug": "gravitational"
+  },
+  {
+    "root_slug": "grav",
+    "word_slug": "aggravate"
+  },
+  {
+    "root_slug": "grav",
+    "word_slug": "grief"
+  },
+  {
+    "root_slug": "grav",
+    "word_slug": "grieve"
+  },
+  {
+    "root_slug": "her",
+    "word_slug": "inherent"
+  },
+  {
+    "root_slug": "her",
+    "word_slug": "hesitate"
+  },
+  {
+    "root_slug": "her",
+    "word_slug": "adhere"
+  },
+  {
+    "root_slug": "her",
+    "word_slug": "adhesive"
+  },
+  {
+    "root_slug": "her",
+    "word_slug": "cohere"
+  },
+  {
+    "root_slug": "her",
+    "word_slug": "coherent"
+  },
+  {
+    "root_slug": "her",
+    "word_slug": "inherit"
+  },
+  {
+    "root_slug": "her",
+    "word_slug": "heritage"
+  },
+  {
+    "root_slug": "her",
+    "word_slug": "heir"
+  },
+  {
+    "root_slug": "her",
+    "word_slug": "hereditary"
+  },
+  {
+    "root_slug": "hospit",
+    "word_slug": "hospital"
+  },
+  {
+    "root_slug": "hospit",
+    "word_slug": "hospitalize"
+  },
+  {
+    "root_slug": "hospit",
+    "word_slug": "hospitality"
+  },
+  {
+    "root_slug": "hospit",
+    "word_slug": "hotel"
+  },
+  {
+    "root_slug": "hospit",
+    "word_slug": "host"
+  },
+  {
+    "root_slug": "hospit",
+    "word_slug": "hostage"
+  },
+  {
+    "root_slug": "hospit",
+    "word_slug": "hostile"
+  },
+  {
+    "root_slug": "hospit",
+    "word_slug": "hostility"
+  },
+  {
+    "root_slug": "hum",
+    "word_slug": "human"
+  },
+  {
+    "root_slug": "hum",
+    "word_slug": "humanity"
+  },
+  {
+    "root_slug": "hum",
+    "word_slug": "humane"
+  },
+  {
+    "root_slug": "hum",
+    "word_slug": "humanitarian"
+  },
+  {
+    "root_slug": "hum",
+    "word_slug": "humble"
+  },
+  {
+    "root_slug": "hum",
+    "word_slug": "humility"
+  },
+  {
+    "root_slug": "hum",
+    "word_slug": "humiliate"
+  },
+  {
+    "root_slug": "hum",
+    "word_slug": "humor"
+  },
+  {
+    "root_slug": "hum",
+    "word_slug": "humid"
+  },
+  {
+    "root_slug": "hum",
+    "word_slug": "exhume"
+  },
+  {
+    "root_slug": "hum",
+    "word_slug": "posthumous"
+  },
+  {
+    "root_slug": "it",
+    "word_slug": "initial"
+  },
+  {
+    "root_slug": "it",
+    "word_slug": "initiate"
+  },
+  {
+    "root_slug": "it",
+    "word_slug": "transit"
+  },
+  {
+    "root_slug": "it",
+    "word_slug": "transition"
+  },
+  {
+    "root_slug": "it",
+    "word_slug": "transient"
+  },
+  {
+    "root_slug": "it",
+    "word_slug": "transitory"
+  },
+  {
+    "root_slug": "it",
+    "word_slug": "ambition"
+  },
+  {
+    "root_slug": "it",
+    "word_slug": "ambitious"
+  },
+  {
+    "root_slug": "it",
+    "word_slug": "elicit"
+  },
+  {
+    "root_slug": "it",
+    "word_slug": "elite"
+  },
+  {
+    "root_slug": "jec",
+    "word_slug": "inject"
+  },
+  {
+    "root_slug": "jec",
+    "word_slug": "project"
+  },
+  {
+    "root_slug": "jec",
+    "word_slug": "subject"
+  },
+  {
+    "root_slug": "jec",
+    "word_slug": "object"
+  },
+  {
+    "root_slug": "jec",
+    "word_slug": "objective"
+  },
+  {
+    "root_slug": "jec",
+    "word_slug": "reject"
+  },
+  {
+    "root_slug": "jec",
+    "word_slug": "eject"
+  },
+  {
+    "root_slug": "jec",
+    "word_slug": "deject"
+  },
+  {
+    "root_slug": "jec",
+    "word_slug": "interject"
+  },
+  {
+    "root_slug": "jec",
+    "word_slug": "conjecture"
+  },
+  {
+    "root_slug": "jec",
+    "word_slug": "adjacent"
+  },
+  {
+    "root_slug": "jec",
+    "word_slug": "abject"
+  },
+  {
+    "root_slug": "jur",
+    "word_slug": "just"
+  },
+  {
+    "root_slug": "jur",
+    "word_slug": "justice"
+  },
+  {
+    "root_slug": "jur",
+    "word_slug": "justify"
+  },
+  {
+    "root_slug": "jur",
+    "word_slug": "adjust"
+  },
+  {
+    "root_slug": "jur",
+    "word_slug": "judge"
+  },
+  {
+    "root_slug": "jur",
+    "word_slug": "prejudice"
+  },
+  {
+    "root_slug": "jur",
+    "word_slug": "jury"
+  },
+  {
+    "root_slug": "jur",
+    "word_slug": "jurist"
+  },
+  {
+    "root_slug": "jur",
+    "word_slug": "injure"
+  },
+  {
+    "root_slug": "jur",
+    "word_slug": "perjure"
+  },
+  {
+    "root_slug": "jur",
+    "word_slug": "adjudicate"
+  },
+  {
+    "root_slug": "jur",
+    "word_slug": "judicious"
+  },
+  {
+    "root_slug": "lav",
+    "word_slug": "lavatory"
+  },
+  {
+    "root_slug": "lav",
+    "word_slug": "launder"
+  },
+  {
+    "root_slug": "lav",
+    "word_slug": "laundry"
+  },
+  {
+    "root_slug": "lav",
+    "word_slug": "lavish"
+  },
+  {
+    "root_slug": "lav",
+    "word_slug": "dilute"
+  },
+  {
+    "root_slug": "lav",
+    "word_slug": "deluge"
+  },
+  {
+    "root_slug": "lav",
+    "word_slug": "lava"
+  },
+  {
+    "root_slug": "lav",
+    "word_slug": "ablution"
+  },
+  {
+    "root_slug": "lav",
+    "word_slug": "lotion"
+  },
+  {
+    "root_slug": "lav",
+    "word_slug": "avalanche"
+  },
+  {
+    "root_slug": "lect",
+    "word_slug": "elect"
+  },
+  {
+    "root_slug": "lect",
+    "word_slug": "collect"
+  },
+  {
+    "root_slug": "lect",
+    "word_slug": "select"
+  },
+  {
+    "root_slug": "lect",
+    "word_slug": "intellect"
+  },
+  {
+    "root_slug": "lect",
+    "word_slug": "intelligent"
+  },
+  {
+    "root_slug": "lect",
+    "word_slug": "neglect"
+  },
+  {
+    "root_slug": "lect",
+    "word_slug": "elegant"
+  },
+  {
+    "root_slug": "lect",
+    "word_slug": "delegate"
+  },
+  {
+    "root_slug": "lect",
+    "word_slug": "legal"
+  },
+  {
+    "root_slug": "lect",
+    "word_slug": "legislate"
+  },
+  {
+    "root_slug": "lect",
+    "word_slug": "legitimate"
+  },
+  {
+    "root_slug": "lect",
+    "word_slug": "lecture"
+  },
+  {
+    "root_slug": "lect",
+    "word_slug": "privilege"
+  },
+  {
+    "root_slug": "light",
+    "word_slug": "light"
+  },
+  {
+    "root_slug": "light",
+    "word_slug": "daylight"
+  },
+  {
+    "root_slug": "light",
+    "word_slug": "sunlight"
+  },
+  {
+    "root_slug": "light",
+    "word_slug": "twilight"
+  },
+  {
+    "root_slug": "light",
+    "word_slug": "spotlight"
+  },
+  {
+    "root_slug": "light",
+    "word_slug": "highlight"
+  },
+  {
+    "root_slug": "light",
+    "word_slug": "delight"
+  },
+  {
+    "root_slug": "light",
+    "word_slug": "enlighten"
+  },
+  {
+    "root_slug": "light",
+    "word_slug": "lighten"
+  },
+  {
+    "root_slug": "light",
+    "word_slug": "lightweight"
+  },
+  {
+    "root_slug": "light",
+    "word_slug": "lighthouse"
+  },
+  {
+    "root_slug": "light",
+    "word_slug": "flashlight"
+  },
+  {
+    "root_slug": "loc",
+    "word_slug": "local"
+  },
+  {
+    "root_slug": "loc",
+    "word_slug": "locate"
+  },
+  {
+    "root_slug": "loc",
+    "word_slug": "location"
+  },
+  {
+    "root_slug": "loc",
+    "word_slug": "allocate"
+  },
+  {
+    "root_slug": "loc",
+    "word_slug": "relocate"
+  },
+  {
+    "root_slug": "loc",
+    "word_slug": "dislocate"
+  },
+  {
+    "root_slug": "loc",
+    "word_slug": "collocation"
+  },
+  {
+    "root_slug": "loc",
+    "word_slug": "locale"
+  },
+  {
+    "root_slug": "loc",
+    "word_slug": "localize"
+  },
+  {
+    "root_slug": "loc",
+    "word_slug": "locomotion"
+  },
+  {
+    "root_slug": "mov",
+    "word_slug": "locomotion"
+  },
+  {
+    "root_slug": "lud",
+    "word_slug": "illusion"
+  },
+  {
+    "root_slug": "lud",
+    "word_slug": "disillusion"
+  },
+  {
+    "root_slug": "lud",
+    "word_slug": "delude"
+  },
+  {
+    "root_slug": "lud",
+    "word_slug": "delusion"
+  },
+  {
+    "root_slug": "lud",
+    "word_slug": "elusive"
+  },
+  {
+    "root_slug": "lud",
+    "word_slug": "collude"
+  },
+  {
+    "root_slug": "lud",
+    "word_slug": "prelude"
+  },
+  {
+    "root_slug": "lud",
+    "word_slug": "interlude"
+  },
+  {
+    "root_slug": "lud",
+    "word_slug": "ludicrous"
+  },
+  {
+    "root_slug": "lud",
+    "word_slug": "collusion"
+  },
+  {
+    "root_slug": "main",
+    "word_slug": "remain"
+  },
+  {
+    "root_slug": "main",
+    "word_slug": "permanent"
+  },
+  {
+    "root_slug": "main",
+    "word_slug": "mansion"
+  },
+  {
+    "root_slug": "main",
+    "word_slug": "manor"
+  },
+  {
+    "root_slug": "main",
+    "word_slug": "remnant"
+  },
+  {
+    "root_slug": "main",
+    "word_slug": "emanate"
+  },
+  {
+    "root_slug": "main",
+    "word_slug": "immanent"
+  },
+  {
+    "root_slug": "main",
+    "word_slug": "impermanent"
+  },
+  {
+    "root_slug": "maj",
+    "word_slug": "major"
+  },
+  {
+    "root_slug": "maj",
+    "word_slug": "majority"
+  },
+  {
+    "root_slug": "maj",
+    "word_slug": "maximum"
+  },
+  {
+    "root_slug": "maj",
+    "word_slug": "maximize"
+  },
+  {
+    "root_slug": "maj",
+    "word_slug": "magnify"
+  },
+  {
+    "root_slug": "maj",
+    "word_slug": "magnificent"
+  },
+  {
+    "root_slug": "maj",
+    "word_slug": "magnitude"
+  },
+  {
+    "root_slug": "maj",
+    "word_slug": "magnate"
+  },
+  {
+    "root_slug": "maj",
+    "word_slug": "magnanimity"
+  },
+  {
+    "root_slug": "man",
+    "word_slug": "manage"
+  },
+  {
+    "root_slug": "man",
+    "word_slug": "manager"
+  },
+  {
+    "root_slug": "man",
+    "word_slug": "manner"
+  },
+  {
+    "root_slug": "man",
+    "word_slug": "manipulate"
+  },
+  {
+    "root_slug": "man",
+    "word_slug": "manufacture"
+  },
+  {
+    "root_slug": "man",
+    "word_slug": "manual"
+  },
+  {
+    "root_slug": "man",
+    "word_slug": "emancipate"
+  },
+  {
+    "root_slug": "man",
+    "word_slug": "dismantle"
+  },
+  {
+    "root_slug": "man",
+    "word_slug": "manuscript"
+  },
+  {
+    "root_slug": "man",
+    "word_slug": "manicure"
+  },
+  {
+    "root_slug": "mand",
+    "word_slug": "command"
+  },
+  {
+    "root_slug": "mand",
+    "word_slug": "demand"
+  },
+  {
+    "root_slug": "mand",
+    "word_slug": "mandate"
+  },
+  {
+    "root_slug": "mand",
+    "word_slug": "mandatory"
+  },
+  {
+    "root_slug": "mand",
+    "word_slug": "commend"
+  },
+  {
+    "root_slug": "mand",
+    "word_slug": "recommend"
+  },
+  {
+    "root_slug": "mand",
+    "word_slug": "countermand"
+  },
+  {
+    "root_slug": "mand",
+    "word_slug": "commanding"
+  },
+  {
+    "root_slug": "mat",
+    "word_slug": "mature"
+  },
+  {
+    "root_slug": "mat",
+    "word_slug": "immature"
+  },
+  {
+    "root_slug": "mat",
+    "word_slug": "maturity"
+  },
+  {
+    "root_slug": "mat",
+    "word_slug": "premature"
+  },
+  {
+    "root_slug": "mat",
+    "word_slug": "mate"
+  },
+  {
+    "root_slug": "mat",
+    "word_slug": "match"
+  },
+  {
+    "root_slug": "medi",
+    "word_slug": "medicine"
+  },
+  {
+    "root_slug": "medi",
+    "word_slug": "medical"
+  },
+  {
+    "root_slug": "medi",
+    "word_slug": "medium"
+  },
+  {
+    "root_slug": "medi",
+    "word_slug": "media"
+  },
+  {
+    "root_slug": "medi",
+    "word_slug": "immediate"
+  },
+  {
+    "root_slug": "medi",
+    "word_slug": "meditate"
+  },
+  {
+    "root_slug": "medi",
+    "word_slug": "medieval"
+  },
+  {
+    "root_slug": "medi",
+    "word_slug": "intermediate"
+  },
+  {
+    "root_slug": "medi",
+    "word_slug": "mediocre"
+  },
+  {
+    "root_slug": "medi",
+    "word_slug": "remedy"
+  },
+  {
+    "root_slug": "medi",
+    "word_slug": "mediator"
+  },
+  {
+    "root_slug": "merg",
+    "word_slug": "merge"
+  },
+  {
+    "root_slug": "merg",
+    "word_slug": "emerge"
+  },
+  {
+    "root_slug": "merg",
+    "word_slug": "emergency"
+  },
+  {
+    "root_slug": "merg",
+    "word_slug": "immerse"
+  },
+  {
+    "root_slug": "merg",
+    "word_slug": "submerge"
+  },
+  {
+    "root_slug": "merg",
+    "word_slug": "immersive"
+  },
+  {
+    "root_slug": "merg",
+    "word_slug": "emergent"
+  },
+  {
+    "root_slug": "migr",
+    "word_slug": "migrate"
+  },
+  {
+    "root_slug": "migr",
+    "word_slug": "migration"
+  },
+  {
+    "root_slug": "migr",
+    "word_slug": "migrant"
+  },
+  {
+    "root_slug": "migr",
+    "word_slug": "immigrate"
+  },
+  {
+    "root_slug": "migr",
+    "word_slug": "immigrant"
+  },
+  {
+    "root_slug": "migr",
+    "word_slug": "emigrate"
+  },
+  {
+    "root_slug": "migr",
+    "word_slug": "transmigrate"
+  },
+  {
+    "root_slug": "migr",
+    "word_slug": "migratory"
+  },
+  {
+    "root_slug": "min",
+    "word_slug": "minor"
+  },
+  {
+    "root_slug": "min",
+    "word_slug": "minority"
+  },
+  {
+    "root_slug": "min",
+    "word_slug": "minimal"
+  },
+  {
+    "root_slug": "min",
+    "word_slug": "minimalism"
+  },
+  {
+    "root_slug": "min",
+    "word_slug": "minister"
+  },
+  {
+    "root_slug": "min",
+    "word_slug": "ministry"
+  },
+  {
+    "root_slug": "min",
+    "word_slug": "administer"
+  },
+  {
+    "root_slug": "min",
+    "word_slug": "administrator"
+  },
+  {
+    "root_slug": "min",
+    "word_slug": "diminish"
+  },
+  {
+    "root_slug": "min",
+    "word_slug": "minute"
+  },
+  {
+    "root_slug": "min",
+    "word_slug": "prominent"
+  },
+  {
+    "root_slug": "min",
+    "word_slug": "preeminent"
+  },
+  {
+    "root_slug": "miss",
+    "word_slug": "mission"
+  },
+  {
+    "root_slug": "miss",
+    "word_slug": "missile"
+  },
+  {
+    "root_slug": "miss",
+    "word_slug": "admit"
+  },
+  {
+    "root_slug": "miss",
+    "word_slug": "admission"
+  },
+  {
+    "root_slug": "miss",
+    "word_slug": "permit"
+  },
+  {
+    "root_slug": "miss",
+    "word_slug": "commit"
+  },
+  {
+    "root_slug": "miss",
+    "word_slug": "commission"
+  },
+  {
+    "root_slug": "miss",
+    "word_slug": "dismiss"
+  },
+  {
+    "root_slug": "miss",
+    "word_slug": "submit"
+  },
+  {
+    "root_slug": "miss",
+    "word_slug": "transmit"
+  },
+  {
+    "root_slug": "miss",
+    "word_slug": "omit"
+  },
+  {
+    "root_slug": "miss",
+    "word_slug": "promise"
+  },
+  {
+    "root_slug": "miss",
+    "word_slug": "compromise"
+  },
+  {
+    "root_slug": "mon",
+    "word_slug": "money"
+  },
+  {
+    "root_slug": "mon",
+    "word_slug": "monetary"
+  },
+  {
+    "root_slug": "mon",
+    "word_slug": "monitor"
+  },
+  {
+    "root_slug": "mon",
+    "word_slug": "premonition"
+  },
+  {
+    "root_slug": "mon",
+    "word_slug": "admonish"
+  },
+  {
+    "root_slug": "mon",
+    "word_slug": "monument"
+  },
+  {
+    "root_slug": "mon",
+    "word_slug": "monumental"
+  },
+  {
+    "root_slug": "mon",
+    "word_slug": "common"
+  },
+  {
+    "root_slug": "mon",
+    "word_slug": "monk"
+  },
+  {
+    "root_slug": "mon",
+    "word_slug": "monastery"
+  },
+  {
+    "root_slug": "mon",
+    "word_slug": "monopoly"
+  },
+  {
+    "root_slug": "mon",
+    "word_slug": "monetize"
+  },
+  {
+    "root_slug": "monstr",
+    "word_slug": "monster"
+  },
+  {
+    "root_slug": "monstr",
+    "word_slug": "monstrous"
+  },
+  {
+    "root_slug": "monstr",
+    "word_slug": "demonstrate"
+  },
+  {
+    "root_slug": "monstr",
+    "word_slug": "demonstration"
+  },
+  {
+    "root_slug": "monstr",
+    "word_slug": "demonstrative"
+  },
+  {
+    "root_slug": "monstr",
+    "word_slug": "remonstrate"
+  },
+  {
+    "root_slug": "mort",
+    "word_slug": "mortal"
+  },
+  {
+    "root_slug": "mort",
+    "word_slug": "mortality"
+  },
+  {
+    "root_slug": "mort",
+    "word_slug": "immortal"
+  },
+  {
+    "root_slug": "mort",
+    "word_slug": "mortgage"
+  },
+  {
+    "root_slug": "mort",
+    "word_slug": "mortify"
+  },
+  {
+    "root_slug": "mort",
+    "word_slug": "murder"
+  },
+  {
+    "root_slug": "mort",
+    "word_slug": "mortician"
+  },
+  {
+    "root_slug": "mort",
+    "word_slug": "mortuary"
+  },
+  {
+    "root_slug": "mort",
+    "word_slug": "morbid"
+  },
+  {
+    "root_slug": "mort",
+    "word_slug": "moribund"
+  },
+  {
+    "root_slug": "mort",
+    "word_slug": "amortize"
+  },
+  {
+    "root_slug": "mov",
+    "word_slug": "move"
+  },
+  {
+    "root_slug": "mov",
+    "word_slug": "movement"
+  },
+  {
+    "root_slug": "mov",
+    "word_slug": "remove"
+  },
+  {
+    "root_slug": "mov",
+    "word_slug": "movie"
+  },
+  {
+    "root_slug": "mov",
+    "word_slug": "motive"
+  },
+  {
+    "root_slug": "mov",
+    "word_slug": "motivate"
+  },
+  {
+    "root_slug": "mov",
+    "word_slug": "promote"
+  },
+  {
+    "root_slug": "mov",
+    "word_slug": "demote"
+  },
+  {
+    "root_slug": "mov",
+    "word_slug": "emotion"
+  },
+  {
+    "root_slug": "mov",
+    "word_slug": "remote"
+  },
+  {
+    "root_slug": "mov",
+    "word_slug": "motor"
+  },
+  {
+    "root_slug": "mov",
+    "word_slug": "locomotive"
+  },
+  {
+    "root_slug": "mov",
+    "word_slug": "commotion"
+  },
+  {
+    "root_slug": "mov",
+    "word_slug": "mobilize"
+  },
+  {
+    "root_slug": "nat",
+    "word_slug": "nation"
+  },
+  {
+    "root_slug": "nat",
+    "word_slug": "national"
+  },
+  {
+    "root_slug": "nat",
+    "word_slug": "international"
+  },
+  {
+    "root_slug": "nat",
+    "word_slug": "native"
+  },
+  {
+    "root_slug": "nat",
+    "word_slug": "nature"
+  },
+  {
+    "root_slug": "nat",
+    "word_slug": "natural"
+  },
+  {
+    "root_slug": "nat",
+    "word_slug": "supernatural"
+  },
+  {
+    "root_slug": "nat",
+    "word_slug": "innate"
+  },
+  {
+    "root_slug": "nat",
+    "word_slug": "prenatal"
+  },
+  {
+    "root_slug": "nat",
+    "word_slug": "naive"
+  },
+  {
+    "root_slug": "nat",
+    "word_slug": "renaissance"
+  },
+  {
+    "root_slug": "nat",
+    "word_slug": "nationalize"
+  },
+  {
+    "root_slug": "nav",
+    "word_slug": "navy"
+  },
+  {
+    "root_slug": "nav",
+    "word_slug": "naval"
+  },
+  {
+    "root_slug": "nav",
+    "word_slug": "navigate"
+  },
+  {
+    "root_slug": "nav",
+    "word_slug": "navigator"
+  },
+  {
+    "root_slug": "nav",
+    "word_slug": "navigation"
+  },
+  {
+    "root_slug": "nav",
+    "word_slug": "navigable"
+  },
+  {
+    "root_slug": "nav",
+    "word_slug": "circumnavigator"
+  },
+  {
+    "root_slug": "nom",
+    "word_slug": "autonomous"
+  },
+  {
+    "root_slug": "nom",
+    "word_slug": "economy"
+  },
+  {
+    "root_slug": "nom",
+    "word_slug": "economic"
+  },
+  {
+    "root_slug": "nom",
+    "word_slug": "economics"
+  },
+  {
+    "root_slug": "nom",
+    "word_slug": "economical"
+  },
+  {
+    "root_slug": "nomin",
+    "word_slug": "name"
+  },
+  {
+    "root_slug": "nomin",
+    "word_slug": "nominal"
+  },
+  {
+    "root_slug": "nomin",
+    "word_slug": "nominate"
+  },
+  {
+    "root_slug": "nomin",
+    "word_slug": "nomination"
+  },
+  {
+    "root_slug": "nomin",
+    "word_slug": "nominee"
+  },
+  {
+    "root_slug": "nomin",
+    "word_slug": "anonymous"
+  },
+  {
+    "root_slug": "nomin",
+    "word_slug": "synonym"
+  },
+  {
+    "root_slug": "nomin",
+    "word_slug": "pseudonym"
+  },
+  {
+    "root_slug": "nomin",
+    "word_slug": "ignominy"
+  },
+  {
+    "root_slug": "nomin",
+    "word_slug": "misnomer"
+  },
+  {
+    "root_slug": "nomin",
+    "word_slug": "phenomenon"
+  },
+  {
+    "root_slug": "norm",
+    "word_slug": "norm"
+  },
+  {
+    "root_slug": "norm",
+    "word_slug": "normal"
+  },
+  {
+    "root_slug": "norm",
+    "word_slug": "normalize"
+  },
+  {
+    "root_slug": "norm",
+    "word_slug": "normative"
+  },
+  {
+    "root_slug": "norm",
+    "word_slug": "abnormal"
+  },
+  {
+    "root_slug": "norm",
+    "word_slug": "abnormality"
+  },
+  {
+    "root_slug": "norm",
+    "word_slug": "enormous"
+  },
+  {
+    "root_slug": "norm",
+    "word_slug": "enormity"
+  },
+  {
+    "root_slug": "norm",
+    "word_slug": "paranormal"
+  },
+  {
+    "root_slug": "nour",
+    "word_slug": "nurse"
+  },
+  {
+    "root_slug": "nour",
+    "word_slug": "nursery"
+  },
+  {
+    "root_slug": "nour",
+    "word_slug": "nurture"
+  },
+  {
+    "root_slug": "nour",
+    "word_slug": "nutrient"
+  },
+  {
+    "root_slug": "nour",
+    "word_slug": "nutrition"
+  },
+  {
+    "root_slug": "nour",
+    "word_slug": "nutritious"
+  },
+  {
+    "root_slug": "nour",
+    "word_slug": "nourish"
+  },
+  {
+    "root_slug": "nour",
+    "word_slug": "nourishment"
+  },
+  {
+    "root_slug": "nour",
+    "word_slug": "malnutrition"
+  },
+  {
+    "root_slug": "nour",
+    "word_slug": "nutritionist"
+  },
+  {
+    "root_slug": "nov",
+    "word_slug": "novel"
+  },
+  {
+    "root_slug": "nov",
+    "word_slug": "novelty"
+  },
+  {
+    "root_slug": "nov",
+    "word_slug": "novelist"
+  },
+  {
+    "root_slug": "nov",
+    "word_slug": "novice"
+  },
+  {
+    "root_slug": "nov",
+    "word_slug": "innovate"
+  },
+  {
+    "root_slug": "nov",
+    "word_slug": "innovation"
+  },
+  {
+    "root_slug": "nov",
+    "word_slug": "innovative"
+  },
+  {
+    "root_slug": "nov",
+    "word_slug": "renovate"
+  },
+  {
+    "root_slug": "nov",
+    "word_slug": "renovation"
+  },
+  {
+    "root_slug": "ori",
+    "word_slug": "origin"
+  },
+  {
+    "root_slug": "ori",
+    "word_slug": "original"
+  },
+  {
+    "root_slug": "ori",
+    "word_slug": "originate"
+  },
+  {
+    "root_slug": "ori",
+    "word_slug": "orient"
+  },
+  {
+    "root_slug": "ori",
+    "word_slug": "orientation"
+  },
+  {
+    "root_slug": "ori",
+    "word_slug": "disorient"
+  },
+  {
+    "root_slug": "ori",
+    "word_slug": "aboriginal"
+  },
+  {
+    "root_slug": "ori",
+    "word_slug": "abort"
+  },
+  {
+    "root_slug": "ori",
+    "word_slug": "originality"
+  },
+  {
+    "root_slug": "par",
+    "word_slug": "pair"
+  },
+  {
+    "root_slug": "par",
+    "word_slug": "compare"
+  },
+  {
+    "root_slug": "par",
+    "word_slug": "comparison"
+  },
+  {
+    "root_slug": "par",
+    "word_slug": "comparable"
+  },
+  {
+    "root_slug": "par",
+    "word_slug": "disparity"
+  },
+  {
+    "root_slug": "par",
+    "word_slug": "impair"
+  },
+  {
+    "root_slug": "par",
+    "word_slug": "repair"
+  },
+  {
+    "root_slug": "par",
+    "word_slug": "irreparable"
+  },
+  {
+    "root_slug": "par",
+    "word_slug": "peer"
+  },
+  {
+    "root_slug": "par",
+    "word_slug": "nonpareil"
+  },
+  {
+    "root_slug": "part",
+    "word_slug": "part"
+  },
+  {
+    "root_slug": "part",
+    "word_slug": "partial"
+  },
+  {
+    "root_slug": "part",
+    "word_slug": "impartial"
+  },
+  {
+    "root_slug": "part",
+    "word_slug": "participate"
+  },
+  {
+    "root_slug": "part",
+    "word_slug": "partner"
+  },
+  {
+    "root_slug": "part",
+    "word_slug": "depart"
+  },
+  {
+    "root_slug": "part",
+    "word_slug": "department"
+  },
+  {
+    "root_slug": "part",
+    "word_slug": "apart"
+  },
+  {
+    "root_slug": "part",
+    "word_slug": "counterpart"
+  },
+  {
+    "root_slug": "part",
+    "word_slug": "particular"
+  },
+  {
+    "root_slug": "part",
+    "word_slug": "proportion"
+  },
+  {
+    "root_slug": "part",
+    "word_slug": "impart"
+  },
+  {
+    "root_slug": "path",
+    "word_slug": "patient"
+  },
+  {
+    "root_slug": "path",
+    "word_slug": "patience"
+  },
+  {
+    "root_slug": "path",
+    "word_slug": "passion"
+  },
+  {
+    "root_slug": "path",
+    "word_slug": "passionate"
+  },
+  {
+    "root_slug": "path",
+    "word_slug": "compassion"
+  },
+  {
+    "root_slug": "path",
+    "word_slug": "sympathy"
+  },
+  {
+    "root_slug": "path",
+    "word_slug": "empathy"
+  },
+  {
+    "root_slug": "path",
+    "word_slug": "apathy"
+  },
+  {
+    "root_slug": "path",
+    "word_slug": "antipathy"
+  },
+  {
+    "root_slug": "path",
+    "word_slug": "pathetic"
+  },
+  {
+    "root_slug": "path",
+    "word_slug": "compatible"
+  },
+  {
+    "root_slug": "path",
+    "word_slug": "psychopath"
+  },
+  {
+    "root_slug": "ped",
+    "word_slug": "pedal"
+  },
+  {
+    "root_slug": "ped",
+    "word_slug": "pedestrian"
+  },
+  {
+    "root_slug": "ped",
+    "word_slug": "pedestal"
+  },
+  {
+    "root_slug": "ped",
+    "word_slug": "biped"
+  },
+  {
+    "root_slug": "ped",
+    "word_slug": "expedite"
+  },
+  {
+    "root_slug": "ped",
+    "word_slug": "expedition"
+  },
+  {
+    "root_slug": "ped",
+    "word_slug": "expedient"
+  },
+  {
+    "root_slug": "ped",
+    "word_slug": "impede"
+  },
+  {
+    "root_slug": "ped",
+    "word_slug": "impediment"
+  },
+  {
+    "root_slug": "ped",
+    "word_slug": "pedicure"
+  },
+  {
+    "root_slug": "ped",
+    "word_slug": "pioneer"
+  },
+  {
+    "root_slug": "pel",
+    "word_slug": "impel"
+  },
+  {
+    "root_slug": "pel",
+    "word_slug": "impulse"
+  },
+  {
+    "root_slug": "pel",
+    "word_slug": "expel"
+  },
+  {
+    "root_slug": "pel",
+    "word_slug": "propel"
+  },
+  {
+    "root_slug": "pel",
+    "word_slug": "propulsion"
+  },
+  {
+    "root_slug": "pel",
+    "word_slug": "compel"
+  },
+  {
+    "root_slug": "pel",
+    "word_slug": "compelling"
+  },
+  {
+    "root_slug": "pel",
+    "word_slug": "compulsory"
+  },
+  {
+    "root_slug": "pel",
+    "word_slug": "repel"
+  },
+  {
+    "root_slug": "pel",
+    "word_slug": "dispel"
+  },
+  {
+    "root_slug": "pel",
+    "word_slug": "appeal"
+  },
+  {
+    "root_slug": "pel",
+    "word_slug": "pulsate"
+  },
+  {
+    "root_slug": "peri",
+    "word_slug": "experience"
+  },
+  {
+    "root_slug": "peri",
+    "word_slug": "experiment"
+  },
+  {
+    "root_slug": "peri",
+    "word_slug": "experimental"
+  },
+  {
+    "root_slug": "peri",
+    "word_slug": "expert"
+  },
+  {
+    "root_slug": "peri",
+    "word_slug": "expertise"
+  },
+  {
+    "root_slug": "peri",
+    "word_slug": "peril"
+  },
+  {
+    "root_slug": "peri",
+    "word_slug": "imperil"
+  },
+  {
+    "root_slug": "peri",
+    "word_slug": "pirate"
+  },
+  {
+    "root_slug": "peri",
+    "word_slug": "experienced"
+  },
+  {
+    "root_slug": "person",
+    "word_slug": "person"
+  },
+  {
+    "root_slug": "person",
+    "word_slug": "personal"
+  },
+  {
+    "root_slug": "person",
+    "word_slug": "personality"
+  },
+  {
+    "root_slug": "person",
+    "word_slug": "personnel"
+  },
+  {
+    "root_slug": "person",
+    "word_slug": "impersonal"
+  },
+  {
+    "root_slug": "person",
+    "word_slug": "interpersonal"
+  },
+  {
+    "root_slug": "person",
+    "word_slug": "personalize"
+  },
+  {
+    "root_slug": "person",
+    "word_slug": "personify"
+  },
+  {
+    "root_slug": "person",
+    "word_slug": "personification"
+  },
+  {
+    "root_slug": "pet",
+    "word_slug": "compete"
+  },
+  {
+    "root_slug": "pet",
+    "word_slug": "competition"
+  },
+  {
+    "root_slug": "pet",
+    "word_slug": "competitive"
+  },
+  {
+    "root_slug": "pet",
+    "word_slug": "competent"
+  },
+  {
+    "root_slug": "pet",
+    "word_slug": "perpetual"
+  },
+  {
+    "root_slug": "pet",
+    "word_slug": "perpetuate"
+  },
+  {
+    "root_slug": "pet",
+    "word_slug": "appetite"
+  },
+  {
+    "root_slug": "pet",
+    "word_slug": "petition"
+  },
+  {
+    "root_slug": "pet",
+    "word_slug": "repeat"
+  },
+  {
+    "root_slug": "pet",
+    "word_slug": "repetition"
+  },
+  {
+    "root_slug": "pet",
+    "word_slug": "impetus"
+  },
+  {
+    "root_slug": "pet",
+    "word_slug": "impetuous"
+  },
+  {
+    "root_slug": "ple",
+    "word_slug": "plenty"
+  },
+  {
+    "root_slug": "ple",
+    "word_slug": "plentiful"
+  },
+  {
+    "root_slug": "ple",
+    "word_slug": "replenish"
+  },
+  {
+    "root_slug": "ple",
+    "word_slug": "complete"
+  },
+  {
+    "root_slug": "ple",
+    "word_slug": "incomplete"
+  },
+  {
+    "root_slug": "ple",
+    "word_slug": "deplete"
+  },
+  {
+    "root_slug": "ple",
+    "word_slug": "accomplish"
+  },
+  {
+    "root_slug": "ple",
+    "word_slug": "comply"
+  },
+  {
+    "root_slug": "ple",
+    "word_slug": "implement"
+  },
+  {
+    "root_slug": "ple",
+    "word_slug": "complement"
+  },
+  {
+    "root_slug": "ple",
+    "word_slug": "supplement"
+  },
+  {
+    "root_slug": "ple",
+    "word_slug": "plethora"
+  },
+  {
+    "root_slug": "plod",
+    "word_slug": "applaud"
+  },
+  {
+    "root_slug": "plod",
+    "word_slug": "applause"
+  },
+  {
+    "root_slug": "plod",
+    "word_slug": "plaudit"
+  },
+  {
+    "root_slug": "plod",
+    "word_slug": "plausible"
+  },
+  {
+    "root_slug": "plod",
+    "word_slug": "implausible"
+  },
+  {
+    "root_slug": "plod",
+    "word_slug": "explode"
+  },
+  {
+    "root_slug": "plod",
+    "word_slug": "explosion"
+  },
+  {
+    "root_slug": "plod",
+    "word_slug": "explosive"
+  },
+  {
+    "root_slug": "plod",
+    "word_slug": "implode"
+  },
+  {
+    "root_slug": "plod",
+    "word_slug": "implosion"
+  },
+  {
+    "root_slug": "port",
+    "word_slug": "portable"
+  },
+  {
+    "root_slug": "port",
+    "word_slug": "transport"
+  },
+  {
+    "root_slug": "port",
+    "word_slug": "import"
+  },
+  {
+    "root_slug": "port",
+    "word_slug": "export"
+  },
+  {
+    "root_slug": "port",
+    "word_slug": "support"
+  },
+  {
+    "root_slug": "port",
+    "word_slug": "deport"
+  },
+  {
+    "root_slug": "port",
+    "word_slug": "opportunity"
+  },
+  {
+    "root_slug": "port",
+    "word_slug": "airport"
+  },
+  {
+    "root_slug": "port",
+    "word_slug": "report"
+  },
+  {
+    "root_slug": "port",
+    "word_slug": "important"
+  },
+  {
+    "root_slug": "port",
+    "word_slug": "sport"
+  },
+  {
+    "root_slug": "press",
+    "word_slug": "press"
+  },
+  {
+    "root_slug": "press",
+    "word_slug": "pressure"
+  },
+  {
+    "root_slug": "press",
+    "word_slug": "impress"
+  },
+  {
+    "root_slug": "press",
+    "word_slug": "impressive"
+  },
+  {
+    "root_slug": "press",
+    "word_slug": "express"
+  },
+  {
+    "root_slug": "press",
+    "word_slug": "expression"
+  },
+  {
+    "root_slug": "press",
+    "word_slug": "depress"
+  },
+  {
+    "root_slug": "press",
+    "word_slug": "compress"
+  },
+  {
+    "root_slug": "press",
+    "word_slug": "oppress"
+  },
+  {
+    "root_slug": "press",
+    "word_slug": "suppress"
+  },
+  {
+    "root_slug": "press",
+    "word_slug": "repress"
+  },
+  {
+    "root_slug": "press",
+    "word_slug": "depression"
+  },
+  {
+    "root_slug": "pric",
+    "word_slug": "price"
+  },
+  {
+    "root_slug": "pric",
+    "word_slug": "priceless"
+  },
+  {
+    "root_slug": "pric",
+    "word_slug": "precious"
+  },
+  {
+    "root_slug": "pric",
+    "word_slug": "appreciate"
+  },
+  {
+    "root_slug": "pric",
+    "word_slug": "depreciate"
+  },
+  {
+    "root_slug": "pric",
+    "word_slug": "appraise"
+  },
+  {
+    "root_slug": "pric",
+    "word_slug": "prize"
+  },
+  {
+    "root_slug": "pric",
+    "word_slug": "praise"
+  },
+  {
+    "root_slug": "pric",
+    "word_slug": "appreciation"
+  },
+  {
+    "root_slug": "pun",
+    "word_slug": "punish"
+  },
+  {
+    "root_slug": "pun",
+    "word_slug": "punishment"
+  },
+  {
+    "root_slug": "pun",
+    "word_slug": "punitive"
+  },
+  {
+    "root_slug": "pun",
+    "word_slug": "impunity"
+  },
+  {
+    "root_slug": "pun",
+    "word_slug": "penalty"
+  },
+  {
+    "root_slug": "pun",
+    "word_slug": "repent"
+  },
+  {
+    "root_slug": "pun",
+    "word_slug": "pain"
+  },
+  {
+    "root_slug": "pun",
+    "word_slug": "painful"
+  },
+  {
+    "root_slug": "pun",
+    "word_slug": "penalize"
+  },
+  {
+    "root_slug": "pun",
+    "word_slug": "painstaking"
+  },
+  {
+    "root_slug": "quaint",
+    "word_slug": "acquaint"
+  },
+  {
+    "root_slug": "quaint",
+    "word_slug": "acquaintance"
+  },
+  {
+    "root_slug": "quaint",
+    "word_slug": "quaint"
+  },
+  {
+    "root_slug": "rot",
+    "word_slug": "rotate"
+  },
+  {
+    "root_slug": "rot",
+    "word_slug": "rotation"
+  },
+  {
+    "root_slug": "rot",
+    "word_slug": "rotary"
+  },
+  {
+    "root_slug": "rot",
+    "word_slug": "rote"
+  },
+  {
+    "root_slug": "rud",
+    "word_slug": "rude"
+  },
+  {
+    "root_slug": "rud",
+    "word_slug": "cruel"
+  },
+  {
+    "root_slug": "rud",
+    "word_slug": "raw"
+  },
+  {
+    "root_slug": "rud",
+    "word_slug": "rural"
+  },
+  {
+    "root_slug": "rud",
+    "word_slug": "rudiment"
+  },
+  {
+    "root_slug": "rud",
+    "word_slug": "rudimentary"
+  },
+  {
+    "root_slug": "rud",
+    "word_slug": "erudite"
+  },
+  {
+    "root_slug": "rud",
+    "word_slug": "rustic"
+  },
+  {
+    "root_slug": "sat",
+    "word_slug": "satisfy"
+  },
+  {
+    "root_slug": "sat",
+    "word_slug": "satisfaction"
+  },
+  {
+    "root_slug": "sat",
+    "word_slug": "satisfactory"
+  },
+  {
+    "root_slug": "sat",
+    "word_slug": "saturate"
+  },
+  {
+    "root_slug": "sat",
+    "word_slug": "insatiable"
+  },
+  {
+    "root_slug": "sat",
+    "word_slug": "satiate"
+  },
+  {
+    "root_slug": "sat",
+    "word_slug": "dissatisfied"
+  },
+  {
+    "root_slug": "sat",
+    "word_slug": "asset"
+  },
+  {
+    "root_slug": "sat",
+    "word_slug": "satire"
+  },
+  {
+    "root_slug": "sat",
+    "word_slug": "satellite"
+  },
+  {
+    "root_slug": "serv",
+    "word_slug": "serve"
+  },
+  {
+    "root_slug": "serv",
+    "word_slug": "service"
+  },
+  {
+    "root_slug": "serv",
+    "word_slug": "deserve"
+  },
+  {
+    "root_slug": "serv",
+    "word_slug": "reserve"
+  },
+  {
+    "root_slug": "serv",
+    "word_slug": "preserve"
+  },
+  {
+    "root_slug": "serv",
+    "word_slug": "conserve"
+  },
+  {
+    "root_slug": "serv",
+    "word_slug": "conservation"
+  },
+  {
+    "root_slug": "serv",
+    "word_slug": "observe"
+  },
+  {
+    "root_slug": "serv",
+    "word_slug": "observation"
+  },
+  {
+    "root_slug": "serv",
+    "word_slug": "conservative"
+  },
+  {
+    "root_slug": "serv",
+    "word_slug": "servant"
+  },
+  {
+    "root_slug": "serv",
+    "word_slug": "reservoir"
+  },
+  {
+    "root_slug": "sim",
+    "word_slug": "similar"
+  },
+  {
+    "root_slug": "sim",
+    "word_slug": "simple"
+  },
+  {
+    "root_slug": "sim",
+    "word_slug": "simplify"
+  },
+  {
+    "root_slug": "sim",
+    "word_slug": "simulate"
+  },
+  {
+    "root_slug": "sim",
+    "word_slug": "simultaneous"
+  },
+  {
+    "root_slug": "sim",
+    "word_slug": "assimilate"
+  },
+  {
+    "root_slug": "sim",
+    "word_slug": "resemble"
+  },
+  {
+    "root_slug": "sim",
+    "word_slug": "assemble"
+  },
+  {
+    "root_slug": "sit",
+    "word_slug": "site"
+  },
+  {
+    "root_slug": "sit",
+    "word_slug": "situation"
+  },
+  {
+    "root_slug": "sit",
+    "word_slug": "consider"
+  },
+  {
+    "root_slug": "sit",
+    "word_slug": "president"
+  },
+  {
+    "root_slug": "sit",
+    "word_slug": "resident"
+  },
+  {
+    "root_slug": "sit",
+    "word_slug": "subside"
+  },
+  {
+    "root_slug": "sit",
+    "word_slug": "possess"
+  },
+  {
+    "root_slug": "sit",
+    "word_slug": "obsess"
+  },
+  {
+    "root_slug": "sit",
+    "word_slug": "assess"
+  },
+  {
+    "root_slug": "sit",
+    "word_slug": "sediment"
+  },
+  {
+    "root_slug": "sit",
+    "word_slug": "sedentary"
+  },
+  {
+    "root_slug": "sit",
+    "word_slug": "supersede"
+  },
+  {
+    "root_slug": "sit",
+    "word_slug": "dissident"
+  },
+  {
+    "root_slug": "sol",
+    "word_slug": "solo"
+  },
+  {
+    "root_slug": "sol",
+    "word_slug": "solitary"
+  },
+  {
+    "root_slug": "sol",
+    "word_slug": "solitude"
+  },
+  {
+    "root_slug": "sol",
+    "word_slug": "sole"
+  },
+  {
+    "root_slug": "sol",
+    "word_slug": "isolate"
+  },
+  {
+    "root_slug": "sol",
+    "word_slug": "desolate"
+  },
+  {
+    "root_slug": "sol",
+    "word_slug": "solid"
+  },
+  {
+    "root_slug": "sol",
+    "word_slug": "consolidate"
+  },
+  {
+    "root_slug": "sol",
+    "word_slug": "solar"
+  },
+  {
+    "root_slug": "sol",
+    "word_slug": "solemn"
+  },
+  {
+    "root_slug": "sol",
+    "word_slug": "obsolete"
+  },
+  {
+    "root_slug": "solv",
+    "word_slug": "solve"
+  },
+  {
+    "root_slug": "solv",
+    "word_slug": "solution"
+  },
+  {
+    "root_slug": "solv",
+    "word_slug": "resolve"
+  },
+  {
+    "root_slug": "solv",
+    "word_slug": "resolution"
+  },
+  {
+    "root_slug": "solv",
+    "word_slug": "dissolve"
+  },
+  {
+    "root_slug": "solv",
+    "word_slug": "absolve"
+  },
+  {
+    "root_slug": "solv",
+    "word_slug": "absolute"
+  },
+  {
+    "root_slug": "solv",
+    "word_slug": "resolute"
+  },
+  {
+    "root_slug": "solv",
+    "word_slug": "solvent"
+  },
+  {
+    "root_slug": "solv",
+    "word_slug": "insolvent"
+  },
+  {
+    "root_slug": "son",
+    "word_slug": "sonic"
+  },
+  {
+    "root_slug": "son",
+    "word_slug": "sonar"
+  },
+  {
+    "root_slug": "son",
+    "word_slug": "supersonic"
+  },
+  {
+    "root_slug": "son",
+    "word_slug": "resonate"
+  },
+  {
+    "root_slug": "son",
+    "word_slug": "dissonance"
+  },
+  {
+    "root_slug": "son",
+    "word_slug": "consonant"
+  },
+  {
+    "root_slug": "son",
+    "word_slug": "sonorous"
+  },
+  {
+    "root_slug": "son",
+    "word_slug": "ultrasonic"
+  },
+  {
+    "root_slug": "spec",
+    "word_slug": "special"
+  },
+  {
+    "root_slug": "spec",
+    "word_slug": "species"
+  },
+  {
+    "root_slug": "spec",
+    "word_slug": "specific"
+  },
+  {
+    "root_slug": "spec",
+    "word_slug": "respect"
+  },
+  {
+    "root_slug": "spec",
+    "word_slug": "expect"
+  },
+  {
+    "root_slug": "spec",
+    "word_slug": "inspect"
+  },
+  {
+    "root_slug": "spec",
+    "word_slug": "perspective"
+  },
+  {
+    "root_slug": "spec",
+    "word_slug": "suspect"
+  },
+  {
+    "root_slug": "spec",
+    "word_slug": "spectacle"
+  },
+  {
+    "root_slug": "spec",
+    "word_slug": "spectrum"
+  },
+  {
+    "root_slug": "spec",
+    "word_slug": "prospect"
+  },
+  {
+    "root_slug": "spec",
+    "word_slug": "retrospect"
+  },
+  {
+    "root_slug": "spec",
+    "word_slug": "speculation"
+  },
+  {
+    "root_slug": "spec",
+    "word_slug": "despise"
+  },
+  {
+    "root_slug": "spir",
+    "word_slug": "spirit"
+  },
+  {
+    "root_slug": "spir",
+    "word_slug": "inspire"
+  },
+  {
+    "root_slug": "spir",
+    "word_slug": "inspiration"
+  },
+  {
+    "root_slug": "spir",
+    "word_slug": "expire"
+  },
+  {
+    "root_slug": "spir",
+    "word_slug": "conspire"
+  },
+  {
+    "root_slug": "spir",
+    "word_slug": "conspiracy"
+  },
+  {
+    "root_slug": "spir",
+    "word_slug": "aspire"
+  },
+  {
+    "root_slug": "spir",
+    "word_slug": "respire"
+  },
+  {
+    "root_slug": "spir",
+    "word_slug": "perspire"
+  },
+  {
+    "root_slug": "spir",
+    "word_slug": "transpire"
+  },
+  {
+    "root_slug": "spir",
+    "word_slug": "spiritual"
+  },
+  {
+    "root_slug": "st",
+    "word_slug": "state"
+  },
+  {
+    "root_slug": "st",
+    "word_slug": "station"
+  },
+  {
+    "root_slug": "st",
+    "word_slug": "status"
+  },
+  {
+    "root_slug": "st",
+    "word_slug": "stable"
+  },
+  {
+    "root_slug": "st",
+    "word_slug": "establish"
+  },
+  {
+    "root_slug": "st",
+    "word_slug": "constant"
+  },
+  {
+    "root_slug": "st",
+    "word_slug": "instant"
+  },
+  {
+    "root_slug": "st",
+    "word_slug": "substance"
+  },
+  {
+    "root_slug": "st",
+    "word_slug": "substitute"
+  },
+  {
+    "root_slug": "st",
+    "word_slug": "constitute"
+  },
+  {
+    "root_slug": "st",
+    "word_slug": "institute"
+  },
+  {
+    "root_slug": "st",
+    "word_slug": "exist"
+  },
+  {
+    "root_slug": "st",
+    "word_slug": "resist"
+  },
+  {
+    "root_slug": "st",
+    "word_slug": "assist"
+  },
+  {
+    "root_slug": "st",
+    "word_slug": "consistent"
+  },
+  {
+    "root_slug": "stinct",
+    "word_slug": "distinct"
+  },
+  {
+    "root_slug": "stinct",
+    "word_slug": "distinction"
+  },
+  {
+    "root_slug": "stinct",
+    "word_slug": "distinguish"
+  },
+  {
+    "root_slug": "stinct",
+    "word_slug": "instinct"
+  },
+  {
+    "root_slug": "stinct",
+    "word_slug": "extinct"
+  },
+  {
+    "root_slug": "stinct",
+    "word_slug": "extinguish"
+  },
+  {
+    "root_slug": "stinct",
+    "word_slug": "stimulate"
+  },
+  {
+    "root_slug": "stinct",
+    "word_slug": "stigma"
+  },
+  {
+    "root_slug": "stinct",
+    "word_slug": "instigate"
+  },
+  {
+    "root_slug": "stinct",
+    "word_slug": "distinctive"
+  },
+  {
+    "root_slug": "strain",
+    "word_slug": "strict"
+  },
+  {
+    "root_slug": "strain",
+    "word_slug": "restrict"
+  },
+  {
+    "root_slug": "strain",
+    "word_slug": "district"
+  },
+  {
+    "root_slug": "strain",
+    "word_slug": "strain"
+  },
+  {
+    "root_slug": "strain",
+    "word_slug": "restrain"
+  },
+  {
+    "root_slug": "strain",
+    "word_slug": "constraint"
+  },
+  {
+    "root_slug": "strain",
+    "word_slug": "stress"
+  },
+  {
+    "root_slug": "strain",
+    "word_slug": "distress"
+  },
+  {
+    "root_slug": "strain",
+    "word_slug": "stringent"
+  },
+  {
+    "root_slug": "strain",
+    "word_slug": "constrict"
+  },
+  {
+    "root_slug": "strain",
+    "word_slug": "strange"
+  },
+  {
+    "root_slug": "tact",
+    "word_slug": "contact"
+  },
+  {
+    "root_slug": "tact",
+    "word_slug": "tact"
+  },
+  {
+    "root_slug": "tact",
+    "word_slug": "intact"
+  },
+  {
+    "root_slug": "tact",
+    "word_slug": "tangible"
+  },
+  {
+    "root_slug": "tact",
+    "word_slug": "contagious"
+  },
+  {
+    "root_slug": "tact",
+    "word_slug": "tactic"
+  },
+  {
+    "root_slug": "tact",
+    "word_slug": "taste"
+  },
+  {
+    "root_slug": "tact",
+    "word_slug": "tactile"
+  },
+  {
+    "root_slug": "tact",
+    "word_slug": "intangible"
+  },
+  {
+    "root_slug": "tact",
+    "word_slug": "entangle"
+  },
+  {
+    "root_slug": "tail",
+    "word_slug": "detail"
+  },
+  {
+    "root_slug": "tail",
+    "word_slug": "retail"
+  },
+  {
+    "root_slug": "tail",
+    "word_slug": "tailor"
+  },
+  {
+    "root_slug": "tail",
+    "word_slug": "detailed"
+  },
+  {
+    "root_slug": "tail",
+    "word_slug": "tail"
+  },
+  {
+    "root_slug": "tain",
+    "word_slug": "contain"
+  },
+  {
+    "root_slug": "tain",
+    "word_slug": "maintain"
+  },
+  {
+    "root_slug": "tain",
+    "word_slug": "obtain"
+  },
+  {
+    "root_slug": "tain",
+    "word_slug": "retain"
+  },
+  {
+    "root_slug": "tain",
+    "word_slug": "sustain"
+  },
+  {
+    "root_slug": "tain",
+    "word_slug": "sustainable"
+  },
+  {
+    "root_slug": "tain",
+    "word_slug": "attain"
+  },
+  {
+    "root_slug": "tain",
+    "word_slug": "entertain"
+  },
+  {
+    "root_slug": "tain",
+    "word_slug": "detain"
+  },
+  {
+    "root_slug": "tain",
+    "word_slug": "continue"
+  },
+  {
+    "root_slug": "tain",
+    "word_slug": "tenacious"
+  },
+  {
+    "root_slug": "tain",
+    "word_slug": "abstain"
+  },
+  {
+    "root_slug": "tort",
+    "word_slug": "torture"
+  },
+  {
+    "root_slug": "tort",
+    "word_slug": "distort"
+  },
+  {
+    "root_slug": "tort",
+    "word_slug": "extort"
+  },
+  {
+    "root_slug": "tort",
+    "word_slug": "contort"
+  },
+  {
+    "root_slug": "tort",
+    "word_slug": "retort"
+  },
+  {
+    "root_slug": "tort",
+    "word_slug": "tortuous"
+  },
+  {
+    "root_slug": "tort",
+    "word_slug": "torment"
+  },
+  {
+    "root_slug": "tort",
+    "word_slug": "tornado"
+  },
+  {
+    "root_slug": "tort",
+    "word_slug": "attorney"
+  },
+  {
+    "root_slug": "tort",
+    "word_slug": "tour"
+  },
+  {
+    "root_slug": "tra",
+    "word_slug": "attract"
+  },
+  {
+    "root_slug": "tra",
+    "word_slug": "contract"
+  },
+  {
+    "root_slug": "tra",
+    "word_slug": "extract"
+  },
+  {
+    "root_slug": "tra",
+    "word_slug": "distract"
+  },
+  {
+    "root_slug": "tra",
+    "word_slug": "abstract"
+  },
+  {
+    "root_slug": "tra",
+    "word_slug": "subtract"
+  },
+  {
+    "root_slug": "tra",
+    "word_slug": "retract"
+  },
+  {
+    "root_slug": "tra",
+    "word_slug": "treat"
+  },
+  {
+    "root_slug": "tra",
+    "word_slug": "portrait"
+  },
+  {
+    "root_slug": "tra",
+    "word_slug": "trait"
+  },
+  {
+    "root_slug": "tra",
+    "word_slug": "train"
+  },
+  {
+    "root_slug": "trem",
+    "word_slug": "tremble"
+  },
+  {
+    "root_slug": "trem",
+    "word_slug": "tremor"
+  },
+  {
+    "root_slug": "trem",
+    "word_slug": "tremendous"
+  },
+  {
+    "root_slug": "trem",
+    "word_slug": "tremulous"
+  },
+  {
+    "root_slug": "trem",
+    "word_slug": "intrepid"
+  },
+  {
+    "root_slug": "trop",
+    "word_slug": "tropical"
+  },
+  {
+    "root_slug": "trop",
+    "word_slug": "trip"
+  },
+  {
+    "root_slug": "trop",
+    "word_slug": "tropic"
+  },
+  {
+    "root_slug": "trop",
+    "word_slug": "heliotropism"
+  },
+  {
+    "root_slug": "turb",
+    "word_slug": "disturb"
+  },
+  {
+    "root_slug": "turb",
+    "word_slug": "trouble"
+  },
+  {
+    "root_slug": "turb",
+    "word_slug": "turbulent"
+  },
+  {
+    "root_slug": "turb",
+    "word_slug": "perturb"
+  },
+  {
+    "root_slug": "turb",
+    "word_slug": "turbine"
+  },
+  {
+    "root_slug": "turb",
+    "word_slug": "imperturbable"
+  },
+  {
+    "root_slug": "turb",
+    "word_slug": "turmoil"
+  },
+  {
+    "root_slug": "uni",
+    "word_slug": "unit"
+  },
+  {
+    "root_slug": "uni",
+    "word_slug": "unite"
+  },
+  {
+    "root_slug": "uni",
+    "word_slug": "unity"
+  },
+  {
+    "root_slug": "uni",
+    "word_slug": "uniform"
+  },
+  {
+    "root_slug": "uni",
+    "word_slug": "unique"
+  },
+  {
+    "root_slug": "uni",
+    "word_slug": "universal"
+  },
+  {
+    "root_slug": "vers",
+    "word_slug": "universal"
+  },
+  {
+    "root_slug": "uni",
+    "word_slug": "university"
+  },
+  {
+    "root_slug": "vers",
+    "word_slug": "university"
+  },
+  {
+    "root_slug": "uni",
+    "word_slug": "unanimous"
+  },
+  {
+    "root_slug": "uni",
+    "word_slug": "unify"
+  },
+  {
+    "root_slug": "uni",
+    "word_slug": "progress"
+  },
+  {
+    "root_slug": "uni",
+    "word_slug": "graduate"
+  },
+  {
+    "root_slug": "urb",
+    "word_slug": "urban"
+  },
+  {
+    "root_slug": "urb",
+    "word_slug": "urbanize"
+  },
+  {
+    "root_slug": "urb",
+    "word_slug": "urbane"
+  },
+  {
+    "root_slug": "urb",
+    "word_slug": "suburb"
+  },
+  {
+    "root_slug": "urb",
+    "word_slug": "suburban"
+  },
+  {
+    "root_slug": "urb",
+    "word_slug": "exurb"
+  },
+  {
+    "root_slug": "urb",
+    "word_slug": "conurbation"
+  },
+  {
+    "root_slug": "vac",
+    "word_slug": "vacation"
+  },
+  {
+    "root_slug": "vac",
+    "word_slug": "vacant"
+  },
+  {
+    "root_slug": "vac",
+    "word_slug": "vacuum"
+  },
+  {
+    "root_slug": "vac",
+    "word_slug": "evacuate"
+  },
+  {
+    "root_slug": "vac",
+    "word_slug": "vain"
+  },
+  {
+    "root_slug": "vac",
+    "word_slug": "vanish"
+  },
+  {
+    "root_slug": "vac",
+    "word_slug": "void"
+  },
+  {
+    "root_slug": "vac",
+    "word_slug": "avoid"
+  },
+  {
+    "root_slug": "vac",
+    "word_slug": "vacuous"
+  },
+  {
+    "root_slug": "vad",
+    "word_slug": "invade"
+  },
+  {
+    "root_slug": "vad",
+    "word_slug": "evade"
+  },
+  {
+    "root_slug": "vad",
+    "word_slug": "pervade"
+  },
+  {
+    "root_slug": "vad",
+    "word_slug": "pervasive"
+  },
+  {
+    "root_slug": "vad",
+    "word_slug": "invasive"
+  },
+  {
+    "root_slug": "vad",
+    "word_slug": "vague"
+  },
+  {
+    "root_slug": "vad",
+    "word_slug": "extravagant"
+  },
+  {
+    "root_slug": "vad",
+    "word_slug": "wade"
+  },
+  {
+    "root_slug": "val",
+    "word_slug": "value"
+  },
+  {
+    "root_slug": "val",
+    "word_slug": "valuable"
+  },
+  {
+    "root_slug": "val",
+    "word_slug": "evaluate"
+  },
+  {
+    "root_slug": "val",
+    "word_slug": "valid"
+  },
+  {
+    "root_slug": "val",
+    "word_slug": "prevalent"
+  },
+  {
+    "root_slug": "val",
+    "word_slug": "valiant"
+  },
+  {
+    "root_slug": "val",
+    "word_slug": "ambivalent"
+  },
+  {
+    "root_slug": "val",
+    "word_slug": "invaluable"
+  },
+  {
+    "root_slug": "ven",
+    "word_slug": "event"
+  },
+  {
+    "root_slug": "ven",
+    "word_slug": "convention"
+  },
+  {
+    "root_slug": "ven",
+    "word_slug": "invent"
+  },
+  {
+    "root_slug": "ven",
+    "word_slug": "prevent"
+  },
+  {
+    "root_slug": "ven",
+    "word_slug": "intervene"
+  },
+  {
+    "root_slug": "ven",
+    "word_slug": "adventure"
+  },
+  {
+    "root_slug": "ven",
+    "word_slug": "convenient"
+  },
+  {
+    "root_slug": "ven",
+    "word_slug": "revenue"
+  },
+  {
+    "root_slug": "ven",
+    "word_slug": "circumvent"
+  },
+  {
+    "root_slug": "ven",
+    "word_slug": "venture"
+  },
+  {
+    "root_slug": "uni",
+    "word_slug": "universe"
+  },
+  {
+    "root_slug": "vers",
+    "word_slug": "universe"
+  },
+  {
+    "root_slug": "vers",
+    "word_slug": "diverse"
+  },
+  {
+    "root_slug": "vers",
+    "word_slug": "reverse"
+  },
+  {
+    "root_slug": "vers",
+    "word_slug": "versatile"
+  },
+  {
+    "root_slug": "vers",
+    "word_slug": "controversy"
+  },
+  {
+    "root_slug": "vers",
+    "word_slug": "convert"
+  },
+  {
+    "root_slug": "vers",
+    "word_slug": "conversation"
+  },
+  {
+    "root_slug": "vers",
+    "word_slug": "introvert"
+  },
+  {
+    "root_slug": "vers",
+    "word_slug": "extrovert"
+  },
+  {
+    "root_slug": "vers",
+    "word_slug": "advertise"
+  },
+  {
+    "root_slug": "vers",
+    "word_slug": "subvert"
+  },
+  {
+    "root_slug": "vinc",
+    "word_slug": "victory"
+  },
+  {
+    "root_slug": "vinc",
+    "word_slug": "convince"
+  },
+  {
+    "root_slug": "vinc",
+    "word_slug": "invincible"
+  },
+  {
+    "root_slug": "vinc",
+    "word_slug": "convict"
+  },
+  {
+    "root_slug": "vinc",
+    "word_slug": "evict"
+  },
+  {
+    "root_slug": "vinc",
+    "word_slug": "victim"
+  },
+  {
+    "root_slug": "vinc",
+    "word_slug": "province"
+  },
+  {
+    "root_slug": "vinc",
+    "word_slug": "victorious"
+  },
+  {
+    "root_slug": "vis",
+    "word_slug": "visible"
+  },
+  {
+    "root_slug": "vis",
+    "word_slug": "vision"
+  },
+  {
+    "root_slug": "vis",
+    "word_slug": "visual"
+  },
+  {
+    "root_slug": "vis",
+    "word_slug": "supervise"
+  },
+  {
+    "root_slug": "vis",
+    "word_slug": "advise"
+  },
+  {
+    "root_slug": "vis",
+    "word_slug": "revise"
+  },
+  {
+    "root_slug": "vis",
+    "word_slug": "evidence"
+  },
+  {
+    "root_slug": "vis",
+    "word_slug": "television"
+  },
+  {
+    "root_slug": "vis",
+    "word_slug": "video"
+  },
+  {
+    "root_slug": "vis",
+    "word_slug": "survey"
+  },
+  {
+    "root_slug": "vis",
+    "word_slug": "envision"
+  },
+  {
+    "root_slug": "vis",
+    "word_slug": "improvise"
+  },
+  {
+    "root_slug": "viv",
+    "word_slug": "vivid"
+  },
+  {
+    "root_slug": "viv",
+    "word_slug": "survive"
+  },
+  {
+    "root_slug": "viv",
+    "word_slug": "revive"
+  },
+  {
+    "root_slug": "viv",
+    "word_slug": "vital"
+  },
+  {
+    "root_slug": "viv",
+    "word_slug": "vigor"
+  },
+  {
+    "root_slug": "viv",
+    "word_slug": "vivacious"
+  },
+  {
+    "root_slug": "viv",
+    "word_slug": "revitalize"
+  },
+  {
+    "root_slug": "viv",
+    "word_slug": "vigilant"
+  },
+  {
+    "root_slug": "voc",
+    "word_slug": "voice"
+  },
+  {
+    "root_slug": "voc",
+    "word_slug": "vocal"
+  },
+  {
+    "root_slug": "voc",
+    "word_slug": "advocate"
+  },
+  {
+    "root_slug": "voc",
+    "word_slug": "provoke"
+  },
+  {
+    "root_slug": "voc",
+    "word_slug": "invoke"
+  },
+  {
+    "root_slug": "voc",
+    "word_slug": "evoke"
+  },
+  {
+    "root_slug": "voc",
+    "word_slug": "revoke"
+  },
+  {
+    "root_slug": "voc",
+    "word_slug": "vocation"
+  },
+  {
+    "root_slug": "voc",
+    "word_slug": "equivocal"
+  },
+  {
+    "root_slug": "vol",
+    "word_slug": "involve"
+  },
+  {
+    "root_slug": "vol",
+    "word_slug": "evolve"
+  },
+  {
+    "root_slug": "vol",
+    "word_slug": "revolution"
+  },
+  {
+    "root_slug": "vol",
+    "word_slug": "revolve"
+  },
+  {
+    "root_slug": "vol",
+    "word_slug": "volunteer"
+  },
+  {
+    "root_slug": "vol",
+    "word_slug": "voluntary"
+  },
+  {
+    "root_slug": "vol",
+    "word_slug": "volume"
+  },
+  {
+    "root_slug": "vol",
+    "word_slug": "volatile"
+  },
+  {
+    "root_slug": "vol",
+    "word_slug": "benevolent"
+  },
+  {
+    "root_slug": "vol",
+    "word_slug": "vulnerable"
+  },
+  {
+    "root_slug": "zo",
+    "word_slug": "zoo"
+  },
+  {
+    "root_slug": "zo",
+    "word_slug": "zoology"
+  },
+  {
+    "root_slug": "zo",
+    "word_slug": "zoologist"
+  },
+  {
+    "root_slug": "zo",
+    "word_slug": "zodiac"
+  },
+  {
+    "root_slug": "zo",
+    "word_slug": "zoological"
+  }
+]

@@ -1,0 +1,699 @@
+[
+  {
+    "slug": "anti",
+    "form": "anti-",
+    "type": "prefix",
+    "meaning": {
+      "en": "against, opposite",
+      "zh": "反对，对抗"
+    },
+    "overview": {
+      "en": "A Greek-origin prefix meaning \"against\" or \"opposite.\" It appears in everyday words like \"antibiotic\" and in political or scientific terminology.",
+      "zh": "源自希腊语的前缀，表示\"反对\"或\"对立\"。常见于日常词汇如 antibiotic，也广泛用于政治和科学术语。"
+    },
+    "origin_lang": "Greek",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "auto",
+    "form": "auto-",
+    "type": "prefix",
+    "meaning": {
+      "en": "self",
+      "zh": "自身，自动"
+    },
+    "overview": {
+      "en": "From Greek \"autós\" meaning \"self.\" It forms words describing things done by oneself or operating independently.",
+      "zh": "源自希腊语 \"autós\"，意为\"自己\"。构成表示自行完成或自动运行的词汇。"
+    },
+    "origin_lang": "Greek",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "co",
+    "form": "co-",
+    "type": "prefix",
+    "meaning": {
+      "en": "together, with",
+      "zh": "共同，一起"
+    },
+    "overview": {
+      "en": "A Latin-origin prefix meaning \"together\" or \"jointly.\" It signals cooperation or mutual action between parties.",
+      "zh": "源自拉丁语的前缀，表示\"共同\"或\"联合\"。表示各方之间的合作或共同行为。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "counter",
+    "form": "counter-",
+    "type": "prefix",
+    "meaning": {
+      "en": "against, in return",
+      "zh": "反对，对应"
+    },
+    "overview": {
+      "en": "Derived from Latin \"contra\" through Old French \"contre.\" It indicates opposition or a reciprocal action.",
+      "zh": "经由古法语 \"contre\" 源自拉丁语 \"contra\"。表示反对或相互对应的行为。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "de",
+    "form": "de-",
+    "type": "prefix",
+    "meaning": {
+      "en": "down, away, reversal",
+      "zh": "向下，去除，逆转"
+    },
+    "overview": {
+      "en": "A versatile Latin prefix indicating removal, reversal, or downward movement. It appears in high-frequency verbs and abstract nouns.",
+      "zh": "用途广泛的拉丁语前缀，表示去除、逆转或向下运动。常出现在高频动词和抽象名词中。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "dis",
+    "form": "dis-",
+    "type": "prefix",
+    "meaning": {
+      "en": "not, apart, away",
+      "zh": "不，分离"
+    },
+    "overview": {
+      "en": "A Latin prefix expressing negation, separation, or reversal. It is one of the most productive prefixes in English.",
+      "zh": "拉丁语前缀，表示否定、分离或逆转。是英语中最常用的前缀之一。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "en",
+    "form": "en-/em-",
+    "type": "prefix",
+    "meaning": {
+      "en": "to put into, to cause",
+      "zh": "使成为，置于"
+    },
+    "overview": {
+      "en": "From Old French and Latin, this prefix turns nouns or adjectives into verbs meaning \"to cause to be\" or \"to put into.\" The form \"em-\" appears before b, m, and p.",
+      "zh": "源自古法语和拉丁语，将名词或形容词变为动词，表示\"使成为\"或\"放入\"。在 b、m、p 前变形为 \"em-\"。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "ex",
+    "form": "ex-",
+    "type": "prefix",
+    "meaning": {
+      "en": "out of, former",
+      "zh": "出自，前任"
+    },
+    "overview": {
+      "en": "A Latin prefix meaning \"out of\" or \"from.\" In modern usage it also denotes a former status, as in \"ex-president.\"",
+      "zh": "拉丁语前缀，意为\"从...中出来\"。在现代用法中也表示\"前任\"，如 ex-president。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "hyper",
+    "form": "hyper-",
+    "type": "prefix",
+    "meaning": {
+      "en": "over, excessive",
+      "zh": "过度，超越"
+    },
+    "overview": {
+      "en": "From Greek \"hyper\" meaning \"over\" or \"beyond.\" It indicates excess or something above normal levels.",
+      "zh": "源自希腊语 \"hyper\"，意为\"超过\"或\"在...之上\"。表示过度或超出正常水平。"
+    },
+    "origin_lang": "Greek",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "in",
+    "form": "in-/im-/il-/ir-",
+    "type": "prefix",
+    "meaning": {
+      "en": "not, opposite of",
+      "zh": "不，相反的"
+    },
+    "overview": {
+      "en": "A Latin negative prefix that assimilates to the following consonant: \"im-\" before b/m/p, \"il-\" before l, \"ir-\" before r. One of the most frequent negation prefixes in English.",
+      "zh": "拉丁语否定前缀，会随后续辅音发生同化变形：b/m/p 前变为 \"im-\"，l 前变为 \"il-\"，r 前变为 \"ir-\"。英语中最常见的否定前缀之一。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "inter",
+    "form": "inter-",
+    "type": "prefix",
+    "meaning": {
+      "en": "between, among",
+      "zh": "在...之间，相互"
+    },
+    "overview": {
+      "en": "A Latin prefix meaning \"between\" or \"among.\" It describes mutual or reciprocal relationships and is common in academic and everyday vocabulary.",
+      "zh": "拉丁语前缀，意为\"在...之间\"或\"互相\"。描述相互关系，学术和日常词汇中均常见。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "mis",
+    "form": "mis-",
+    "type": "prefix",
+    "meaning": {
+      "en": "wrongly, badly",
+      "zh": "错误地，不当地"
+    },
+    "overview": {
+      "en": "An Old English prefix indicating error or incorrect action. It attaches freely to verbs and nouns to express that something was done wrongly.",
+      "zh": "古英语前缀，表示错误或不当行为。可自由附加在动词和名词前，表示某事做错了。"
+    },
+    "origin_lang": "Old English",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "out",
+    "form": "out-",
+    "type": "prefix",
+    "meaning": {
+      "en": "surpassing, external",
+      "zh": "超过，外部"
+    },
+    "overview": {
+      "en": "A Germanic prefix meaning \"beyond\" or \"exceeding.\" When added to verbs it often means to surpass someone in that action.",
+      "zh": "日耳曼语前缀，意为\"超出\"或\"在外\"。附加在动词前常表示在该行为上超过他人。"
+    },
+    "origin_lang": "Old English",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "over",
+    "form": "over-",
+    "type": "prefix",
+    "meaning": {
+      "en": "excessively, above",
+      "zh": "过度地，在上方"
+    },
+    "overview": {
+      "en": "An Old English prefix expressing excess or position above. It is extremely productive and can combine with almost any verb or adjective.",
+      "zh": "古英语前缀，表示过度或位于上方。构词能力极强，几乎可与任何动词或形容词组合。"
+    },
+    "origin_lang": "Old English",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "pre",
+    "form": "pre-",
+    "type": "prefix",
+    "meaning": {
+      "en": "before",
+      "zh": "在...之前"
+    },
+    "overview": {
+      "en": "A Latin prefix meaning \"before\" in time or order. It is widely used in everyday, academic, and technical vocabulary.",
+      "zh": "拉丁语前缀，表示时间或顺序上的\"之前\"。在日常、学术和技术词汇中广泛使用。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "re",
+    "form": "re-",
+    "type": "prefix",
+    "meaning": {
+      "en": "again, back",
+      "zh": "再，回"
+    },
+    "overview": {
+      "en": "One of the most common English prefixes, indicating repetition or reversal of an action. It traces back to Latin \"re-\" and appears in thousands of English words.",
+      "zh": "最常见的英语前缀之一，表示动作的重复或回转。源自拉丁语 \"re-\"，出现在数千个英语词汇中。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "sub",
+    "form": "sub-",
+    "type": "prefix",
+    "meaning": {
+      "en": "under, below",
+      "zh": "在...下面，次级"
+    },
+    "overview": {
+      "en": "A Latin prefix meaning \"under\" or \"below.\" It indicates a lower position, a lesser degree, or a subordinate relationship.",
+      "zh": "拉丁语前缀，意为\"在...之下\"。表示较低位置、较低程度或从属关系。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "super",
+    "form": "super-",
+    "type": "prefix",
+    "meaning": {
+      "en": "above, beyond",
+      "zh": "在...之上，超级"
+    },
+    "overview": {
+      "en": "A Latin prefix meaning \"above\" or \"beyond.\" It denotes something of a higher degree, larger scope, or exceptional quality.",
+      "zh": "拉丁语前缀，意为\"在...之上\"或\"超越\"。表示更高程度、更大范围或出众品质。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "trans",
+    "form": "trans-",
+    "type": "prefix",
+    "meaning": {
+      "en": "across, beyond",
+      "zh": "跨越，穿越"
+    },
+    "overview": {
+      "en": "A Latin prefix meaning \"across\" or \"beyond.\" It conveys the idea of movement from one side to another or change of state.",
+      "zh": "拉丁语前缀，意为\"横跨\"或\"穿越\"。传达从一边到另一边的移动或状态变化之意。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "un",
+    "form": "un-",
+    "type": "prefix",
+    "meaning": {
+      "en": "not, reversal",
+      "zh": "不，逆转"
+    },
+    "overview": {
+      "en": "A native English prefix for negation or reversal. It is the most productive negative prefix in English and can attach to adjectives, adverbs, and verbs.",
+      "zh": "英语本土的否定或逆转前缀。是英语中最高产的否定前缀，可附加在形容词、副词和动词前。"
+    },
+    "origin_lang": "Old English",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "under",
+    "form": "under-",
+    "type": "prefix",
+    "meaning": {
+      "en": "below, insufficiently",
+      "zh": "在下方，不足"
+    },
+    "overview": {
+      "en": "An Old English prefix indicating a position beneath or an insufficient degree. It contrasts with \"over-\" and modifies verbs, nouns, and adjectives.",
+      "zh": "古英语前缀，表示在下方或程度不足。与 \"over-\" 构成对比，可修饰动词、名词和形容词。"
+    },
+    "origin_lang": "Old English",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "able",
+    "form": "-able/-ible",
+    "type": "suffix",
+    "meaning": {
+      "en": "capable of, worthy of",
+      "zh": "能够...的，值得...的"
+    },
+    "overview": {
+      "en": "A Latin-origin suffix forming adjectives that indicate capability or worthiness. \"-able\" attaches to native or French-origin stems; \"-ible\" often appears with Latin stems.",
+      "zh": "源自拉丁语的后缀，构成形容词，表示有能力或值得。\"-able\" 附加在本土或法语词干后；\"-ible\" 常附加在拉丁词干后。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "al",
+    "form": "-al/-ial",
+    "type": "suffix",
+    "meaning": {
+      "en": "relating to, having the nature of",
+      "zh": "与...有关的，具有...性质的"
+    },
+    "overview": {
+      "en": "A Latin suffix that forms adjectives meaning \"of or relating to.\" It is extremely common in academic and scientific English.",
+      "zh": "拉丁语后缀，构成形容词，意为\"与...有关的\"。在学术和科学英语中极为常见。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "ate",
+    "form": "-ate",
+    "type": "suffix",
+    "meaning": {
+      "en": "to make, having",
+      "zh": "使成为，具有"
+    },
+    "overview": {
+      "en": "A versatile Latin suffix that can form verbs (activate), adjectives (accurate), and nouns (candidate). As a verb suffix it means \"to make or cause.\"",
+      "zh": "用途广泛的拉丁语后缀，可构成动词（activate）、形容词（accurate）和名词（candidate）。作为动词后缀表示\"使成为\"。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "dom",
+    "form": "-dom",
+    "type": "suffix",
+    "meaning": {
+      "en": "state, realm, condition",
+      "zh": "状态，领域，境况"
+    },
+    "overview": {
+      "en": "An Old English suffix forming nouns that denote a state, condition, or domain. It originates from a word meaning \"judgment\" or \"authority.\"",
+      "zh": "古英语后缀，构成名词，表示某种状态、条件或领域。其词源含\"裁判\"或\"权威\"之意。"
+    },
+    "origin_lang": "Old English",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "er",
+    "form": "-er/-or",
+    "type": "suffix",
+    "meaning": {
+      "en": "one who does, agent",
+      "zh": "做...的人，施事者"
+    },
+    "overview": {
+      "en": "One of the most common agent suffixes in English. \"-er\" is the native English form while \"-or\" comes from Latin. Both create nouns denoting a person or thing that performs an action.",
+      "zh": "英语中最常见的施事者后缀之一。\"-er\" 是英语本土形式，\"-or\" 源自拉丁语。两者都构成表示执行某动作的人或物的名词。"
+    },
+    "origin_lang": "Old English",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "ful",
+    "form": "-ful",
+    "type": "suffix",
+    "meaning": {
+      "en": "full of, characterized by",
+      "zh": "充满...的，以...为特征的"
+    },
+    "overview": {
+      "en": "An Old English suffix meaning \"full of\" or \"having the quality of.\" It forms adjectives from nouns and is one of the first suffixes English learners encounter.",
+      "zh": "古英语后缀，意为\"充满...的\"或\"具有...品质的\"。将名词变为形容词，是英语学习者最早接触的后缀之一。"
+    },
+    "origin_lang": "Old English",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "ify",
+    "form": "-ify",
+    "type": "suffix",
+    "meaning": {
+      "en": "to make, to cause to become",
+      "zh": "使成为，使变成"
+    },
+    "overview": {
+      "en": "A Latin-origin suffix that turns nouns and adjectives into verbs meaning \"to make\" or \"to cause to be.\" It is common in both everyday and formal English.",
+      "zh": "源自拉丁语的后缀，将名词和形容词变为动词，意为\"使成为\"。在日常和正式英语中都很常见。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "ist",
+    "form": "-ist",
+    "type": "suffix",
+    "meaning": {
+      "en": "one who practices, believer in",
+      "zh": "从事...的人，...主义者"
+    },
+    "overview": {
+      "en": "From Greek \"-istēs\" via Latin and French, this suffix denotes a person who practices a skill, follows a belief, or specializes in a field.",
+      "zh": "经拉丁语和法语源自希腊语 \"-istēs\"，表示从事某技能、信奉某信仰或专精某领域的人。"
+    },
+    "origin_lang": "Greek",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "ity",
+    "form": "-ity/-ty",
+    "type": "suffix",
+    "meaning": {
+      "en": "state, quality, condition",
+      "zh": "状态，性质，条件"
+    },
+    "overview": {
+      "en": "A Latin suffix forming abstract nouns from adjectives to express a state or quality. It is extremely productive in formal and academic registers.",
+      "zh": "拉丁语后缀，将形容词变为抽象名词以表达某种状态或性质。在正式和学术语域中极为高产。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "ive",
+    "form": "-ive",
+    "type": "suffix",
+    "meaning": {
+      "en": "tending to, having the nature of",
+      "zh": "倾向于...的，具有...性质的"
+    },
+    "overview": {
+      "en": "A Latin suffix forming adjectives that describe a tendency or characteristic. Many \"-ive\" adjectives also function as nouns.",
+      "zh": "拉丁语后缀，构成描述倾向或特征的形容词。许多 \"-ive\" 形容词也可用作名词。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "ize",
+    "form": "-ize/-ise",
+    "type": "suffix",
+    "meaning": {
+      "en": "to make, to become",
+      "zh": "使成为，变成"
+    },
+    "overview": {
+      "en": "From Greek \"-izein\" via Latin, this suffix turns nouns and adjectives into verbs. American English prefers \"-ize\" while British English sometimes uses \"-ise.\"",
+      "zh": "经拉丁语源自希腊语 \"-izein\"，将名词和形容词变为动词。美式英语偏好 \"-ize\"，英式英语有时用 \"-ise\"。"
+    },
+    "origin_lang": "Greek",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "less",
+    "form": "-less",
+    "type": "suffix",
+    "meaning": {
+      "en": "without, lacking",
+      "zh": "没有...的，缺乏...的"
+    },
+    "overview": {
+      "en": "A native English suffix meaning \"without\" or \"free from.\" It forms adjectives from nouns and contrasts with \"-ful.\"",
+      "zh": "英语本土后缀，意为\"没有\"或\"免于\"。将名词变为形容词，与 \"-ful\" 构成对比。"
+    },
+    "origin_lang": "Old English",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "logy",
+    "form": "-logy",
+    "type": "suffix",
+    "meaning": {
+      "en": "study of, science of",
+      "zh": "...学，...论"
+    },
+    "overview": {
+      "en": "From Greek \"logos\" meaning \"word, reason, study.\" It forms nouns naming academic disciplines or fields of knowledge.",
+      "zh": "源自希腊语 \"logos\"，意为\"话语、理性、研究\"。构成表示学科或知识领域的名词。"
+    },
+    "origin_lang": "Greek",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "ly",
+    "form": "-ly",
+    "type": "suffix",
+    "meaning": {
+      "en": "in the manner of",
+      "zh": "以...方式地"
+    },
+    "overview": {
+      "en": "An Old English suffix that converts adjectives into adverbs. It is the single most common adverb-forming suffix in the language.",
+      "zh": "古英语后缀，将形容词变为副词。是英语中最常见的副词构成后缀。"
+    },
+    "origin_lang": "Old English",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "ment",
+    "form": "-ment",
+    "type": "suffix",
+    "meaning": {
+      "en": "action, result, state",
+      "zh": "行为，结果，状态"
+    },
+    "overview": {
+      "en": "A Latin-origin suffix forming nouns from verbs. It denotes the action or process of doing something, or its result.",
+      "zh": "源自拉丁语的后缀，从动词构成名词。表示做某事的行为、过程或结果。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "ness",
+    "form": "-ness",
+    "type": "suffix",
+    "meaning": {
+      "en": "state, quality",
+      "zh": "状态，性质"
+    },
+    "overview": {
+      "en": "A native English suffix that forms abstract nouns from adjectives, expressing a state or quality. It is the most productive native noun-forming suffix.",
+      "zh": "英语本土后缀，将形容词变为抽象名词，表达某种状态或性质。是最高产的英语本土名词构成后缀。"
+    },
+    "origin_lang": "Old English",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "ous",
+    "form": "-ous/-ious",
+    "type": "suffix",
+    "meaning": {
+      "en": "full of, having the quality of",
+      "zh": "充满...的，具有...特质的"
+    },
+    "overview": {
+      "en": "A Latin suffix forming adjectives that describe possessing a quality or characteristic. It is widespread in scientific and literary vocabulary.",
+      "zh": "拉丁语后缀，构成描述具有某种品质或特征的形容词。在科学和文学词汇中非常普遍。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "ship",
+    "form": "-ship",
+    "type": "suffix",
+    "meaning": {
+      "en": "status, office, skill",
+      "zh": "身份，职位，技能"
+    },
+    "overview": {
+      "en": "An Old English suffix forming nouns that denote a status, relationship, or skill. It derives from a root meaning \"to shape\" or \"to create.\"",
+      "zh": "古英语后缀，构成名词，表示身份、关系或技能。源自意为\"塑造\"或\"创造\"的词根。"
+    },
+    "origin_lang": "Old English",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "tion",
+    "form": "-tion/-sion",
+    "type": "suffix",
+    "meaning": {
+      "en": "act, process, state",
+      "zh": "行为，过程，状态"
+    },
+    "overview": {
+      "en": "The most common noun-forming suffix in English, derived from Latin. \"-tion\" and \"-sion\" turn verbs into nouns expressing the action or its result.",
+      "zh": "英语中最常见的名词构成后缀，源自拉丁语。\"-tion\" 和 \"-sion\" 将动词变为表示行为或结果的名词。"
+    },
+    "origin_lang": "Latin",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  },
+  {
+    "slug": "ward",
+    "form": "-ward",
+    "type": "suffix",
+    "meaning": {
+      "en": "in the direction of",
+      "zh": "朝...方向"
+    },
+    "overview": {
+      "en": "An Old English suffix indicating direction or tendency. It forms adjectives and adverbs showing movement toward a place or state.",
+      "zh": "古英语后缀，表示方向或趋势。构成表示朝某处或某状态移动的形容词和副词。"
+    },
+    "origin_lang": "Old English",
+    "variants": null,
+    "pos_function": null,
+    "grimm_law_group": null
+  }
+]

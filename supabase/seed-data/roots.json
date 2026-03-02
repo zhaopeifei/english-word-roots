@@ -1,0 +1,2701 @@
+[
+  {
+    "slug": "act",
+    "variants": [
+      "act",
+      "ag"
+    ],
+    "meaning": {
+      "en": "do, act, drive",
+      "zh": "干/做/动"
+    },
+    "origin_summary": {
+      "en": "From Latin \"agere\" (to do, drive) and its past participle \"actum\".",
+      "zh": "源自拉丁语 agere（做、驱动）及其过去分词 actum。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin agere, actum",
+    "pie_root": null,
+    "semantic_domains": [
+      "action"
+    ],
+    "grimm_law_group": "g/k/c/q/qu/h/j"
+  },
+  {
+    "slug": "ali",
+    "variants": [
+      "ali",
+      "alter"
+    ],
+    "meaning": {
+      "en": "other, another",
+      "zh": "别的，其他的"
+    },
+    "origin_summary": {
+      "en": "From Latin \"alius\" meaning other, another.",
+      "zh": "源自拉丁语 alius，意为其他的、另一个。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin alius",
+    "pie_root": null,
+    "semantic_domains": [
+      "change"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "am",
+    "variants": [
+      "am",
+      "amor",
+      "amat"
+    ],
+    "meaning": {
+      "en": "love",
+      "zh": "爱，情爱"
+    },
+    "origin_summary": {
+      "en": "From Latin \"amāre\" (to love) and \"amor\" (love).",
+      "zh": "源自拉丁语 amāre（爱）和 amor（爱情）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin amāre",
+    "pie_root": null,
+    "semantic_domains": [
+      "emotion"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "anim",
+    "variants": [
+      "anim"
+    ],
+    "meaning": {
+      "en": "breath, spirit, life",
+      "zh": "气息，呼吸，生命"
+    },
+    "origin_summary": {
+      "en": "From Latin \"anima\" (breath, soul, spirit).",
+      "zh": "源自拉丁语 anima（呼吸、灵魂、精神）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin anima",
+    "pie_root": null,
+    "semantic_domains": [
+      "breathing",
+      "life"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "apt",
+    "variants": [
+      "apt"
+    ],
+    "meaning": {
+      "en": "fit, suitable",
+      "zh": "适当，适应"
+    },
+    "origin_summary": {
+      "en": "From Latin \"aptus\" (fit, suitable, proper).",
+      "zh": "源自拉丁语 aptus（适合的、适当的）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin aptus",
+    "pie_root": null,
+    "semantic_domains": [
+      "other"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "aster",
+    "variants": [
+      "aster",
+      "astr"
+    ],
+    "meaning": {
+      "en": "star",
+      "zh": "星星，星体，天体"
+    },
+    "origin_summary": {
+      "en": "From Greek \"astḗr\" (star) and \"astron\" (constellation).",
+      "zh": "源自希腊语 astḗr（星星）和 astron（星座）。"
+    },
+    "origin_lang": "Greek",
+    "etymology": "Greek astḗr (ἀστήρ)",
+    "pie_root": null,
+    "semantic_domains": [
+      "nature",
+      "light"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "bar",
+    "variants": [
+      "bar",
+      "bal",
+      "ban"
+    ],
+    "meaning": {
+      "en": "bar, rod, obstacle",
+      "zh": "棍，棒，障碍"
+    },
+    "origin_summary": {
+      "en": "From Late Latin \"barra\" (bar, rod) via Old French \"barre\".",
+      "zh": "源自晚期拉丁语 barra（棍棒）经由古法语 barre。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin barra / Old French barre",
+    "pie_root": null,
+    "semantic_domains": [
+      "other"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "bio",
+    "variants": [
+      "bio"
+    ],
+    "meaning": {
+      "en": "life",
+      "zh": "生命"
+    },
+    "origin_summary": {
+      "en": "Derived from the Greek \"βίος\" meaning life, used across biology-related terminology.",
+      "zh": "源自希腊语 \"βίος\"，意为\"生命\"，广泛用于生物学相关术语。"
+    },
+    "origin_lang": "Greek",
+    "etymology": "Greek βίος (bíos)",
+    "pie_root": null,
+    "semantic_domains": [
+      "life",
+      "knowledge"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "bot",
+    "variants": [
+      "bot"
+    ],
+    "meaning": {
+      "en": "plant, herb",
+      "zh": "植物"
+    },
+    "origin_summary": {
+      "en": "From Greek \"botanē\" (plant, herb, pasture).",
+      "zh": "源自希腊语 botanē（植物、草本、牧场）。"
+    },
+    "origin_lang": "Greek",
+    "etymology": "Greek botanē (βοτάνη)",
+    "pie_root": null,
+    "semantic_domains": [
+      "plants"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "cand",
+    "variants": [
+      "cand"
+    ],
+    "meaning": {
+      "en": "white, glow, heat",
+      "zh": "白，白光，热"
+    },
+    "origin_summary": {
+      "en": "From Latin \"candēre\" (to shine, glow white).",
+      "zh": "源自拉丁语 candēre（发光、发白光）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin candēre",
+    "pie_root": null,
+    "semantic_domains": [
+      "light"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "cap",
+    "variants": [
+      "cap",
+      "cip",
+      "cup",
+      "ceiv",
+      "ceit",
+      "cept",
+      "cep"
+    ],
+    "meaning": {
+      "en": "take, seize, hold",
+      "zh": "占取，拿"
+    },
+    "origin_summary": {
+      "en": "From Latin \"capere\" (to take, seize) with variants cip-, cept-, ceiv-.",
+      "zh": "源自拉丁语 capere（拿取、抓住），变体有 cip-、cept-、ceiv-。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin capere",
+    "pie_root": null,
+    "semantic_domains": [
+      "holding"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "car",
+    "variants": [
+      "car",
+      "cur",
+      "cour"
+    ],
+    "meaning": {
+      "en": "vehicle, run, carry",
+      "zh": "车 / 跑，运载，携带"
+    },
+    "origin_summary": {
+      "en": "From Latin \"carrus\" (wheeled vehicle) and \"currere\" (to run).",
+      "zh": "源自拉丁语 carrus（轮式车辆）和 currere（跑）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin carrus / currere",
+    "pie_root": null,
+    "semantic_domains": [
+      "transport",
+      "movement"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "carn",
+    "variants": [
+      "carn"
+    ],
+    "meaning": {
+      "en": "flesh, meat",
+      "zh": "肉"
+    },
+    "origin_summary": {
+      "en": "From Latin \"carō\" (genitive \"carnis\"), meaning flesh, meat.",
+      "zh": "源自拉丁语 carō（属格 carnis），意为肉、肉体。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin carō, carnis",
+    "pie_root": null,
+    "semantic_domains": [
+      "body",
+      "food"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "ced",
+    "variants": [
+      "ced",
+      "ceed",
+      "cess"
+    ],
+    "meaning": {
+      "en": "go, yield, move",
+      "zh": "走"
+    },
+    "origin_summary": {
+      "en": "From Latin \"cēdere\" (to go, yield, withdraw) with past participle \"cessum\".",
+      "zh": "源自拉丁语 cēdere（走、让步、撤退），过去分词 cessum。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin cēdere",
+    "pie_root": null,
+    "semantic_domains": [
+      "movement",
+      "walking"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "cern",
+    "variants": [
+      "cern",
+      "cret",
+      "creet",
+      "cre"
+    ],
+    "meaning": {
+      "en": "separate, distinguish, sift",
+      "zh": "辨别，识别，分离出，筛选"
+    },
+    "origin_summary": {
+      "en": "From Latin \"cernere\" (to sift, separate, distinguish).",
+      "zh": "源自拉丁语 cernere（筛选、分离、辨别）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin cernere",
+    "pie_root": null,
+    "semantic_domains": [
+      "choosing",
+      "knowledge"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "cid",
+    "variants": [
+      "cid"
+    ],
+    "meaning": {
+      "en": "cut, kill",
+      "zh": "切，杀"
+    },
+    "origin_summary": {
+      "en": "From Latin \"caedere\" (to cut, strike, kill).",
+      "zh": "源自拉丁语 caedere（切割、打击、杀死）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin caedere",
+    "pie_root": null,
+    "semantic_domains": [
+      "cutting"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "circ",
+    "variants": [
+      "circ",
+      "cycl"
+    ],
+    "meaning": {
+      "en": "circle, ring",
+      "zh": "圆"
+    },
+    "origin_summary": {
+      "en": "From Latin \"circus\" (circle, ring) and Greek \"kirkos\" (ring).",
+      "zh": "源自拉丁语 circus（圆、环）和希腊语 kirkos（环）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin circus / Greek kirkos",
+    "pie_root": null,
+    "semantic_domains": [
+      "movement",
+      "turning"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "claim",
+    "variants": [
+      "claim"
+    ],
+    "meaning": {
+      "en": "shout, call out",
+      "zh": "喊 叫"
+    },
+    "origin_summary": {
+      "en": "From Latin \"clāmāre\" (to shout, cry out, call).",
+      "zh": "源自拉丁语 clāmāre（呼喊、叫喊、呼唤）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin clāmāre",
+    "pie_root": null,
+    "semantic_domains": [
+      "speech"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "crim",
+    "variants": [
+      "crim",
+      "crimin"
+    ],
+    "meaning": {
+      "en": "accusation, crime",
+      "zh": "控诉，罪行"
+    },
+    "origin_summary": {
+      "en": "From Latin \"crīmen\" (accusation, charge, crime).",
+      "zh": "源自拉丁语 crīmen（控诉、指控、罪行）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin crīmen",
+    "pie_root": null,
+    "semantic_domains": [
+      "law"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "cult",
+    "variants": [
+      "cult"
+    ],
+    "meaning": {
+      "en": "cultivate, till, worship",
+      "zh": "耕作"
+    },
+    "origin_summary": {
+      "en": "From Latin \"colere\" (to cultivate, tend, worship) with past participle \"cultum\".",
+      "zh": "源自拉丁语 colere（耕作、照料、崇拜），过去分词 cultum。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin colere, cultum",
+    "pie_root": null,
+    "semantic_domains": [
+      "society",
+      "nature"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "dec",
+    "variants": [
+      "dec"
+    ],
+    "meaning": {
+      "en": "fitting, proper, graceful",
+      "zh": "合适，适当，优雅"
+    },
+    "origin_summary": {
+      "en": "From Latin \"decēre\" (to be fitting, to be proper).",
+      "zh": "源自拉丁语 decēre（适合、得体）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin decēre",
+    "pie_root": null,
+    "semantic_domains": [
+      "other"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "dic",
+    "variants": [
+      "dic",
+      "dict"
+    ],
+    "meaning": {
+      "en": "say, speak, declare",
+      "zh": "说，言"
+    },
+    "origin_summary": {
+      "en": "From Latin \"dīcere\" (to say, speak) with past participle \"dictum\".",
+      "zh": "源自拉丁语 dīcere（说、讲），过去分词 dictum。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin dīcere",
+    "pie_root": null,
+    "semantic_domains": [
+      "speech"
+    ],
+    "grimm_law_group": "d/t/s/z"
+  },
+  {
+    "slug": "dit",
+    "variants": [
+      "dit",
+      "dot",
+      "don",
+      "dow",
+      "dos"
+    ],
+    "meaning": {
+      "en": "give",
+      "zh": "给"
+    },
+    "origin_summary": {
+      "en": "From Latin \"dare\" (to give) with forms \"datum\", \"dōnum\", and \"dōtum\".",
+      "zh": "源自拉丁语 dare（给予），形式有 datum、dōnum 和 dōtum。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin dare, datum",
+    "pie_root": null,
+    "semantic_domains": [
+      "giving"
+    ],
+    "grimm_law_group": "d/t/s/z"
+  },
+  {
+    "slug": "dom",
+    "variants": [
+      "dom",
+      "domat",
+      "domin"
+    ],
+    "meaning": {
+      "en": "house, master, rule",
+      "zh": "屋，屋顶，统治"
+    },
+    "origin_summary": {
+      "en": "From Latin \"domus\" (house) and \"dominus\" (master, lord).",
+      "zh": "源自拉丁语 domus（房屋）和 dominus（主人、统治者）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin domus / dominus",
+    "pie_root": null,
+    "semantic_domains": [
+      "society",
+      "power"
+    ],
+    "grimm_law_group": "d/t/s/z"
+  },
+  {
+    "slug": "dorm",
+    "variants": [
+      "dorm"
+    ],
+    "meaning": {
+      "en": "sleep",
+      "zh": "睡眠，睡"
+    },
+    "origin_summary": {
+      "en": "From Latin \"dormīre\" (to sleep).",
+      "zh": "源自拉丁语 dormīre（睡觉）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin dormīre",
+    "pie_root": null,
+    "semantic_domains": [
+      "sleep"
+    ],
+    "grimm_law_group": "d/t/s/z"
+  },
+  {
+    "slug": "ept",
+    "variants": [
+      "ept"
+    ],
+    "meaning": {
+      "en": "fit, capable",
+      "zh": "适合、有能力"
+    },
+    "origin_summary": {
+      "en": "Variant of Latin \"aptus\" (fit), appearing in compound forms.",
+      "zh": "拉丁语 aptus（适合）的变体，出现在复合词中。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin aptus (variant)",
+    "pie_root": null,
+    "semantic_domains": [
+      "other"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "fac",
+    "variants": [
+      "fac",
+      "fec",
+      "fic",
+      "fit",
+      "front"
+    ],
+    "meaning": {
+      "en": "do, make",
+      "zh": "做 ，干"
+    },
+    "origin_summary": {
+      "en": "From Latin \"facere\" (to do, make) with variants fec-, fic-, fit-, fact-.",
+      "zh": "源自拉丁语 facere（做、制造），变体有 fec-、fic-、fit-、fact-。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin facere",
+    "pie_root": null,
+    "semantic_domains": [
+      "making",
+      "action"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "fer",
+    "variants": [
+      "fer"
+    ],
+    "meaning": {
+      "en": "carry, bear, bring",
+      "zh": "拿，带"
+    },
+    "origin_summary": {
+      "en": "From Latin \"ferre\" (to carry, bear, bring).",
+      "zh": "源自拉丁语 ferre（搬运、承载、带来）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin ferre",
+    "pie_root": null,
+    "semantic_domains": [
+      "transport"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "fess",
+    "variants": [
+      "fess"
+    ],
+    "meaning": {
+      "en": "speak, declare",
+      "zh": "说，宣称"
+    },
+    "origin_summary": {
+      "en": "From Latin \"fatērī\" (to acknowledge, confess), past participle \"fassus\".",
+      "zh": "源自拉丁语 fatērī（承认、忏悔），过去分词 fassus。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin fatērī, fassus",
+    "pie_root": null,
+    "semantic_domains": [
+      "speech"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "flu",
+    "variants": [
+      "flu",
+      "flux",
+      "fus"
+    ],
+    "meaning": {
+      "en": "flow",
+      "zh": "流"
+    },
+    "origin_summary": {
+      "en": "From Latin \"fluere\" (to flow) with variants flux-, fus-.",
+      "zh": "源自拉丁语 fluere（流动），变体有 flux-、fus-。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin fluere",
+    "pie_root": null,
+    "semantic_domains": [
+      "flowing"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "forc",
+    "variants": [
+      "forc"
+    ],
+    "meaning": {
+      "en": "strong, strength",
+      "zh": "力量，强壮"
+    },
+    "origin_summary": {
+      "en": "From Latin \"fortis\" (strong, powerful).",
+      "zh": "源自拉丁语 fortis（强壮的、有力的）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin fortis",
+    "pie_root": null,
+    "semantic_domains": [
+      "strength",
+      "power"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "fortun",
+    "variants": [
+      "fortun"
+    ],
+    "meaning": {
+      "en": "chance, luck, fortune",
+      "zh": "偶然，财富"
+    },
+    "origin_summary": {
+      "en": "From Latin \"fortūna\" (fortune, luck, fate).",
+      "zh": "源自拉丁语 fortūna（命运、运气、财富）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin fortūna",
+    "pie_root": null,
+    "semantic_domains": [
+      "other"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "fund",
+    "variants": [
+      "fund",
+      "found"
+    ],
+    "meaning": {
+      "en": "bottom, base, foundation",
+      "zh": "底，基础"
+    },
+    "origin_summary": {
+      "en": "From Latin \"fundus\" (bottom, base) and \"fundāre\" (to lay the foundation).",
+      "zh": "源自拉丁语 fundus（底部、基础）和 fundāre（奠基）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin fundus",
+    "pie_root": null,
+    "semantic_domains": [
+      "building"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "gen",
+    "variants": [
+      "gen",
+      "gene",
+      "gn"
+    ],
+    "meaning": {
+      "en": "birth, produce, race",
+      "zh": "生，产生"
+    },
+    "origin_summary": {
+      "en": "From Latin \"genus\" (birth, race, kind) and Greek \"genos\" (race, kind).",
+      "zh": "源自拉丁语 genus（出生、种族、种类）和希腊语 genos。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin genus / Greek genos",
+    "pie_root": null,
+    "semantic_domains": [
+      "birth",
+      "making"
+    ],
+    "grimm_law_group": "g/k/c/q/qu/h/j"
+  },
+  {
+    "slug": "gest",
+    "variants": [
+      "gest"
+    ],
+    "meaning": {
+      "en": "carry, bear",
+      "zh": "运送，携，载"
+    },
+    "origin_summary": {
+      "en": "From Latin \"gerere\" (to carry, wage, perform), past participle \"gestum\".",
+      "zh": "源自拉丁语 gerere（搬运、发动、执行），过去分词 gestum。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin gerere, gestum",
+    "pie_root": null,
+    "semantic_domains": [
+      "transport"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "glob",
+    "variants": [
+      "glob"
+    ],
+    "meaning": {
+      "en": "sphere, ball",
+      "zh": "球，球体，球状"
+    },
+    "origin_summary": {
+      "en": "From Latin \"globus\" (sphere, ball, globe).",
+      "zh": "源自拉丁语 globus（球体、球、地球仪）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin globus",
+    "pie_root": null,
+    "semantic_domains": [
+      "earth"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "grav",
+    "variants": [
+      "grav"
+    ],
+    "meaning": {
+      "en": "heavy, weighty",
+      "zh": "重 加重"
+    },
+    "origin_summary": {
+      "en": "From Latin \"gravis\" (heavy, weighty, serious).",
+      "zh": "源自拉丁语 gravis（沉重的、严肃的）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin gravis",
+    "pie_root": null,
+    "semantic_domains": [
+      "other"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "her",
+    "variants": [
+      "her"
+    ],
+    "meaning": {
+      "en": "stick, cling",
+      "zh": "粘着"
+    },
+    "origin_summary": {
+      "en": "From Latin \"haerēre\" (to stick, cling, adhere).",
+      "zh": "源自拉丁语 haerēre（粘住、依附、坚持）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin haerēre",
+    "pie_root": null,
+    "semantic_domains": [
+      "binding"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "hospit",
+    "variants": [
+      "hospit"
+    ],
+    "meaning": {
+      "en": "guest, host",
+      "zh": "客人，招待"
+    },
+    "origin_summary": {
+      "en": "From Latin \"hospes\" (guest, host, stranger).",
+      "zh": "源自拉丁语 hospes（客人、主人、陌生人）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin hospes, hospitis",
+    "pie_root": null,
+    "semantic_domains": [
+      "society"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "hum",
+    "variants": [
+      "hum"
+    ],
+    "meaning": {
+      "en": "earth, ground, moist",
+      "zh": "土地，湿"
+    },
+    "origin_summary": {
+      "en": "From Latin \"humus\" (earth, soil, ground).",
+      "zh": "源自拉丁语 humus（土壤、泥土、大地）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin humus",
+    "pie_root": null,
+    "semantic_domains": [
+      "earth"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "it",
+    "variants": [
+      "it"
+    ],
+    "meaning": {
+      "en": "go, walk",
+      "zh": "走"
+    },
+    "origin_summary": {
+      "en": "From Latin \"īre\" (to go) with past participle \"itum\".",
+      "zh": "源自拉丁语 īre（走），过去分词 itum。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin īre, itum",
+    "pie_root": null,
+    "semantic_domains": [
+      "walking",
+      "movement"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "jec",
+    "variants": [
+      "jec",
+      "jac",
+      "jet"
+    ],
+    "meaning": {
+      "en": "throw, cast",
+      "zh": "投，掷，扔"
+    },
+    "origin_summary": {
+      "en": "From Latin \"iacere\" (to throw) with forms jec-, ject-, jet-.",
+      "zh": "源自拉丁语 iacere（投掷），形式有 jec-、ject-、jet-。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin iacere, iactum",
+    "pie_root": null,
+    "semantic_domains": [
+      "pushing"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "jur",
+    "variants": [
+      "jur",
+      "jud",
+      "jus"
+    ],
+    "meaning": {
+      "en": "law, right, swear",
+      "zh": "法律，正义，正直"
+    },
+    "origin_summary": {
+      "en": "From Latin \"iūs\" (law, right) and \"iūrāre\" (to swear).",
+      "zh": "源自拉丁语 iūs（法律、权利）和 iūrāre（宣誓）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin iūs, iūris",
+    "pie_root": null,
+    "semantic_domains": [
+      "law"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "lav",
+    "variants": [
+      "lav"
+    ],
+    "meaning": {
+      "en": "wash, rinse",
+      "zh": "冲洗"
+    },
+    "origin_summary": {
+      "en": "From Latin \"lavāre\" (to wash, bathe).",
+      "zh": "源自拉丁语 lavāre（洗涤、沐浴）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin lavāre",
+    "pie_root": null,
+    "semantic_domains": [
+      "flowing"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "lect",
+    "variants": [
+      "lect",
+      "lig",
+      "leg"
+    ],
+    "meaning": {
+      "en": "choose, read, gather",
+      "zh": "选 / 法律 / 说"
+    },
+    "origin_summary": {
+      "en": "From Latin \"legere\" (to choose, gather, read) with past participle \"lectum\".",
+      "zh": "源自拉丁语 legere（选择、收集、阅读），过去分词 lectum。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin legere, lectum",
+    "pie_root": null,
+    "semantic_domains": [
+      "choosing",
+      "knowledge"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "light",
+    "variants": [
+      "light"
+    ],
+    "meaning": {
+      "en": "light, bright, not heavy",
+      "zh": "光，轻，愉快"
+    },
+    "origin_summary": {
+      "en": "From Old English \"lēoht\" (light, bright), cognate with Latin \"lūx\".",
+      "zh": "源自古英语 lēoht（光、明亮），与拉丁语 lūx 同源。"
+    },
+    "origin_lang": "Old English",
+    "etymology": "Old English lēoht / Latin lūx",
+    "pie_root": null,
+    "semantic_domains": [
+      "light"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "loc",
+    "variants": [
+      "loc"
+    ],
+    "meaning": {
+      "en": "place",
+      "zh": "地方"
+    },
+    "origin_summary": {
+      "en": "From Latin \"locus\" (place, position, spot).",
+      "zh": "源自拉丁语 locus（地方、位置、处所）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin locus",
+    "pie_root": null,
+    "semantic_domains": [
+      "position"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "lud",
+    "variants": [
+      "lud"
+    ],
+    "meaning": {
+      "en": "play, game",
+      "zh": "游戏，扮演"
+    },
+    "origin_summary": {
+      "en": "From Latin \"lūdere\" (to play, mock, deceive).",
+      "zh": "源自拉丁语 lūdere（玩耍、嘲弄、欺骗）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin lūdere",
+    "pie_root": null,
+    "semantic_domains": [
+      "other"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "main",
+    "variants": [
+      "main"
+    ],
+    "meaning": {
+      "en": "stay, dwell, remain",
+      "zh": "停留，驻"
+    },
+    "origin_summary": {
+      "en": "From Latin \"manēre\" (to stay, remain, dwell).",
+      "zh": "源自拉丁语 manēre（停留、保持、居住）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin manēre",
+    "pie_root": null,
+    "semantic_domains": [
+      "standing"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "maj",
+    "variants": [
+      "maj",
+      "max",
+      "magn"
+    ],
+    "meaning": {
+      "en": "great, large",
+      "zh": "大"
+    },
+    "origin_summary": {
+      "en": "From Latin \"māior\" (greater) and \"magnus\" (great, large).",
+      "zh": "源自拉丁语 māior（更大的）和 magnus（伟大的、大的）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin māior / magnus",
+    "pie_root": null,
+    "semantic_domains": [
+      "size",
+      "amount"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "man",
+    "variants": [
+      "man"
+    ],
+    "meaning": {
+      "en": "hand",
+      "zh": "手"
+    },
+    "origin_summary": {
+      "en": "From Latin \"manus\" (hand).",
+      "zh": "源自拉丁语 manus（手）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin manus",
+    "pie_root": null,
+    "semantic_domains": [
+      "body"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "mand",
+    "variants": [
+      "mand"
+    ],
+    "meaning": {
+      "en": "command, order, entrust",
+      "zh": "命令"
+    },
+    "origin_summary": {
+      "en": "From Latin \"mandāre\" (to command, entrust, commission).",
+      "zh": "源自拉丁语 mandāre（命令、委托、委任）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin mandāre",
+    "pie_root": null,
+    "semantic_domains": [
+      "ordering",
+      "power"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "mat",
+    "variants": [
+      "mat"
+    ],
+    "meaning": {
+      "en": "ripe, mature",
+      "zh": "成熟"
+    },
+    "origin_summary": {
+      "en": "From Latin \"mātūrus\" (ripe, mature, timely).",
+      "zh": "源自拉丁语 mātūrus（成熟的、到期的、及时的）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin mātūrus",
+    "pie_root": null,
+    "semantic_domains": [
+      "change"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "medi",
+    "variants": [
+      "medi"
+    ],
+    "meaning": {
+      "en": "middle, heal",
+      "zh": "中间 / 治疗"
+    },
+    "origin_summary": {
+      "en": "From Latin \"medius\" (middle) and \"medicus\" (healer, physician).",
+      "zh": "源自拉丁语 medius（中间的）和 medicus（治疗者、医生）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin medius / medicus",
+    "pie_root": null,
+    "semantic_domains": [
+      "health",
+      "position"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "merg",
+    "variants": [
+      "merg"
+    ],
+    "meaning": {
+      "en": "sink, dip, plunge",
+      "zh": "沉没，浸没"
+    },
+    "origin_summary": {
+      "en": "From Latin \"mergere\" (to dip, sink, immerse).",
+      "zh": "源自拉丁语 mergere（浸、沉、淹没）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin mergere",
+    "pie_root": null,
+    "semantic_domains": [
+      "movement",
+      "flowing"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "migr",
+    "variants": [
+      "migr"
+    ],
+    "meaning": {
+      "en": "move, change place",
+      "zh": "迁移，移"
+    },
+    "origin_summary": {
+      "en": "From Latin \"migrāre\" (to change one's residence, move).",
+      "zh": "源自拉丁语 migrāre（搬迁、迁移）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin migrāre",
+    "pie_root": null,
+    "semantic_domains": [
+      "movement"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "min",
+    "variants": [
+      "min"
+    ],
+    "meaning": {
+      "en": "small, tiny, lessen",
+      "zh": "小，微，袖珍"
+    },
+    "origin_summary": {
+      "en": "From Latin \"minor\" (smaller) and \"minuere\" (to lessen).",
+      "zh": "源自拉丁语 minor（较小的）和 minuere（减少）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin minor / minuere",
+    "pie_root": null,
+    "semantic_domains": [
+      "size"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "miss",
+    "variants": [
+      "miss",
+      "mit"
+    ],
+    "meaning": {
+      "en": "send, throw, let go",
+      "zh": "送，投，发"
+    },
+    "origin_summary": {
+      "en": "From Latin \"mittere\" (to send, let go) with past participle \"missum\".",
+      "zh": "源自拉丁语 mittere（发送、放走），过去分词 missum。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin mittere, missum",
+    "pie_root": null,
+    "semantic_domains": [
+      "sending"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "mon",
+    "variants": [
+      "mon"
+    ],
+    "meaning": {
+      "en": "warn, remind, advise",
+      "zh": "警告，提醒，单一"
+    },
+    "origin_summary": {
+      "en": "From Latin \"monēre\" (to warn, advise, remind).",
+      "zh": "源自拉丁语 monēre（警告、建议、提醒）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin monēre",
+    "pie_root": null,
+    "semantic_domains": [
+      "speech",
+      "knowledge"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "monstr",
+    "variants": [
+      "monstr"
+    ],
+    "meaning": {
+      "en": "show, point out, warn",
+      "zh": "显现，警告"
+    },
+    "origin_summary": {
+      "en": "From Latin \"monstrāre\" (to show, point out) related to \"monēre\" (to warn).",
+      "zh": "源自拉丁语 monstrāre（展示、指出），与 monēre（警告）相关。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin monstrāre",
+    "pie_root": null,
+    "semantic_domains": [
+      "seeing"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "mort",
+    "variants": [
+      "mort"
+    ],
+    "meaning": {
+      "en": "death",
+      "zh": "死"
+    },
+    "origin_summary": {
+      "en": "From Latin \"mors\" (death) with stem \"mort-\".",
+      "zh": "源自拉丁语 mors（死亡），词干 mort-。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin mors, mortis",
+    "pie_root": null,
+    "semantic_domains": [
+      "death"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "mov",
+    "variants": [
+      "mov",
+      "mob",
+      "mot"
+    ],
+    "meaning": {
+      "en": "move",
+      "zh": "移动"
+    },
+    "origin_summary": {
+      "en": "From Latin \"movēre\" (to move) with variants mob-, mot-.",
+      "zh": "源自拉丁语 movēre（移动），变体有 mob-、mot-。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin movēre",
+    "pie_root": null,
+    "semantic_domains": [
+      "movement"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "nat",
+    "variants": [
+      "nat"
+    ],
+    "meaning": {
+      "en": "born, birth, nature",
+      "zh": "出生，生"
+    },
+    "origin_summary": {
+      "en": "From Latin \"nāscī\" (to be born), past participle \"nātus\".",
+      "zh": "源自拉丁语 nāscī（出生），过去分词 nātus。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin nāscī, nātus",
+    "pie_root": null,
+    "semantic_domains": [
+      "birth",
+      "nature"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "nav",
+    "variants": [
+      "nav",
+      "nau",
+      "naut"
+    ],
+    "meaning": {
+      "en": "ship, sail",
+      "zh": "航行，航"
+    },
+    "origin_summary": {
+      "en": "From Latin \"nāvis\" (ship) and \"nāvigāre\" (to sail).",
+      "zh": "源自拉丁语 nāvis（船）和 nāvigāre（航行）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin nāvis",
+    "pie_root": null,
+    "semantic_domains": [
+      "transport"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "nom",
+    "variants": [
+      "nom"
+    ],
+    "meaning": {
+      "en": "law, custom, manage",
+      "zh": "法则、习俗、管理"
+    },
+    "origin_summary": {
+      "en": "From Greek \"nomos\" (law, custom, usage).",
+      "zh": "源自希腊语 nomos（法则、习俗、惯例）。"
+    },
+    "origin_lang": "Greek",
+    "etymology": "Greek nomos (νόμος)",
+    "pie_root": null,
+    "semantic_domains": [
+      "law"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "nomin",
+    "variants": [
+      "nomin"
+    ],
+    "meaning": {
+      "en": "name",
+      "zh": "名，名字"
+    },
+    "origin_summary": {
+      "en": "From Latin \"nōmen\" (name).",
+      "zh": "源自拉丁语 nōmen（名字）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin nōmen",
+    "pie_root": null,
+    "semantic_domains": [
+      "speech"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "norm",
+    "variants": [
+      "norm"
+    ],
+    "meaning": {
+      "en": "rule, standard, pattern",
+      "zh": "规范，正规，正常"
+    },
+    "origin_summary": {
+      "en": "From Latin \"norma\" (carpenter's square, rule, pattern).",
+      "zh": "源自拉丁语 norma（木匠的直角尺、规则、模式）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin norma",
+    "pie_root": null,
+    "semantic_domains": [
+      "law",
+      "other"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "nour",
+    "variants": [
+      "nour"
+    ],
+    "meaning": {
+      "en": "feed, nourish",
+      "zh": "喂养，营养"
+    },
+    "origin_summary": {
+      "en": "From Latin \"nūtrīre\" (to feed, nourish, sustain).",
+      "zh": "源自拉丁语 nūtrīre（喂养、滋养、维持）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin nūtrīre",
+    "pie_root": null,
+    "semantic_domains": [
+      "food"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "nov",
+    "variants": [
+      "nov"
+    ],
+    "meaning": {
+      "en": "new",
+      "zh": "新"
+    },
+    "origin_summary": {
+      "en": "From Latin \"novus\" (new, young, fresh).",
+      "zh": "源自拉丁语 novus（新的、年轻的、新鲜的）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin novus",
+    "pie_root": null,
+    "semantic_domains": [
+      "change"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "ori",
+    "variants": [
+      "ori"
+    ],
+    "meaning": {
+      "en": "rise, begin, source",
+      "zh": "升起，生"
+    },
+    "origin_summary": {
+      "en": "From Latin \"orīrī\" (to rise, appear, be born).",
+      "zh": "源自拉丁语 orīrī（升起、出现、诞生）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin orīrī",
+    "pie_root": null,
+    "semantic_domains": [
+      "birth",
+      "movement"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "par",
+    "variants": [
+      "par"
+    ],
+    "meaning": {
+      "en": "equal",
+      "zh": "平等，相等"
+    },
+    "origin_summary": {
+      "en": "From Latin \"pār\" (equal, like, matching).",
+      "zh": "源自拉丁语 pār（相等的、类似的）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin pār",
+    "pie_root": null,
+    "semantic_domains": [
+      "other"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "part",
+    "variants": [
+      "part"
+    ],
+    "meaning": {
+      "en": "part, divide, share",
+      "zh": "分，部分"
+    },
+    "origin_summary": {
+      "en": "From Latin \"pars\" (part, piece, share) with stem \"part-\".",
+      "zh": "源自拉丁语 pars（部分、片段、份额），词干 part-。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin pars, partis",
+    "pie_root": null,
+    "semantic_domains": [
+      "other"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "path",
+    "variants": [
+      "path",
+      "pat",
+      "pass"
+    ],
+    "meaning": {
+      "en": "feeling, suffering, disease",
+      "zh": "感受，情感，受苦"
+    },
+    "origin_summary": {
+      "en": "From Greek \"pathos\" (suffering, feeling, experience).",
+      "zh": "源自希腊语 pathos（痛苦、感受、经历）。"
+    },
+    "origin_lang": "Greek",
+    "etymology": "Greek pathos (πάθος)",
+    "pie_root": null,
+    "semantic_domains": [
+      "emotion",
+      "health"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "patr",
+    "variants": [
+      "patr"
+    ],
+    "meaning": {
+      "en": "father",
+      "zh": "父"
+    },
+    "origin_summary": {
+      "en": "From Latin \"pater\" and Greek \"patḗr\" (father).",
+      "zh": "源自拉丁语 pater 和希腊语 patḗr（父亲）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin pater / Greek patḗr",
+    "pie_root": null,
+    "semantic_domains": [
+      "society"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "ped",
+    "variants": [
+      "ped"
+    ],
+    "meaning": {
+      "en": "foot",
+      "zh": "脚，足"
+    },
+    "origin_summary": {
+      "en": "From Latin \"pēs\" (foot) with stem \"ped-\".",
+      "zh": "源自拉丁语 pēs（脚），词干 ped-。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin pēs, pedis",
+    "pie_root": null,
+    "semantic_domains": [
+      "body",
+      "walking"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "pel",
+    "variants": [
+      "pel",
+      "puls",
+      "peal"
+    ],
+    "meaning": {
+      "en": "push, drive",
+      "zh": "推动"
+    },
+    "origin_summary": {
+      "en": "From Latin \"pellere\" (to push, drive) with past participle \"pulsum\".",
+      "zh": "源自拉丁语 pellere（推、驱动），过去分词 pulsum。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin pellere",
+    "pie_root": null,
+    "semantic_domains": [
+      "pushing"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "peri",
+    "variants": [
+      "peri",
+      "pert"
+    ],
+    "meaning": {
+      "en": "try, test, experience",
+      "zh": "试验，尝试，经历"
+    },
+    "origin_summary": {
+      "en": "From Latin \"perīrī\" (to try, test) and Greek \"peira\" (trial, experience).",
+      "zh": "源自拉丁语 perīrī（尝试、测试）和希腊语 peira（试验、经验）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin perīrī / Greek peira",
+    "pie_root": null,
+    "semantic_domains": [
+      "knowledge"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "person",
+    "variants": [
+      "person"
+    ],
+    "meaning": {
+      "en": "person, mask",
+      "zh": "人"
+    },
+    "origin_summary": {
+      "en": "From Latin \"persōna\" (mask, character, person).",
+      "zh": "源自拉丁语 persōna（面具、角色、人物）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin persōna",
+    "pie_root": null,
+    "semantic_domains": [
+      "society"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "pet",
+    "variants": [
+      "pet"
+    ],
+    "meaning": {
+      "en": "seek, strive, aim",
+      "zh": "追求，寻求"
+    },
+    "origin_summary": {
+      "en": "From Latin \"petere\" (to seek, aim at, rush at).",
+      "zh": "源自拉丁语 petere（寻求、瞄准、冲向）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin petere",
+    "pie_root": null,
+    "semantic_domains": [
+      "movement"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "ple",
+    "variants": [
+      "ple",
+      "plet",
+      "pli",
+      "ply",
+      "plen"
+    ],
+    "meaning": {
+      "en": "fill, full",
+      "zh": "装满，满的"
+    },
+    "origin_summary": {
+      "en": "From Latin \"plēre\" (to fill) and \"plēnus\" (full).",
+      "zh": "源自拉丁语 plēre（充满）和 plēnus（满的）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin plēre / plēnus",
+    "pie_root": null,
+    "semantic_domains": [
+      "amount"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "plod",
+    "variants": [
+      "plod"
+    ],
+    "meaning": {
+      "en": "burst, clap",
+      "zh": "爆破，鼓掌"
+    },
+    "origin_summary": {
+      "en": "From Latin \"plaudere\" (to clap) and \"explōdere\" (to drive out by clapping).",
+      "zh": "源自拉丁语 plaudere（鼓掌）和 explōdere（通过鼓掌赶出）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin plaudere / explōdere",
+    "pie_root": null,
+    "semantic_domains": [
+      "sound",
+      "action"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "port",
+    "variants": [
+      "port"
+    ],
+    "meaning": {
+      "en": "carry, harbor",
+      "zh": "运送/携带/搬运"
+    },
+    "origin_summary": {
+      "en": "From Latin \"portāre\" (to carry) and \"portus\" (harbor).",
+      "zh": "源自拉丁语 portāre（搬运）和 portus（港口）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin portāre",
+    "pie_root": null,
+    "semantic_domains": [
+      "transport"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "press",
+    "variants": [
+      "press"
+    ],
+    "meaning": {
+      "en": "press, push",
+      "zh": "压，按"
+    },
+    "origin_summary": {
+      "en": "From Latin \"premere\" (to press) with past participle \"pressum\".",
+      "zh": "源自拉丁语 premere（按压），过去分词 pressum。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin premere, pressum",
+    "pie_root": null,
+    "semantic_domains": [
+      "pressing"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "pric",
+    "variants": [
+      "pric",
+      "priz",
+      "preci",
+      "prai"
+    ],
+    "meaning": {
+      "en": "value, worth, price",
+      "zh": "价值"
+    },
+    "origin_summary": {
+      "en": "From Latin \"pretium\" (price, value, reward).",
+      "zh": "源自拉丁语 pretium（价格、价值、奖赏）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin pretium",
+    "pie_root": null,
+    "semantic_domains": [
+      "other"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "pun",
+    "variants": [
+      "pun",
+      "pen",
+      "pain"
+    ],
+    "meaning": {
+      "en": "punish, penalty",
+      "zh": "惩罚"
+    },
+    "origin_summary": {
+      "en": "From Latin \"pūnīre\" (to punish) and \"poena\" (penalty, punishment).",
+      "zh": "源自拉丁语 pūnīre（惩罚）和 poena（刑罚）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin pūnīre / poena",
+    "pie_root": null,
+    "semantic_domains": [
+      "law"
+    ],
+    "grimm_law_group": "b/p/f/v"
+  },
+  {
+    "slug": "quaint",
+    "variants": [
+      "quaint"
+    ],
+    "meaning": {
+      "en": "know, recognize",
+      "zh": "认知，认识"
+    },
+    "origin_summary": {
+      "en": "From Latin \"cognōscere\" (to get to know) via Old French \"cointe\".",
+      "zh": "源自拉丁语 cognōscere（认识）经由古法语 cointe。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin cognōscere",
+    "pie_root": null,
+    "semantic_domains": [
+      "knowledge"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "rot",
+    "variants": [
+      "rot"
+    ],
+    "meaning": {
+      "en": "wheel, turn",
+      "zh": "轮，转"
+    },
+    "origin_summary": {
+      "en": "From Latin \"rota\" (wheel) and \"rotāre\" (to turn).",
+      "zh": "源自拉丁语 rota（轮子）和 rotāre（旋转）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin rota",
+    "pie_root": null,
+    "semantic_domains": [
+      "turning"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "rud",
+    "variants": [
+      "rud"
+    ],
+    "meaning": {
+      "en": "raw, rough, primitive",
+      "zh": "原始，粗野"
+    },
+    "origin_summary": {
+      "en": "From Latin \"rudis\" (rough, raw, unformed).",
+      "zh": "源自拉丁语 rudis（粗糙的、未加工的）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin rudis",
+    "pie_root": null,
+    "semantic_domains": [
+      "other"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "sat",
+    "variants": [
+      "sat"
+    ],
+    "meaning": {
+      "en": "enough, full, satisfy",
+      "zh": "满足，饱"
+    },
+    "origin_summary": {
+      "en": "From Latin \"satis\" (enough) and \"saturāre\" (to fill, satisfy).",
+      "zh": "源自拉丁语 satis（足够）和 saturāre（充满、满足）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin satis / saturāre",
+    "pie_root": null,
+    "semantic_domains": [
+      "amount"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "serv",
+    "variants": [
+      "serv",
+      "serf"
+    ],
+    "meaning": {
+      "en": "serve, keep, save",
+      "zh": "服务，照看，保留"
+    },
+    "origin_summary": {
+      "en": "From Latin \"servāre\" (to keep, save) and \"servīre\" (to serve).",
+      "zh": "源自拉丁语 servāre（保持、保存）和 servīre（服务）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin servāre / servīre",
+    "pie_root": null,
+    "semantic_domains": [
+      "action"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "sim",
+    "variants": [
+      "sim",
+      "sem",
+      "simil",
+      "sembl"
+    ],
+    "meaning": {
+      "en": "like, similar, same",
+      "zh": "相似，像"
+    },
+    "origin_summary": {
+      "en": "From Latin \"similis\" (like, similar) and \"simul\" (at the same time).",
+      "zh": "源自拉丁语 similis（相似的）和 simul（同时）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin similis",
+    "pie_root": null,
+    "semantic_domains": [
+      "similarity"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "sit",
+    "variants": [
+      "sit",
+      "sid",
+      "sed",
+      "sess"
+    ],
+    "meaning": {
+      "en": "sit, settle, place",
+      "zh": "坐"
+    },
+    "origin_summary": {
+      "en": "From Latin \"sedēre\" (to sit) and \"sīdere\" (to settle) with variants sid-, sed-, sess-.",
+      "zh": "源自拉丁语 sedēre（坐）和 sīdere（安顿），变体有 sid-、sed-、sess-。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin sedēre / sīdere",
+    "pie_root": null,
+    "semantic_domains": [
+      "sitting"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "sol",
+    "variants": [
+      "sol"
+    ],
+    "meaning": {
+      "en": "alone, sun, whole",
+      "zh": "单一，单独，太阳"
+    },
+    "origin_summary": {
+      "en": "From Latin \"sōlus\" (alone), \"sōl\" (sun), and \"solidus\" (solid, whole).",
+      "zh": "源自拉丁语 sōlus（单独的）、sōl（太阳）和 solidus（坚固的）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin sōlus / sōl",
+    "pie_root": null,
+    "semantic_domains": [
+      "light",
+      "other"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "solv",
+    "variants": [
+      "solv",
+      "solu",
+      "solut"
+    ],
+    "meaning": {
+      "en": "loosen, dissolve, free",
+      "zh": "解，松的"
+    },
+    "origin_summary": {
+      "en": "From Latin \"solvere\" (to loosen, untie, dissolve).",
+      "zh": "源自拉丁语 solvere（松开、解开、溶解）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin solvere",
+    "pie_root": null,
+    "semantic_domains": [
+      "change"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "son",
+    "variants": [
+      "son"
+    ],
+    "meaning": {
+      "en": "sound",
+      "zh": "声音"
+    },
+    "origin_summary": {
+      "en": "From Latin \"sonus\" (sound) and \"sonāre\" (to sound).",
+      "zh": "源自拉丁语 sonus（声音）和 sonāre（发声）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin sonus",
+    "pie_root": null,
+    "semantic_domains": [
+      "sound"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "spec",
+    "variants": [
+      "sp",
+      "spy",
+      "spec",
+      "spet",
+      "spic"
+    ],
+    "meaning": {
+      "en": "look, see, observe",
+      "zh": "看"
+    },
+    "origin_summary": {
+      "en": "From Latin \"specere\" (to look at) with variants spic-, spect-.",
+      "zh": "源自拉丁语 specere（看），变体有 spic-、spect-。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin specere",
+    "pie_root": null,
+    "semantic_domains": [
+      "seeing"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "spir",
+    "variants": [
+      "spir"
+    ],
+    "meaning": {
+      "en": "breathe",
+      "zh": "呼吸，气息"
+    },
+    "origin_summary": {
+      "en": "From Latin \"spīrāre\" (to breathe) and \"spīritus\" (breath, spirit).",
+      "zh": "源自拉丁语 spīrāre（呼吸）和 spīritus（呼吸、精神）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin spīrāre",
+    "pie_root": null,
+    "semantic_domains": [
+      "breathing"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "st",
+    "variants": [
+      "st",
+      "sist",
+      "stat"
+    ],
+    "meaning": {
+      "en": "stand, set, place",
+      "zh": "立，站"
+    },
+    "origin_summary": {
+      "en": "From Latin \"stāre\" (to stand), \"sistere\" (to cause to stand), with stem \"stat-\".",
+      "zh": "源自拉丁语 stāre（站立）、sistere（使站立），词干 stat-。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin stāre / sistere",
+    "pie_root": null,
+    "semantic_domains": [
+      "standing"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "stinct",
+    "variants": [
+      "stinct"
+    ],
+    "meaning": {
+      "en": "prick, goad, urge",
+      "zh": "刺，扎"
+    },
+    "origin_summary": {
+      "en": "From Latin \"stinguere\" (to prick, quench, mark) with variant \"stimulāre\".",
+      "zh": "源自拉丁语 stinguere（刺、熄灭、标记），变体 stimulāre。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin stinguere",
+    "pie_root": null,
+    "semantic_domains": [
+      "action"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "strain",
+    "variants": [
+      "strain",
+      "strict",
+      "stress",
+      "string"
+    ],
+    "meaning": {
+      "en": "bind, draw tight",
+      "zh": "拉紧，紧"
+    },
+    "origin_summary": {
+      "en": "From Latin \"stringere\" (to draw tight, bind) with variants strict-, stress-, string-.",
+      "zh": "源自拉丁语 stringere（拉紧、束缚），变体有 strict-、stress-、string-。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin stringere",
+    "pie_root": null,
+    "semantic_domains": [
+      "binding"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "tact",
+    "variants": [
+      "tact",
+      "tang",
+      "tag",
+      "ting",
+      "tig"
+    ],
+    "meaning": {
+      "en": "touch",
+      "zh": "接触，触碰"
+    },
+    "origin_summary": {
+      "en": "From Latin \"tangere\" (to touch) with past participle \"tactum\".",
+      "zh": "源自拉丁语 tangere（触碰），过去分词 tactum。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin tangere, tactum",
+    "pie_root": null,
+    "semantic_domains": [
+      "other"
+    ],
+    "grimm_law_group": "d/t/s/z"
+  },
+  {
+    "slug": "tail",
+    "variants": [
+      "tail"
+    ],
+    "meaning": {
+      "en": "cut",
+      "zh": "切割"
+    },
+    "origin_summary": {
+      "en": "From Latin \"tāliāre\" (to cut) via Old French \"taillier\".",
+      "zh": "源自拉丁语 tāliāre（切割）经由古法语 taillier。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin tāliāre",
+    "pie_root": null,
+    "semantic_domains": [
+      "cutting"
+    ],
+    "grimm_law_group": "d/t/s/z"
+  },
+  {
+    "slug": "tain",
+    "variants": [
+      "tain",
+      "ten",
+      "tin",
+      "tent"
+    ],
+    "meaning": {
+      "en": "hold, keep, have",
+      "zh": "握，持，守，拿"
+    },
+    "origin_summary": {
+      "en": "From Latin \"tenēre\" (to hold, keep) with variants ten-, tin-, tent-.",
+      "zh": "源自拉丁语 tenēre（持有、保持），变体有 ten-、tin-、tent-。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin tenēre",
+    "pie_root": null,
+    "semantic_domains": [
+      "holding"
+    ],
+    "grimm_law_group": "d/t/s/z"
+  },
+  {
+    "slug": "tort",
+    "variants": [
+      "tort"
+    ],
+    "meaning": {
+      "en": "twist, turn, wrench",
+      "zh": "扭，拧，扭转"
+    },
+    "origin_summary": {
+      "en": "From Latin \"torquēre\" (to twist, wrench) with past participle \"tortum\".",
+      "zh": "源自拉丁语 torquēre（扭、拧），过去分词 tortum。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin torquēre, tortum",
+    "pie_root": null,
+    "semantic_domains": [
+      "turning"
+    ],
+    "grimm_law_group": "d/t/s/z"
+  },
+  {
+    "slug": "tra",
+    "variants": [
+      "tra",
+      "tract"
+    ],
+    "meaning": {
+      "en": "pull, drag, draw",
+      "zh": "拖，拉，拽"
+    },
+    "origin_summary": {
+      "en": "From Latin \"trahere\" (to pull, drag, draw) with past participle \"tractum\".",
+      "zh": "源自拉丁语 trahere（拉、拽、牵引），过去分词 tractum。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin trahere, tractum",
+    "pie_root": null,
+    "semantic_domains": [
+      "pulling"
+    ],
+    "grimm_law_group": "d/t/s/z"
+  },
+  {
+    "slug": "trem",
+    "variants": [
+      "trem"
+    ],
+    "meaning": {
+      "en": "tremble, shake",
+      "zh": "颤抖，震颤"
+    },
+    "origin_summary": {
+      "en": "From Latin \"tremere\" (to tremble, shake, quake).",
+      "zh": "源自拉丁语 tremere（颤抖、震动、发抖）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin tremere",
+    "pie_root": null,
+    "semantic_domains": [
+      "movement"
+    ],
+    "grimm_law_group": "d/t/s/z"
+  },
+  {
+    "slug": "trop",
+    "variants": [
+      "trop"
+    ],
+    "meaning": {
+      "en": "turn, change",
+      "zh": "转"
+    },
+    "origin_summary": {
+      "en": "From Greek \"tropos\" (turn, direction, way).",
+      "zh": "源自希腊语 tropos（转、方向、方式）。"
+    },
+    "origin_lang": "Greek",
+    "etymology": "Greek tropos (τρόπος)",
+    "pie_root": null,
+    "semantic_domains": [
+      "turning"
+    ],
+    "grimm_law_group": "d/t/s/z"
+  },
+  {
+    "slug": "turb",
+    "variants": [
+      "turb"
+    ],
+    "meaning": {
+      "en": "stir up, disturb",
+      "zh": "骚乱，骚扰，搅乱"
+    },
+    "origin_summary": {
+      "en": "From Latin \"turbāre\" (to disturb, confuse) from \"turba\" (crowd, commotion).",
+      "zh": "源自拉丁语 turbāre（打扰、混乱），来自 turba（人群、骚动）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin turbāre",
+    "pie_root": null,
+    "semantic_domains": [
+      "movement"
+    ],
+    "grimm_law_group": "d/t/s/z"
+  },
+  {
+    "slug": "uni",
+    "variants": [
+      "un"
+    ],
+    "meaning": {
+      "en": "one, whole",
+      "zh": "整体，一"
+    },
+    "origin_summary": {
+      "en": "From Latin \"ūnus\" (one) and \"ūnīre\" (to unite).",
+      "zh": "源自拉丁语 ūnus（一）和 ūnīre（统一）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin ūnus",
+    "pie_root": null,
+    "semantic_domains": [
+      "number"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "urb",
+    "variants": [
+      "urb"
+    ],
+    "meaning": {
+      "en": "city",
+      "zh": "城市"
+    },
+    "origin_summary": {
+      "en": "From Latin \"urbs\" (city, walled town).",
+      "zh": "源自拉丁语 urbs（城市、城镇）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin urbs",
+    "pie_root": null,
+    "semantic_domains": [
+      "society"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "util",
+    "variants": [
+      "us",
+      "ut",
+      "uti",
+      "util"
+    ],
+    "meaning": {
+      "en": "use",
+      "zh": "使用，用"
+    },
+    "origin_summary": {
+      "en": "From Latin \"ūtī\" (to use) with forms \"ūtilis\" (useful) and \"ūtēnsilis\" (fit for use).",
+      "zh": "源自拉丁语 ūtī（使用），形式有 ūtilis（有用的）和 ūtēnsilis（适用的）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin ūtī",
+    "pie_root": null,
+    "semantic_domains": [
+      "action"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "vac",
+    "variants": [
+      "vac",
+      "vacu",
+      "van",
+      "vain",
+      "void"
+    ],
+    "meaning": {
+      "en": "empty",
+      "zh": "空"
+    },
+    "origin_summary": {
+      "en": "From Latin \"vacuus\" (empty) and \"vacāre\" (to be empty, free).",
+      "zh": "源自拉丁语 vacuus（空的）和 vacāre（空闲）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin vacuus",
+    "pie_root": null,
+    "semantic_domains": [
+      "other"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "vad",
+    "variants": [
+      "vad"
+    ],
+    "meaning": {
+      "en": "go, walk",
+      "zh": "行走，走"
+    },
+    "origin_summary": {
+      "en": "From Latin \"vādere\" (to go, walk, advance).",
+      "zh": "源自拉丁语 vādere（走、行进、前进）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin vādere",
+    "pie_root": null,
+    "semantic_domains": [
+      "walking",
+      "movement"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "val",
+    "variants": [
+      "val"
+    ],
+    "meaning": {
+      "en": "strong, worth, value",
+      "zh": "强壮，价值"
+    },
+    "origin_summary": {
+      "en": "From Latin \"valēre\" (to be strong, be worth).",
+      "zh": "源自拉丁语 valēre（强壮、有价值）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin valēre",
+    "pie_root": null,
+    "semantic_domains": [
+      "strength",
+      "power"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "ven",
+    "variants": [
+      "ven",
+      "vent"
+    ],
+    "meaning": {
+      "en": "come",
+      "zh": "性 / 来，去"
+    },
+    "origin_summary": {
+      "en": "From Latin \"venīre\" (to come) with past participle \"ventum\".",
+      "zh": "源自拉丁语 venīre（来），过去分词 ventum。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin venīre",
+    "pie_root": null,
+    "semantic_domains": [
+      "movement"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "vers",
+    "variants": [
+      "vers",
+      "vert"
+    ],
+    "meaning": {
+      "en": "turn, change",
+      "zh": "转，卷，滚动"
+    },
+    "origin_summary": {
+      "en": "From Latin \"vertere\" (to turn) with past participle \"versum\".",
+      "zh": "源自拉丁语 vertere（转），过去分词 versum。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin vertere",
+    "pie_root": null,
+    "semantic_domains": [
+      "turning"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "vinc",
+    "variants": [
+      "vinc",
+      "vict"
+    ],
+    "meaning": {
+      "en": "conquer, overcome",
+      "zh": "胜，征服"
+    },
+    "origin_summary": {
+      "en": "From Latin \"vincere\" (to conquer, overcome) with past participle \"victum\".",
+      "zh": "源自拉丁语 vincere（征服、克服），过去分词 victum。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin vincere",
+    "pie_root": null,
+    "semantic_domains": [
+      "power"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "vis",
+    "variants": [
+      "vis",
+      "vid"
+    ],
+    "meaning": {
+      "en": "see",
+      "zh": "看"
+    },
+    "origin_summary": {
+      "en": "From Latin \"vidēre\" (to see) with past participle \"vīsum\" and variants vid-.",
+      "zh": "源自拉丁语 vidēre（看），过去分词 vīsum，变体有 vid-。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin vidēre, vīsum",
+    "pie_root": null,
+    "semantic_domains": [
+      "seeing"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "viv",
+    "variants": [
+      "viv",
+      "vit",
+      "veg"
+    ],
+    "meaning": {
+      "en": "live, life",
+      "zh": "活"
+    },
+    "origin_summary": {
+      "en": "From Latin \"vīvere\" (to live) with variants vit-, vig-, veg-.",
+      "zh": "源自拉丁语 vīvere（活），变体有 vit-、vig-、veg-。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin vīvere",
+    "pie_root": null,
+    "semantic_domains": [
+      "life"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "voc",
+    "variants": [
+      "voc"
+    ],
+    "meaning": {
+      "en": "voice, call",
+      "zh": "声音"
+    },
+    "origin_summary": {
+      "en": "From Latin \"vōx\" (voice) and \"vocāre\" (to call).",
+      "zh": "源自拉丁语 vōx（声音）和 vocāre（呼唤）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin vōx, vōcis",
+    "pie_root": null,
+    "semantic_domains": [
+      "speech",
+      "sound"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "vol",
+    "variants": [
+      "vol",
+      "volv",
+      "volt"
+    ],
+    "meaning": {
+      "en": "roll, turn, wish",
+      "zh": "滚，转，卷"
+    },
+    "origin_summary": {
+      "en": "From Latin \"volvere\" (to roll, turn) and \"voluntās\" (will, wish).",
+      "zh": "源自拉丁语 volvere（滚、转）和 voluntās（意志、愿望）。"
+    },
+    "origin_lang": "Latin",
+    "etymology": "Latin volvere / voluntās",
+    "pie_root": null,
+    "semantic_domains": [
+      "turning",
+      "movement"
+    ],
+    "grimm_law_group": null
+  },
+  {
+    "slug": "zo",
+    "variants": [
+      "zo"
+    ],
+    "meaning": {
+      "en": "animal, living being",
+      "zh": "动物"
+    },
+    "origin_summary": {
+      "en": "From Greek \"zōion\" (animal, living being).",
+      "zh": "源自希腊语 zōion（动物、生物）。"
+    },
+    "origin_lang": "Greek",
+    "etymology": "Greek zōion (ζῷον)",
+    "pie_root": null,
+    "semantic_domains": [
+      "animals"
+    ],
+    "grimm_law_group": null
+  }
+]
