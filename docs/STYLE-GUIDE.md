@@ -362,7 +362,58 @@ h1, h2, h3, h4, h5, h6 {
 | Disabled 禁用 | `disabled:pointer-events-none disabled:opacity-50` |
 | 过渡动画 | `transition-all` 或 `transition-colors` |
 
-### 5.6 工具函数
+### 5.6 自定义下拉选择器 (Custom Select / Dropdown)
+
+**禁止使用原生 `<select>`**——原生下拉框样式不受 CSS 控制、各浏览器/平台表现不一致。所有下拉选择场景统一使用 `CustomSelect` 组件（`components/ui/custom-select.tsx`）。
+
+**触发按钮**：
+
+```tsx
+<button className="border-border bg-background text-muted-foreground hover:border-primary hover:text-primary
+  flex h-9 cursor-pointer items-center gap-1.5 rounded-full border-[1.5px] px-3 text-xs font-bold transition-colors">
+  <span>{selectedLabel}</span>
+  <ChevronDown className="h-3 w-3" />  {/* 展开时 rotate-180 */}
+</button>
+```
+
+**弹出面板**：
+
+```tsx
+<div className="border-border bg-card absolute left-0 top-full z-50 mt-2 min-w-[160px]
+  overflow-hidden rounded-xl border shadow-lg">
+```
+
+**选项**：
+
+| 状态 | 样式 |
+|------|------|
+| 选中 | `bg-primary/10 text-primary font-semibold` + `✓` 前缀 |
+| 未选中 | `text-foreground hover:bg-muted` + `ml-5`（与 ✓ 对齐） |
+
+**交互**：
+- 点击按钮 toggle 开关
+- 点击选项后关闭
+- 点击外部区域关闭
+- Escape 键关闭
+- `aria-expanded`、`role="listbox"`、`role="option"`、`aria-selected`
+
+**使用**：
+
+```tsx
+import { CustomSelect } from '@/components/ui/custom-select';
+
+<CustomSelect
+  value={selected}
+  onChange={setSelected}
+  aria-label="Filter by domain"
+  options={[
+    { value: 'all', label: 'All' },
+    { value: 'life', label: '🧬 life' },
+  ]}
+/>
+```
+
+### 5.7 工具函数
 
 ```typescript
 // lib/utils.ts
@@ -585,7 +636,13 @@ className="bg-green-50 text-green-800 dark:bg-green-900/50 dark:text-green-200"
 | JSX 中硬编码 `#hex` | 使用 CSS 变量 `var(--primary)` 或 Tailwind 类 |
 | 在 `@apply` 中用 `/opacity` | 在 JSX className 中用（`bg-primary/10` ✅），或用 `color-mix()` |
 
-### 9.2 布局相关
+### 9.2 表单控件相关
+
+| 禁止 | 正确做法 |
+|------|----------|
+| 原生 `<select>` | 使用 `CustomSelect` 组件（§5.6） |
+
+### 9.3 布局相关
 
 | 禁止 | 正确做法 |
 |------|----------|
@@ -594,7 +651,7 @@ className="bg-green-50 text-green-800 dark:bg-green-900/50 dark:text-green-200"
 | 触控目标 < 44px | 所有按钮/链接 `min-h-[44px]` |
 | 正文字号 < 14px | 最小 `text-sm`，正文 `text-base` |
 
-### 9.3 动画相关
+### 9.4 动画相关
 
 | 禁止 | 正确做法 |
 |------|----------|
@@ -603,7 +660,7 @@ className="bg-green-50 text-green-800 dark:bg-green-900/50 dark:text-green-200"
 | 动画时长 > 1s | 控制在 0.3–0.8s |
 | 动画 layout/width/height | 只动画 opacity + transform |
 
-### 9.4 暗色模式相关
+### 9.5 暗色模式相关
 
 | 禁止 | 正确做法 |
 |------|----------|
@@ -641,6 +698,7 @@ app/
 components/
 ├── ui/
 │   ├── button.tsx           # Button (CVA 变体)
+│   ├── custom-select.tsx    # 自定义下拉选择器
 │   ├── table.tsx            # Table
 │   └── tooltip.tsx          # Tooltip
 ├── site-header.tsx          # 全局导航栏

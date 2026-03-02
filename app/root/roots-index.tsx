@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { useLanguage } from '@/components/language-provider';
+import { CustomSelect } from '@/components/ui/custom-select';
 import type { RootEntry, SemanticDomain } from '@/types/content';
 
 interface RootsIndexProps {
@@ -83,6 +84,27 @@ export const RootsIndex = ({ roots }: RootsIndexProps) => {
     return [...set].sort();
   }, [roots]);
 
+  const domainOptions = useMemo(
+    () => [
+      { value: 'all', label: dictionary.allDomains },
+      ...allDomains.map((d) => ({
+        value: d,
+        label: `${domainEmojiMap[d as SemanticDomain] ?? '📖'} ${d}`,
+      })),
+    ],
+    [allDomains, dictionary.allDomains],
+  );
+
+  const sortOptions = useMemo(
+    () => [
+      { value: 'az', label: dictionary.sortAZ },
+      { value: 'za', label: dictionary.sortZA },
+      { value: 'most', label: dictionary.sortMostWords },
+      { value: 'fewest', label: dictionary.sortFewestWords },
+    ],
+    [dictionary.sortAZ, dictionary.sortZA, dictionary.sortMostWords, dictionary.sortFewestWords],
+  );
+
   // Filter and sort
   const filteredRoots = useMemo(() => {
     let result = roots;
@@ -129,31 +151,19 @@ export const RootsIndex = ({ roots }: RootsIndexProps) => {
 
       {/* Filter bar */}
       <div className="flex flex-wrap items-center gap-3">
-        <select
+        <CustomSelect
           value={selectedDomain}
-          onChange={(e) => setSelectedDomain(e.target.value)}
+          onChange={setSelectedDomain}
           aria-label={dictionary.allDomains}
-          className="border-border bg-background text-foreground h-9 cursor-pointer rounded-full border-[1.5px] px-3 text-sm font-medium transition-colors hover:border-primary"
-        >
-          <option value="all">{dictionary.allDomains}</option>
-          {allDomains.map((domain) => (
-            <option key={domain} value={domain}>
-              {domainEmojiMap[domain as SemanticDomain] ?? '📖'} {domain}
-            </option>
-          ))}
-        </select>
+          options={domainOptions}
+        />
 
-        <select
+        <CustomSelect
           value={sortBy}
-          onChange={(e) => setSortBy(e.target.value)}
+          onChange={setSortBy}
           aria-label={dictionary.sortAZ}
-          className="border-border bg-background text-foreground h-9 cursor-pointer rounded-full border-[1.5px] px-3 text-sm font-medium transition-colors hover:border-primary"
-        >
-          <option value="az">{dictionary.sortAZ}</option>
-          <option value="za">{dictionary.sortZA}</option>
-          <option value="most">{dictionary.sortMostWords}</option>
-          <option value="fewest">{dictionary.sortFewestWords}</option>
-        </select>
+          options={sortOptions}
+        />
 
         <span className="text-muted-foreground text-sm">
           {dictionary.showing} {filteredRoots.length} {dictionary.of} {roots.length}
