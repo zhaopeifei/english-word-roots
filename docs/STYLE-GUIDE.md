@@ -31,11 +31,11 @@
 |------|------|----------|---------|
 | `--background` | 页面背景 | `#fefdf6` (暖白) | `#0f1a0a` (深绿黑) |
 | `--foreground` | 主要文字 | `#1a2e05` (深绿) | `#e8eade` (浅米) |
-| `--primary` | 品牌主色/CTA | `#16a34a` (绿) | `#22c55e` (亮绿) |
-| `--primary-foreground` | 主色上的文字 | `#ffffff` | `#052e16` |
-| `--secondary` | 辅助强调 | `#d97706` (琥珀橙) | `#f59e0b` (亮橙) |
+| `--primary` | 品牌主色/CTA | `#16a34a` (绿) | `#10b981` (emerald-500) |
+| `--primary-foreground` | 主色上的文字 | `#ffffff` | `#022c22` |
+| `--secondary` | 辅助强调 | `#d97706` (琥珀橙) | `#d97706` (amber-600) |
 | `--secondary-foreground` | 辅助色上的文字 | `#ffffff` | `#451a03` |
-| `--accent` | 第三强调 | `#8b5cf6` (紫) | `#a78bfa` (亮紫) |
+| `--accent` | 第三强调 | `#8b5cf6` (紫) | `#8b5cf6` (violet-500) |
 | `--accent-foreground` | 强调色上的文字 | `#ffffff` | `#1e1b4b` |
 | `--muted` | 次要背景 | `#f5f5f0` | `#1a2414` |
 | `--muted-foreground` | 次要文字 | `#6b7280` | `#94a38a` |
@@ -43,7 +43,7 @@
 | `--card-foreground` | 卡片文字 | `#1a2e05` | `#e8eade` |
 | `--border` | 边框 | `#e5e2d9` (暖灰) | `#2d3a24` |
 | `--input` | 输入框边框 | `#e5e2d9` | `#2d3a24` |
-| `--ring` | 焦点环 | `#16a34a` | `#22c55e` |
+| `--ring` | 焦点环 | `#16a34a` | `#10b981` |
 | `--destructive` | 危险/错误 | `#ef4444` | `#dc2626` |
 
 ### 1.2 表面变量 (Surface Variants)
@@ -545,9 +545,9 @@ body { @apply bg-background text-foreground font-body; }
 
 本项目的特殊处理：
 - 背景色保持 **暖绿色调**：Light `#fefdf6` → Dark `#0f1a0a`
-- 品牌绿色加亮：`#16a34a` → `#22c55e`
-- 品牌橙色加亮：`#d97706` → `#f59e0b`
-- 品牌紫色加亮：`#8b5cf6` → `#a78bfa`
+- 品牌绿色柔化为青绿：`#16a34a` → `#10b981` (emerald-500)
+- 品牌橙色保持同色：`#d97706` → `#d97706` (amber-600)
+- 品牌紫色保持同色：`#8b5cf6` → `#8b5cf6` (violet-500)
 
 ### 8.3 编码规则
 
