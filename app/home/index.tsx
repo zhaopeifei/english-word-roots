@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { motion } from 'motion/react';
 import { useLanguage } from '@/components/language-provider';
 import type { RootEntry, WordEntry, SemanticDomain, MorphemeSegment } from '@/types/content';
 
@@ -99,6 +100,27 @@ function morphemeLabel(type: MorphemeSegment['type'], locale: string): string {
   };
   return labels[type]?.[locale] ?? labels[type]?.en ?? type;
 }
+
+/* ------------------------------------------------------------------ */
+/*  Animation variants                                                 */
+/* ------------------------------------------------------------------ */
+
+const morphemeContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+  },
+};
+
+const morphemeItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: 'easeOut' as const },
+  },
+};
 
 /* ------------------------------------------------------------------ */
 /*  Component                                                          */
@@ -496,9 +518,15 @@ export const HomeScreen = ({
             </div>
 
             {/* morpheme blocks */}
-            <div className="flex flex-wrap items-center justify-center gap-3">
+            <motion.div
+              className="flex flex-wrap items-center justify-center gap-3"
+              variants={morphemeContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               {breakdownWord.rootBreakdown.map((seg, i) => (
-                <div key={`${seg.surface}-${i}`} className="flex flex-col items-center gap-1">
+                <motion.div key={`${seg.surface}-${i}`} className="flex flex-col items-center gap-1" variants={morphemeItemVariants}>
                   <span
                     className={`${morphemeClass(seg.type)} inline-flex rounded-lg px-4 py-2 text-lg font-bold`}
                   >
@@ -507,12 +535,18 @@ export const HomeScreen = ({
                   <span className="text-muted-foreground text-[10px] font-medium uppercase tracking-wider">
                     {morphemeLabel(seg.type, locale)}
                   </span>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             {/* result */}
-            <div className="space-y-1">
+            <motion.div
+              className="space-y-1"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 + breakdownWord.rootBreakdown.length * 0.1 }}
+            >
               <p className="text-muted-foreground text-xs font-semibold uppercase tracking-widest">
                 {t.breakdown.result}
               </p>
@@ -524,7 +558,7 @@ export const HomeScreen = ({
               <p className="text-muted-foreground text-sm">
                 {breakdownWord.definition[locale as 'en' | 'zh'] ?? breakdownWord.definition.en}
               </p>
-            </div>
+            </motion.div>
 
             <Link
               href={`/word/${breakdownWord.slug}`}

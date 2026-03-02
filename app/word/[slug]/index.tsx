@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Volume2 } from 'lucide-react';
 import { useCallback, useEffect, useState } from 'react';
+import { motion } from 'motion/react';
 import { useLanguage } from '@/components/language-provider';
 import { Breadcrumb } from '@/components/breadcrumb';
 import { getRootBySlug } from '@/lib/content';
@@ -18,6 +19,23 @@ const morphemeClass: Record<MorphemeSegment['type'], string> = {
   suffix: 'morpheme-suffix',
   connector: 'morpheme-connector',
   other: 'morpheme-connector',
+};
+
+const morphemeContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+  },
+};
+
+const morphemeItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: 'easeOut' as const },
+  },
 };
 
 const badgeColors = [
@@ -116,11 +134,16 @@ export const WordDetail = ({ word }: WordDetailProps) => {
       <section className="space-y-4">
         <h2 className="font-heading text-foreground text-2xl">🧩 {dictionary.wordBreakdown}</h2>
 
-        <div className="flex flex-wrap items-center gap-3">
+        <motion.div
+          className="flex flex-wrap items-center gap-3"
+          variants={morphemeContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           {word.rootBreakdown.map((segment, idx) => {
             const block = (
               <div
-                key={`${segment.surface}-${idx}`}
                 className={`${morphemeClass[segment.type]} flex flex-col items-center rounded-2xl px-6 py-4`}
               >
                 <span className="text-lg font-bold">{segment.surface}</span>
@@ -129,7 +152,7 @@ export const WordDetail = ({ word }: WordDetailProps) => {
             );
 
             const content = segment.rootSlug ? (
-              <Link key={`${segment.surface}-${idx}`} href={`/root/${segment.rootSlug}`}>
+              <Link href={`/root/${segment.rootSlug}`}>
                 {block}
               </Link>
             ) : (
@@ -137,18 +160,20 @@ export const WordDetail = ({ word }: WordDetailProps) => {
             );
 
             return (
-              <div key={`wrap-${idx}`} className="flex items-center gap-3">
+              <motion.div key={`wrap-${idx}`} className="flex items-center gap-3" variants={morphemeItemVariants}>
                 {idx > 0 && <span className="text-muted-foreground text-xl font-bold">+</span>}
                 {content}
-              </div>
+              </motion.div>
             );
           })}
 
-          <span className="text-muted-foreground text-xl font-bold">=</span>
-          <span className="from-primary to-accent bg-gradient-to-r bg-clip-text text-2xl font-bold text-transparent">
-            {word.lemma}
-          </span>
-        </div>
+          <motion.div className="flex items-center gap-3" variants={morphemeItemVariants}>
+            <span className="text-muted-foreground text-xl font-bold">=</span>
+            <span className="from-primary to-accent bg-gradient-to-r bg-clip-text text-2xl font-bold text-transparent">
+              {word.lemma}
+            </span>
+          </motion.div>
+        </motion.div>
 
         {/* Morphology note */}
         <p className="text-muted-foreground">{localizedMorphology}</p>
