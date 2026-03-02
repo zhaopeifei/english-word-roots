@@ -3,8 +3,7 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { useLanguage } from '@/components/language-provider';
-import type { RootEntry } from '@/types/content';
-import type { SemanticDomain } from '@/types/content';
+import type { RootEntry, SemanticDomain } from '@/types/content';
 
 interface RootsIndexProps {
   roots: RootEntry[];
@@ -133,6 +132,7 @@ export const RootsIndex = ({ roots }: RootsIndexProps) => {
         <select
           value={selectedDomain}
           onChange={(e) => setSelectedDomain(e.target.value)}
+          aria-label={dictionary.allDomains}
           className="border-border bg-background text-foreground h-9 cursor-pointer rounded-full border-[1.5px] px-3 text-sm font-medium transition-colors hover:border-primary"
         >
           <option value="all">{dictionary.allDomains}</option>
@@ -146,6 +146,7 @@ export const RootsIndex = ({ roots }: RootsIndexProps) => {
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
+          aria-label={dictionary.sortAZ}
           className="border-border bg-background text-foreground h-9 cursor-pointer rounded-full border-[1.5px] px-3 text-sm font-medium transition-colors hover:border-primary"
         >
           <option value="az">{dictionary.sortAZ}</option>
@@ -210,7 +211,7 @@ export const RootsIndex = ({ roots }: RootsIndexProps) => {
                 {/* Footer: word count + arrow */}
                 <div className="mt-auto flex items-center justify-between pt-5">
                   <span className={`${style.accentText} text-sm font-semibold`}>
-                    → {root.associatedWords.length} words
+                    → {root.associatedWords.length} {dictionary.words}
                   </span>
                   <span
                     className={`${style.accentText} flex h-8 w-8 items-center justify-center rounded-full border-[1.5px] border-current opacity-0 transition-opacity duration-200 group-hover:opacity-100`}

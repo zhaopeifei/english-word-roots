@@ -48,6 +48,8 @@ export const dictionaries: Dictionaries = {
     sortFewestWords: 'Fewest words',
     showing: 'Showing',
     of: 'of',
+    roots: 'All Roots',
+    words: 'words',
   },
   zh: {
     tagline: '从词根出发，拓展词汇。',
@@ -91,6 +93,8 @@ export const dictionaries: Dictionaries = {
     sortFewestWords: '单词最少',
     showing: '显示',
     of: '/',
+    roots: '全部词根',
+    words: '个单词',
   },
 };
 
