@@ -77,7 +77,7 @@ export const CommandSearch = ({ open, onClose }: CommandSearchProps) => {
         onClick={onClose}
         aria-hidden
       />
-      <div className="mx-auto mt-[10vh] w-full max-w-xl px-4">
+      <div className="relative mx-auto mt-[10vh] w-full max-w-xl px-4">
         <div className="bg-card border-border overflow-hidden rounded-2xl border shadow-2xl">
           <div className="border-border flex items-center gap-3 border-b px-4">
             <Search className="text-muted-foreground h-5 w-5 shrink-0" />

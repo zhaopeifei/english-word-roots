@@ -307,7 +307,7 @@ export const HomeScreen = ({
           {/* CTAs */}
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Link
-              href="/roots"
+              href="/root"
               className="bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold shadow-md transition hover:opacity-90"
             >
               {t.hero.primaryCta}
@@ -470,7 +470,7 @@ export const HomeScreen = ({
 
         <div className="text-center">
           <Link
-            href="/roots"
+            href="/root"
             className="border-border bg-background text-foreground hover:border-primary/40 hover:text-primary inline-flex items-center gap-1 rounded-full border px-5 py-2 text-sm font-semibold transition"
           >
             {t.featured.viewAll}
