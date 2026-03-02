@@ -3,8 +3,7 @@
 import Link from 'next/link';
 import { useLanguage } from '@/components/language-provider';
 import { Breadcrumb } from '@/components/breadcrumb';
-import type { RootEntry, SemanticDomain } from '@/types/content';
-import { WORDS_BY_ROOT } from '@/content/words/index';
+import type { RootEntry, SemanticDomain, WordEntry } from '@/types/content';
 
 /* ── Helpers ────────────────────────────────────────────────── */
 
@@ -161,13 +160,14 @@ function getPrimaryEmoji(domains: SemanticDomain[]): string {
 
 interface RootDetailProps {
   root: RootEntry;
+  associatedWords: WordEntry[];
 }
 
-export const RootDetail = ({ root }: RootDetailProps) => {
+export const RootDetail = ({ root, associatedWords }: RootDetailProps) => {
   const { dictionary, locale } = useLanguage();
   const localizedOverview = root.overview[locale] ?? root.overview.en;
   const localizedOrigin = root.originSummary[locale] ?? root.originSummary.en;
-  const associatedWordEntries = WORDS_BY_ROOT[root.slug] ?? [];
+  const associatedWordEntries = associatedWords;
   const emoji = getPrimaryEmoji(root.semanticDomains);
   const originColor =
     ORIGIN_PILL_COLORS[root.languageOfOrigin] ??

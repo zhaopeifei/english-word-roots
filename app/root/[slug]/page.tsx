@@ -2,13 +2,22 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { RootDetail } from './index';
 import { DEFAULT_LOCALE, SITE_NAME, SITE_URL } from '@/content/site';
-import { getRootBySlug, ROOTS } from '@/lib/content';
+import { getRootBySlug, getRootSlugs, getWordsByRootSlug } from '@/lib/db';
 
-export const generateStaticParams = () =>
-  ROOTS.map((root) => ({ slug: root.slug }));
+export const revalidate = 3600;
 
-export const generateMetadata = ({ params }: { params: { slug: string } }): Metadata => {
-  const root = getRootBySlug(params.slug);
+export async function generateStaticParams() {
+  const slugs = await getRootSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const root = await getRootBySlug(slug);
 
   if (!root) {
     return { title: SITE_NAME };
@@ -34,14 +43,21 @@ export const generateMetadata = ({ params }: { params: { slug: string } }): Meta
       description,
     },
   };
-};
+}
 
-const RootDetailPage = ({ params }: { params: { slug: string } }) => {
-  const root = getRootBySlug(params.slug);
+const RootDetailPage = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
+  const { slug } = await params;
+  const root = await getRootBySlug(slug);
 
   if (!root) {
     notFound();
   }
+
+  const associatedWords = await getWordsByRootSlug(slug);
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -76,7 +92,7 @@ const RootDetailPage = ({ params }: { params: { slug: string } }) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <RootDetail root={root} />
+      <RootDetail root={root} associatedWords={associatedWords} />
     </>
   );
 };
