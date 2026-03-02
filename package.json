@@ -10,9 +10,16 @@
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "validate": "npx tsx scripts/validate-data.ts",
+    "audit": "npx tsx scripts/audit-data.ts",
+    "enrich:wiktionary": "npx tsx scripts/fetch-wiktionary.ts",
+    "enrich:morphemes": "npx tsx scripts/enrich-morphemes.ts",
+    "enrich:examples": "npx tsx scripts/generate-examples.ts",
+    "enrich:all": "npx tsx scripts/fetch-wiktionary.ts && npx tsx scripts/enrich-morphemes.ts && npx tsx scripts/generate-examples.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.78.0",
     "@radix-ui/react-slot": "^1.2.4",
     "@radix-ui/react-tooltip": "^1.2.8",
     "@remixicon/react": "^4.7.0",

@@ -27,6 +27,12 @@ coverage
 # Plans (private)
 docs/plans/
 
+# Build artifacts
+tsconfig.tsbuildinfo
+
+# Script output (generated data, checkpoints)
+scripts/output/
+
 # Editor
 *.swp
 .idea/
