@@ -41,6 +41,13 @@ export const dictionaries: Dictionaries = {
     searchNoResults: 'No results found',
     searchRoots: 'Roots',
     searchWords: 'Words',
+    allDomains: 'All domains',
+    sortAZ: 'A → Z',
+    sortZA: 'Z → A',
+    sortMostWords: 'Most words',
+    sortFewestWords: 'Fewest words',
+    showing: 'Showing',
+    of: 'of',
   },
   zh: {
     tagline: '从词根出发，拓展词汇。',
@@ -77,6 +84,13 @@ export const dictionaries: Dictionaries = {
     searchNoResults: '未找到结果',
     searchRoots: '词根',
     searchWords: '单词',
+    allDomains: '全部领域',
+    sortAZ: 'A → Z',
+    sortZA: 'Z → A',
+    sortMostWords: '单词最多',
+    sortFewestWords: '单词最少',
+    showing: '显示',
+    of: '/',
   },
 };
 

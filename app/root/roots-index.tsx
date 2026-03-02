@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useMemo, useState } from 'react';
 import { useLanguage } from '@/components/language-provider';
 import type { RootEntry } from '@/types/content';
 import type { SemanticDomain } from '@/types/content';
@@ -73,6 +74,49 @@ const cardStyles = [
 export const RootsIndex = ({ roots }: RootsIndexProps) => {
   const { dictionary, locale } = useLanguage();
 
+  const [selectedDomain, setSelectedDomain] = useState<string>('all');
+  const [sortBy, setSortBy] = useState<string>('az');
+
+  // Collect all unique domains from the data
+  const allDomains = useMemo(() => {
+    const set = new Set<string>();
+    roots.forEach((r) => r.semanticDomains.forEach((d) => set.add(d)));
+    return [...set].sort();
+  }, [roots]);
+
+  // Filter and sort
+  const filteredRoots = useMemo(() => {
+    let result = roots;
+
+    if (selectedDomain !== 'all') {
+      result = result.filter((r) =>
+        r.semanticDomains.includes(selectedDomain as SemanticDomain),
+      );
+    }
+
+    switch (sortBy) {
+      case 'za':
+        result = [...result].sort((a, b) => b.slug.localeCompare(a.slug));
+        break;
+      case 'most':
+        result = [...result].sort(
+          (a, b) => b.associatedWords.length - a.associatedWords.length,
+        );
+        break;
+      case 'fewest':
+        result = [...result].sort(
+          (a, b) => a.associatedWords.length - b.associatedWords.length,
+        );
+        break;
+      case 'az':
+      default:
+        result = [...result].sort((a, b) => a.slug.localeCompare(b.slug));
+        break;
+    }
+
+    return result;
+  }, [roots, selectedDomain, sortBy]);
+
   return (
     <div className="space-y-10">
       {/* Section header */}
@@ -84,9 +128,40 @@ export const RootsIndex = ({ roots }: RootsIndexProps) => {
         <p className="text-muted-foreground max-w-2xl text-lg">{dictionary.rootOverview}</p>
       </header>
 
+      {/* Filter bar */}
+      <div className="flex flex-wrap items-center gap-3">
+        <select
+          value={selectedDomain}
+          onChange={(e) => setSelectedDomain(e.target.value)}
+          className="border-border bg-background text-foreground h-9 cursor-pointer rounded-full border-[1.5px] px-3 text-sm font-medium transition-colors hover:border-primary"
+        >
+          <option value="all">{dictionary.allDomains}</option>
+          {allDomains.map((domain) => (
+            <option key={domain} value={domain}>
+              {domainEmojiMap[domain as SemanticDomain] ?? '📖'} {domain}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          className="border-border bg-background text-foreground h-9 cursor-pointer rounded-full border-[1.5px] px-3 text-sm font-medium transition-colors hover:border-primary"
+        >
+          <option value="az">{dictionary.sortAZ}</option>
+          <option value="za">{dictionary.sortZA}</option>
+          <option value="most">{dictionary.sortMostWords}</option>
+          <option value="fewest">{dictionary.sortFewestWords}</option>
+        </select>
+
+        <span className="text-muted-foreground text-sm">
+          {dictionary.showing} {filteredRoots.length} {dictionary.of} {roots.length}
+        </span>
+      </div>
+
       {/* Root cards grid */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {roots.map((root, index) => {
+        {filteredRoots.map((root, index) => {
           const style = cardStyles[index % 3];
           const emoji = getEmoji(root.semanticDomains);
 
