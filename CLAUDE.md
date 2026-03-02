@@ -12,17 +12,25 @@
 ## 核心约束
 
 - 品牌名：**English Word Roots**
-- 纯静态导出（`output: 'export'`），零服务端依赖
+- SSR/ISR 部署于 Vercel，数据源为 Supabase（PostgreSQL）
 - TypeScript strict 模式，所有代码必须通过类型检查
 - 多语言 UI 同步：中英文内容必须同步维护
 - 包管理器：**pnpm**
+
+## 环境变量
+
+```
+NEXT_PUBLIC_SUPABASE_URL=...         # Supabase 项目 URL
+NEXT_PUBLIC_SUPABASE_ANON_KEY=...    # Supabase anon key（前端/SSR 使用）
+SUPABASE_SERVICE_ROLE_KEY=...        # 仅脚本使用（绕过 RLS）
+```
 
 ## 构建验证
 
 每次提交前必须通过：
 
 ```bash
-pnpm build        # 静态导出构建（~1300+ 页）
+pnpm build        # SSR/ISR 构建
 pnpm lint         # ESLint 检查
 pnpm type-check   # TypeScript 类型检查
 ```
@@ -31,9 +39,11 @@ pnpm type-check   # TypeScript 类型检查
 
 ### 数据
 
-- **唯一数据源**：`content/` 目录下的 TypeScript 文件（roots.ts / affixes.ts / words/）
-- **数据导入流程**：原始 Markdown → `scripts/import-data.mjs` → JSON → `scripts/generate-roots.mjs` → TypeScript
-- **数据来源标注**：当前全部来自「宝爷万词王讲义」，原始文件在 `docs/sources/宝爷万词王_讲义合集.md`
+- **唯一数据源**：Supabase 数据库，通过 `lib/db/` 模块访问
+- **数据访问层**：`lib/db/`（roots.ts / words.ts / affixes.ts / mappers.ts）
+- **数据丰富化管线**：`scripts/fetch-wiktionary.ts` → `scripts/enrich-morphemes.ts` → `scripts/generate-examples.ts`
+- **遗留静态数据**：`content/` 目录保留作为备份，不再被页面直接使用
+- **站点配置**：`content/site.ts` 仍为静态导入（品牌名、URL、导航等）
 
 ### 样式
 
