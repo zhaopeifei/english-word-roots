@@ -2,13 +2,23 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { WordDetail } from './index';
 import { DEFAULT_LOCALE, SITE_NAME, SITE_URL } from '@/content/site';
-import { getRootBySlug, getWordBySlug, WORDS } from '@/lib/content';
+import { getWordBySlug, getWordSlugs } from '@/lib/db';
+import { getRootBySlug } from '@/lib/db';
 
-export const generateStaticParams = () =>
-  WORDS.map((word) => ({ slug: word.slug }));
+export const revalidate = 3600;
 
-export const generateMetadata = ({ params }: { params: { slug: string } }): Metadata => {
-  const word = getWordBySlug(params.slug);
+export async function generateStaticParams() {
+  const slugs = await getWordSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const word = await getWordBySlug(slug);
 
   if (!word) {
     return { title: SITE_NAME };
@@ -34,14 +44,22 @@ export const generateMetadata = ({ params }: { params: { slug: string } }): Meta
       description,
     },
   };
-};
+}
 
-const WordDetailPage = ({ params }: { params: { slug: string } }) => {
-  const word = getWordBySlug(params.slug);
+const WordDetailPage = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
+  const { slug } = await params;
+  const word = await getWordBySlug(slug);
 
   if (!word) {
     notFound();
   }
+
+  const parentRootSegment = word.rootBreakdown.find((s) => s.type === 'root' && s.rootSlug);
+  const parentRoot = parentRootSegment?.rootSlug ? await getRootBySlug(parentRootSegment.rootSlug) : undefined;
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -55,9 +73,6 @@ const WordDetailPage = ({ params }: { params: { slug: string } }) => {
     },
     url: `${SITE_URL}/word/${word.slug}`,
   };
-
-  const parentRootSegment = word.rootBreakdown.find((s) => s.type === 'root' && s.rootSlug);
-  const parentRoot = parentRootSegment?.rootSlug ? getRootBySlug(parentRootSegment.rootSlug) : undefined;
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
@@ -88,7 +103,7 @@ const WordDetailPage = ({ params }: { params: { slug: string } }) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <WordDetail word={word} />
+      <WordDetail word={word} parentRoot={parentRoot ?? undefined} />
     </>
   );
 };
