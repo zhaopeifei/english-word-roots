@@ -6,6 +6,8 @@ export const SUPPORTED_LANGUAGES = ['en', 'zh'] as const;
 
 export type Locale = (typeof SUPPORTED_LANGUAGES)[number];
 
+export type LocalePreference = Locale | 'auto';
+
 export const DEFAULT_LOCALE: Locale = 'en';
 
 export const NAV_LINKS = [
