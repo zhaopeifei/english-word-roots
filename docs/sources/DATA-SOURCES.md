@@ -280,56 +280,163 @@ COCA 免费版包含 8 种体裁的频率分布，可以看出一个词是更"�
 
 ---
 
-### 2.4 Wiktionary — 开放词源数据库
+### 2.4 Wiktionary — 开放词源数据库（词根/词源核心数据源）
 
-最全面的免费词源数据，含 PIE 词根追溯、跨语言同源词、词素分解。
+**最全面的免费词源数据**，含 PIE 词根追溯、跨语言同源词、词素分解。是项目补充词根数据的首选来源。
 
 | 项目 | 详情 |
 |------|------|
-| **API** | `https://en.wiktionary.org/api/rest_v1/page/summary/{word}` |
-| **数据转储** | [dumps.wikimedia.org/enwiktionary](https://dumps.wikimedia.org/enwiktionary/) |
-| **解析工具** | [wiktextract](https://pypi.org/project/wiktextract/) (Python) |
-| **预处理数据** | [kaikki.org/dictionary/English](https://kaikki.org/dictionary/English/) (wiktextract 输出) |
 | **许可** | CC BY-SA 3.0 |
-| **规模** | 数十万词条，完整词源链 |
+| **规模** | 数十万英语词条，完整词源链 |
 
-#### API 示例
+#### 获取方式一：MediaWiki API（推荐，精准查询）
+
+**最适合本项目**：1164 个词 ÷ 50词/请求 = 只需 24 次请求，几分钟搞定。
 
 ```bash
-# 查询单个词
-curl "https://en.wiktionary.org/api/rest_v1/page/summary/biology"
+# 查单个词的词源 wikitext
+curl "https://en.wiktionary.org/w/api.php?action=parse&page=biology&prop=wikitext&format=json"
+
+# 批量查询（一次最多 50 个词）
+curl "https://en.wiktionary.org/w/api.php?action=query&titles=predict|construct|biology&prop=revisions&rvprop=content&rvslots=main&format=json&formatversion=2"
 ```
 
-#### wiktextract 批量处理
+返回的 wikitext 包含结构化词源模板：
+
+```
+===Etymology===
+{{bor+|en|la-new|biologia}}, from {{der|en|grc|-}}
+{{suffix|grc|βίος|gloss1=life|λογία|gloss2=branch of study}}
+```
+
+**关键模板解析表：**
+
+| 模板 | 含义 | 示例 |
+|------|------|------|
+| `{{root\|en\|ine-pro\|*strew-}}` | PIE 原始印欧语词根 | construct → PIE *strew- |
+| `{{bor\|en\|la\|word}}` | 借词来源 | construct ← Latin |
+| `{{der\|en\|grc\|word}}` | 派生来源 | biology ← Greek |
+| `{{inh\|en\|enm\|word}}` | 继承来源 | ← Middle English |
+| `{{prefix\|en\|sub\|marine}}` | 前缀分解 | submarine = sub + marine |
+| `{{suffix\|grc\|βίος\|λογία}}` | 后缀分解 | biology = bios + logia |
+| `{{compound\|en\|word1\|word2}}` | 复合词分解 | |
+| `{{m\|la\|com-\|\|together}}` | 词素引用 | com- = "together" |
+
+**注意事项：**
+- 批量查询上限：50 个词/请求
+- 返回的是原始 wikitext，需要解析模板提取结构化数据
+- 请求频率要合理，避免被限流
+
+#### 获取方式二：kaikki.org 预处理数据（全量下载）
+
+kaikki.org 用 wiktextract 工具把整个 Wiktionary 转成了结构化 JSONL。
+
+| 项目 | 详情 |
+|------|------|
+| **下载地址** | [kaikki.org/dictionary/rawdata.html](https://kaikki.org/dictionary/rawdata.html) |
+| **压缩大小** | 2.3 GB (.gz) |
+| **解压大小** | ~20 GB JSONL |
+| **Python 客户端** | [kaikki-json](https://pypi.org/project/kaikki-json/) — 支持流式迭代和缓存 |
+
+每个词条包含两个词源字段：
+
+**`etymology_text`** — 人类可读词源：
+```
+Borrowed from Latin cōnstrūctus, from cōnstruō ("to heap together"),
+from com- ("together") + struō ("I heap up, pile")
+```
+
+**`etymology_templates`** — 结构化模板（最有价值）：
+```json
+[
+  { "name": "root", "args": {"1": "en", "2": "ine-pro", "3": "*strew-"} },
+  { "name": "bor",  "args": {"1": "en", "2": "la", "3": "cōnstrūctus"} },
+  { "name": "prefix", "args": {"1": "en", "2": "com-", "3": "struere"} }
+]
+```
+
+**Python 使用示例（kaikki-json 客户端）：**
+
+```python
+pip install kaikki-json
+
+from kaikki_json import iter_items_in
+for item in iter_items_in('en'):
+    if item['word'] == 'biology':
+        print(item['etymology_text'])
+        print(item['etymology_templates'])
+```
+
+**注意：** 解压后 20GB，不适合放入仓库。建议本地处理后只保存提取的结果。
+
+#### 获取方式三：wiktextract 自行解析（最灵活）
+
+| 项目 | 详情 |
+|------|------|
+| **GitHub** | [tatuylonen/wiktextract](https://github.com/tatuylonen/wiktextract) |
+| **PyPI** | [wiktextract](https://pypi.org/project/wiktextract/) |
+| **Wiktionary 转储** | [dumps.wikimedia.org/enwiktionary/](https://dumps.wikimedia.org/enwiktionary/) (~1.4 GB 压缩) |
 
 ```bash
 pip install wiktextract
-
-# 下载转储 (~1GB 压缩)
 wget "https://dumps.wikimedia.org/enwiktionary/latest/enwiktionary-latest-pages-articles.xml.bz2"
-
-# 解析为 JSON (耗时较长)
-python -m wiktextract enwiktionary-latest-pages-articles.xml.bz2 --out wiktionary.json
+wiktwords --all --out data.jsonl enwiktionary-latest-pages-articles.xml.bz2
 ```
 
-#### kaikki.org 预处理数据（推荐）
-
-kaikki.org 提供 wiktextract 的预处理输出，可直接下载 JSON，无需自己跑解析：
-
-```
-https://kaikki.org/dictionary/English/
-```
+**注意：** 处理全量转储需要大量计算资源。推荐直接用 kaikki.org 的预处理结果。
 
 #### 用途
 
 - 补充 PIE (原始印欧语) 词根信息
+- 词素分解（前缀、后缀、词根的结构化数据）
 - 跨语言同源词 (cognates)
+- 借词链追溯（Latin → Old French → English）
 - 校验/补充词源说明 (etymology)
 - 补充派生词和相关词
 
 ---
 
-### 2.5 WordNet — 语义关系数据库 (Princeton)
+### 2.5 etymology-db — 词源关系图数据库
+
+从 Wiktionary 提取的结构化词源关系图，420 万条关系。
+
+| 项目 | 详情 |
+|------|------|
+| **GitHub** | [droher/etymology-db](https://github.com/droher/etymology-db) |
+| **规模** | 420 万条词源关系，200 万词条，3300+ 语言 |
+| **格式** | CSV (gzipped) 或 Parquet，通过 OneDrive 下载 |
+| **最后更新** | 2023-12-05 |
+| **关系类型** | 31 种 |
+
+#### 核心关系类型
+
+| 关系 | 说明 | 用途 |
+|------|------|------|
+| `root` | PIE 词根 | 查词的原始印欧语词根 |
+| `has_prefix` | 前缀分解 | 词素分解 |
+| `has_suffix` | 后缀分解 | 词素分解 |
+| `has_affix` | 词缀 | 词素分解 |
+| `borrowed_from` | 借词来源 | 语言借词链 |
+| `inherited_from` | 继承来源 | 语言继承链 |
+| `derived_from` | 派生来源 | 派生关系 |
+| `compound_of` | 复合词分解 | 复合词拆分 |
+| `has_prefix_with_root` | 带词根的前缀 | 词根关联 |
+
+#### 数据 Schema
+
+```
+term_id | lang | term | reltype | related_term_id | related_lang | related_term | position
+```
+
+#### 用途
+
+- 查"某个 PIE 词根派生了哪些英语词"（反向查询）
+- 构建词根关系网络图
+- 补充项目的 `relatedRoots` 字段
+
+---
+
+### 2.6 WordNet — 语义关系数据库 (Princeton)
 
 英语最权威的语义关系数据库。
 
@@ -370,7 +477,7 @@ for s in wn.synsets('active'):
 
 ---
 
-### 2.6 Google Books Ngram
+### 2.7 Google Books Ngram
 
 8百万+ 本书的词频数据，1500-2019 年。
 
@@ -389,7 +496,7 @@ for s in wn.synsets('active'):
 
 ---
 
-### 2.7 其他参考数据源
+### 2.8 其他参考数据源
 
 | 数据源 | 说明 | URL |
 |--------|------|-----|
@@ -406,18 +513,20 @@ for s in wn.synsets('active'):
 
 各数据源能为项目提供什么：
 
-| 数据需求 | ECDICT | AWL | NGSL | wordfreq | Wiktionary | WordNet |
-|----------|--------|-----|------|----------|------------|---------|
-| 考试标签 (CET/IELTS/GRE) | **主力** | 学术词 | 核心词 | - | - | - |
-| 词频分级 | BNC+COCA 排名 | - | 3 频段 | **最精确** | - | - |
-| 柯林斯/牛津标记 | **有** | - | - | - | - | - |
-| 音标 IPA | 有 | - | - | - | 有 | - |
-| 中文翻译 | **有** | - | - | - | - | - |
-| 词源/PIE 追溯 | - | - | - | - | **最全** | - |
-| 同源词 (cognates) | - | - | - | - | **有** | - |
-| 同义词/反义词 | - | - | - | - | 部分 | **最全** |
-| 词族/派生词 | 词形变化 | **词族** | 派生形式 | - | 有 | 有 |
-| 词形变化 | **有** | - | - | - | - | 有 |
+| 数据需求 | ECDICT | AWL | NGSL | wordfreq | Wiktionary | etymology-db | WordNet |
+|----------|--------|-----|------|----------|------------|-------------|---------|
+| 考试标签 (CET/IELTS/GRE) | **主力** | 学术词 | 核心词 | - | - | - | - |
+| 词频分级 | BNC+COCA 排名 | - | 3 频段 | **最精确** | - | - | - |
+| 柯林斯/牛津标记 | **有** | - | - | - | - | - | - |
+| 音标 IPA | 有 | - | - | - | 有 | - | - |
+| 中文翻译 | **有** | - | - | - | - | - | - |
+| 词源/PIE 追溯 | - | - | - | - | **最全** | **关系图** | - |
+| 词素分解 (前缀/后缀/词根) | - | - | - | - | **有** | **有** | - |
+| 同源词 (cognates) | - | - | - | - | **有** | 有 | - |
+| 同义词/反义词 | - | - | - | - | 部分 | - | **最全** |
+| 词族/派生词 | 词形变化 | **词族** | 派生形式 | - | 有 | 有 | 有 |
+| 词形变化 | **有** | - | - | - | - | - | 有 |
+| 词根→派生词反查 | - | - | - | - | 有 | **最适合** | - |
 
 ---
 
@@ -432,6 +541,7 @@ for s in wn.synsets('active'):
 | SUBTLEX-US | 学术免费 | 可以 | 需引用论文 |
 | COCA (免费版) | 署名使用 | 可以 | 必须注明 wordfrequency.info |
 | Wiktionary | CC BY-SA 3.0 | 可以 | 需署名+相同方式共享 |
+| etymology-db | 未明确声明 | 需谨慎 | 派生自 Wiktionary (CC BY-SA 3.0)，建议按 CC BY-SA 处理 |
 | WordNet | WordNet License | 可以 | 类 BSD，需包含许可声明 |
 | Google Ngrams | CC BY 3.0 | 可以 | 需署名 |
 
@@ -442,6 +552,7 @@ for s in wn.synsets('active'):
 1. **ECDICT** → 批量标注考试标签 + 频率分级（已下载）
 2. **NGSL** → 标注核心高频词（已下载）
 3. **AWL** → 标注学术词汇 + 词族关系（已下载）
-4. **wordfreq** → 更精确的频率分级脚本
-5. **Wiktionary** → 补充词源、PIE 词根、同源词
-6. **WordNet** → 补充同义词/反义词
+4. **Wiktionary (API)** → 补充词源、PIE 词根、词素分解（24 次 API 请求可覆盖全部 1164 个词）
+5. **wordfreq** → 更精确的频率分级脚本
+6. **etymology-db** → 词根→派生词反向查询，扩充词根覆盖范围
+7. **WordNet** → 补充同义词/反义词
