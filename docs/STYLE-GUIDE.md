@@ -136,7 +136,7 @@
 
 ### 2.4 语义域颜色 (Semantic Domain Colors)
 
-语义域标签使用 Tailwind 内置色板（非设计令牌），遵循统一的 `bg-{color}-100 text-{color}-700 dark:bg-{color}-900/40 dark:text-{color}-300` 模式：
+语义域标签使用 Tailwind 内置色板（非设计令牌），遵循统一的 `bg-{color}-50 text-{color}-800 dark:bg-{color}-900/50 dark:text-{color}-200` 模式：
 
 | 语义域 | 色系 | 语义域 | 色系 |
 |--------|------|--------|------|
@@ -179,7 +179,7 @@ bg-surface-warm, bg-surface-purple, bg-surface-pink
 **Tailwind 色板类**（仅用于语义域/语源等分类标签）：
 
 ```
-bg-{color}-100 text-{color}-700 dark:bg-{color}-900/40 dark:text-{color}-300
+bg-{color}-50 text-{color}-800 dark:bg-{color}-900/50 dark:text-{color}-200
 ```
 
 ---
@@ -326,8 +326,8 @@ h1, h2, h3, h4, h5, h6 {
 
 ```tsx
 {/* 语义域标签 */}
-<span className="rounded-full px-3 py-1 text-xs font-semibold bg-green-100 text-green-700
-                  dark:bg-green-900/40 dark:text-green-300">
+<span className="rounded-full px-3 py-1 text-xs font-semibold bg-green-50 text-green-800
+                  dark:bg-green-900/50 dark:text-green-200">
   🧬 life
 </span>
 
@@ -560,7 +560,7 @@ body { @apply bg-background text-foreground font-body; }
 
 **例外**：语义域标签等分类颜色可以使用 `dark:` 前缀，因为它们使用 Tailwind 色板而非设计令牌：
 ```tsx
-className="bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300"
+className="bg-green-50 text-green-800 dark:bg-green-900/50 dark:text-green-200"
 ```
 
 ### 8.4 点阵背景暗色适配
