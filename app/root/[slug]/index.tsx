@@ -1,9 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
-import { useRouter } from 'next/navigation';
 import { useLanguage } from '@/components/language-provider';
+import { Breadcrumb } from '@/components/breadcrumb';
 import type { RootEntry, SemanticDomain } from '@/types/content';
 import { WORDS_BY_ROOT } from '@/content/words/index';
 
@@ -165,7 +164,6 @@ interface RootDetailProps {
 }
 
 export const RootDetail = ({ root }: RootDetailProps) => {
-  const router = useRouter();
   const { dictionary, locale } = useLanguage();
   const localizedOverview = root.overview[locale] ?? root.overview.en;
   const localizedOrigin = root.originSummary[locale] ?? root.originSummary.en;
@@ -177,16 +175,14 @@ export const RootDetail = ({ root }: RootDetailProps) => {
 
   return (
     <article className="space-y-10">
-      {/* ── Back button ─────────────────────────────────── */}
-      <button
-        type="button"
-        onClick={() => router.back()}
-        className="bg-card text-muted-foreground hover:bg-primary inline-flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 text-sm font-bold transition-all hover:text-white"
-        aria-label={locale === 'zh' ? '返回' : 'Back'}
-      >
-        <ArrowLeft className="h-4 w-4" aria-hidden />
-        {locale === 'zh' ? '返回' : 'Back'}
-      </button>
+      {/* ── Breadcrumb ────────────────────────────────────── */}
+      <Breadcrumb
+        items={[
+          { label: dictionary.home, href: '/home' },
+          { label: dictionary.roots, href: '/root' },
+          { label: root.variants[0] ?? root.slug },
+        ]}
+      />
 
       {/* ── Header ──────────────────────────────────────── */}
       <header className="space-y-3">

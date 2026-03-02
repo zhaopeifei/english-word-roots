@@ -6,6 +6,7 @@ type Dictionaries = Record<Locale, Dictionary>;
 
 export const dictionaries: Dictionaries = {
   en: {
+    home: 'Home',
     tagline: 'Build vocabulary from the root up.',
     heroSubtitle: 'Root-driven discovery, multilingual context, and SEO-first performance.',
 
@@ -52,6 +53,7 @@ export const dictionaries: Dictionaries = {
     words: 'words',
   },
   zh: {
+    home: '首页',
     tagline: '从词根出发，拓展词汇。',
     heroSubtitle: '词根驱动的探索，多语言上下文，以及以 SEO 为核心的性能。',
 

@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { WordDetail } from './index';
 import { DEFAULT_LOCALE, SITE_NAME, SITE_URL } from '@/content/site';
-import { getWordBySlug, WORDS } from '@/lib/content';
+import { getRootBySlug, getWordBySlug, WORDS } from '@/lib/content';
 
 export const generateStaticParams = () =>
   WORDS.map((word) => ({ slug: word.slug }));
@@ -56,11 +56,37 @@ const WordDetailPage = ({ params }: { params: { slug: string } }) => {
     url: `${SITE_URL}/word/${word.slug}`,
   };
 
+  const parentRootSegment = word.rootBreakdown.find((s) => s.type === 'root' && s.rootSlug);
+  const parentRoot = parentRootSegment?.rootSlug ? getRootBySlug(parentRootSegment.rootSlug) : undefined;
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Roots', item: `${SITE_URL}/root` },
+      ...(parentRoot ? [{
+        '@type': 'ListItem', position: 3,
+        name: parentRoot.variants[0] ?? parentRoot.slug,
+        item: `${SITE_URL}/root/${parentRoot.slug}`,
+      }] : []),
+      {
+        '@type': 'ListItem', position: parentRoot ? 4 : 3,
+        name: word.lemma,
+        item: `${SITE_URL}/word/${word.slug}`,
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <WordDetail word={word} />
     </>

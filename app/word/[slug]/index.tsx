@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useLanguage } from '@/components/language-provider';
+import { Breadcrumb } from '@/components/breadcrumb';
+import { getRootBySlug } from '@/lib/content';
 import type { WordEntry, MorphemeSegment } from '@/types/content';
 
 interface WordDetailProps {
@@ -26,21 +27,28 @@ const badgeColors = [
 ];
 
 export const WordDetail = ({ word }: WordDetailProps) => {
-  const router = useRouter();
   const { dictionary, locale } = useLanguage();
   const localizedDefinition = word.definition[locale] ?? word.definition.en;
   const localizedMorphology = word.morphologyNote[locale] ?? word.morphologyNote.en;
 
+  const parentRootSegment = word.rootBreakdown.find((s) => s.type === 'root' && s.rootSlug);
+  const parentRoot = parentRootSegment?.rootSlug
+    ? getRootBySlug(parentRootSegment.rootSlug)
+    : undefined;
+
   return (
     <article className="space-y-10">
-      {/* Back button */}
-      <button
-        type="button"
-        onClick={() => router.back()}
-        className="bg-card hover:bg-primary inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition hover:text-white"
-      >
-        ← {locale === 'zh' ? '返回' : 'Back'}
-      </button>
+      {/* Breadcrumb */}
+      <Breadcrumb
+        items={[
+          { label: dictionary.home, href: '/home' },
+          { label: dictionary.roots, href: '/root' },
+          ...(parentRoot
+            ? [{ label: parentRoot.variants[0] ?? parentRoot.slug, href: `/root/${parentRoot.slug}` }]
+            : []),
+          { label: word.lemma },
+        ]}
+      />
 
       {/* Header: lemma */}
       <header>
