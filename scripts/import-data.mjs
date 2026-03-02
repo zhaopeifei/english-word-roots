@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = resolve(__dirname, '..');
-const INPUT = resolve(ROOT_DIR, 'docs/宝爷万词王_讲义合集.md');
+const INPUT = resolve(ROOT_DIR, 'docs/sources/宝爷万词王_讲义合集.md');
 const OUTPUT = resolve(__dirname, 'output/parsed-data.json');
 
 // ── Helpers ──────────────────────────────────────────────────

@@ -24,6 +24,9 @@ yarn-error.log*
 # Tests / Coverage
 coverage
 
+# Plans (private)
+docs/plans/
+
 # Editor
 *.swp
 .idea/
