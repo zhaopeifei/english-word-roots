@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  // output: 'export',
+  // SSR/ISR on Vercel — no static export
   images: {
     unoptimized: true,
   },
