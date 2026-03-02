@@ -1,6 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import { Volume2 } from 'lucide-react';
+import { useCallback, useEffect, useState } from 'react';
 import { useLanguage } from '@/components/language-provider';
 import { Breadcrumb } from '@/components/breadcrumb';
 import { getRootBySlug } from '@/lib/content';
@@ -36,6 +38,21 @@ export const WordDetail = ({ word }: WordDetailProps) => {
     ? getRootBySlug(parentRootSegment.rootSlug)
     : undefined;
 
+  const [speechSupported, setSpeechSupported] = useState(false);
+
+  useEffect(() => {
+    setSpeechSupported('speechSynthesis' in window);
+  }, []);
+
+  const handleSpeak = useCallback((text: string, lang: 'en-GB' | 'en-US') => {
+    if (!speechSupported) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = lang;
+    utterance.rate = 0.9;
+    window.speechSynthesis.speak(utterance);
+  }, [speechSupported]);
+
   return (
     <article className="space-y-10">
       {/* Breadcrumb */}
@@ -60,10 +77,30 @@ export const WordDetail = ({ word }: WordDetailProps) => {
         <span className="bg-card border-border inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm">
           <span>🇬🇧 UK</span>
           <span className="text-foreground font-mono">{word.pronunciation.uk.ipa}</span>
+          {speechSupported && (
+            <button
+              type="button"
+              onClick={() => handleSpeak(word.lemma, 'en-GB')}
+              className="text-muted-foreground hover:text-primary cursor-pointer transition-colors"
+              aria-label="Listen UK pronunciation"
+            >
+              <Volume2 className="h-4 w-4" />
+            </button>
+          )}
         </span>
         <span className="bg-card border-border inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm">
           <span>🇺🇸 US</span>
           <span className="text-foreground font-mono">{word.pronunciation.us.ipa}</span>
+          {speechSupported && (
+            <button
+              type="button"
+              onClick={() => handleSpeak(word.lemma, 'en-US')}
+              className="text-muted-foreground hover:text-primary cursor-pointer transition-colors"
+              aria-label="Listen US pronunciation"
+            >
+              <Volume2 className="h-4 w-4" />
+            </button>
+          )}
         </span>
       </div>
 
