@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { SITE_NAME, SITE_URL } from '@/content/site';
+import { DEFAULT_LOCALE, SITE_NAME, SITE_URL } from '@/content/site';
 import { COLLECTIONS, getCollectionBySlug } from '@/content/collections';
 import type { Collection } from '@/content/collections';
 import {
@@ -27,13 +27,15 @@ export async function generateMetadata({
   const collection = getCollectionBySlug(slug);
   if (!collection) return {};
 
-  const title = `${collection.name.en} | ${SITE_NAME}`;
-  const description = collection.description.en;
+  const title = `${collection.name[DEFAULT_LOCALE]} — ${SITE_NAME}`;
+  const description = collection.description[DEFAULT_LOCALE];
+  const url = `${SITE_URL}/explore/${slug}`;
   return {
     title,
     description,
-    alternates: { canonical: `${SITE_URL}/explore/${slug}` },
-    openGraph: { title, description, url: `${SITE_URL}/explore/${slug}` },
+    alternates: { canonical: url },
+    openGraph: { title, description, url, type: 'article' },
+    twitter: { card: 'summary', title, description },
   };
 }
 
@@ -76,12 +78,48 @@ const CollectionPage = async ({
   const roots = collection.type === 'root' ? await fetchRoots(collection) : [];
   const words = collection.type === 'word' ? await fetchWords(collection) : [];
 
+  const itemCount = collection.type === 'root' ? roots.length : words.length;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: collection.name[DEFAULT_LOCALE],
+    description: collection.description[DEFAULT_LOCALE],
+    url: `${SITE_URL}/explore/${slug}`,
+    numberOfItems: itemCount,
+    isPartOf: {
+      '@type': 'WebSite',
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Explore', item: `${SITE_URL}/explore` },
+      { '@type': 'ListItem', position: 3, name: collection.name[DEFAULT_LOCALE], item: `${SITE_URL}/explore/${slug}` },
+    ],
+  };
+
   return (
-    <CollectionDetail
-      collection={collection}
-      roots={roots}
-      words={words}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <CollectionDetail
+        collection={collection}
+        roots={roots}
+        words={words}
+      />
+    </>
   );
 };
 

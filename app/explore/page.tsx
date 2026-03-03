@@ -12,16 +12,15 @@ import { ExploreHub } from './index';
 export const dynamic = 'force-dynamic';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const description = `Browse ${COLLECTIONS.length} curated vocabulary collections — exam word lists, root families, and frequency tiers.`;
+  const title = `Explore Collections | ${SITE_NAME}`;
+  const description = `Browse ${COLLECTIONS.length} curated vocabulary collections — IELTS, TOEFL, CET-4/6, GRE exam word lists, Latin & Greek root families, and frequency-ranked word tiers.`;
+  const url = `${SITE_URL}/explore`;
   return {
-    title: `Explore | ${SITE_NAME}`,
+    title,
     description,
-    alternates: { canonical: `${SITE_URL}/explore` },
-    openGraph: {
-      title: `Explore | ${SITE_NAME}`,
-      description,
-      url: `${SITE_URL}/explore`,
-    },
+    alternates: { canonical: url },
+    openGraph: { title, description, url },
+    twitter: { card: 'summary', title, description },
   };
 }
 

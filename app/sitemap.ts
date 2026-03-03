@@ -1,30 +1,44 @@
 import type { MetadataRoute } from 'next';
-import { ROOTS, WORDS } from '@/lib/content';
 import { SITE_URL } from '@/content/site';
+import { COLLECTIONS } from '@/content/collections';
+import { getRootSlugs, getWordSlugs } from '@/lib/db';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date().toISOString();
+
+  const [rootSlugs, wordSlugs] = await Promise.all([
+    getRootSlugs(),
+    getWordSlugs(),
+  ]);
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: SITE_URL, lastModified: now, changeFrequency: 'weekly', priority: 1.0 },
     { url: `${SITE_URL}/home`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${SITE_URL}/about`, lastModified: now, changeFrequency: 'weekly', priority: 0.6 },
     { url: `${SITE_URL}/root`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${SITE_URL}/explore`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
   ];
 
-  const rootEntries: MetadataRoute.Sitemap = ROOTS.map((root) => ({
-    url: `${SITE_URL}/root/${root.slug}`,
+  const exploreEntries: MetadataRoute.Sitemap = COLLECTIONS.map((c) => ({
+    url: `${SITE_URL}/explore/${c.slug}`,
     lastModified: now,
-    changeFrequency: 'weekly',
+    changeFrequency: 'weekly' as const,
     priority: 0.8,
   }));
 
-  const wordEntries: MetadataRoute.Sitemap = WORDS.map((word) => ({
-    url: `${SITE_URL}/word/${word.slug}`,
+  const rootEntries: MetadataRoute.Sitemap = rootSlugs.map((slug) => ({
+    url: `${SITE_URL}/root/${slug}`,
     lastModified: now,
-    changeFrequency: 'weekly',
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
+  const wordEntries: MetadataRoute.Sitemap = wordSlugs.map((slug) => ({
+    url: `${SITE_URL}/word/${slug}`,
+    lastModified: now,
+    changeFrequency: 'weekly' as const,
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...rootEntries, ...wordEntries];
+  return [...staticRoutes, ...exploreEntries, ...rootEntries, ...wordEntries];
 }
