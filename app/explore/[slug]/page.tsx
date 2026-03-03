@@ -11,11 +11,14 @@ import {
 import { CollectionDetail } from './index';
 import type { RootEntry, WordEntry } from '@/types/content';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // ISR: rebuild at most once per hour
 
-// Pre-declare all valid slugs for static generation
+// Only pre-render root collections at build time (small dataset).
+// Word collections (thousands of items) are generated on first request via ISR.
 export async function generateStaticParams() {
-  return COLLECTIONS.map((c) => ({ slug: c.slug }));
+  return COLLECTIONS
+    .filter((c) => c.type === 'root')
+    .map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({

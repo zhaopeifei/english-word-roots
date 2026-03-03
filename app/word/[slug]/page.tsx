@@ -4,8 +4,7 @@ import { WordDetail } from './index';
 import { DEFAULT_LOCALE, SITE_NAME, SITE_URL } from '@/content/site';
 import { getWordBySlug, getRootBySlug } from '@/lib/db';
 
-// 按需 SSR，不在 build 时预渲染
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // ISR: rebuild at most once per hour
 
 
 export async function generateMetadata({

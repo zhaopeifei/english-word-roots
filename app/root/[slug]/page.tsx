@@ -4,7 +4,7 @@ import { RootDetail } from './index';
 import { DEFAULT_LOCALE, SITE_NAME, SITE_URL } from '@/content/site';
 import { getRootBySlug, getWordsByRootSlug } from '@/lib/db';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // ISR: rebuild at most once per hour
 
 
 export async function generateMetadata({

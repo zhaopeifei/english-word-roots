@@ -241,7 +241,11 @@ export async function getWordCount(): Promise<number> {
 }
 
 // ---------------------------------------------------------------------------
-// getWordsByTag — Words for a given tag slug (exam lists, frequency tiers)
+// getWordsByTag — Lightweight bulk query for collection list pages
+//
+// Unlike hydrateWord() which does 5 queries per word (N+1 problem),
+// this fetches word rows + morpheme segments in 2 bulk queries.
+// Examples, tags, and related words are omitted — not needed for cards.
 // ---------------------------------------------------------------------------
 
 export async function getWordsByTag(
@@ -273,7 +277,7 @@ export async function getWordsByTag(
 
   if (wordIds.length === 0) return [];
 
-  // 3. Fetch word rows (paginated in batches of 500 to avoid IN limit)
+  // 3. Fetch word rows in bulk (batched to avoid Supabase IN limit)
   const BATCH = 500;
   const allWordRows: WordRow[] = [];
   for (let i = 0; i < wordIds.length; i += BATCH) {
@@ -286,7 +290,31 @@ export async function getWordsByTag(
     if (data) allWordRows.push(...(data as WordRow[]));
   }
 
-  return hydrateWords(allWordRows);
+  if (allWordRows.length === 0) return [];
+
+  // 4. Fetch morpheme segments for ALL words in bulk (instead of 1 query per word)
+  const allIds = allWordRows.map((w) => w.id);
+  const segmentsByWordId = new Map<number, MorphemeSegmentRow[]>();
+  for (let i = 0; i < allIds.length; i += BATCH) {
+    const batch = allIds.slice(i, i + BATCH);
+    const { data } = await supabase
+      .from('morpheme_segments')
+      .select('*, roots(slug), affixes(slug)')
+      .in('word_id', batch)
+      .order('sort_order');
+    if (data) {
+      for (const seg of data as MorphemeSegmentRow[]) {
+        const list = segmentsByWordId.get(seg.word_id) ?? [];
+        list.push(seg);
+        segmentsByWordId.set(seg.word_id, list);
+      }
+    }
+  }
+
+  // 5. Map to WordEntry (no examples, no tags, no related words)
+  return allWordRows.map((row) =>
+    mapWord(row, segmentsByWordId.get(row.id) ?? [], [], [], []),
+  );
 }
 
 // ---------------------------------------------------------------------------

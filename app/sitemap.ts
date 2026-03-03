@@ -3,6 +3,8 @@ import { SITE_URL } from '@/content/site';
 import { COLLECTIONS } from '@/content/collections';
 import { getRootSlugs, getWordSlugs } from '@/lib/db';
 
+export const revalidate = 86400; // regenerate sitemap at most once per day
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date().toISOString();
 

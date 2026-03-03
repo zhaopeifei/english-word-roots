@@ -3,7 +3,7 @@ import { RootsIndex } from './roots-index';
 import { getRoots } from '@/lib/db';
 import { SITE_NAME, SITE_URL } from '@/content/site';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // ISR: rebuild at most once per hour
 
 export async function generateMetadata(): Promise<Metadata> {
   const roots = await getRoots();
