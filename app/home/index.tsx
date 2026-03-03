@@ -80,6 +80,7 @@ function morphemeClass(type: MorphemeSegment['type']): string {
     case 'prefix':
       return 'morpheme-prefix';
     case 'root':
+    case 'stem':
       return 'morpheme-root';
     case 'suffix':
       return 'morpheme-suffix';
@@ -94,6 +95,7 @@ function morphemeLabel(type: MorphemeSegment['type'], locale: string): string {
   const labels: Record<string, Record<string, string>> = {
     prefix: { en: 'prefix', zh: '前缀' },
     root: { en: 'root', zh: '词根' },
+    stem: { en: 'stem', zh: '词干' },
     suffix: { en: 'suffix', zh: '后缀' },
     connector: { en: 'link', zh: '连接' },
     other: { en: 'other', zh: '其他' },

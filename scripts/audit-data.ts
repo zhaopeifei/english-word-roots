@@ -90,7 +90,7 @@ async function audit() {
 
   // 4. Morpheme segments analysis
   console.log('\n--- 4. Morpheme Segments ---');
-  for (const segType of ['root', 'prefix', 'suffix', 'connector', 'other']) {
+  for (const segType of ['root', 'stem', 'prefix', 'suffix', 'connector', 'other']) {
     const { count } = await db.from('morpheme_segments').select('*', { count: 'exact', head: true }).eq('type', segType);
     console.log(`  ${segType.padEnd(12)} ${count}`);
   }

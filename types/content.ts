@@ -69,7 +69,7 @@ export interface WordEntry {
 
 export interface MorphemeSegment {
   surface: string; // 该片段在单词中的表面形式，比如 "bio" / "logy" / "o"
-  type: 'root' | 'prefix' | 'suffix' | 'connector' | 'other'; // 该片段的类型：root / prefix / suffix / connector / other
+  type: 'root' | 'stem' | 'prefix' | 'suffix' | 'connector' | 'other'; // 该片段的类型：root / stem / prefix / suffix / connector / other
   rootSlug?: string; // 仅在有对应 RootEntry 时填写，例如 type === 'root'
   affixSlug?: string; // 关联到 AffixEntry，例如 type === 'prefix' | 'suffix'
 }

@@ -17,7 +17,7 @@ export const getBestBreakdownWord = () => {
     (w) =>
       w.rootBreakdown.length >= 3 &&
       w.rootBreakdown.some((s) => s.type === 'prefix') &&
-      w.rootBreakdown.some((s) => s.type === 'root') &&
+      w.rootBreakdown.some((s) => s.type === 'root' || s.type === 'stem') &&
       w.rootBreakdown.some((s) => s.type === 'suffix'),
   );
   return ideal ?? WORDS.find((w) => w.rootBreakdown.length >= 3) ?? WORDS[0];

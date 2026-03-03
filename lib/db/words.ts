@@ -255,7 +255,7 @@ export async function getBestBreakdownWord(): Promise<WordEntry | null> {
   const { data: candidates } = await supabase
     .from('morpheme_segments')
     .select('word_id, type')
-    .in('type', ['prefix', 'root', 'suffix']);
+    .in('type', ['prefix', 'root', 'stem', 'suffix']);
 
   if (!candidates || candidates.length === 0) return null;
 
@@ -270,7 +270,7 @@ export async function getBestBreakdownWord(): Promise<WordEntry | null> {
 
   let bestWordId: number | null = null;
   for (const [wordId, types] of typesByWordId) {
-    if (types.has('prefix') && types.has('root') && types.has('suffix')) {
+    if (types.has('prefix') && (types.has('root') || types.has('stem')) && types.has('suffix')) {
       bestWordId = wordId;
       break;
     }

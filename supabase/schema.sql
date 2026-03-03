@@ -346,7 +346,8 @@ CREATE TABLE morpheme_segments (
 
   -- 词素类型（对应前端颜色编码）
   -- 值域:
-  --   'root'      — 词根，核心语义（绿色实底）
+  --   'root'      — 词根，核心语义，不能独立成词（如 struct, ject, duct）（绿色实底）
+  --   'stem'      — 词干，可独立成词的语素（如 agree, free, well）（绿色实底，同 root）
   --   'prefix'    — 前缀，修饰方向/否定/程度（青色描边）
   --   'suffix'    — 后缀，决定词性（紫色描边）
   --   'connector' — 连接音节，无语义（灰色描边）
