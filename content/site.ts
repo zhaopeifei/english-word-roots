@@ -10,9 +10,16 @@ export type LocalePreference = Locale | 'auto';
 
 export const DEFAULT_LOCALE: Locale = 'en';
 
-export const NAV_LINKS = [
+export interface NavLink {
+  href: string;
+  label: Record<Locale, string>;
+  /** When true, the header renders a dropdown menu for this item. */
+  hasDropdown?: boolean;
+}
+
+export const NAV_LINKS: NavLink[] = [
   { href: '/home', label: { en: 'Home', zh: '首页' } },
-  // { href: '/explore', label: { en: 'Explore', zh: '探索' } },
+  { href: '/explore', label: { en: 'Explore', zh: '探索' }, hasDropdown: true },
   { href: '/root', label: { en: 'Roots', zh: '词根' } },
   { href: '/about', label: { en: 'About', zh: '关于我们' } },
 ];

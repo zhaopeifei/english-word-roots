@@ -9,6 +9,8 @@ export {
   getRootBySlug,
   getRootSlugs,
   getRootCount,
+  getRootsByOrigin,
+  getRootCountByOrigin,
 } from './roots';
 
 export {
@@ -18,6 +20,8 @@ export {
   getFeaturedWords,
   getWordCount,
   getBestBreakdownWord,
+  getWordsByTag,
+  getWordCountByTag,
 } from './words';
 
 export {

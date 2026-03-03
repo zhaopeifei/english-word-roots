@@ -153,3 +153,78 @@ export async function getRootCount(): Promise<number> {
 
   return count;
 }
+
+// ---------------------------------------------------------------------------
+// getRootsByOrigin — Filtered by origin language, with word counts
+// ---------------------------------------------------------------------------
+
+export async function getRootsByOrigin(
+  originLang: string,
+): Promise<RootEntry[]> {
+  const PAGE = 1000;
+
+  // Paginate roots filtered by origin_lang
+  const roots: RootRow[] = [];
+  let offset = 0;
+  while (true) {
+    const { data, error } = await supabase
+      .from('roots')
+      .select('*')
+      .eq('origin_lang', originLang)
+      .order('slug')
+      .range(offset, offset + PAGE - 1);
+    if (error || !data) {
+      if (error) console.error('getRootsByOrigin error:', error);
+      break;
+    }
+    roots.push(...(data as RootRow[]));
+    if (data.length < PAGE) break;
+    offset += PAGE;
+  }
+
+  if (roots.length === 0) return [];
+
+  const rootIds = roots.map((r) => r.id);
+
+  // Paginate root_words for these root ids
+  const wordsByRootId = new Map<number, string[]>();
+  offset = 0;
+  while (true) {
+    const { data, error } = await supabase
+      .from('root_words')
+      .select('root_id, words!inner(slug)')
+      .in('root_id', rootIds)
+      .order('root_id')
+      .range(offset, offset + PAGE - 1);
+    if (error || !data || data.length === 0) break;
+    for (const rw of data) {
+      const rootId = rw.root_id as number;
+      const wordSlug = (rw.words as unknown as { slug: string }).slug;
+      const existing = wordsByRootId.get(rootId) ?? [];
+      existing.push(wordSlug);
+      wordsByRootId.set(rootId, existing);
+    }
+    if (data.length < PAGE) break;
+    offset += PAGE;
+  }
+
+  return roots.map((row) =>
+    mapRoot(row, wordsByRootId.get(row.id) ?? [], []),
+  );
+}
+
+// ---------------------------------------------------------------------------
+// getRootCountByOrigin — Count roots for a specific origin language
+// ---------------------------------------------------------------------------
+
+export async function getRootCountByOrigin(
+  originLang: string,
+): Promise<number> {
+  const { count, error } = await supabase
+    .from('roots')
+    .select('*', { count: 'exact', head: true })
+    .eq('origin_lang', originLang);
+
+  if (error || count === null) return 0;
+  return count;
+}

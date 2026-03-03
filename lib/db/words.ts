@@ -241,6 +241,79 @@ export async function getWordCount(): Promise<number> {
 }
 
 // ---------------------------------------------------------------------------
+// getWordsByTag — Words for a given tag slug (exam lists, frequency tiers)
+// ---------------------------------------------------------------------------
+
+export async function getWordsByTag(
+  tagSlug: string,
+): Promise<WordEntry[]> {
+  // 1. Find tag id
+  const { data: tag, error: tagErr } = await supabase
+    .from('tags')
+    .select('id')
+    .eq('slug', tagSlug)
+    .single();
+
+  if (tagErr || !tag) return [];
+
+  // 2. Get word ids from word_tags (paginated)
+  const wordIds: number[] = [];
+  let offset = 0;
+  while (true) {
+    const { data, error } = await supabase
+      .from('word_tags')
+      .select('word_id')
+      .eq('tag_id', tag.id)
+      .range(offset, offset + PAGE_SIZE - 1);
+    if (error || !data || data.length === 0) break;
+    wordIds.push(...data.map((wt) => wt.word_id as number));
+    if (data.length < PAGE_SIZE) break;
+    offset += PAGE_SIZE;
+  }
+
+  if (wordIds.length === 0) return [];
+
+  // 3. Fetch word rows (paginated in batches of 500 to avoid IN limit)
+  const BATCH = 500;
+  const allWordRows: WordRow[] = [];
+  for (let i = 0; i < wordIds.length; i += BATCH) {
+    const batch = wordIds.slice(i, i + BATCH);
+    const { data } = await supabase
+      .from('words')
+      .select('*')
+      .in('id', batch)
+      .order('slug');
+    if (data) allWordRows.push(...(data as WordRow[]));
+  }
+
+  return hydrateWords(allWordRows);
+}
+
+// ---------------------------------------------------------------------------
+// getWordCountByTag — Count words for a given tag slug (lightweight)
+// ---------------------------------------------------------------------------
+
+export async function getWordCountByTag(
+  tagSlug: string,
+): Promise<number> {
+  const { data: tag, error: tagErr } = await supabase
+    .from('tags')
+    .select('id')
+    .eq('slug', tagSlug)
+    .single();
+
+  if (tagErr || !tag) return 0;
+
+  const { count, error } = await supabase
+    .from('word_tags')
+    .select('*', { count: 'exact', head: true })
+    .eq('tag_id', tag.id);
+
+  if (error || count === null) return 0;
+  return count;
+}
+
+// ---------------------------------------------------------------------------
 // getBestBreakdownWord — A word with prefix + root + suffix in segments
 // ---------------------------------------------------------------------------
 

@@ -51,6 +51,22 @@ export const dictionaries: Dictionaries = {
     of: 'of',
     roots: 'All Roots',
     words: 'words',
+
+    // Explore / Collections
+    explore: 'Explore',
+    exploreSubtitle: 'Browse curated vocabulary collections by theme, exam, or proficiency level.',
+    allCollections: 'All Collections',
+    viewAll: 'View all',
+    items: 'items',
+    sortAlpha: 'Alphabetical',
+    sortFrequency: 'By frequency',
+    filterAll: 'All',
+    filterNoun: 'Noun',
+    filterVerb: 'Verb',
+    filterAdj: 'Adjective',
+    filterAdv: 'Adverb',
+    wordDefinition: 'Definition',
+    wordPOS: 'Part of Speech',
   },
   zh: {
     home: '首页',
@@ -97,6 +113,22 @@ export const dictionaries: Dictionaries = {
     of: '/',
     roots: '全部词根',
     words: '个单词',
+
+    // Explore / Collections
+    explore: '探索',
+    exploreSubtitle: '按主题、考试或等级浏览精选词汇集合。',
+    allCollections: '全部集合',
+    viewAll: '查看全部',
+    items: '项',
+    sortAlpha: '按字母',
+    sortFrequency: '按词频',
+    filterAll: '全部',
+    filterNoun: '名词',
+    filterVerb: '动词',
+    filterAdj: '形容词',
+    filterAdv: '副词',
+    wordDefinition: '释义',
+    wordPOS: '词性',
   },
 };
 
