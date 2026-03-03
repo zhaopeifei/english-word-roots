@@ -5,6 +5,7 @@ import { useMemo, useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
 import { CustomSelect } from '@/components/ui/custom-select';
+import { WordCard } from '@/components/word-card';
 import type { Collection } from '@/content/collections';
 import type { RootEntry, SemanticDomain, WordEntry } from '@/types/content';
 
@@ -61,17 +62,6 @@ function getEmoji(domains: SemanticDomain[]): string {
   }
   return '📖';
 }
-
-// ---------------------------------------------------------------------------
-// Frequency pill
-// ---------------------------------------------------------------------------
-
-const frequencyColors: Record<string, string> = {
-  common: 'bg-primary/10 text-primary',
-  academic: 'bg-accent/10 text-accent',
-  advanced: 'bg-secondary/10 text-secondary',
-  rare: 'bg-muted text-muted-foreground',
-};
 
 // ---------------------------------------------------------------------------
 // Root collection view
@@ -307,94 +297,9 @@ const WordCollectionView = ({ words }: { words: WordEntry[] }) => {
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {filteredWords.map((word, index) => {
-          const style = cardStyles[index % 3];
-
-          return (
-            <Link key={word.slug} href={`/word/${word.slug}`} className="group block">
-              <article
-                className={`${style.bg} ${style.border} flex h-full cursor-pointer flex-col rounded-[20px] p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg`}
-              >
-                {/* Word name + POS */}
-                <div className="flex items-start justify-between gap-2">
-                  <h3 className="font-heading text-foreground text-xl font-bold">
-                    {word.lemma}
-                  </h3>
-                  {word.frequency && (
-                    <span
-                      className={`${frequencyColors[word.frequency] ?? ''} shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-semibold`}
-                    >
-                      {word.frequency}
-                    </span>
-                  )}
-                </div>
-
-                {/* POS + IPA */}
-                <div className="text-muted-foreground mt-1 flex flex-wrap items-center gap-2 text-xs">
-                  {word.partOfSpeech.length > 0 && (
-                    <span className="font-medium">
-                      {word.partOfSpeech.join(', ')}
-                    </span>
-                  )}
-                  {word.pronunciation.us.ipa && (
-                    <span className="opacity-70">/{word.pronunciation.us.ipa}/</span>
-                  )}
-                </div>
-
-                {/* Definition */}
-                <p className="text-muted-foreground mt-3 line-clamp-2 text-sm leading-relaxed">
-                  {word.definition[locale]}
-                </p>
-
-                {/* Morpheme breakdown preview */}
-                {word.rootBreakdown.length > 0 && (
-                  <div className="mt-3 flex flex-wrap gap-1">
-                    {word.rootBreakdown.map((seg, i) => {
-                      let segClass = 'bg-muted text-muted-foreground';
-                      if (seg.type === 'root' || seg.type === 'stem')
-                        segClass = 'bg-primary/10 text-primary';
-                      else if (seg.type === 'prefix')
-                        segClass = 'bg-[#0891b2]/10 text-[#0891b2] dark:text-[#22d3ee]';
-                      else if (seg.type === 'suffix')
-                        segClass = 'bg-accent/10 text-accent';
-
-                      return (
-                        <span
-                          key={`${seg.surface}-${i}`}
-                          className={`${segClass} rounded px-1.5 py-0.5 text-[11px] font-medium`}
-                        >
-                          {seg.surface}
-                        </span>
-                      );
-                    })}
-                  </div>
-                )}
-
-                {/* Arrow */}
-                <div className="mt-auto flex items-center justify-end pt-4">
-                  <span
-                    className={`${style.accentText} flex h-7 w-7 items-center justify-center rounded-full border-[1.5px] border-current opacity-0 transition-opacity duration-200 group-hover:opacity-100`}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M5 12h14" />
-                      <path d="m12 5 7 7-7 7" />
-                    </svg>
-                  </span>
-                </div>
-              </article>
-            </Link>
-          );
-        })}
+        {filteredWords.map((word, index) => (
+          <WordCard key={word.slug} word={word} styleIndex={index} />
+        ))}
       </div>
     </>
   );
