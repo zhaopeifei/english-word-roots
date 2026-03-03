@@ -40,15 +40,27 @@ export async function fetchWiktionaryBatch(
     formatversion: '2',
   });
 
-  const res = await fetch(`${API_URL}?${params}`, {
-    headers: { 'User-Agent': USER_AGENT },
-  });
+  // Wrap the entire fetch + parse in a timeout
+  const timeout = <T>(promise: Promise<T>, ms: number): Promise<T> =>
+    Promise.race([
+      promise,
+      new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error(`Timeout after ${ms}ms`)), ms),
+      ),
+    ]);
+
+  const res = await timeout(
+    fetch(`${API_URL}?${params}`, {
+      headers: { 'User-Agent': USER_AGENT },
+    }),
+    15_000,
+  );
 
   if (!res.ok) {
     throw new Error(`Wiktionary API error: ${res.status} ${res.statusText}`);
   }
 
-  const json = (await res.json()) as { query?: { pages?: WikiPage[] } };
+  const json = (await timeout(res.json(), 15_000)) as { query?: { pages?: WikiPage[] } };
   const result = new Map<string, string | null>();
 
   // Initialize all words as null
@@ -73,11 +85,17 @@ export async function fetchWiktionaryBatch(
  * Extract the ===Etymology=== (or ===Etymology 1===) section from wikitext.
  */
 export function extractEtymologySection(wikitext: string): string {
-  // Match ===Etymology=== or ===Etymology 1===
-  const match = wikitext.match(
-    /={2,3}\s*Etymology(?:\s+\d+)?\s*={2,3}\s*\n([\s\S]*?)(?=\n={2,3}\s*[A-Z]|\n----|\Z)/,
-  );
-  return match ? match[1].trim() : '';
+  // Find ===Etymology=== or ===Etymology 1=== header
+  const headerRe = /={2,3}\s*Etymology(?:\s+\d+)?\s*={2,3}/;
+  const headerMatch = wikitext.match(headerRe);
+  if (!headerMatch || headerMatch.index === undefined) return '';
+
+  const start = headerMatch.index + headerMatch[0].length;
+  // Find the next section header (==...==) or horizontal rule (----)
+  const rest = wikitext.slice(start);
+  const endMatch = rest.match(/\n={2,3}\s*[A-Z]|\n----/);
+  const section = endMatch ? rest.slice(0, endMatch.index) : rest;
+  return section.trim();
 }
 
 /**
@@ -86,13 +104,16 @@ export function extractEtymologySection(wikitext: string): string {
  */
 export function parseTemplates(etymSection: string): ParsedTemplate[] {
   const templates: ParsedTemplate[] = [];
-  // Match {{template|arg1|arg2|...}} — handles nested templates by tracking depth
-  const regex = /\{\{([^{}|]+)(\|[^{}]*(?:\{\{[^{}]*\}\}[^{}]*)*)*\}\}/g;
+  // Simple non-nested template match: {{name|arg1|arg2|...}}
+  // Avoids catastrophic backtracking by only matching non-brace content
+  const regex = /\{\{([^{}|]+(?:\|[^{}]*)?)\}\}/g;
   let match;
 
   while ((match = regex.exec(etymSection)) !== null) {
     const fullMatch = match[0];
-    const name = match[1].trim().toLowerCase();
+    const inner = match[1];
+    const pipeIdx = inner.indexOf('|');
+    const name = (pipeIdx >= 0 ? inner.slice(0, pipeIdx) : inner).trim().toLowerCase();
 
     // Only capture etymology-relevant templates
     const relevant = [

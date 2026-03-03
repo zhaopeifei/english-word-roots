@@ -25,7 +25,7 @@ import {
 const OUTPUT_PATH = path.resolve(__dirname, 'output/wiktionary-data.json');
 const BATCH_SIZE = 50;
 const DELAY_MS = 2000;
-const CHECKPOINT_EVERY = 10; // Save every N batches
+const CHECKPOINT_EVERY = 1; // Save every batch to avoid lost progress
 
 interface OutputData {
   meta: { fetchedAt: string; totalWords: number; found: number; notFound: number };
@@ -111,7 +111,9 @@ async function main() {
 
     try {
       // Wiktionary API expects properly cased titles, but handles lowercase
+      process.stdout.write(`    fetching ${batch[0]}..${batch[batch.length-1]}...`);
       const wikiResults = await fetchWiktionaryBatch(batch);
+      process.stdout.write(` ok (${wikiResults.size} results)\n`);
 
       for (const slug of batch) {
         const wikitext = wikiResults.get(slug);
@@ -156,14 +158,27 @@ async function main() {
       }
     } catch (err) {
       console.error(`  Error on batch ${batchNum}:`, (err as Error).message);
-      // Save progress and continue
+      // Mark failed batch words as not found so we don't retry them forever
+      for (const slug of batch) {
+        if (!(slug in data.entries)) {
+          data.entries[slug] = {
+            word: slug,
+            found: false,
+            etymologyWikitext: '',
+            templates: [],
+            etymologyText: '',
+          };
+        }
+      }
       saveData(data);
-      console.log('    [checkpoint saved after error]');
+      console.log('    [checkpoint saved after error, batch skipped]');
     }
 
     // Rate limit
     if (i + BATCH_SIZE < toFetch.length) {
+      process.stdout.write('    sleeping 2s...');
       await sleep(DELAY_MS);
+      process.stdout.write(' done\n');
     }
   }
 

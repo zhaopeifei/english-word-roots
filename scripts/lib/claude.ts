@@ -7,9 +7,10 @@ if (!apiKey) {
   process.exit(1);
 }
 
-const client = new Anthropic({ apiKey });
+const baseURL = process.env.ANTHROPIC_BASE_URL;
+const client = new Anthropic({ apiKey, ...(baseURL ? { baseURL } : {}) });
 
-const MODEL = 'claude-sonnet-4-20250514';
+const MODEL = 'claude-sonnet-4-6';
 
 interface CallClaudeOpts {
   model?: string;
