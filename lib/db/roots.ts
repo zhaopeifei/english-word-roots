@@ -11,36 +11,47 @@ import { mapRoot, type RootRow } from './mappers';
 // ---------------------------------------------------------------------------
 
 export async function getRoots(): Promise<RootEntry[]> {
-  const { data: roots, error } = await supabase
-    .from('roots')
-    .select('*')
-    .order('slug');
-
-  if (error || !roots) {
-    console.error('getRoots error:', error);
-    return [];
+  // Paginate roots (Supabase default limit is 1000)
+  const roots: RootRow[] = [];
+  const PAGE = 1000;
+  let offset = 0;
+  while (true) {
+    const { data, error } = await supabase
+      .from('roots')
+      .select('*')
+      .order('slug')
+      .range(offset, offset + PAGE - 1);
+    if (error || !data) {
+      if (error) console.error('getRoots error:', error);
+      break;
+    }
+    roots.push(...(data as RootRow[]));
+    if (data.length < PAGE) break;
+    offset += PAGE;
   }
 
-  // Fetch all root_words relationships in one query
-  const { data: rootWords } = await supabase
-    .from('root_words')
-    .select('root_id, words!inner(slug)')
-    .order('root_id');
-
-  // Build a map: root_id → word slugs
+  // Paginate root_words relationships
   const wordsByRootId = new Map<number, string[]>();
-  if (rootWords) {
-    for (const rw of rootWords) {
+  offset = 0;
+  while (true) {
+    const { data, error } = await supabase
+      .from('root_words')
+      .select('root_id, words!inner(slug)')
+      .order('root_id')
+      .range(offset, offset + PAGE - 1);
+    if (error || !data || data.length === 0) break;
+    for (const rw of data) {
       const rootId = rw.root_id as number;
-      // Supabase returns joined table as object or array
       const wordSlug = (rw.words as unknown as { slug: string }).slug;
       const existing = wordsByRootId.get(rootId) ?? [];
       existing.push(wordSlug);
       wordsByRootId.set(rootId, existing);
     }
+    if (data.length < PAGE) break;
+    offset += PAGE;
   }
 
-  return (roots as RootRow[]).map((row) =>
+  return roots.map((row) =>
     mapRoot(row, wordsByRootId.get(row.id) ?? [], []),
   );
 }
@@ -106,17 +117,24 @@ export async function getRootBySlug(
 // ---------------------------------------------------------------------------
 
 export async function getRootSlugs(): Promise<string[]> {
-  const { data, error } = await supabase
-    .from('roots')
-    .select('slug')
-    .order('slug');
-
-  if (error || !data) {
-    console.error('getRootSlugs error:', error);
-    return [];
+  const slugs: string[] = [];
+  const PAGE = 1000;
+  let offset = 0;
+  while (true) {
+    const { data, error } = await supabase
+      .from('roots')
+      .select('slug')
+      .order('slug')
+      .range(offset, offset + PAGE - 1);
+    if (error || !data) {
+      if (error) console.error('getRootSlugs error:', error);
+      break;
+    }
+    slugs.push(...data.map((r) => r.slug));
+    if (data.length < PAGE) break;
+    offset += PAGE;
   }
-
-  return data.map((r) => r.slug);
+  return slugs;
 }
 
 // ---------------------------------------------------------------------------
