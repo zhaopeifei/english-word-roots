@@ -69,7 +69,13 @@ const jsonLd = {
   inLanguage: ['en', 'zh'],
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+const RootLayout = ({
+  children,
+  drawer,
+}: {
+  children: React.ReactNode;
+  drawer: React.ReactNode;
+}) => {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -88,6 +94,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             </main>
             <SiteFooter />
           </div>
+          {drawer}
         </Providers>
         {GA_ID && (
           <>
