@@ -37,3 +37,6 @@ scripts/output/
 *.swp
 .idea/
 .vscode/
+
+# Claude Code
+.claude/screenshots/

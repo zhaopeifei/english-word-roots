@@ -44,7 +44,7 @@ function getStarCount(word: WordEntry): number {
 function FrequencyStars({ count }: { count: number }) {
   if (count === 0) return null;
   return (
-    <span className="flex items-center gap-0.5" aria-label={`Frequency: ${count} stars`}>
+    <span className="flex items-center gap-0.5" aria-label={`Frequency: ${count} stars`} title={`Collins word frequency: ${count}/5`}>
       {Array.from({ length: 5 }, (_, i) => (
         <svg
           key={i}

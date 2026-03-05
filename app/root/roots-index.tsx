@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { useLanguage } from '@/components/language-provider';
 import { CustomSelect } from '@/components/ui/custom-select';
 import type { RootEntry, SemanticDomain } from '@/types/content';
@@ -71,11 +71,27 @@ const cardStyles = [
   },
 ] as const;
 
+const PAGE_SIZE = 30;
+
+function getPageNumbers(current: number, total: number): (number | 'ellipsis')[] {
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+  const pages: (number | 'ellipsis')[] = [1];
+  const start = Math.max(2, current - 1);
+  const end = Math.min(total - 1, current + 1);
+  if (start > 2) pages.push('ellipsis');
+  for (let i = start; i <= end; i++) pages.push(i);
+  if (end < total - 1) pages.push('ellipsis');
+  pages.push(total);
+  return pages;
+}
+
 export const RootsIndex = ({ roots }: RootsIndexProps) => {
   const { dictionary, locale } = useLanguage();
 
   const [selectedDomain, setSelectedDomain] = useState<string>('all');
   const [sortBy, setSortBy] = useState<string>('az');
+  const [currentPage, setCurrentPage] = useState(1);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   // Collect all unique domains from the data
   const allDomains = useMemo(() => {
@@ -138,6 +154,28 @@ export const RootsIndex = ({ roots }: RootsIndexProps) => {
     return result;
   }, [roots, selectedDomain, sortBy]);
 
+  // Reset to page 1 when filters/sort change
+  const handleDomainChange = useCallback((v: string) => {
+    setSelectedDomain(v);
+    setCurrentPage(1);
+  }, []);
+
+  const handleSortChange = useCallback((v: string) => {
+    setSortBy(v);
+    setCurrentPage(1);
+  }, []);
+
+  const totalPages = Math.max(1, Math.ceil(filteredRoots.length / PAGE_SIZE));
+  const paginatedRoots = filteredRoots.slice(
+    (currentPage - 1) * PAGE_SIZE,
+    currentPage * PAGE_SIZE,
+  );
+
+  const goToPage = useCallback((page: number) => {
+    setCurrentPage(page);
+    gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, []);
+
   return (
     <div className="space-y-10">
       {/* Section header */}
@@ -153,14 +191,14 @@ export const RootsIndex = ({ roots }: RootsIndexProps) => {
       <div className="flex flex-wrap items-center gap-3">
         <CustomSelect
           value={selectedDomain}
-          onChange={setSelectedDomain}
+          onChange={handleDomainChange}
           aria-label={dictionary.allDomains}
           options={domainOptions}
         />
 
         <CustomSelect
           value={sortBy}
-          onChange={setSortBy}
+          onChange={handleSortChange}
           aria-label={dictionary.sortAZ}
           options={sortOptions}
         />
@@ -171,8 +209,8 @@ export const RootsIndex = ({ roots }: RootsIndexProps) => {
       </div>
 
       {/* Root cards grid */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {filteredRoots.map((root, index) => {
+      <div ref={gridRef} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {paginatedRoots.map((root, index) => {
           const style = cardStyles[index % 3];
           const emoji = getEmoji(root.semanticDomains);
 
@@ -247,6 +285,55 @@ export const RootsIndex = ({ roots }: RootsIndexProps) => {
           );
         })}
       </div>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <nav aria-label="Pagination" className="flex flex-col items-center gap-3 pt-2">
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={() => goToPage(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="rounded-full border border-border px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted disabled:pointer-events-none disabled:opacity-40"
+            >
+              {dictionary.previousPage}
+            </button>
+
+            {getPageNumbers(currentPage, totalPages).map((page, i) =>
+              page === 'ellipsis' ? (
+                <span key={`e${i}`} className="px-1 text-muted-foreground">
+                  ...
+                </span>
+              ) : (
+                <button
+                  key={page}
+                  onClick={() => goToPage(page)}
+                  className={`h-9 w-9 rounded-full text-sm font-medium transition-colors ${
+                    page === currentPage
+                      ? 'bg-primary text-primary-foreground'
+                      : 'border border-border text-foreground hover:bg-muted'
+                  }`}
+                >
+                  {page}
+                </button>
+              ),
+            )}
+
+            <button
+              onClick={() => goToPage(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="rounded-full border border-border px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted disabled:pointer-events-none disabled:opacity-40"
+            >
+              {dictionary.nextPage}
+            </button>
+          </div>
+
+          <p className="text-xs text-muted-foreground">
+            {dictionary.pageOf
+              .replace('{current}', String(currentPage))
+              .replace('{total}', String(totalPages))}
+          </p>
+        </nav>
+      )}
     </div>
   );
 };

@@ -14,22 +14,28 @@ import { useLanguage } from '@/components/language-provider';
 import { CommandSearch } from '@/components/command-search';
 
 // ---------------------------------------------------------------------------
-// Explore dropdown menu items (derived from collections config)
+// Explore dropdown menu items — only the most popular collections
 // ---------------------------------------------------------------------------
+
+const DROPDOWN_SLUGS = ['ielts', 'toefl', 'gre', 'ngsl-1000', 'ngsl-2000', 'ngsl-3000'];
 
 interface DropdownSection {
   label: Record<Locale, string>;
   items: { href: string; icon: string; label: Record<Locale, string> }[];
 }
 
-const EXPLORE_SECTIONS: DropdownSection[] = COLLECTION_CATEGORIES.map((cat) => ({
-  label: cat.label,
-  items: getCollectionsByCategory(cat.key).map((c) => ({
-    href: `/explore/${c.slug}`,
-    icon: c.icon,
-    label: c.name,
-  })),
-}));
+const EXPLORE_SECTIONS: DropdownSection[] = COLLECTION_CATEGORIES
+  .map((cat) => ({
+    label: cat.label,
+    items: getCollectionsByCategory(cat.key)
+      .filter((c) => DROPDOWN_SLUGS.includes(c.slug))
+      .map((c) => ({
+        href: `/explore/${c.slug}`,
+        icon: c.icon,
+        label: c.name,
+      })),
+  }))
+  .filter((s) => s.items.length > 0);
 
 // ---------------------------------------------------------------------------
 // Desktop dropdown component

@@ -18,7 +18,9 @@ export const metadata: Metadata = {
 
 const HomePage = async () => {
   const allRoots = await getRoots();
-  const roots = allRoots.slice(0, 6);
+  const roots = [...allRoots]
+    .sort((a, b) => b.associatedWords.length - a.associatedWords.length)
+    .slice(0, 6);
   const words = await getFeaturedWords(6);
   const wordCount = await getWordCount();
   const affixCount = await getAffixCount();

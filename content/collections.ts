@@ -133,43 +133,6 @@ export const COLLECTIONS: Collection[] = [
     category: 'exam',
     query: { kind: 'word', tagSlug: 'gre' },
   },
-  {
-    slug: 'gaokao',
-    type: 'word',
-    name: { en: 'Gaokao', zh: '高考' },
-    description: {
-      en: 'National College Entrance Examination vocabulary.',
-      zh: '高考英语核心词汇。',
-    },
-    icon: '🎯',
-    category: 'exam',
-    query: { kind: 'word', tagSlug: 'gaokao' },
-  },
-  {
-    slug: 'kaoyan',
-    type: 'word',
-    name: { en: 'Kaoyan', zh: '考研' },
-    description: {
-      en: 'Graduate school entrance exam vocabulary.',
-      zh: '考研英语核心词汇。',
-    },
-    icon: '🎯',
-    category: 'exam',
-    query: { kind: 'word', tagSlug: 'kaoyan' },
-  },
-  {
-    slug: 'zhongkao',
-    type: 'word',
-    name: { en: 'Zhongkao', zh: '中考' },
-    description: {
-      en: 'High school entrance exam vocabulary.',
-      zh: '中考英语核心词汇。',
-    },
-    icon: '🎯',
-    category: 'exam',
-    query: { kind: 'word', tagSlug: 'zhongkao' },
-  },
-
   // ── Academic Word Lists ────────────────────────────────────────────────
   {
     slug: 'awl',

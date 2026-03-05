@@ -67,6 +67,11 @@ export const dictionaries: Dictionaries = {
     filterAdv: 'Adverb',
     wordDefinition: 'Definition',
     wordPOS: 'Part of Speech',
+
+    // Pagination
+    previousPage: 'Previous',
+    nextPage: 'Next',
+    pageOf: 'Page {current} of {total}',
   },
   zh: {
     home: '首页',
@@ -129,6 +134,11 @@ export const dictionaries: Dictionaries = {
     filterAdv: '副词',
     wordDefinition: '释义',
     wordPOS: '词性',
+
+    // Pagination
+    previousPage: '上一页',
+    nextPage: '下一页',
+    pageOf: '第 {current} / {total} 页',
   },
 };
 

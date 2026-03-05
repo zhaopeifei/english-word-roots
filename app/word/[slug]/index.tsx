@@ -134,7 +134,6 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
       <Breadcrumb
         items={[
           { label: dictionary.home, href: '/home' },
-          { label: dictionary.roots, href: '/root' },
           ...(parentRoot
             ? [{ label: parentRoot.variants[0] ?? parentRoot.slug, href: `/root/${parentRoot.slug}` }]
             : []),
@@ -319,27 +318,31 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
       </section>
 
       {/* Related Words */}
-      <section className="space-y-4">
-        <h2 className="font-heading text-foreground text-2xl">{dictionary.relatedWords}</h2>
-        <div className="flex flex-wrap gap-2">
-          {word.relatedWords.map((related) => (
-            <Link
-              key={related}
-              href={`/word/${related}`}
-              className="border-border hover:border-primary hover:text-primary rounded-full border px-4 py-2 text-sm transition-colors"
-            >
-              {related}
-            </Link>
-          ))}
-        </div>
-      </section>
+      {word.relatedWords.length > 0 && (
+        <section className="space-y-4">
+          <h2 className="font-heading text-foreground text-2xl">{dictionary.relatedWords}</h2>
+          <div className="flex flex-wrap gap-2">
+            {word.relatedWords.map((related) => (
+              <Link
+                key={related}
+                href={`/word/${related}`}
+                className="border-border hover:border-primary hover:text-primary rounded-full border px-4 py-2 text-sm transition-colors"
+              >
+                {related}
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Bottom back link */}
       <Link
-        href="/root"
+        href={parentRoot ? `/root/${parentRoot.slug}` : '/root'}
         className="bg-card hover:bg-primary inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition hover:text-white"
       >
-        ← {dictionary.backToRoots}
+        ← {parentRoot
+          ? `${locale === 'zh' ? '返回词根' : 'Back to'} ${parentRoot.variants[0] ?? parentRoot.slug}`
+          : dictionary.backToRoots}
       </Link>
     </article>
   );
