@@ -78,6 +78,10 @@ const RootLayout = ({
 }) => {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="privacy-policy" href="/privacy" />
+        <link rel="terms-of-service" href="/terms" />
+      </head>
       <body
         className={`${lora.variable} ${nunito.variable} bg-background text-foreground font-body antialiased`}
       >

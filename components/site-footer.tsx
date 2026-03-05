@@ -26,6 +26,19 @@ export const SiteFooter = () => {
               {link.label[locale]}
             </Link>
           ))}
+          <span className="text-border mx-1">|</span>
+          <Link
+            href="/privacy"
+            className="hover:bg-card hover:text-foreground rounded-full px-3 py-1 transition-colors"
+          >
+            {locale === 'zh' ? '隐私政策' : 'Privacy'}
+          </Link>
+          <Link
+            href="/terms"
+            className="hover:bg-card hover:text-foreground rounded-full px-3 py-1 transition-colors"
+          >
+            {locale === 'zh' ? '服务条款' : 'Terms'}
+          </Link>
         </nav>
       </div>
     </footer>
