@@ -69,7 +69,7 @@ async function hydrateWord(row: WordRow): Promise<WordEntry> {
       // Morpheme segments with joined root/affix slugs
       supabase
         .from('morpheme_segments')
-        .select('*, roots(slug), affixes(slug)')
+        .select('*, roots(slug, meaning), affixes(slug, meaning)')
         .eq('word_id', row.id)
         .order('sort_order')
         .then((r) => (r.data ?? []) as MorphemeSegmentRow[]),
@@ -299,7 +299,7 @@ export async function getWordsByTag(
     const batch = allIds.slice(i, i + BATCH);
     const { data } = await supabase
       .from('morpheme_segments')
-      .select('*, roots(slug), affixes(slug)')
+      .select('*, roots(slug, meaning), affixes(slug, meaning)')
       .in('word_id', batch)
       .order('sort_order');
     if (data) {
@@ -368,7 +368,7 @@ export async function getWordsBySlugs(slugs: string[]): Promise<WordEntry[]> {
     const batch = allIds.slice(i, i + BATCH);
     const { data } = await supabase
       .from('morpheme_segments')
-      .select('*, roots(slug), affixes(slug)')
+      .select('*, roots(slug, meaning), affixes(slug, meaning)')
       .in('word_id', batch)
       .order('sort_order');
     if (data) {

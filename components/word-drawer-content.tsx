@@ -207,7 +207,7 @@ export function WordDrawerContent({ word }: WordDrawerContentProps) {
                 className={`${morphemeClass[segment.type]} flex flex-col items-center rounded-xl px-4 py-2.5`}
               >
                 <span className="text-base font-bold">{segment.surface}</span>
-                <span className="mt-0.5 text-[10px] opacity-80">{segment.type}</span>
+                <span className="mt-0.5 text-[10px] opacity-80">{segment.meaning?.[locale] ?? segment.meaning?.en ?? segment.type}</span>
               </div>
             );
 

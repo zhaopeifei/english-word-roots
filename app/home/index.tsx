@@ -535,7 +535,7 @@ export const HomeScreen = ({
                     {seg.surface}
                   </span>
                   <span className="text-muted-foreground text-[10px] font-medium uppercase tracking-wider">
-                    {morphemeLabel(seg.type, locale)}
+                    {seg.meaning?.[locale] ?? seg.meaning?.en ?? morphemeLabel(seg.type, locale)}
                   </span>
                 </motion.div>
               ))}

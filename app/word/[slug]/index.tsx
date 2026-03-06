@@ -256,7 +256,7 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
                 className={`${morphemeClass[segment.type]} flex flex-col items-center rounded-2xl px-6 py-4`}
               >
                 <span className="text-lg font-bold">{segment.surface}</span>
-                <span className="mt-1 text-xs opacity-80">{segment.type}</span>
+                <span className="mt-1 text-xs opacity-80">{segment.meaning?.[locale] ?? segment.meaning?.en ?? segment.type}</span>
               </div>
             );
 

@@ -72,6 +72,7 @@ export interface MorphemeSegment {
   type: 'root' | 'stem' | 'prefix' | 'suffix' | 'connector' | 'other'; // 该片段的类型：root / stem / prefix / suffix / connector / other
   rootSlug?: string; // 仅在有对应 RootEntry 时填写，例如 type === 'root'
   affixSlug?: string; // 关联到 AffixEntry，例如 type === 'prefix' | 'suffix'
+  meaning?: Record<Locale, string>; // 该片段的含义，来自关联的 root 或 affix
 }
 
 export interface AffixEntry {

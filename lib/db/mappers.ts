@@ -60,8 +60,8 @@ export interface MorphemeSegmentRow {
   affix_id: number | null;
   sort_order: number;
   // Joined data (from Supabase nested selects)
-  roots?: { slug: string } | null;
-  affixes?: { slug: string } | null;
+  roots?: { slug: string; meaning: Record<Locale, string> } | null;
+  affixes?: { slug: string; meaning: Record<Locale, string> } | null;
 }
 
 export interface WordExampleRow {
@@ -189,11 +189,13 @@ export function mapWord(
 // ---------------------------------------------------------------------------
 
 function mapSegment(row: MorphemeSegmentRow): MorphemeSegment {
+  const meaning = row.roots?.meaning ?? row.affixes?.meaning ?? undefined;
   return {
     surface: row.surface,
     type: row.type as MorphemeSegment['type'],
     rootSlug: row.roots?.slug ?? undefined,
     affixSlug: row.affixes?.slug ?? undefined,
+    meaning: meaning ?? undefined,
   };
 }
 
