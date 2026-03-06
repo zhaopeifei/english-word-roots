@@ -1,12 +1,13 @@
 'use client';
 
-import { useEffect, useState, useMemo } from 'react';
+import { useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/components/auth-provider';
 import { useMastery, type MasteryStatus, type ItemType } from '@/components/mastery-provider';
 import { useLanguage } from '@/components/language-provider';
 import { WordCard } from '@/components/word-card';
 import { MasteryButtons } from '@/components/mastery-buttons';
+import { Pagination, PAGE_SIZE } from '@/components/pagination';
 import type { WordEntry, RootEntry } from '@/types/content';
 
 // ---------------------------------------------------------------------------
@@ -77,6 +78,8 @@ export const VocabularyPage = () => {
   const [roots, setRoots] = useState<RootEntry[]>([]);
   const [fetchingWords, setFetchingWords] = useState(false);
   const [fetchingRoots, setFetchingRoots] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   // Compute counts
   const wordCounts = useMemo(() => {
@@ -138,6 +141,11 @@ export const VocabularyPage = () => {
 
   const isLoading = authLoading || masteryLoading || fetchingWords || fetchingRoots;
 
+  const goToPage = useCallback((page: number) => {
+    setCurrentPage(page);
+    gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, []);
+
   // Not logged in
   if (!authLoading && !user) {
     return (
@@ -198,7 +206,7 @@ export const VocabularyPage = () => {
         <div className="bg-muted inline-flex rounded-full p-1">
           <button
             type="button"
-            onClick={() => setTab('word')}
+            onClick={() => { setTab('word'); setCurrentPage(1); }}
             className={`cursor-pointer rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
               tab === 'word' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground'
             }`}
@@ -207,7 +215,7 @@ export const VocabularyPage = () => {
           </button>
           <button
             type="button"
-            onClick={() => setTab('root')}
+            onClick={() => { setTab('root'); setCurrentPage(1); }}
             className={`cursor-pointer rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
               tab === 'root' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground'
             }`}
@@ -220,7 +228,7 @@ export const VocabularyPage = () => {
         <div className="flex items-center gap-1">
           <button
             type="button"
-            onClick={() => setStatusFilter('all')}
+            onClick={() => { setStatusFilter('all'); setCurrentPage(1); }}
             className={`cursor-pointer rounded-full px-3 py-1 text-xs font-medium transition-colors ${
               statusFilter === 'all' ? 'bg-card text-foreground ring-1 ring-border shadow-sm' : 'text-muted-foreground hover:bg-muted'
             }`}
@@ -231,7 +239,7 @@ export const VocabularyPage = () => {
             <button
               key={s.value}
               type="button"
-              onClick={() => setStatusFilter(s.value)}
+              onClick={() => { setStatusFilter(s.value); setCurrentPage(1); }}
               className={`cursor-pointer rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                 statusFilter === s.value ? 'bg-card text-foreground ring-1 ring-border shadow-sm' : 'text-muted-foreground hover:bg-muted'
               }`}
@@ -249,20 +257,26 @@ export const VocabularyPage = () => {
         </div>
       ) : tab === 'word' ? (
         filteredWords.length > 0 ? (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredWords.map((word, idx) => (
-              <WordCard key={word.slug} word={word} styleIndex={idx} />
-            ))}
-          </div>
+          <>
+            <div ref={gridRef} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {filteredWords.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE).map((word, idx) => (
+                <WordCard key={word.slug} word={word} styleIndex={idx} />
+              ))}
+            </div>
+            <Pagination currentPage={currentPage} totalPages={Math.max(1, Math.ceil(filteredWords.length / PAGE_SIZE))} onPageChange={goToPage} />
+          </>
         ) : (
           <EmptyState locale={locale} type="word" hasAny={words.length > 0} />
         )
       ) : filteredRoots.length > 0 ? (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredRoots.map((root, idx) => (
-            <RootCard key={root.slug} root={root} styleIndex={idx} />
-          ))}
-        </div>
+        <>
+          <div ref={gridRef} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredRoots.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE).map((root, idx) => (
+              <RootCard key={root.slug} root={root} styleIndex={idx} />
+            ))}
+          </div>
+          <Pagination currentPage={currentPage} totalPages={Math.max(1, Math.ceil(filteredRoots.length / PAGE_SIZE))} onPageChange={goToPage} />
+        </>
       ) : (
         <EmptyState locale={locale} type="root" hasAny={roots.length > 0} />
       )}

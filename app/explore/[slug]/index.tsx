@@ -1,12 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
 import { CustomSelect } from '@/components/ui/custom-select';
 import { WordCard } from '@/components/word-card';
 import { MasteryButtons } from '@/components/mastery-buttons';
+import { Pagination, PAGE_SIZE } from '@/components/pagination';
 import type { Collection } from '@/content/collections';
 import type { RootEntry, SemanticDomain, WordEntry } from '@/types/content';
 
@@ -73,6 +74,8 @@ const RootCollectionView = ({ roots }: { roots: RootEntry[] }) => {
 
   const [selectedDomain, setSelectedDomain] = useState<string>('all');
   const [sortBy, setSortBy] = useState<string>('most');
+  const [currentPage, setCurrentPage] = useState(1);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   const allDomains = useMemo(() => {
     const set = new Set<string>();
@@ -129,18 +132,39 @@ const RootCollectionView = ({ roots }: { roots: RootEntry[] }) => {
     return result;
   }, [roots, selectedDomain, sortBy]);
 
+  const handleDomainChange = useCallback((v: string) => {
+    setSelectedDomain(v);
+    setCurrentPage(1);
+  }, []);
+
+  const handleSortChange = useCallback((v: string) => {
+    setSortBy(v);
+    setCurrentPage(1);
+  }, []);
+
+  const totalPages = Math.max(1, Math.ceil(filteredRoots.length / PAGE_SIZE));
+  const paginatedRoots = filteredRoots.slice(
+    (currentPage - 1) * PAGE_SIZE,
+    currentPage * PAGE_SIZE,
+  );
+
+  const goToPage = useCallback((page: number) => {
+    setCurrentPage(page);
+    gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, []);
+
   return (
     <>
       <div className="flex flex-wrap items-center gap-3">
         <CustomSelect
           value={selectedDomain}
-          onChange={setSelectedDomain}
+          onChange={handleDomainChange}
           aria-label={dictionary.allDomains}
           options={domainOptions}
         />
         <CustomSelect
           value={sortBy}
-          onChange={setSortBy}
+          onChange={handleSortChange}
           aria-label={dictionary.sortMostWords}
           options={sortOptions}
         />
@@ -149,8 +173,8 @@ const RootCollectionView = ({ roots }: { roots: RootEntry[] }) => {
         </span>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {filteredRoots.map((root, index) => {
+      <div ref={gridRef} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {paginatedRoots.map((root, index) => {
           const style = cardStyles[index % 3];
           const emoji = getEmoji(root.semanticDomains);
 
@@ -223,6 +247,8 @@ const RootCollectionView = ({ roots }: { roots: RootEntry[] }) => {
           );
         })}
       </div>
+
+      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={goToPage} />
     </>
   );
 };
@@ -236,6 +262,8 @@ const WordCollectionView = ({ words }: { words: WordEntry[] }) => {
 
   const [posFilter, setPosFilter] = useState<string>('all');
   const [sortBy, setSortBy] = useState<string>('az');
+  const [currentPage, setCurrentPage] = useState(1);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   const posOptions = useMemo(
     () => [
@@ -280,18 +308,39 @@ const WordCollectionView = ({ words }: { words: WordEntry[] }) => {
     return result;
   }, [words, posFilter, sortBy]);
 
+  const handlePosChange = useCallback((v: string) => {
+    setPosFilter(v);
+    setCurrentPage(1);
+  }, []);
+
+  const handleSortChange = useCallback((v: string) => {
+    setSortBy(v);
+    setCurrentPage(1);
+  }, []);
+
+  const totalPages = Math.max(1, Math.ceil(filteredWords.length / PAGE_SIZE));
+  const paginatedWords = filteredWords.slice(
+    (currentPage - 1) * PAGE_SIZE,
+    currentPage * PAGE_SIZE,
+  );
+
+  const goToPage = useCallback((page: number) => {
+    setCurrentPage(page);
+    gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, []);
+
   return (
     <>
       <div className="flex flex-wrap items-center gap-3">
         <CustomSelect
           value={posFilter}
-          onChange={setPosFilter}
+          onChange={handlePosChange}
           aria-label={dictionary.filterAll}
           options={posOptions}
         />
         <CustomSelect
           value={sortBy}
-          onChange={setSortBy}
+          onChange={handleSortChange}
           aria-label={dictionary.sortAZ}
           options={sortOptions}
         />
@@ -300,11 +349,13 @@ const WordCollectionView = ({ words }: { words: WordEntry[] }) => {
         </span>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {filteredWords.map((word, index) => (
+      <div ref={gridRef} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {paginatedWords.map((word, index) => (
           <WordCard key={word.slug} word={word} styleIndex={index} />
         ))}
       </div>
+
+      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={goToPage} />
     </>
   );
 };
