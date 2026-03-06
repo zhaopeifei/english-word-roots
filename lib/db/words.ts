@@ -342,6 +342,50 @@ export async function getWordCountByTag(
 }
 
 // ---------------------------------------------------------------------------
+// getWordsBySlugs — Bulk fetch words by slugs (lightweight, no examples/tags)
+// ---------------------------------------------------------------------------
+
+export async function getWordsBySlugs(slugs: string[]): Promise<WordEntry[]> {
+  if (slugs.length === 0) return [];
+
+  const BATCH = 500;
+  const allWordRows: WordRow[] = [];
+  for (let i = 0; i < slugs.length; i += BATCH) {
+    const batch = slugs.slice(i, i + BATCH);
+    const { data } = await supabase
+      .from('words')
+      .select('*')
+      .in('slug', batch)
+      .order('slug');
+    if (data) allWordRows.push(...(data as WordRow[]));
+  }
+
+  if (allWordRows.length === 0) return [];
+
+  const allIds = allWordRows.map((w) => w.id);
+  const segmentsByWordId = new Map<number, MorphemeSegmentRow[]>();
+  for (let i = 0; i < allIds.length; i += BATCH) {
+    const batch = allIds.slice(i, i + BATCH);
+    const { data } = await supabase
+      .from('morpheme_segments')
+      .select('*, roots(slug), affixes(slug)')
+      .in('word_id', batch)
+      .order('sort_order');
+    if (data) {
+      for (const seg of data as MorphemeSegmentRow[]) {
+        const list = segmentsByWordId.get(seg.word_id) ?? [];
+        list.push(seg);
+        segmentsByWordId.set(seg.word_id, list);
+      }
+    }
+  }
+
+  return allWordRows.map((row) =>
+    mapWord(row, segmentsByWordId.get(row.id) ?? [], [], [], []),
+  );
+}
+
+// ---------------------------------------------------------------------------
 // getBestBreakdownWord — A word with prefix + root + suffix in segments
 // ---------------------------------------------------------------------------
 

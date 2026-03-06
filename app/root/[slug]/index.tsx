@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/components/language-provider';
 import { Breadcrumb } from '@/components/breadcrumb';
 import { WordCard } from '@/components/word-card';
+import { MasteryButtons } from '@/components/mastery-buttons';
 import type { RootEntry, SemanticDomain, WordEntry } from '@/types/content';
 
 /* ── Helpers ────────────────────────────────────────────────── */
@@ -189,6 +190,7 @@ export const RootDetail = ({ root, associatedWords }: RootDetailProps) => {
             {root.languageOfOrigin}
           </span>
         </div>
+        <MasteryButtons type="root" slug={root.slug} showLabels />
       </header>
 
       {/* ── Info card ───────────────────────────────────── */}

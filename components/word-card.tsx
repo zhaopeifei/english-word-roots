@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 import { Volume2 } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
+import { MasteryButtons } from '@/components/mastery-buttons';
 import type { WordEntry } from '@/types/content';
 
 // ---------------------------------------------------------------------------
@@ -138,7 +139,7 @@ export function WordCard({ word, styleIndex }: WordCardProps) {
   return (
     <Link href={`/word/${word.slug}`} className="group block">
       <article
-        className={`${style.bg} ${style.border} flex h-[140px] cursor-pointer flex-col rounded-[20px] p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg`}
+        className={`${style.bg} ${style.border} flex h-[170px] cursor-pointer flex-col rounded-[20px] p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg`}
       >
         {/* Top row: word + pronunciation */}
         <div className="flex items-center justify-between gap-2">
@@ -153,9 +154,10 @@ export function WordCard({ word, styleIndex }: WordCardProps) {
           {cleaned}
         </p>
 
-        {/* Bottom row: frequency stars */}
-        <div className="mt-auto pt-2">
+        {/* Bottom row: frequency stars + mastery */}
+        <div className="mt-auto flex items-center justify-between gap-2 pt-2">
           <FrequencyStars count={starCount} />
+          <MasteryButtons type="word" slug={word.slug} />
         </div>
       </article>
     </Link>

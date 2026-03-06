@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { useLanguage } from '@/components/language-provider';
 import { CustomSelect } from '@/components/ui/custom-select';
+import { MasteryButtons } from '@/components/mastery-buttons';
 import type { RootEntry, SemanticDomain } from '@/types/content';
 
 interface RootsIndexProps {
@@ -261,24 +262,27 @@ export const RootsIndex = ({ roots }: RootsIndexProps) => {
                   <span className={`${style.accentText} text-sm font-semibold`}>
                     → {root.associatedWords.length} {dictionary.words}
                   </span>
-                  <span
-                    className={`${style.accentText} flex h-8 w-8 items-center justify-center rounded-full border-[1.5px] border-current opacity-0 transition-opacity duration-200 group-hover:opacity-100`}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                  <div className="flex items-center gap-2">
+                    <MasteryButtons type="root" slug={root.slug} />
+                    <span
+                      className={`${style.accentText} flex h-8 w-8 items-center justify-center rounded-full border-[1.5px] border-current opacity-0 transition-opacity duration-200 group-hover:opacity-100`}
                     >
-                      <path d="M5 12h14" />
-                      <path d="m12 5 7 7-7 7" />
-                    </svg>
-                  </span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </svg>
+                    </span>
+                  </div>
                 </div>
               </article>
             </Link>

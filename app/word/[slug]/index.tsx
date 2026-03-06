@@ -7,6 +7,7 @@ import { motion } from 'motion/react';
 import { useLanguage } from '@/components/language-provider';
 import { Breadcrumb } from '@/components/breadcrumb';
 import { cn } from '@/lib/utils';
+import { MasteryButtons } from '@/components/mastery-buttons';
 import type { WordEntry, MorphemeSegment, RootEntry } from '@/types/content';
 
 interface WordDetailProps {
@@ -141,9 +142,10 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
         ]}
       />
 
-      {/* Header: lemma */}
-      <header>
+      {/* Header: lemma + mastery */}
+      <header className="space-y-3">
         <h1 className="font-heading text-foreground text-4xl">{word.lemma}</h1>
+        <MasteryButtons type="word" slug={word.slug} showLabels />
       </header>
 
       {/* Pronunciation pills */}

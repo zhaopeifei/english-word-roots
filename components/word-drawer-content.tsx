@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Volume2 } from 'lucide-react';
 import { useCallback, useEffect, useState } from 'react';
 import { useLanguage } from '@/components/language-provider';
+import { MasteryButtons } from '@/components/mastery-buttons';
 import { cn } from '@/lib/utils';
 import type { WordEntry, MorphemeSegment } from '@/types/content';
 
@@ -103,8 +104,11 @@ export function WordDrawerContent({ word }: WordDrawerContentProps) {
 
   return (
     <div className="space-y-6">
-      {/* Lemma */}
-      <h2 className="font-heading text-foreground text-3xl font-bold">{word.lemma}</h2>
+      {/* Lemma + mastery */}
+      <div className="space-y-2">
+        <h2 className="font-heading text-foreground text-3xl font-bold">{word.lemma}</h2>
+        <MasteryButtons type="word" slug={word.slug} showLabels />
+      </div>
 
       {/* Pronunciation */}
       <div className="flex flex-wrap gap-2">

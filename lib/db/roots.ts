@@ -158,6 +158,28 @@ export async function getRootCount(): Promise<number> {
 // getRootsByOrigin — Filtered by origin language, with word counts
 // ---------------------------------------------------------------------------
 
+// ---------------------------------------------------------------------------
+// getRootsBySlugs — Bulk fetch roots by slugs
+// ---------------------------------------------------------------------------
+
+export async function getRootsBySlugs(slugs: string[]): Promise<RootEntry[]> {
+  if (slugs.length === 0) return [];
+
+  const BATCH = 500;
+  const allRows: RootRow[] = [];
+  for (let i = 0; i < slugs.length; i += BATCH) {
+    const batch = slugs.slice(i, i + BATCH);
+    const { data } = await supabase
+      .from('roots')
+      .select('*')
+      .in('slug', batch)
+      .order('slug');
+    if (data) allRows.push(...(data as RootRow[]));
+  }
+
+  return allRows.map((row) => mapRoot(row, [], []));
+}
+
 export async function getRootsByOrigin(
   originLang: string,
 ): Promise<RootEntry[]> {

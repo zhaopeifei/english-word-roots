@@ -28,6 +28,12 @@ export const SiteFooter = () => {
           ))}
           <span className="text-border mx-1">|</span>
           <Link
+            href="/about"
+            className="hover:bg-card hover:text-foreground rounded-full px-3 py-1 font-bold transition-colors"
+          >
+            {locale === 'zh' ? '关于我们' : 'About'}
+          </Link>
+          <Link
             href="/privacy"
             className="hover:bg-card hover:text-foreground rounded-full px-3 py-1 transition-colors"
           >

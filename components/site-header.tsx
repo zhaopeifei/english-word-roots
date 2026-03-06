@@ -11,7 +11,9 @@ import { COLLECTION_CATEGORIES, getCollectionsByCategory } from '@/content/colle
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { useLanguage } from '@/components/language-provider';
+import { useAuth } from '@/components/auth-provider';
 import { CommandSearch } from '@/components/command-search';
+import { LogIn, LogOut, User } from 'lucide-react';
 
 // ---------------------------------------------------------------------------
 // Explore dropdown menu items — only the most popular collections
@@ -203,6 +205,105 @@ const MobileExploreSubmenu = ({
 };
 
 // ---------------------------------------------------------------------------
+// User menu (login / avatar)
+// ---------------------------------------------------------------------------
+
+const UserMenu = ({ variant = 'icon' }: { variant?: 'icon' | 'full' }) => {
+  const { user, loading, signInWithGoogle, signOut } = useAuth();
+  const { locale } = useLanguage();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Close on outside click
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [open]);
+
+  if (loading) return null;
+
+  if (!user) {
+    return (
+      <button
+        type="button"
+        onClick={() => signInWithGoogle()}
+        className={
+          variant === 'full'
+            ? 'text-foreground hover:text-primary hover:bg-card flex items-center gap-2 rounded-xl py-3 px-3 text-base font-bold transition-colors'
+            : 'bg-primary hover:bg-primary/90 flex h-9 cursor-pointer items-center rounded-full px-4 text-sm font-medium text-white transition-colors'
+        }
+      >
+        {locale === 'zh' ? '登录' : 'Login'}
+      </button>
+    );
+  }
+
+  const avatar = user.user_metadata?.avatar_url;
+  const name = user.user_metadata?.full_name ?? user.email;
+
+  if (variant === 'full') {
+    return (
+      <div className="flex items-center justify-between px-3 py-3">
+        <div className="flex items-center gap-2">
+          {avatar ? (
+            <img src={avatar} alt="" className="h-8 w-8 rounded-full" referrerPolicy="no-referrer" />
+          ) : (
+            <div className="bg-primary/10 text-primary flex h-8 w-8 items-center justify-center rounded-full">
+              <User className="h-4 w-4" />
+            </div>
+          )}
+          <span className="text-foreground text-sm font-medium truncate max-w-[140px]">{name}</span>
+        </div>
+        <button
+          type="button"
+          onClick={() => signOut()}
+          className="text-muted-foreground hover:text-foreground cursor-pointer rounded-full p-2 transition-colors"
+          title={locale === 'zh' ? '退出登录' : 'Sign out'}
+        >
+          <LogOut className="h-4 w-4" />
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((p) => !p)}
+        className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full transition-colors overflow-hidden border-[1.5px] border-border hover:border-primary"
+      >
+        {avatar ? (
+          <img src={avatar} alt="" className="h-full w-full object-cover" referrerPolicy="no-referrer" />
+        ) : (
+          <User className="text-muted-foreground h-4 w-4" />
+        )}
+      </button>
+      {open && (
+        <div className="border-border bg-card absolute right-0 top-full z-50 mt-1 w-48 overflow-hidden rounded-xl border-[1.5px] shadow-lg">
+          <div className="border-border border-b px-3 py-2">
+            <p className="text-foreground text-sm font-medium truncate">{name}</p>
+            <p className="text-muted-foreground text-xs truncate">{user.email}</p>
+          </div>
+          <button
+            type="button"
+            onClick={() => { signOut(); setOpen(false); }}
+            className="text-foreground hover:bg-muted flex w-full items-center gap-2 px-3 py-2.5 text-sm transition-colors cursor-pointer"
+          >
+            <LogOut className="h-4 w-4" />
+            {locale === 'zh' ? '退出登录' : 'Sign out'}
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// ---------------------------------------------------------------------------
 // SiteHeader
 // ---------------------------------------------------------------------------
 
@@ -292,6 +393,7 @@ export const SiteHeader = () => {
             </button>
             <LanguageSwitcher />
             <ThemeToggle />
+            <UserMenu />
           </div>
 
           {/* Mobile hamburger button (visible on mobile only) */}
@@ -360,6 +462,10 @@ export const SiteHeader = () => {
                 ),
               )}
             </div>
+
+            {/* User info (mobile) */}
+            <div className="border-border mx-4 border-t-[1.5px]" />
+            <UserMenu variant="full" />
 
             {/* Divider */}
             <div className="border-border mx-4 border-t-[1.5px]" />

@@ -57,13 +57,12 @@ export const LanguageSwitcher = () => {
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className="border-border bg-background text-muted-foreground hover:border-primary hover:text-primary flex h-9 cursor-pointer items-center gap-1.5 rounded-full border-[1.5px] px-3 text-xs font-bold transition-colors"
+        className="border-border bg-background text-muted-foreground hover:border-primary hover:text-primary flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border-[1.5px] transition-colors"
         aria-label="Change language"
         aria-expanded={open}
         aria-haspopup="listbox"
       >
-        <Globe className="h-3.5 w-3.5" />
-        <span>{getButtonLabel(preference)}</span>
+        <Globe className="h-4 w-4" />
       </button>
 
       {open && (
