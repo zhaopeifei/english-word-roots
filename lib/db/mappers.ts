@@ -82,6 +82,8 @@ export interface AffixRow {
   variants: string[] | null;
   pos_function: string | null;
   grimm_law_group: string | null;
+  base_affix_id: number | null;
+  base_affix?: { slug: string } | null;
 }
 
 export interface TagRow {
@@ -220,5 +222,6 @@ export function mapAffix(row: AffixRow): AffixEntry {
     languageOfOrigin: (row.origin_lang as LanguageOfOrigin) ?? 'Other',
     examples: [], // DB gap — populate later from morpheme_segments join
     grimmLawGroup: row.grimm_law_group ?? undefined,
+    baseAffixSlug: row.base_affix?.slug ?? undefined,
   };
 }

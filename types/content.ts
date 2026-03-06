@@ -84,6 +84,7 @@ export interface AffixEntry {
   languageOfOrigin: LanguageOfOrigin;
   examples: string[]; // 示例单词 slug: ["predict", "prepare"]
   grimmLawGroup?: string;
+  baseAffixSlug?: string; // 变体词缀指向基础形式的 slug，如 ac- → ad
 }
 
 // 词源语言（有限集）
