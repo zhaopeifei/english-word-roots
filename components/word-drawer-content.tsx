@@ -264,6 +264,25 @@ export function WordDrawerContent({ word }: WordDrawerContentProps) {
         </section>
       )}
 
+      {/* Collocations */}
+      {word.collocations && (word.collocations[locale] ?? word.collocations.en)?.length > 0 && (
+        <section className="space-y-3">
+          <h3 className="font-heading text-foreground text-lg font-bold">
+            {dictionary.collocations}
+          </h3>
+          <div className="flex flex-wrap gap-1.5">
+            {(word.collocations[locale] ?? word.collocations.en).map((collocation) => (
+              <span
+                key={collocation}
+                className="bg-card border-border rounded-full border px-3 py-1.5 text-sm"
+              >
+                {collocation}
+              </span>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Related words */}
       {word.relatedWords.length > 0 && (
         <section className="space-y-3">

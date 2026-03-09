@@ -89,7 +89,7 @@ export function MasteryButtons({ type, slug, showLabels = false, className }: Ma
             type="button"
             onClick={(e) => handleClick(e, s.value)}
             className={cn(
-              'inline-flex cursor-pointer items-center gap-1 rounded-full text-xs transition-all',
+              'inline-flex cursor-pointer items-center gap-1 rounded-full text-xs transition-all duration-200 active:scale-90',
               showLabels ? 'px-2 py-1' : 'p-1',
               isActive ? s.active : s.idle,
             )}

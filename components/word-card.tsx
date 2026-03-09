@@ -92,7 +92,7 @@ function PronunciationButton({ lemma }: { lemma: string }) {
     <button
       type="button"
       onClick={handleSpeak}
-      className="text-muted-foreground hover:text-primary shrink-0 cursor-pointer rounded-full p-1 transition-colors"
+      className="text-muted-foreground hover:text-primary shrink-0 cursor-pointer rounded-full p-2 transition-colors"
       aria-label={`Play pronunciation of ${lemma}`}
     >
       <Volume2 className="h-4 w-4" />

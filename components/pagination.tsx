@@ -33,7 +33,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="rounded-full border border-border px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted disabled:pointer-events-none disabled:opacity-40"
+          className="cursor-pointer rounded-full border border-border px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted disabled:pointer-events-none disabled:opacity-40"
         >
           {dictionary.previousPage}
         </button>
@@ -47,7 +47,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
             <button
               key={page}
               onClick={() => onPageChange(page)}
-              className={`h-9 w-9 rounded-full text-sm font-medium transition-colors ${
+              className={`h-9 w-9 cursor-pointer rounded-full text-sm font-medium transition-colors ${
                 page === currentPage
                   ? 'bg-primary text-primary-foreground'
                   : 'border border-border text-foreground hover:bg-muted'
@@ -61,7 +61,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="rounded-full border border-border px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted disabled:pointer-events-none disabled:opacity-40"
+          className="cursor-pointer rounded-full border border-border px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted disabled:pointer-events-none disabled:opacity-40"
         >
           {dictionary.nextPage}
         </button>

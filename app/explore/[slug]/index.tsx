@@ -150,7 +150,7 @@ const RootCollectionView = ({ roots }: { roots: RootEntry[] }) => {
 
   const goToPage = useCallback((page: number) => {
     setCurrentPage(page);
-    gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   return (
@@ -326,7 +326,7 @@ const WordCollectionView = ({ words }: { words: WordEntry[] }) => {
 
   const goToPage = useCallback((page: number) => {
     setCurrentPage(page);
-    gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   return (

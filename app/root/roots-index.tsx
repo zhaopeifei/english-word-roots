@@ -161,7 +161,7 @@ export const RootsIndex = ({ roots }: RootsIndexProps) => {
 
   const goToPage = useCallback((page: number) => {
     setCurrentPage(page);
-    gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   return (

@@ -14,12 +14,6 @@ import type { WordEntry, RootEntry } from '@/types/content';
 // Status filter config
 // ---------------------------------------------------------------------------
 
-const STATUS_OPTIONS: { value: MasteryStatus; emoji: string; label: Record<string, string> }[] = [
-  { value: 'seen', emoji: '🌱', label: { en: 'Seen', zh: '见过' } },
-  { value: 'familiar', emoji: '🌿', label: { en: 'Familiar', zh: '熟悉' } },
-  { value: 'mastered', emoji: '🌳', label: { en: 'Mastered', zh: '掌握' } },
-];
-
 const STAT_CARDS: { value: MasteryStatus; emoji: string; label: Record<string, string>; color: string }[] = [
   { value: 'unknown', emoji: '🫘', label: { en: 'Unknown', zh: '不认识' }, color: 'border-border' },
   { value: 'seen', emoji: '🌱', label: { en: 'Seen', zh: '见过' }, color: 'border-accent/30' },
@@ -96,37 +90,39 @@ export const VocabularyPage = () => {
 
   const counts = tab === 'word' ? wordCounts : rootCounts;
 
-  // Fetch word/root details when map changes
-  const wordSlugs = useMemo(() => Object.keys(wordMap), [wordMap]);
-  const rootSlugs = useMemo(() => Object.keys(rootMap), [rootMap]);
+  // Stabilise slug lists: only re-fetch when actual slugs change, not on status value changes
+  const wordSlugKey = useMemo(() => Object.keys(wordMap).sort().join(','), [wordMap]);
+  const rootSlugKey = useMemo(() => Object.keys(rootMap).sort().join(','), [rootMap]);
 
   useEffect(() => {
-    if (wordSlugs.length === 0) { setWords([]); return; }
+    const slugs = wordSlugKey ? wordSlugKey.split(',') : [];
+    if (slugs.length === 0) { setWords([]); return; }
     setFetchingWords(true);
     fetch(`/api/words-by-slugs`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ slugs: wordSlugs }),
+      body: JSON.stringify({ slugs }),
     })
       .then((r) => r.json())
       .then((data) => setWords(data))
       .catch(() => setWords([]))
       .finally(() => setFetchingWords(false));
-  }, [wordSlugs]);
+  }, [wordSlugKey]);
 
   useEffect(() => {
-    if (rootSlugs.length === 0) { setRoots([]); return; }
+    const slugs = rootSlugKey ? rootSlugKey.split(',') : [];
+    if (slugs.length === 0) { setRoots([]); return; }
     setFetchingRoots(true);
     fetch(`/api/roots-by-slugs`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ slugs: rootSlugs }),
+      body: JSON.stringify({ slugs }),
     })
       .then((r) => r.json())
       .then((data) => setRoots(data))
       .catch(() => setRoots([]))
       .finally(() => setFetchingRoots(false));
-  }, [rootSlugs]);
+  }, [rootSlugKey]);
 
   // Filtered items
   const filteredWords = useMemo(() => {
@@ -143,7 +139,7 @@ export const VocabularyPage = () => {
 
   const goToPage = useCallback((page: number) => {
     setCurrentPage(page);
-    gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   // Not logged in
@@ -186,68 +182,51 @@ export const VocabularyPage = () => {
         </p>
       </header>
 
-      {/* Stats cards */}
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {STAT_CARDS.map((card) => (
-          <div
-            key={card.value}
-            className={`bg-card rounded-[16px] border-[1.5px] p-4 text-center ${card.color}`}
-          >
-            <span className="text-2xl">{card.emoji}</span>
-            <p className="text-foreground mt-2 text-2xl font-bold">{counts[card.value]}</p>
-            <p className="text-muted-foreground text-xs font-medium">{card.label[locale] ?? card.label.en}</p>
-          </div>
-        ))}
+      {/* Word / Root tabs */}
+      <div className="bg-muted inline-flex rounded-full p-1">
+        <button
+          type="button"
+          onClick={() => { setTab('word'); setStatusFilter('all'); setCurrentPage(1); }}
+          className={`cursor-pointer rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+            tab === 'word' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground'
+          }`}
+        >
+          {locale === 'zh' ? '单词' : 'Words'}
+        </button>
+        <button
+          type="button"
+          onClick={() => { setTab('root'); setStatusFilter('all'); setCurrentPage(1); }}
+          className={`cursor-pointer rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+            tab === 'root' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground'
+          }`}
+        >
+          {locale === 'zh' ? '词根' : 'Roots'}
+        </button>
       </div>
 
-      {/* Tabs + filters */}
-      <div className="flex flex-wrap items-center gap-3">
-        {/* Word / Root tabs */}
-        <div className="bg-muted inline-flex rounded-full p-1">
-          <button
-            type="button"
-            onClick={() => { setTab('word'); setCurrentPage(1); }}
-            className={`cursor-pointer rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
-              tab === 'word' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground'
-            }`}
-          >
-            {locale === 'zh' ? '单词' : 'Words'}
-          </button>
-          <button
-            type="button"
-            onClick={() => { setTab('root'); setCurrentPage(1); }}
-            className={`cursor-pointer rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
-              tab === 'root' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground'
-            }`}
-          >
-            {locale === 'zh' ? '词根' : 'Roots'}
-          </button>
-        </div>
-
-        {/* Status filter */}
-        <div className="flex items-center gap-1">
-          <button
-            type="button"
-            onClick={() => { setStatusFilter('all'); setCurrentPage(1); }}
-            className={`cursor-pointer rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-              statusFilter === 'all' ? 'bg-card text-foreground ring-1 ring-border shadow-sm' : 'text-muted-foreground hover:bg-muted'
-            }`}
-          >
-            {locale === 'zh' ? '全部' : 'All'}
-          </button>
-          {STATUS_OPTIONS.map((s) => (
+      {/* Stats cards (clickable as filter) */}
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {STAT_CARDS.map((card) => {
+          const isActive = statusFilter === card.value;
+          return (
             <button
-              key={s.value}
+              key={card.value}
               type="button"
-              onClick={() => { setStatusFilter(s.value); setCurrentPage(1); }}
-              className={`cursor-pointer rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-                statusFilter === s.value ? 'bg-card text-foreground ring-1 ring-border shadow-sm' : 'text-muted-foreground hover:bg-muted'
+              onClick={() => { setStatusFilter(isActive ? 'all' : card.value); setCurrentPage(1); }}
+              className={`bg-card flex cursor-pointer items-center justify-center rounded-[16px] border-[1.5px] py-3.5 pl-1 pr-5 transition-all active:scale-95 ${card.color} ${
+                isActive ? 'ring-2 ring-primary/40 shadow-md' : 'hover:shadow-sm'
               }`}
             >
-              {s.emoji} {s.label[locale] ?? s.label.en}
+              <div className="flex items-center gap-4">
+                <span className="text-3xl">{card.emoji}</span>
+                <div>
+                  <p className="text-foreground text-2xl font-bold leading-tight">{counts[card.value]}</p>
+                  <p className="text-muted-foreground text-xs font-medium">{card.label[locale] ?? card.label.en}</p>
+                </div>
+              </div>
             </button>
-          ))}
-        </div>
+          );
+        })}
       </div>
 
       {/* Content */}

@@ -319,6 +319,23 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
         </ul>
       </section>
 
+      {/* Collocations */}
+      {word.collocations && (word.collocations[locale] ?? word.collocations.en)?.length > 0 && (
+        <section className="space-y-4">
+          <h2 className="font-heading text-foreground text-2xl">{dictionary.collocations}</h2>
+          <div className="flex flex-wrap gap-2">
+            {(word.collocations[locale] ?? word.collocations.en).map((collocation) => (
+              <span
+                key={collocation}
+                className="bg-card border-border rounded-full border px-4 py-2 text-sm"
+              >
+                {collocation}
+              </span>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Related Words */}
       {word.relatedWords.length > 0 && (
         <section className="space-y-4">
