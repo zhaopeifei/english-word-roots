@@ -68,14 +68,10 @@ export const VocabularyPage = () => {
 
   const [tab, setTab] = useState<ItemType>('word');
   const [statusFilter, setStatusFilter] = useState<MasteryStatus | 'all'>('all');
-  const [words, setWords] = useState<WordEntry[]>([]);
-  const [roots, setRoots] = useState<RootEntry[]>([]);
-  const [fetchingWords, setFetchingWords] = useState(false);
-  const [fetchingRoots, setFetchingRoots] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const gridRef = useRef<HTMLDivElement>(null);
 
-  // Compute counts
+  // Counts directly from mastery maps (complete data, no API needed)
   const wordCounts = useMemo(() => {
     const counts: Record<MasteryStatus, number> = { unknown: 0, seen: 0, familiar: 0, mastered: 0 };
     for (const status of Object.values(wordMap)) counts[status]++;
@@ -90,52 +86,63 @@ export const VocabularyPage = () => {
 
   const counts = tab === 'word' ? wordCounts : rootCounts;
 
-  // Stabilise slug lists: only re-fetch when actual slugs change, not on status value changes
-  const wordSlugKey = useMemo(() => Object.keys(wordMap).sort().join(','), [wordMap]);
-  const rootSlugKey = useMemo(() => Object.keys(rootMap).sort().join(','), [rootMap]);
+  // Filter slugs by status, then paginate — only fetch the current page
+  const filteredWordSlugs = useMemo(() => {
+    const slugs = Object.keys(wordMap).sort();
+    if (statusFilter === 'all') return slugs;
+    return slugs.filter((s) => wordMap[s] === statusFilter);
+  }, [wordMap, statusFilter]);
+
+  const filteredRootSlugs = useMemo(() => {
+    const slugs = Object.keys(rootMap).sort();
+    if (statusFilter === 'all') return slugs;
+    return slugs.filter((s) => rootMap[s] === statusFilter);
+  }, [rootMap, statusFilter]);
+
+  const totalItems = tab === 'word' ? filteredWordSlugs.length : filteredRootSlugs.length;
+  const totalPages = Math.max(1, Math.ceil(totalItems / PAGE_SIZE));
+
+  // Slugs for the current page only
+  const pageSlugs = useMemo(() => {
+    const source = tab === 'word' ? filteredWordSlugs : filteredRootSlugs;
+    const start = (currentPage - 1) * PAGE_SIZE;
+    return source.slice(start, start + PAGE_SIZE);
+  }, [tab, filteredWordSlugs, filteredRootSlugs, currentPage]);
+
+  // Stabilise fetch: only re-fetch when the actual page slugs change
+  const pageSlugKey = useMemo(() => pageSlugs.join(','), [pageSlugs]);
+
+  const [pageWords, setPageWords] = useState<WordEntry[]>([]);
+  const [pageRoots, setPageRoots] = useState<RootEntry[]>([]);
+  const [fetching, setFetching] = useState(false);
 
   useEffect(() => {
-    const slugs = wordSlugKey ? wordSlugKey.split(',') : [];
-    if (slugs.length === 0) { setWords([]); return; }
-    setFetchingWords(true);
-    fetch(`/api/words-by-slugs`, {
+    if (!pageSlugKey) {
+      setPageWords([]);
+      setPageRoots([]);
+      return;
+    }
+    const slugs = pageSlugKey.split(',');
+    const endpoint = tab === 'word' ? '/api/words-by-slugs' : '/api/roots-by-slugs';
+    setFetching(true);
+    fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ slugs }),
     })
       .then((r) => r.json())
-      .then((data) => setWords(data))
-      .catch(() => setWords([]))
-      .finally(() => setFetchingWords(false));
-  }, [wordSlugKey]);
+      .then((data) => {
+        if (tab === 'word') setPageWords(data);
+        else setPageRoots(data);
+      })
+      .catch(() => {
+        if (tab === 'word') setPageWords([]);
+        else setPageRoots([]);
+      })
+      .finally(() => setFetching(false));
+  }, [pageSlugKey, tab]);
 
-  useEffect(() => {
-    const slugs = rootSlugKey ? rootSlugKey.split(',') : [];
-    if (slugs.length === 0) { setRoots([]); return; }
-    setFetchingRoots(true);
-    fetch(`/api/roots-by-slugs`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ slugs }),
-    })
-      .then((r) => r.json())
-      .then((data) => setRoots(data))
-      .catch(() => setRoots([]))
-      .finally(() => setFetchingRoots(false));
-  }, [rootSlugKey]);
-
-  // Filtered items
-  const filteredWords = useMemo(() => {
-    if (statusFilter === 'all') return words;
-    return words.filter((w) => wordMap[w.slug] === statusFilter);
-  }, [words, wordMap, statusFilter]);
-
-  const filteredRoots = useMemo(() => {
-    if (statusFilter === 'all') return roots;
-    return roots.filter((r) => rootMap[r.slug] === statusFilter);
-  }, [roots, rootMap, statusFilter]);
-
-  const isLoading = authLoading || masteryLoading || fetchingWords || fetchingRoots;
+  const isLoading = authLoading || masteryLoading || fetching;
 
   const goToPage = useCallback((page: number) => {
     setCurrentPage(page);
@@ -235,29 +242,29 @@ export const VocabularyPage = () => {
           {locale === 'zh' ? '加载中...' : 'Loading...'}
         </div>
       ) : tab === 'word' ? (
-        filteredWords.length > 0 ? (
+        totalItems > 0 ? (
           <>
             <div ref={gridRef} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {filteredWords.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE).map((word, idx) => (
+              {pageWords.map((word, idx) => (
                 <WordCard key={word.slug} word={word} styleIndex={idx} />
               ))}
             </div>
-            <Pagination currentPage={currentPage} totalPages={Math.max(1, Math.ceil(filteredWords.length / PAGE_SIZE))} onPageChange={goToPage} />
+            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={goToPage} />
           </>
         ) : (
-          <EmptyState locale={locale} type="word" hasAny={words.length > 0} />
+          <EmptyState locale={locale} type="word" hasAny={Object.keys(wordMap).length > 0} />
         )
-      ) : filteredRoots.length > 0 ? (
+      ) : totalItems > 0 ? (
         <>
           <div ref={gridRef} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredRoots.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE).map((root, idx) => (
+            {pageRoots.map((root, idx) => (
               <RootCard key={root.slug} root={root} styleIndex={idx} />
             ))}
           </div>
-          <Pagination currentPage={currentPage} totalPages={Math.max(1, Math.ceil(filteredRoots.length / PAGE_SIZE))} onPageChange={goToPage} />
+          <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={goToPage} />
         </>
       ) : (
-        <EmptyState locale={locale} type="root" hasAny={roots.length > 0} />
+        <EmptyState locale={locale} type="root" hasAny={Object.keys(rootMap).length > 0} />
       )}
     </article>
   );
