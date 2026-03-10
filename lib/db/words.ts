@@ -193,34 +193,33 @@ export async function getWordSlugs(): Promise<string[]> {
 }
 
 // ---------------------------------------------------------------------------
-// getFeaturedWords — Top words by collins_star DESC, limited
+// getFeaturedWords — Curated words for the homepage
 // ---------------------------------------------------------------------------
+
+const FEATURED_SLUGS = [
+  'construct',     // con + struct
+  'biology',       // bio + logy
+  'transport',     // trans + port
+  'incredible',    // in + cred + ible
+  'microscope',    // micro + scope
+  'international', // inter + nation + al
+];
 
 export async function getFeaturedWords(
   limit: number = 6,
 ): Promise<WordEntry[]> {
-  // Prefer high-frequency, high-Collins-star words
-  const { data: wordRows, error } = await supabase
+  const slugs = FEATURED_SLUGS.slice(0, limit);
+  const { data: wordRows } = await supabase
     .from('words')
     .select('*')
-    .not('collins_star', 'is', null)
-    .order('collins_star', { ascending: false })
-    .order('frequency_rank', { ascending: true, nullsFirst: false })
-    .limit(limit);
+    .in('slug', slugs);
 
-  if (error || !wordRows || wordRows.length === 0) {
-    // Fallback: just grab the first N words
-    const { data: fallback } = await supabase
-      .from('words')
-      .select('*')
-      .order('slug')
-      .limit(limit);
+  if (!wordRows || wordRows.length === 0) return [];
 
-    if (!fallback || fallback.length === 0) return [];
-    return hydrateWords(fallback as WordRow[]);
-  }
-
-  return hydrateWords(wordRows as WordRow[]);
+  // Preserve curated order
+  const bySlug = new Map(wordRows.map((r) => [(r as WordRow).slug, r as WordRow]));
+  const ordered = slugs.map((s) => bySlug.get(s)).filter(Boolean) as WordRow[];
+  return hydrateWords(ordered);
 }
 
 // ---------------------------------------------------------------------------
@@ -292,28 +291,44 @@ export async function getWordsByTag(
 
   if (allWordRows.length === 0) return [];
 
-  // 4. Fetch morpheme segments for ALL words in bulk (instead of 1 query per word)
+  // 4. Fetch morpheme segments + tags in bulk
   const allIds = allWordRows.map((w) => w.id);
   const segmentsByWordId = new Map<number, MorphemeSegmentRow[]>();
+  const tagsByWordId = new Map<number, string[]>();
+
   for (let i = 0; i < allIds.length; i += BATCH) {
     const batch = allIds.slice(i, i + BATCH);
-    const { data } = await supabase
+
+    const { data: segData } = await supabase
       .from('morpheme_segments')
       .select('*, roots(slug, meaning), affixes(slug, meaning)')
       .in('word_id', batch)
       .order('sort_order');
-    if (data) {
-      for (const seg of data as MorphemeSegmentRow[]) {
+    if (segData) {
+      for (const seg of segData as MorphemeSegmentRow[]) {
         const list = segmentsByWordId.get(seg.word_id) ?? [];
         list.push(seg);
         segmentsByWordId.set(seg.word_id, list);
       }
     }
+
+    const { data: tagData } = await supabase
+      .from('word_tags')
+      .select('word_id, tags!inner(slug)')
+      .in('word_id', batch);
+    if (tagData) {
+      for (const wt of tagData) {
+        const slug = (wt.tags as unknown as { slug: string }).slug;
+        const list = tagsByWordId.get(wt.word_id) ?? [];
+        list.push(slug);
+        tagsByWordId.set(wt.word_id, list);
+      }
+    }
   }
 
-  // 5. Map to WordEntry (no examples, no tags, no related words)
+  // 5. Map to WordEntry (no examples, no related words)
   return allWordRows.map((row) =>
-    mapWord(row, segmentsByWordId.get(row.id) ?? [], [], [], []),
+    mapWord(row, segmentsByWordId.get(row.id) ?? [], [], tagsByWordId.get(row.id) ?? [], []),
   );
 }
 
@@ -342,7 +357,7 @@ export async function getWordCountByTag(
 }
 
 // ---------------------------------------------------------------------------
-// getWordsBySlugs — Bulk fetch words by slugs (lightweight, no examples/tags)
+// getWordsBySlugs — Bulk fetch words by slugs (lightweight, no examples)
 // ---------------------------------------------------------------------------
 
 export async function getWordsBySlugs(slugs: string[]): Promise<WordEntry[]> {
@@ -364,24 +379,42 @@ export async function getWordsBySlugs(slugs: string[]): Promise<WordEntry[]> {
 
   const allIds = allWordRows.map((w) => w.id);
   const segmentsByWordId = new Map<number, MorphemeSegmentRow[]>();
+  const tagsByWordId = new Map<number, string[]>();
+
   for (let i = 0; i < allIds.length; i += BATCH) {
     const batch = allIds.slice(i, i + BATCH);
-    const { data } = await supabase
+
+    // Fetch morpheme segments
+    const { data: segData } = await supabase
       .from('morpheme_segments')
       .select('*, roots(slug, meaning), affixes(slug, meaning)')
       .in('word_id', batch)
       .order('sort_order');
-    if (data) {
-      for (const seg of data as MorphemeSegmentRow[]) {
+    if (segData) {
+      for (const seg of segData as MorphemeSegmentRow[]) {
         const list = segmentsByWordId.get(seg.word_id) ?? [];
         list.push(seg);
         segmentsByWordId.set(seg.word_id, list);
       }
     }
+
+    // Fetch tags
+    const { data: tagData } = await supabase
+      .from('word_tags')
+      .select('word_id, tags!inner(slug)')
+      .in('word_id', batch);
+    if (tagData) {
+      for (const wt of tagData) {
+        const slug = (wt.tags as unknown as { slug: string }).slug;
+        const list = tagsByWordId.get(wt.word_id) ?? [];
+        list.push(slug);
+        tagsByWordId.set(wt.word_id, list);
+      }
+    }
   }
 
   return allWordRows.map((row) =>
-    mapWord(row, segmentsByWordId.get(row.id) ?? [], [], [], []),
+    mapWord(row, segmentsByWordId.get(row.id) ?? [], [], tagsByWordId.get(row.id) ?? [], []),
   );
 }
 

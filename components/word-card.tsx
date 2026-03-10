@@ -6,6 +6,7 @@ import { Volume2 } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
 import { MasteryButtons } from '@/components/mastery-buttons';
 import { useSpeech } from '@/hooks/use-speech';
+import { getCardTags } from '@/lib/tag-utils';
 import type { WordEntry } from '@/types/content';
 
 // ---------------------------------------------------------------------------
@@ -23,42 +24,23 @@ function cleanDefinition(raw: string): string {
 }
 
 // ---------------------------------------------------------------------------
-// Frequency → stars mapping
+// Tag badges (replaces frequency stars)
 // ---------------------------------------------------------------------------
 
-function getStarCount(word: WordEntry): number {
-  if (word.collinsStars) return word.collinsStars;
-  // Fallback: map frequency label to stars
-  switch (word.frequency) {
-    case 'common':
-      return 3;
-    case 'academic':
-      return 2;
-    case 'advanced':
-      return 1;
-    case 'rare':
-      return 1;
-    default:
-      return 0;
-  }
-}
-
-function FrequencyStars({ count }: { count: number }) {
-  if (count === 0) return null;
+function TagBadges({ tags, locale }: { tags: string[]; locale: string }) {
+  const resolved = getCardTags(tags, locale, 3);
+  if (resolved.length === 0) return null;
   return (
-    <span className="flex items-center gap-0.5" aria-label={`Frequency: ${count} stars`} title={`Collins word frequency: ${count}/5`}>
-      {Array.from({ length: 5 }, (_, i) => (
-        <svg
-          key={i}
-          className={`h-3 w-3 ${i < count ? 'text-secondary' : 'text-border'}`}
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          aria-hidden="true"
+    <div className="flex items-center gap-1 opacity-60">
+      {resolved.map((tag) => (
+        <span
+          key={tag.slug}
+          className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold leading-none ${tag.color}`}
         >
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
+          {tag.label}
+        </span>
       ))}
-    </span>
+    </div>
   );
 }
 
@@ -123,7 +105,6 @@ interface WordCardProps {
 export function WordCard({ word, styleIndex }: WordCardProps) {
   const { locale } = useLanguage();
   const style = wordCardStyles[styleIndex % 3];
-  const starCount = getStarCount(word);
 
   const rawDef = word.definition[locale] ?? word.definition.en ?? '';
   const cleaned = cleanDefinition(rawDef);
@@ -146,9 +127,9 @@ export function WordCard({ word, styleIndex }: WordCardProps) {
           {cleaned}
         </p>
 
-        {/* Bottom row: frequency stars + mastery */}
+        {/* Bottom row: tags + mastery */}
         <div className="mt-auto flex items-center justify-between gap-2 pt-2">
-          <FrequencyStars count={starCount} />
+          <TagBadges tags={word.tags ?? []} locale={locale} />
           <MasteryButtons type="word" slug={word.slug} />
         </div>
       </article>

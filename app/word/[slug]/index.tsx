@@ -8,6 +8,7 @@ import { Breadcrumb } from '@/components/breadcrumb';
 import { cn } from '@/lib/utils';
 import { MasteryButtons } from '@/components/mastery-buttons';
 import { useSpeech } from '@/hooks/use-speech';
+import { getDetailTags } from '@/lib/tag-utils';
 import type { WordEntry, MorphemeSegment, RootEntry } from '@/types/content';
 
 interface WordDetailProps {
@@ -52,32 +53,6 @@ const badgeColors = [
 // ---------------------------------------------------------------------------
 // Enrichment UI helpers
 // ---------------------------------------------------------------------------
-
-function getExamTagColor(tag: string): string {
-  const colors: Record<string, string> = {
-    'CET-4': 'bg-blue-50 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300',
-    'CET-6': 'bg-indigo-50 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300',
-    'TOEFL': 'bg-amber-50 text-amber-700 dark:bg-amber-900/50 dark:text-amber-300',
-    'IELTS': 'bg-red-50 text-red-700 dark:bg-red-900/50 dark:text-red-300',
-    'GRE': 'bg-purple-50 text-purple-700 dark:bg-purple-900/50 dark:text-purple-300',
-    'GMAT': 'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300',
-    'SAT': 'bg-orange-50 text-orange-700 dark:bg-orange-900/50 dark:text-orange-300',
-    'TOEIC': 'bg-cyan-50 text-cyan-700 dark:bg-cyan-900/50 dark:text-cyan-300',
-  };
-  return colors[tag] ?? 'bg-muted text-muted-foreground';
-}
-
-function getCefrColor(level: string): string {
-  const colors: Record<string, string> = {
-    'A1': 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300',
-    'A2': 'bg-green-50 text-green-700 dark:bg-green-900/40 dark:text-green-300',
-    'B1': 'bg-yellow-50 text-yellow-700 dark:bg-yellow-900/50 dark:text-yellow-300',
-    'B2': 'bg-orange-50 text-orange-700 dark:bg-orange-900/50 dark:text-orange-300',
-    'C1': 'bg-red-50 text-red-700 dark:bg-red-900/50 dark:text-red-300',
-    'C2': 'bg-purple-50 text-purple-700 dark:bg-purple-900/50 dark:text-purple-300',
-  };
-  return colors[level] ?? 'bg-muted text-muted-foreground';
-}
 
 function getEtymologyTypeColor(type: string): string {
   const colors: Record<string, string> = {
@@ -167,46 +142,20 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
         </span>
       </div>
 
-      {/* B1: Exam Tags */}
-      {word.tags && word.tags.length > 0 && (
-        <div className="flex flex-wrap gap-2">
-          {word.tags.map((tag) => (
-            <span
-              key={tag}
-              className={cn(
-                'rounded-full px-2.5 py-0.5 text-xs font-bold',
-                getExamTagColor(tag),
-              )}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      )}
-
-      {/* B2: Vocabulary Metrics */}
-      <div className="flex flex-wrap items-center gap-3 text-sm">
-        {word.cefrLevel && (
-          <span className={cn('rounded-md px-2 py-0.5 text-xs font-bold', getCefrColor(word.cefrLevel))}>
-            {word.cefrLevel}
-          </span>
-        )}
-        {word.collinsStars && (
-          <span className="text-secondary" title={`Collins ${word.collinsStars}-star word`}>
-            {'★'.repeat(word.collinsStars)}{'☆'.repeat(5 - word.collinsStars)}
-          </span>
-        )}
-        {word.oxfordFlag && (
-          <span className="rounded-md bg-blue-50 px-2 py-0.5 text-xs font-bold text-blue-700 dark:bg-blue-900/50 dark:text-blue-300">
-            Oxford 3000
-          </span>
-        )}
-        {word.frequencyRank && (
-          <span className="text-muted-foreground text-xs">
-            COCA #{word.frequencyRank.toLocaleString()}
-          </span>
-        )}
-      </div>
+      {/* Tags */}
+      {word.tags && word.tags.length > 0 && (() => {
+        const tags = getDetailTags(word.tags, locale);
+        if (tags.length === 0) return null;
+        return (
+          <div className="flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <span key={tag.slug} className={`rounded-full px-2.5 py-1 text-xs font-bold ${tag.color}`}>
+                {tag.label}
+              </span>
+            ))}
+          </div>
+        );
+      })()}
 
       {/* Definition card */}
       <section className="bg-card border-border rounded-[20px] border p-6">
