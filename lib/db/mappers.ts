@@ -14,6 +14,7 @@ import type {
   RootEntry,
   SemanticDomain,
   WordEntry,
+  WordSense,
 } from '@/types/content';
 
 // ---------------------------------------------------------------------------
@@ -65,6 +66,14 @@ export interface WordExampleRow {
   id: number;
   word_id: number;
   content: Record<Locale, string>;
+  sort_order: number;
+}
+
+export interface WordSenseRow {
+  id: number;
+  word_id: number;
+  pos: string;
+  definition: Record<Locale, string>;
   sort_order: number;
 }
 
@@ -142,6 +151,7 @@ export function mapWord(
   examples: WordExampleRow[],
   tagSlugs: string[],
   relatedWordSlugs: string[],
+  senses?: WordSenseRow[],
 ): WordEntry {
   return {
     slug: row.slug,
@@ -152,6 +162,9 @@ export function mapWord(
     },
     partOfSpeech: row.pos,
     definition: row.definition,
+    senses: senses && senses.length > 0
+      ? senses.sort((a, b) => a.sort_order - b.sort_order).map(mapWordSense)
+      : undefined,
 
     // Each DB example row has `content: {en: "...", zh: "..."}`.
     // The TypeScript type expects `Array<Record<Locale, string[]>>`,
@@ -177,6 +190,18 @@ export function mapWord(
     // Enrichment fields
     frequencyRank: row.frequency_rank ?? undefined,
     etymologyType: (row.etymology_type as EtymologyType) ?? undefined,
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Mapper: WordSense
+// ---------------------------------------------------------------------------
+
+function mapWordSense(row: WordSenseRow): WordSense {
+  return {
+    pos: row.pos,
+    definition: row.definition,
+    sortOrder: row.sort_order,
   };
 }
 

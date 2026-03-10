@@ -185,3 +185,75 @@ export function toPlainText(etymSection: string): string {
 
   return text;
 }
+
+// ---------------------------------------------------------------------------
+// POS section extraction
+// ---------------------------------------------------------------------------
+
+export interface WikiPOSSection {
+  pos: string;           // Abbreviated: "n.", "v.", "adj.", etc.
+  definitions: string[]; // Plain-text English definitions
+}
+
+const WIKI_POS_NAMES = [
+  'Noun', 'Verb', 'Adjective', 'Adverb', 'Preposition',
+  'Conjunction', 'Pronoun', 'Interjection', 'Determiner',
+  'Proper noun', 'Participle',
+];
+
+const POS_ABBREV: Record<string, string> = {
+  'Noun': 'n.', 'Verb': 'v.', 'Adjective': 'adj.', 'Adverb': 'adv.',
+  'Preposition': 'prep.', 'Conjunction': 'conj.', 'Pronoun': 'pron.',
+  'Interjection': 'interj.', 'Determiner': 'det.', 'Proper noun': 'n.',
+  'Participle': 'v.',
+};
+
+/**
+ * Extract POS sections with definitions from Wiktionary wikitext.
+ * Finds ==English== section, then parses ===Noun===, ===Verb===, etc.
+ */
+export function extractPOSSections(wikitext: string): WikiPOSSection[] {
+  // Find ==English== section
+  const engMatch = wikitext.match(/==\s*English\s*==/);
+  if (!engMatch || engMatch.index === undefined) return [];
+
+  const afterEng = wikitext.slice(engMatch.index);
+  // End of English section = next ==Language== header
+  const nextLang = afterEng.slice(3).match(/\n==[^=]/);
+  const engSection = nextLang
+    ? afterEng.slice(0, (nextLang.index ?? afterEng.length) + 3)
+    : afterEng;
+
+  const results: WikiPOSSection[] = [];
+
+  for (const posName of WIKI_POS_NAMES) {
+    const posRe = new RegExp(`={3,4}\\s*${posName}\\s*={3,4}`);
+    const posMatch = engSection.match(posRe);
+    if (!posMatch || posMatch.index === undefined) continue;
+
+    const start = posMatch.index + posMatch[0].length;
+    const rest = engSection.slice(start);
+    const endMatch = rest.match(/\n={3,4}\s*[A-Z]/);
+    const section = endMatch ? rest.slice(0, endMatch.index) : rest;
+
+    // Extract # definition lines (not ## sub-definitions, not #* usage notes)
+    const defs = section
+      .split('\n')
+      .filter((line) => /^#\s+[^*#:]/.test(line))
+      .map((line) => toPlainText(line.replace(/^#\s+/, '')).trim())
+      .filter((d) => d.length > 0);
+
+    if (defs.length > 0) {
+      const abbrev = POS_ABBREV[posName] ?? posName.toLowerCase();
+      // Deduplicate same abbreviation (e.g. "Proper noun" → "n." may duplicate "Noun")
+      const existing = results.find((r) => r.pos === abbrev);
+      if (existing) {
+        existing.definitions.push(...defs);
+      } else {
+        results.push({ pos: abbrev, definitions: defs });
+      }
+    }
+  }
+
+  return results;
+}

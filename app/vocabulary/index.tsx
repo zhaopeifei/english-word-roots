@@ -115,6 +115,7 @@ export const VocabularyPage = () => {
   const [pageWords, setPageWords] = useState<WordEntry[]>([]);
   const [pageRoots, setPageRoots] = useState<RootEntry[]>([]);
   const [fetching, setFetching] = useState(false);
+  const initialFetchDone = useRef(false);
 
   useEffect(() => {
     if (!pageSlugKey) {
@@ -124,7 +125,8 @@ export const VocabularyPage = () => {
     }
     const slugs = pageSlugKey.split(',');
     const endpoint = tab === 'word' ? '/api/words-by-slugs' : '/api/roots-by-slugs';
-    setFetching(true);
+    // Only show full loading state on first fetch; subsequent fetches update silently
+    if (!initialFetchDone.current) setFetching(true);
     fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -134,6 +136,7 @@ export const VocabularyPage = () => {
       .then((data) => {
         if (tab === 'word') setPageWords(data);
         else setPageRoots(data);
+        initialFetchDone.current = true;
       })
       .catch(() => {
         if (tab === 'word') setPageWords([]);

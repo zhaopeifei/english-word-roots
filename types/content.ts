@@ -23,6 +23,13 @@ export interface WordExample {
   sortOrder: number;
 }
 
+/** Structured definition for a single part of speech. */
+export interface WordSense {
+  pos: string;
+  definition: Record<Locale, string>;
+  sortOrder: number;
+}
+
 export interface RootEntry {
   slug: string; // 词根的唯一标识符
   variants: string[]; // 词根的变体，例如 [“hydr”, “hydro”, “hydra”]
@@ -49,6 +56,7 @@ export interface WordEntry {
 
   partOfSpeech: string[]; // 词性 ["n.", "v.", "adj."]
   definition: Record<Locale, string>; // 多语言释义（建议单数）
+  senses?: WordSense[]; // 按词性分组的结构化释义
   examples: Array<Record<Locale, string[]>>; // 多语言例句，可放多个
 
   rootBreakdown: MorphemeSegment[]; // 词的构词拆解

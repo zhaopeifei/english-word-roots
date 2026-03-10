@@ -246,6 +246,32 @@ CREATE INDEX idx_word_examples_word_id ON word_examples(word_id);
 
 
 -- ============================================================================
+-- 3b. word_senses — 义项表（按词性分组的结构化释义）
+-- ============================================================================
+-- 每个单词按词性拆分出独立释义行。每个 word_id + pos 仅一条记录。
+-- words.definition 保留为摘要释义（用于卡片/列表视图）。
+--
+-- 示例:
+--   word='act', pos='n.', definition={"en":"a thing done; a deed","zh":"行为，举动"}
+--   word='act', pos='v.', definition={"en":"to take action; to perform","zh":"行动；表演"}
+-- ============================================================================
+
+CREATE TABLE word_senses (
+  id         SERIAL PRIMARY KEY,
+  word_id    INTEGER NOT NULL REFERENCES words(id) ON DELETE CASCADE,
+  pos        TEXT NOT NULL,
+  definition JSONB NOT NULL,
+  sort_order SMALLINT DEFAULT 0,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+
+COMMENT ON TABLE word_senses IS '义项表 — 每个单词按词性拆分，每个 word_id + pos 仅一条记录';
+
+CREATE UNIQUE INDEX idx_word_senses_word_pos ON word_senses(word_id, pos);
+CREATE INDEX idx_word_senses_word_id ON word_senses(word_id);
+
+
+-- ============================================================================
 -- 4. affixes — 词缀表
 -- ============================================================================
 -- 前缀和后缀，用于词素分解的可视化展示和知识关联。

@@ -160,9 +160,32 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
       {/* Definition card */}
       <section className="bg-card border-border rounded-[20px] border p-6">
         <p className="text-primary text-xs font-bold uppercase tracking-wide">
-          {dictionary.wordOverview}
+          {word.senses && word.senses.length > 0
+            ? dictionary.definitions
+            : dictionary.wordOverview}
         </p>
-        <p className="text-foreground mt-2 text-xl">{localizedDefinition}</p>
+
+        {word.senses && word.senses.length > 0 ? (
+          <div className="mt-3 space-y-3">
+            {word.senses.map((sense) => (
+              <div key={sense.pos} className="flex gap-2">
+                <span className="text-muted-foreground mt-1 w-8 shrink-0 text-right font-mono text-sm">{sense.pos}</span>
+                <div>
+                  <p className="text-foreground text-xl">
+                    {sense.definition.en.charAt(0).toUpperCase() + sense.definition.en.slice(1)}
+                  </p>
+                  {sense.definition.zh && (
+                    <p className="text-muted-foreground mt-0.5 text-sm">
+                      {sense.definition.zh}
+                    </p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="text-foreground mt-2 text-xl">{localizedDefinition}</p>
+        )}
       </section>
 
       {/* Root Breakdown */}

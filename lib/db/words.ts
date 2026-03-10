@@ -13,6 +13,7 @@ import {
   type MorphemeSegmentRow,
   type WordExampleRow,
   type WordRow,
+  type WordSenseRow,
 } from './mappers';
 
 // ---------------------------------------------------------------------------
@@ -64,7 +65,7 @@ async function fetchAllRows<T>(
  * Hydrate a single word row with its segments, examples, tags, and related words.
  */
 async function hydrateWord(row: WordRow): Promise<WordEntry> {
-  const [segments, examples, tagJoins, relWords1, relWords2] =
+  const [segments, examples, tagJoins, relWords1, relWords2, senses] =
     await Promise.all([
       // Morpheme segments with joined root/affix slugs
       supabase
@@ -113,11 +114,19 @@ async function hydrateWord(row: WordRow): Promise<WordEntry> {
             .map((wr) => (wr.w1 as unknown as { slug: string } | null)?.slug)
             .filter((s): s is string => !!s),
         ),
+
+      // Word senses (per-POS definitions)
+      supabase
+        .from('word_senses')
+        .select('*')
+        .eq('word_id', row.id)
+        .order('sort_order')
+        .then((r) => (r.data ?? []) as WordSenseRow[]),
     ]);
 
   const relatedWordSlugs = [...relWords1, ...relWords2];
 
-  return mapWord(row, segments, examples, tagJoins, relatedWordSlugs);
+  return mapWord(row, segments, examples, tagJoins, relatedWordSlugs, senses);
 }
 
 /**

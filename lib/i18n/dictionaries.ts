@@ -68,6 +68,7 @@ export const dictionaries: Dictionaries = {
     filterAdv: 'Adverb',
     wordDefinition: 'Definition',
     wordPOS: 'Part of Speech',
+    definitions: 'Definitions',
 
     // Pagination
     previousPage: 'Previous',
@@ -136,6 +137,7 @@ export const dictionaries: Dictionaries = {
     filterAdv: '副词',
     wordDefinition: '释义',
     wordPOS: '词性',
+    definitions: '释义',
 
     // Pagination
     previousPage: '上一页',
