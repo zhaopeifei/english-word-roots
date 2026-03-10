@@ -2,12 +2,12 @@
 
 import Link from 'next/link';
 import { Volume2 } from 'lucide-react';
-import { useCallback, useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { useLanguage } from '@/components/language-provider';
 import { Breadcrumb } from '@/components/breadcrumb';
 import { cn } from '@/lib/utils';
 import { MasteryButtons } from '@/components/mastery-buttons';
+import { useSpeech } from '@/hooks/use-speech';
 import type { WordEntry, MorphemeSegment, RootEntry } from '@/types/content';
 
 interface WordDetailProps {
@@ -114,20 +114,7 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
 
   const parentRootSegment = word.rootBreakdown.find((s) => s.type === 'root' && s.rootSlug);
 
-  const [speechSupported, setSpeechSupported] = useState(false);
-
-  useEffect(() => {
-    setSpeechSupported('speechSynthesis' in window);
-  }, []);
-
-  const handleSpeak = useCallback((text: string, lang: 'en-GB' | 'en-US') => {
-    if (!speechSupported) return;
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = lang;
-    utterance.rate = 0.9;
-    window.speechSynthesis.speak(utterance);
-  }, [speechSupported]);
+  const { supported: speechSupported, speakWord, speakSentence } = useSpeech();
 
   return (
     <article className="space-y-10">
@@ -156,7 +143,7 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
           {speechSupported && (
             <button
               type="button"
-              onClick={() => handleSpeak(word.lemma, 'en-GB')}
+              onClick={() => speakWord(word.lemma, 'en-GB')}
               className="text-muted-foreground hover:text-primary cursor-pointer transition-colors"
               aria-label="Listen UK pronunciation"
             >
@@ -170,7 +157,7 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
           {speechSupported && (
             <button
               type="button"
-              onClick={() => handleSpeak(word.lemma, 'en-US')}
+              onClick={() => speakWord(word.lemma, 'en-US')}
               className="text-muted-foreground hover:text-primary cursor-pointer transition-colors"
               aria-label="Listen US pronunciation"
             >
@@ -307,8 +294,20 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
                 >
                   {idx + 1}
                 </span>
-                <div className="space-y-1">
-                  <p className="text-foreground text-lg">{englishText}</p>
+                <div className="flex-1 space-y-1">
+                  <div className="flex items-start gap-2">
+                    <p className="text-foreground flex-1 text-lg">{englishText}</p>
+                    {speechSupported && (
+                      <button
+                        type="button"
+                        onClick={() => speakSentence(englishText)}
+                        className="text-muted-foreground hover:text-primary mt-1 shrink-0 cursor-pointer transition-colors"
+                        aria-label="Play example sentence"
+                      >
+                        <Volume2 className="h-4 w-4" />
+                      </button>
+                    )}
+                  </div>
                   {showTranslation && (
                     <p className="text-muted-foreground text-sm">{localizedText}</p>
                   )}
@@ -325,12 +324,15 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
           <h2 className="font-heading text-foreground text-2xl">{dictionary.collocations}</h2>
           <div className="flex flex-wrap gap-2">
             {(word.collocations[locale] ?? word.collocations.en).map((collocation) => (
-              <span
+              <button
                 key={collocation}
-                className="bg-card border-border rounded-full border px-4 py-2 text-sm"
+                type="button"
+                onClick={() => speechSupported && speakSentence(collocation)}
+                className="bg-card border-border inline-flex cursor-pointer items-center gap-1.5 rounded-full border px-4 py-2 text-sm transition-colors hover:border-primary"
               >
                 {collocation}
-              </span>
+                {speechSupported && <Volume2 className="text-muted-foreground h-3.5 w-3.5" />}
+              </button>
             ))}
           </div>
         </section>

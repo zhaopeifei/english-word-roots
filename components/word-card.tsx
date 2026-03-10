@@ -1,10 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 import { Volume2 } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
 import { MasteryButtons } from '@/components/mastery-buttons';
+import { useSpeech } from '@/hooks/use-speech';
 import type { WordEntry } from '@/types/content';
 
 // ---------------------------------------------------------------------------
@@ -66,24 +67,15 @@ function FrequencyStars({ count }: { count: number }) {
 // ---------------------------------------------------------------------------
 
 function PronunciationButton({ lemma }: { lemma: string }) {
-  const [supported, setSupported] = useState(false);
-
-  useEffect(() => {
-    setSupported('speechSynthesis' in window);
-  }, []);
+  const { supported, speakWord } = useSpeech();
 
   const handleSpeak = useCallback(
     (e: React.MouseEvent) => {
-      e.preventDefault(); // don't navigate to word page
+      e.preventDefault();
       e.stopPropagation();
-      if (!supported) return;
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(lemma);
-      utterance.lang = 'en-US';
-      utterance.rate = 0.9;
-      window.speechSynthesis.speak(utterance);
+      speakWord(lemma);
     },
-    [supported, lemma],
+    [speakWord, lemma],
   );
 
   if (!supported) return null;
