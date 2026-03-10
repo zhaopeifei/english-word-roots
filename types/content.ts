@@ -60,10 +60,7 @@ export interface WordEntry {
   tags?: string[]; // 标签 ["CET-4", "IELTS", "GRE"]
 
   // 数据库扩展字段（来自 Supabase enrichment）
-  cefrLevel?: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2'; // CEFR 等级
-  collinsStars?: 1 | 2 | 3 | 4 | 5; // 柯林斯词频星级
-  oxfordFlag?: boolean; // 是否为牛津 3000 核心词
-  frequencyRank?: number; // 绝对词频排名
+  frequencyRank?: number; // 绝对词频排名（COCA）
   etymologyType?: EtymologyType; // 词源类型
 }
 

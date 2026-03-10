@@ -201,21 +201,6 @@ CREATE TABLE words (
   -- 来源: ECDICT frq 字段
   frequency_rank    INTEGER,
 
-  -- 柯林斯词频星级
-  -- 值域: 1-5（5=最常用约 680 词, 1=较少用）或 NULL
-  -- 来源: ECDICT collins 字段
-  collins_star      SMALLINT,
-
-  -- 是否属于 Oxford 3000 核心词汇
-  -- 来源: ECDICT oxford 字段
-  oxford_flag       BOOLEAN DEFAULT FALSE,
-
-  -- CEFR 欧洲语言等级
-  -- 值域: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2' | NULL
-  -- 含义: A1=入门, A2=初级, B1=中级, B2=中高级, C1=高级, C2=精通
-  -- 来源: CEFR Dataset (Maximax67/Words-CEFR-Dataset) 或 Oxford 5000
-  cefr_level        TEXT,
-
   created_at        TIMESTAMPTZ DEFAULT now(),
   updated_at        TIMESTAMPTZ DEFAULT now()
 );
@@ -225,7 +210,6 @@ COMMENT ON TABLE words IS '单词表 — 包含发音、释义、词源类型、
 CREATE INDEX idx_words_etymology_type ON words(etymology_type);
 CREATE INDEX idx_words_frequency ON words(frequency);
 CREATE INDEX idx_words_frequency_rank ON words(frequency_rank);
-CREATE INDEX idx_words_cefr_level ON words(cefr_level);
 CREATE INDEX idx_words_lemma ON words(lemma);
 
 

@@ -46,9 +46,6 @@ export interface WordRow {
   etymology_type: string;
   frequency: string | null;
   frequency_rank: number | null;
-  collins_star: number | null;
-  oxford_flag: boolean | null;
-  cefr_level: string | null;
 }
 
 export interface MorphemeSegmentRow {
@@ -178,9 +175,6 @@ export function mapWord(
     tags: tagSlugs.length > 0 ? tagSlugs : undefined,
 
     // Enrichment fields
-    cefrLevel: (row.cefr_level as WordEntry['cefrLevel']) ?? undefined,
-    collinsStars: (row.collins_star as WordEntry['collinsStars']) ?? undefined,
-    oxfordFlag: row.oxford_flag ?? undefined,
     frequencyRank: row.frequency_rank ?? undefined,
     etymologyType: (row.etymology_type as EtymologyType) ?? undefined,
   };

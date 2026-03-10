@@ -54,9 +54,6 @@ interface SeedWord {
   etymology_type: string;
   frequency: string | null;
   frequency_rank: number | null;
-  collins_star: number | null;
-  oxford_flag: boolean;
-  cefr_level: string | null;
 }
 
 interface SeedMorpheme {
@@ -106,9 +103,6 @@ for (const w of WORDS) {
     etymology_type: etymologyType,
     frequency: w.frequency ?? null,
     frequency_rank: null, // 待 ECDICT 补充
-    collins_star: null, // 待 ECDICT 补充
-    oxford_flag: false, // 待 ECDICT 补充
-    cefr_level: null, // 待 CEFR Dataset 补充
   });
 
   // Morpheme segments
