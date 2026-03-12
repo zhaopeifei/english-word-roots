@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { NAV_LINKS, SITE_NAME } from '@/content/site';
+import { FOOTER_NAV_LINKS, SITE_NAME } from '@/content/site';
 import { useLanguage } from '@/components/language-provider';
 
 export const SiteFooter = () => {
@@ -17,7 +17,7 @@ export const SiteFooter = () => {
           </p>
         </div>
         <nav className="flex flex-wrap items-center gap-2">
-          {NAV_LINKS.map((link) => (
+          {FOOTER_NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}

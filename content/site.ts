@@ -18,9 +18,16 @@ export interface NavLink {
 }
 
 export const NAV_LINKS: NavLink[] = [
-  { href: '/explore', label: { en: 'Explore', zh: '探索' }, hasDropdown: true },
+  { href: '/explore', label: { en: 'Word Lists', zh: '词库' }, hasDropdown: true },
+  { href: '/learn', label: { en: 'Learn', zh: '学习' }, hasDropdown: true },
+  { href: '/vocabulary', label: { en: 'My Words', zh: '词汇本' } },
+];
+
+/** Flat link list for the footer (all leaf pages). */
+export const FOOTER_NAV_LINKS: NavLink[] = [
+  { href: '/explore', label: { en: 'Word Lists', zh: '词库' } },
   { href: '/root', label: { en: 'Roots', zh: '词根' } },
-  { href: '/learn', label: { en: 'Learn', zh: '学习' } },
+  { href: '/learn', label: { en: 'Guides', zh: '指南' } },
   { href: '/read', label: { en: 'Read', zh: '阅读' } },
-  { href: '/vocabulary', label: { en: 'Vocabulary', zh: '词汇本' } },
+  { href: '/vocabulary', label: { en: 'My Words', zh: '词汇本' } },
 ];

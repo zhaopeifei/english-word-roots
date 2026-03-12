@@ -16,7 +16,7 @@ import { CommandSearch } from '@/components/command-search';
 import { LogIn, LogOut, User } from 'lucide-react';
 
 // ---------------------------------------------------------------------------
-// Explore dropdown menu items — only the most popular collections
+// Dropdown menu data
 // ---------------------------------------------------------------------------
 
 const DROPDOWN_SLUGS = ['ielts', 'toefl', 'gre', 'ngsl-1000', 'ngsl-2000', 'ngsl-3000'];
@@ -24,6 +24,11 @@ const DROPDOWN_SLUGS = ['ielts', 'toefl', 'gre', 'ngsl-1000', 'ngsl-2000', 'ngsl
 interface DropdownSection {
   label: Record<Locale, string>;
   items: { href: string; icon: string; label: Record<Locale, string> }[];
+}
+
+interface DropdownConfig {
+  sections: DropdownSection[];
+  footer?: { href: string; label: Record<Locale, string> };
 }
 
 const EXPLORE_SECTIONS: DropdownSection[] = COLLECTION_CATEGORIES
@@ -39,6 +44,27 @@ const EXPLORE_SECTIONS: DropdownSection[] = COLLECTION_CATEGORIES
   }))
   .filter((s) => s.items.length > 0);
 
+const LEARN_SECTIONS: DropdownSection[] = [
+  {
+    label: { en: '', zh: '' },
+    items: [
+      { href: '/root', icon: '🌿', label: { en: 'Roots', zh: '词根' } },
+      { href: '/learn', icon: '📖', label: { en: 'Guides', zh: '指南' } },
+      { href: '/read', icon: '📰', label: { en: 'Read', zh: '阅读' } },
+    ],
+  },
+];
+
+const DROPDOWN_CONFIGS: Record<string, DropdownConfig> = {
+  '/explore': {
+    sections: EXPLORE_SECTIONS,
+    footer: { href: '/explore', label: { en: 'All Collections', zh: '全部集合' } },
+  },
+  '/learn': {
+    sections: LEARN_SECTIONS,
+  },
+};
+
 // ---------------------------------------------------------------------------
 // Desktop dropdown component
 // ---------------------------------------------------------------------------
@@ -46,9 +72,11 @@ const EXPLORE_SECTIONS: DropdownSection[] = COLLECTION_CATEGORIES
 const DesktopDropdown = ({
   link,
   locale,
+  config,
 }: {
   link: NavLink;
   locale: Locale;
+  config: DropdownConfig;
 }) => {
   const [open, setOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -103,13 +131,15 @@ const DesktopDropdown = ({
 
       {open && (
         <div className="border-border bg-card absolute left-1/2 top-full z-50 mt-1 w-64 -translate-x-1/2 overflow-hidden rounded-xl border-[1.5px] shadow-lg">
-          {EXPLORE_SECTIONS.map((section, si) => (
-            <div key={section.label.en}>
+          {config.sections.map((section, si) => (
+            <div key={section.label.en || `s${si}`}>
               {si > 0 && <div className="border-border mx-3 border-t" />}
-              <div className="px-3 pt-2.5 pb-1">
-                <span className="text-muted-foreground text-[11px] font-semibold uppercase tracking-wider">
-                  {section.label[locale]}
-                </span>
+              <div className={section.label[locale] ? 'px-3 pt-2.5 pb-1' : 'pt-1'}>
+                {section.label[locale] && (
+                  <span className="text-muted-foreground text-[11px] font-semibold uppercase tracking-wider">
+                    {section.label[locale]}
+                  </span>
+                )}
               </div>
               {section.items.map((item) => (
                 <Link
@@ -124,17 +154,18 @@ const DesktopDropdown = ({
               ))}
             </div>
           ))}
-          {/* Footer: All Collections */}
-          <div className="border-border border-t">
-            <Link
-              href="/explore"
-              className="text-primary hover:bg-primary/5 flex items-center justify-between px-3 py-2.5 text-sm font-semibold transition-colors"
-              onClick={() => setOpen(false)}
-            >
-              {locale === 'zh' ? '全部集合' : 'All Collections'}
-              <ChevronRight className="h-3.5 w-3.5" />
-            </Link>
-          </div>
+          {config.footer && (
+            <div className="border-border border-t">
+              <Link
+                href={config.footer.href}
+                className="text-primary hover:bg-primary/5 flex items-center justify-between px-3 py-2.5 text-sm font-semibold transition-colors"
+                onClick={() => setOpen(false)}
+              >
+                {config.footer.label[locale]}
+                <ChevronRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -142,16 +173,18 @@ const DesktopDropdown = ({
 };
 
 // ---------------------------------------------------------------------------
-// Mobile submenu for Explore
+// Mobile submenu for dropdown nav items
 // ---------------------------------------------------------------------------
 
-const MobileExploreSubmenu = ({
+const MobileSubmenu = ({
   link,
   locale,
+  config,
   onNavigate,
 }: {
   link: NavLink;
   locale: Locale;
+  config: DropdownConfig;
   onNavigate: () => void;
 }) => {
   const [expanded, setExpanded] = useState(false);
@@ -180,11 +213,13 @@ const MobileExploreSubmenu = ({
 
       {expanded && (
         <div className="pb-2 pl-3">
-          {EXPLORE_SECTIONS.map((section) => (
-            <div key={section.label.en}>
-              <span className="text-muted-foreground block px-3 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-wider">
-                {section.label[locale]}
-              </span>
+          {config.sections.map((section, si) => (
+            <div key={section.label.en || `s${si}`}>
+              {section.label[locale] && (
+                <span className="text-muted-foreground block px-3 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-wider">
+                  {section.label[locale]}
+                </span>
+              )}
               {section.items.map((item) => (
                 <Link
                   key={item.href}
@@ -367,8 +402,8 @@ export const SiteHeader = () => {
           {/* Desktop nav */}
           <nav className="hidden items-center gap-1 md:flex">
             {NAV_LINKS.map((link) =>
-              link.hasDropdown ? (
-                <DesktopDropdown key={link.href} link={link} locale={locale} />
+              link.hasDropdown && DROPDOWN_CONFIGS[link.href] ? (
+                <DesktopDropdown key={link.href} link={link} locale={locale} config={DROPDOWN_CONFIGS[link.href]} />
               ) : (
                 <Link
                   key={link.href}
@@ -443,11 +478,12 @@ export const SiteHeader = () => {
             {/* Nav links */}
             <div className="flex-1 overflow-y-auto px-4 py-2">
               {NAV_LINKS.map((link) =>
-                link.hasDropdown ? (
-                  <MobileExploreSubmenu
+                link.hasDropdown && DROPDOWN_CONFIGS[link.href] ? (
+                  <MobileSubmenu
                     key={link.href}
                     link={link}
                     locale={locale}
+                    config={DROPDOWN_CONFIGS[link.href]}
                     onNavigate={closeMobile}
                   />
                 ) : (
