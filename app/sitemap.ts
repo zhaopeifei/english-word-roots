@@ -2,15 +2,18 @@ import type { MetadataRoute } from 'next';
 import { SITE_URL } from '@/content/site';
 import { COLLECTIONS } from '@/content/collections';
 import { getRootSlugs, getWordSlugs } from '@/lib/db';
+import { getAllArticles } from '@/lib/content/articles';
 
 export const revalidate = 86400; // regenerate sitemap at most once per day
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date().toISOString();
 
-  const [rootSlugs, wordSlugs] = await Promise.all([
+  const [rootSlugs, wordSlugs, learnArticles, readArticles] = await Promise.all([
     getRootSlugs(),
     getWordSlugs(),
+    getAllArticles('learn'),
+    getAllArticles('read'),
   ]);
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -45,5 +48,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...exploreEntries, ...rootEntries, ...wordEntries];
+  const learnEntries: MetadataRoute.Sitemap = [
+    { url: `${SITE_URL}/learn`, lastModified: now, changeFrequency: 'weekly' as const, priority: 0.8 },
+    ...learnArticles.map((a) => ({
+      url: `${SITE_URL}/learn/${a.slug}`,
+      lastModified: a.date,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+  ];
+
+  const readEntries: MetadataRoute.Sitemap = [
+    { url: `${SITE_URL}/read`, lastModified: now, changeFrequency: 'weekly' as const, priority: 0.8 },
+    ...readArticles.map((a) => ({
+      url: `${SITE_URL}/read/${a.slug}`,
+      lastModified: a.date,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+  ];
+
+  return [...staticRoutes, ...exploreEntries, ...rootEntries, ...wordEntries, ...learnEntries, ...readEntries];
 }

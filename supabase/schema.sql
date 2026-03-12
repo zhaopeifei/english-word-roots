@@ -517,3 +517,54 @@ INSERT INTO tags (slug, name, type, description, sort_order) VALUES
   ('ngsl-2000', '{"en":"NGSL 1001-2000","zh":"NGSL 第 1001-2000 高频词"}'::jsonb, 'frequency', '{"en":"Words ranked 1001-2000, cumulative coverage ~84%.","zh":"排名 1001-2000 的高频词，累计覆盖约 84%。"}'::jsonb, 1),
   ('ngsl-3000', '{"en":"NGSL 2001-2801","zh":"NGSL 第 2001-2801 高频词"}'::jsonb, 'frequency', '{"en":"Words ranked 2001-2801, cumulative coverage ~92%.","zh":"排名 2001-2801 的高频词，累计覆盖约 92%。"}'::jsonb, 2),
   ('awl',       '{"en":"Academic Word List","zh":"学术词表 (AWL)"}'::jsonb,  'frequency', '{"en":"Coxhead''s Academic Word List: 570 word families essential for academic English.","zh":"Coxhead 学术词表：570 个学术英语核心词族。"}'::jsonb, 3);
+
+
+-- ============================================================================
+-- 9. user_mastery — 用户掌握度记录
+-- ============================================================================
+-- 用户标记词汇和词根的学习状态（🫘 🌱 🌿 🌳）
+--
+-- 示例:
+--   user_id=uuid123, item_type='word', slug='construct', status='familiar'
+--   user_id=uuid123, item_type='root', slug='struct', status='mastered'
+-- ============================================================================
+
+CREATE TABLE IF NOT EXISTS user_mastery (
+  id         SERIAL PRIMARY KEY,
+  user_id    UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  item_type  TEXT NOT NULL CHECK (item_type IN ('word', 'root')),
+  slug       TEXT NOT NULL,
+  status     TEXT NOT NULL CHECK (status IN ('unknown', 'seen', 'familiar', 'mastered')),
+  updated_at TIMESTAMPTZ DEFAULT now(),
+  UNIQUE(user_id, item_type, slug)
+);
+
+COMMENT ON TABLE user_mastery IS '用户掌握度记录 — 用户标记词汇和词根的学习状态';
+
+CREATE INDEX idx_user_mastery_user_id ON user_mastery(user_id);
+CREATE INDEX idx_user_mastery_item_type ON user_mastery(item_type);
+
+
+-- ============================================================================
+-- 10. RLS 策略 — 行级安全
+-- ============================================================================
+-- 每个用户只能读写自己的数据
+
+ALTER TABLE user_mastery ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Users can view their own mastery"
+ON user_mastery FOR SELECT
+USING (auth.uid() = user_id);
+
+CREATE POLICY "Users can insert their own mastery"
+ON user_mastery FOR INSERT
+WITH CHECK (auth.uid() = user_id);
+
+CREATE POLICY "Users can update their own mastery"
+ON user_mastery FOR UPDATE
+USING (auth.uid() = user_id)
+WITH CHECK (auth.uid() = user_id);
+
+CREATE POLICY "Users can delete their own mastery"
+ON user_mastery FOR DELETE
+USING (auth.uid() = user_id);

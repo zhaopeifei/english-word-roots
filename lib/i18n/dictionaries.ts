@@ -70,6 +70,25 @@ export const dictionaries: Dictionaries = {
     wordPOS: 'Part of Speech',
     definitions: 'Definitions',
 
+    // Articles
+    learn: 'Learn',
+    read: 'Read',
+    learnSubtitle: 'Word roots, affixes, etymology stories, and learning strategies.',
+    readSubtitle: 'Classic articles with vocabulary highlights — learn English through great writing.',
+    allTags: 'All',
+    onThisPage: 'On this page',
+    noArticles: 'No articles yet...',
+    keyVocabulary: 'Key Vocabulary',
+    vocabularySummary: 'Vocabulary Summary',
+    previousArticle: 'Previous',
+    nextArticle: 'Next',
+    original: 'Original',
+    translation: 'Translation',
+    bilingual: 'Bilingual',
+    readAloud: 'Read Aloud',
+    pause: 'Pause',
+    stop: 'Stop',
+
     // Pagination
     previousPage: 'Previous',
     nextPage: 'Next',
@@ -138,6 +157,25 @@ export const dictionaries: Dictionaries = {
     wordDefinition: '释义',
     wordPOS: '词性',
     definitions: '释义',
+
+    // Articles
+    learn: '学习',
+    read: '阅读',
+    learnSubtitle: '词根、词缀、词源故事和学习策略。',
+    readSubtitle: '经典文章精读，在阅读中提升词汇量。',
+    allTags: '全部',
+    onThisPage: '本页目录',
+    noArticles: '暂无文章...',
+    keyVocabulary: '重点词汇',
+    vocabularySummary: '词汇总结',
+    previousArticle: '上一篇',
+    nextArticle: '下一篇',
+    original: '英文原文',
+    translation: '中文翻译',
+    bilingual: '双语对照',
+    readAloud: '朗读',
+    pause: '暂停',
+    stop: '停止',
 
     // Pagination
     previousPage: '上一页',

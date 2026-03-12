@@ -20,5 +20,7 @@ export interface NavLink {
 export const NAV_LINKS: NavLink[] = [
   { href: '/explore', label: { en: 'Explore', zh: '探索' }, hasDropdown: true },
   { href: '/root', label: { en: 'Roots', zh: '词根' } },
+  { href: '/learn', label: { en: 'Learn', zh: '学习' } },
+  { href: '/read', label: { en: 'Read', zh: '阅读' } },
   { href: '/vocabulary', label: { en: 'Vocabulary', zh: '词汇本' } },
 ];

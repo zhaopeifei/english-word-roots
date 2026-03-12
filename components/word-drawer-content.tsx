@@ -6,17 +6,9 @@ import { useLanguage } from '@/components/language-provider';
 import { MasteryButtons } from '@/components/mastery-buttons';
 import { useSpeech } from '@/hooks/use-speech';
 import { cn } from '@/lib/utils';
+import { morphemeClass } from '@/lib/morpheme-utils';
 import { getDetailTags } from '@/lib/tag-utils';
-import type { WordEntry, MorphemeSegment } from '@/types/content';
-
-const morphemeClass: Record<MorphemeSegment['type'], string> = {
-  root: 'morpheme-root',
-  stem: 'morpheme-root',
-  prefix: 'morpheme-prefix',
-  suffix: 'morpheme-suffix',
-  connector: 'morpheme-connector',
-  other: 'morpheme-connector',
-};
+import type { WordEntry } from '@/types/content';
 
 function getEtymologyTypeColor(type: string): string {
   const colors: Record<string, string> = {

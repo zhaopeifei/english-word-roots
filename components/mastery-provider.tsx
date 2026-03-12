@@ -42,7 +42,7 @@ export const MasteryProvider = ({ children }: { children: React.ReactNode }) => 
 
   const supabase = useMemo(() => getSupabaseBrowserClient(), []);
 
-  // Fetch all mastery data when user logs in
+  // Fetch all mastery data when user logs in (with pagination for >1000 records)
   useEffect(() => {
     if (!user) {
       setWordMap({});
@@ -51,26 +51,52 @@ export const MasteryProvider = ({ children }: { children: React.ReactNode }) => 
     }
 
     setIsLoading(true);
-    supabase
-      .from('user_mastery')
-      .select('item_type, slug, status')
-      .eq('user_id', user.id)
-      .then(({ data, error }) => {
+
+    async function fetchAllMastery() {
+      const allData: Array<{ item_type: string; slug: string; status: MasteryStatus }> = [];
+      let offset = 0;
+      const pageSize = 1000;
+      let hasMore = true;
+
+      while (hasMore) {
+        const { data, error } = await supabase
+          .from('user_mastery')
+          .select('item_type, slug, status')
+          .eq('user_id', user!.id)
+          .range(offset, offset + pageSize - 1);
+
         if (error) {
           console.error('Failed to fetch mastery data:', error);
           setIsLoading(false);
           return;
         }
-        const words: MasteryMap = {};
-        const roots: MasteryMap = {};
-        for (const row of data ?? []) {
-          if (row.item_type === 'word') words[row.slug] = row.status as MasteryStatus;
-          else if (row.item_type === 'root') roots[row.slug] = row.status as MasteryStatus;
+
+        if (!data || data.length === 0) {
+          hasMore = false;
+        } else {
+          allData.push(...data);
+          if (data.length < pageSize) {
+            hasMore = false;
+          } else {
+            offset += pageSize;
+          }
         }
-        setWordMap(words);
-        setRootMap(roots);
-        setIsLoading(false);
-      });
+      }
+
+      console.log('Fetched mastery data (total):', allData.length);
+      const words: MasteryMap = {};
+      const roots: MasteryMap = {};
+      for (const row of allData) {
+        if (row.item_type === 'word') words[row.slug] = row.status as MasteryStatus;
+        else if (row.item_type === 'root') roots[row.slug] = row.status as MasteryStatus;
+      }
+      console.log('Processed mastery maps:', { words, roots });
+      setWordMap(words);
+      setRootMap(roots);
+      setIsLoading(false);
+    }
+
+    fetchAllMastery();
   }, [user, supabase]);
 
   const getStatus = useCallback(
@@ -88,13 +114,14 @@ export const MasteryProvider = ({ children }: { children: React.ReactNode }) => 
       // Optimistic update
       const setter = type === 'word' ? setWordMap : setRootMap;
       setter((prev) => ({ ...prev, [slug]: status }));
-      // Upsert to DB
+      // Upsert to DB (with explicit return)
       supabase
         .from('user_mastery')
         .upsert(
           { user_id: user.id, item_type: type, slug, status, updated_at: new Date().toISOString() },
           { onConflict: 'user_id,item_type,slug' },
         )
+        .select()
         .then(({ error }) => {
           if (error) console.error('Failed to upsert mastery:', error);
         });
