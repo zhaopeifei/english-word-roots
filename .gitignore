@@ -30,8 +30,8 @@ docs/plans/
 # Build artifacts
 tsconfig.tsbuildinfo
 
-# Script output (generated data, checkpoints)
-scripts/output/
+# Scripts (temporary, regenerate as needed)
+scripts/
 
 # Editor
 *.swp
