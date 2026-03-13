@@ -57,7 +57,7 @@ export const LanguageSwitcher = () => {
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className="border-border bg-background text-muted-foreground hover:border-primary hover:text-primary flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border-[1.5px] transition-colors"
+        className="border-border bg-background text-muted-foreground hover:border-primary hover:text-primary flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border transition-colors"
         aria-label="Change language"
         aria-expanded={open}
         aria-haspopup="listbox"

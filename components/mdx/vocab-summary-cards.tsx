@@ -20,7 +20,7 @@ export function VocabSummaryCards({ wordEntries }: VocabSummaryCardsProps) {
       </h2>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {wordEntries.map((word, index) => (
-          <WordCard key={word.slug} word={word} styleIndex={index} />
+          <WordCard key={word.slug} word={word} />
         ))}
       </div>
     </section>

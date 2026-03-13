@@ -7,15 +7,15 @@ import { useLanguage } from '@/components/language-provider';
 const difficultyConfig = {
   beginner: {
     label: { en: 'Beginner', zh: '入门' },
-    className: 'bg-primary/10 text-primary',
+    className: 'bg-muted text-muted-foreground',
   },
   intermediate: {
     label: { en: 'Intermediate', zh: '中级' },
-    className: 'bg-secondary/10 text-secondary',
+    className: 'bg-muted text-muted-foreground',
   },
   advanced: {
     label: { en: 'Advanced', zh: '高级' },
-    className: 'bg-accent/10 text-accent',
+    className: 'bg-muted text-muted-foreground',
   },
 } as const;
 

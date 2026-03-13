@@ -150,7 +150,7 @@ export const CommandSearch = ({ open, onClose }: CommandSearchProps) => {
                       onClick={onClose}
                       className="text-foreground hover:bg-muted flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors"
                     >
-                      <span className="bg-accent/10 text-accent flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-sm font-bold">
+                      <span className="bg-muted text-muted-foreground flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-sm font-bold">
                         {word.lemma[0]?.toUpperCase() ?? '?'}
                       </span>
                       <div className="min-w-0">

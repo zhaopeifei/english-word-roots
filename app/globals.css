@@ -29,9 +29,6 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --color-surface-warm: var(--surface-warm);
-  --color-surface-purple: var(--surface-purple);
-  --color-surface-pink: var(--surface-pink);
   --font-heading: var(--font-lora);
   --font-body: var(--font-nunito);
 }
@@ -62,9 +59,6 @@
   --chart-3: #8b5cf6;
   --chart-4: #06b6d4;
   --chart-5: #ec4899;
-  --surface-warm: #fef9ee;
-  --surface-purple: #f5f3ff;
-  --surface-pink: #fdf2f8;
 }
 
 .dark {
@@ -92,9 +86,6 @@
   --chart-3: #8b5cf6;
   --chart-4: #22d3ee;
   --chart-5: #f472b6;
-  --surface-warm: #1a1508;
-  --surface-purple: #1a1528;
-  --surface-pink: #1a1018;
 }
 
 @layer base {
@@ -124,46 +115,15 @@
   background-image: radial-gradient(circle, #2d3a24 1px, transparent 1px);
 }
 
-/* Card color rotation for lists */
-.card-color-1 {
-  --card-accent: var(--primary);
-  --card-surface: var(--card);
-}
-.card-color-2 {
-  --card-accent: var(--accent);
-  --card-surface: var(--surface-purple);
-}
-.card-color-3 {
-  --card-accent: var(--secondary);
-  --card-surface: var(--surface-warm);
-}
-
 /* Morpheme type colors */
 .morpheme-root {
   background: var(--primary);
-  color: #fff;
+  color: var(--primary-foreground);
 }
-.morpheme-prefix {
-  background: var(--background);
-  color: #0891b2;
-  border: 2px solid #0891b2;
-}
-.morpheme-suffix {
-  background: var(--background);
-  color: var(--accent);
-  border: 2px solid var(--accent);
-}
+.morpheme-prefix,
+.morpheme-suffix,
 .morpheme-connector {
   background: var(--background);
   color: var(--muted-foreground);
-  border: 2px solid var(--border);
-}
-
-.dark .morpheme-prefix {
-  color: #22d3ee;
-  border-color: #22d3ee;
-}
-.dark .morpheme-suffix {
-  color: var(--accent);
-  border-color: var(--accent);
+  border: 1px solid var(--border);
 }

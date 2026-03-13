@@ -75,36 +75,15 @@ function PronunciationButton({ lemma }: { lemma: string }) {
 }
 
 // ---------------------------------------------------------------------------
-// Card style rotation (consistent with roots-index)
-// ---------------------------------------------------------------------------
-
-export const wordCardStyles = [
-  {
-    bg: 'bg-card',
-    border: 'border-[1.5px] border-primary/15 hover:border-primary',
-  },
-  {
-    bg: 'bg-[var(--surface-purple)]',
-    border: 'border-[1.5px] border-accent/15 hover:border-accent',
-  },
-  {
-    bg: 'bg-[var(--surface-warm)]',
-    border: 'border-[1.5px] border-secondary/15 hover:border-secondary',
-  },
-] as const;
-
-// ---------------------------------------------------------------------------
 // WordCard component
 // ---------------------------------------------------------------------------
 
 interface WordCardProps {
   word: WordEntry;
-  styleIndex: number;
 }
 
-export function WordCard({ word, styleIndex }: WordCardProps) {
+export function WordCard({ word }: WordCardProps) {
   const { locale } = useLanguage();
-  const style = wordCardStyles[styleIndex % 3];
 
   const rawDef = word.definition[locale] ?? word.definition.en ?? '';
   const cleaned = cleanDefinition(rawDef);
@@ -112,7 +91,7 @@ export function WordCard({ word, styleIndex }: WordCardProps) {
   return (
     <Link href={`/word/${word.slug}`} className="group block">
       <article
-        className={`${style.bg} ${style.border} flex h-[170px] cursor-pointer flex-col rounded-[20px] p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg`}
+        className="flex h-[170px] cursor-pointer flex-col rounded-[20px] border border-border p-5 transition-all duration-200 hover:-translate-y-1 hover:bg-muted hover:shadow-md"
       >
         {/* Top row: word + pronunciation */}
         <div className="flex items-center justify-between gap-2">

@@ -13,26 +13,6 @@ interface ExploreHubProps {
   counts: Record<string, number>;
 }
 
-const cardStyles = [
-  {
-    bg: 'bg-card',
-    border: 'border-[1.5px] border-primary/15 hover:border-primary',
-    pill: 'bg-primary/10 text-primary',
-    accentText: 'text-primary',
-  },
-  {
-    bg: 'bg-[var(--surface-purple)]',
-    border: 'border-[1.5px] border-accent/15 hover:border-accent',
-    pill: 'bg-accent/10 text-accent',
-    accentText: 'text-accent',
-  },
-  {
-    bg: 'bg-[var(--surface-warm)]',
-    border: 'border-[1.5px] border-secondary/15 hover:border-secondary',
-    pill: 'bg-secondary/10 text-secondary',
-    accentText: 'text-secondary',
-  },
-] as const;
 
 const CollectionCard = ({
   collection,
@@ -44,12 +24,11 @@ const CollectionCard = ({
   index: number;
 }) => {
   const { locale, dictionary } = useLanguage();
-  const style = cardStyles[index % 3];
 
   return (
     <Link href={`/explore/${collection.slug}`} className="group block">
       <article
-        className={`${style.bg} ${style.border} flex h-full cursor-pointer flex-col rounded-[20px] p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg`}
+        className="flex h-full cursor-pointer flex-col rounded-[20px] border border-border p-5 transition-all duration-200 hover:-translate-y-1 hover:bg-muted hover:shadow-md"
       >
         <div className="flex items-start gap-3">
           <span className="text-3xl leading-none" role="img" aria-hidden="true">
@@ -66,11 +45,11 @@ const CollectionCard = ({
         </div>
 
         <div className="mt-auto flex items-center justify-between pt-4">
-          <span className={`${style.pill} rounded-full px-3 py-0.5 text-xs font-semibold`}>
+          <span className="bg-muted text-muted-foreground rounded-full px-3 py-0.5 text-xs font-semibold">
             {count.toLocaleString()} {collection.type === 'root' ? dictionary.searchRoots.toLowerCase() : dictionary.words}
           </span>
           <span
-            className={`${style.accentText} flex h-7 w-7 items-center justify-center rounded-full border-[1.5px] border-current opacity-0 transition-opacity duration-200 group-hover:opacity-100`}
+            className="text-muted-foreground flex h-7 w-7 items-center justify-center rounded-full border border-border opacity-0 transition-opacity duration-200 group-hover:opacity-100"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

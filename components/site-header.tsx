@@ -121,7 +121,7 @@ const DesktopDropdown = ({
     >
       <Link
         href={link.href}
-        className="text-muted-foreground hover:bg-card hover:text-primary flex items-center gap-1 rounded-full px-4 py-2 text-sm font-bold transition-all"
+        className="text-muted-foreground hover:text-primary flex items-center gap-1 rounded-full px-5 py-2.5 text-sm font-bold transition-colors"
       >
         {link.label[locale]}
         <ChevronDown
@@ -130,13 +130,13 @@ const DesktopDropdown = ({
       </Link>
 
       {open && (
-        <div className="border-border bg-card absolute left-1/2 top-full z-50 mt-1 w-64 -translate-x-1/2 overflow-hidden rounded-xl border-[1.5px] shadow-lg">
+        <div className="border-border bg-card absolute left-0 top-full z-50 mt-1 w-64 overflow-hidden rounded-xl border py-2 shadow-lg">
           {config.sections.map((section, si) => (
             <div key={section.label.en || `s${si}`}>
-              {si > 0 && <div className="border-border mx-3 border-t" />}
-              <div className={section.label[locale] ? 'px-3 pt-2.5 pb-1' : 'pt-1'}>
+              {si > 0 && <div className="mx-3 my-1" />}
+              <div className={section.label[locale] ? 'px-3 pt-2 pb-1' : ''}>
                 {section.label[locale] && (
-                  <span className="text-muted-foreground text-[11px] font-semibold uppercase tracking-wider">
+                  <span className="text-muted-foreground/60 text-[11px] font-semibold uppercase tracking-wider">
                     {section.label[locale]}
                   </span>
                 )}
@@ -155,16 +155,14 @@ const DesktopDropdown = ({
             </div>
           ))}
           {config.footer && (
-            <div className="border-border border-t">
-              <Link
-                href={config.footer.href}
-                className="text-primary hover:bg-primary/5 flex items-center justify-between px-3 py-2.5 text-sm font-semibold transition-colors"
-                onClick={() => setOpen(false)}
-              >
-                {config.footer.label[locale]}
-                <ChevronRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
+            <Link
+              href={config.footer.href}
+              className="text-foreground hover:bg-muted hover:text-primary mt-2 flex items-center gap-2.5 px-3 py-2 text-sm transition-colors"
+              onClick={() => setOpen(false)}
+            >
+              <span className="w-5 text-center text-base">📋</span>
+              {config.footer.label[locale]}
+            </Link>
           )}
         </div>
       )}
@@ -194,7 +192,7 @@ const MobileSubmenu = ({
       <div className="flex items-center">
         <Link
           href={link.href}
-          className="text-foreground hover:text-primary hover:bg-card flex-1 rounded-xl py-3 px-3 text-base font-bold transition-colors"
+          className="text-foreground hover:text-primary flex-1 rounded-xl py-3 px-3 text-base font-bold transition-colors"
           onClick={onNavigate}
         >
           {link.label[locale]}
@@ -224,7 +222,7 @@ const MobileSubmenu = ({
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-foreground hover:text-primary hover:bg-card flex items-center gap-2 rounded-lg py-2 px-3 text-sm transition-colors"
+                  className="text-foreground hover:text-primary flex items-center gap-2 rounded-lg py-2 px-3 text-sm transition-colors"
                   onClick={onNavigate}
                 >
                   <span className="w-5 text-center">{item.icon}</span>
@@ -268,8 +266,8 @@ const UserMenu = ({ variant = 'icon' }: { variant?: 'icon' | 'full' }) => {
         onClick={() => signInWithGoogle()}
         className={
           variant === 'full'
-            ? 'text-foreground hover:text-primary hover:bg-card flex items-center gap-2 rounded-xl py-3 px-3 text-base font-bold transition-colors'
-            : 'bg-primary hover:bg-primary/90 flex h-9 cursor-pointer items-center rounded-full px-4 text-sm font-medium text-white transition-colors'
+            ? 'text-foreground hover:text-primary flex items-center gap-2 rounded-xl py-3 px-3 text-base font-bold transition-colors'
+            : 'bg-primary hover:bg-primary/90 flex h-9 cursor-pointer items-center rounded-full px-4 text-sm font-medium text-primary-foreground transition-colors'
         }
       >
         {locale === 'zh' ? '登录' : 'Login'}
@@ -310,7 +308,7 @@ const UserMenu = ({ variant = 'icon' }: { variant?: 'icon' | 'full' }) => {
       <button
         type="button"
         onClick={() => setOpen((p) => !p)}
-        className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full transition-colors overflow-hidden border-[1.5px] border-border hover:border-primary"
+        className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full transition-colors overflow-hidden border border-border hover:border-primary"
       >
         {avatar ? (
           <img src={avatar} alt="" className="h-full w-full object-cover" referrerPolicy="no-referrer" />
@@ -319,7 +317,7 @@ const UserMenu = ({ variant = 'icon' }: { variant?: 'icon' | 'full' }) => {
         )}
       </button>
       {open && (
-        <div className="border-border bg-card absolute right-0 top-full z-50 mt-1 w-48 overflow-hidden rounded-xl border-[1.5px] shadow-lg">
+        <div className="border-border bg-card absolute right-0 top-full z-50 mt-1 w-48 overflow-hidden rounded-xl border shadow-lg">
           <div className="border-border border-b px-3 py-2">
             <p className="text-foreground text-sm font-medium truncate">{name}</p>
             <p className="text-muted-foreground text-xs truncate">{user.email}</p>
@@ -347,6 +345,15 @@ export const SiteHeader = () => {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Track scroll to toggle backdrop blur
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll(); // init
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   // Close mobile menu on pathname change (link navigation)
   useEffect(() => {
@@ -387,8 +394,8 @@ export const SiteHeader = () => {
 
   return (
     <>
-      <header className="border-border bg-background/90 sticky top-0 z-50 border-b-[1.5px] backdrop-blur-xl">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
+      <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-background/60 backdrop-blur-2xl backdrop-saturate-150' : ''}`}>
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
           {/* Logo */}
           <Link
             href="/home"
@@ -400,7 +407,7 @@ export const SiteHeader = () => {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-1 md:flex">
+          <nav className="hidden items-center gap-2 md:flex">
             {NAV_LINKS.map((link) =>
               link.hasDropdown && DROPDOWN_CONFIGS[link.href] ? (
                 <DesktopDropdown key={link.href} link={link} locale={locale} config={DROPDOWN_CONFIGS[link.href]} />
@@ -408,7 +415,7 @@ export const SiteHeader = () => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-muted-foreground hover:bg-card hover:text-primary rounded-full px-4 py-2 text-sm font-bold transition-all"
+                  className="text-muted-foreground hover:text-primary rounded-full px-5 py-2.5 text-sm font-bold transition-colors"
                 >
                   {link.label[locale]}
                 </Link>
@@ -421,7 +428,7 @@ export const SiteHeader = () => {
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
-              className="border-border bg-background text-muted-foreground hover:border-primary hover:text-primary flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border-[1.5px] transition-colors"
+              className="text-muted-foreground hover:text-primary flex h-9 w-9 cursor-pointer items-center justify-center rounded-full transition-colors"
               aria-label="Search"
             >
               <Search className="h-4 w-4" />
@@ -434,7 +441,7 @@ export const SiteHeader = () => {
           {/* Mobile hamburger button (visible on mobile only) */}
           <button
             type="button"
-            className="border-border bg-background text-muted-foreground hover:border-primary hover:text-primary flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border-[1.5px] transition-colors md:hidden"
+            className="text-muted-foreground hover:text-primary flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl transition-colors md:hidden"
             onClick={() => setMobileOpen(true)}
             aria-label="Open navigation menu"
           >
@@ -490,7 +497,7 @@ export const SiteHeader = () => {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-foreground hover:text-primary hover:bg-card block rounded-xl py-3 px-3 text-base font-bold transition-colors"
+                    className="text-foreground hover:text-primary block rounded-xl py-3 px-3 text-base font-bold transition-colors"
                     onClick={closeMobile}
                   >
                     {link.label[locale]}
@@ -514,7 +521,7 @@ export const SiteHeader = () => {
                   setMobileOpen(false);
                   setSearchOpen(true);
                 }}
-                className="border-border bg-background text-muted-foreground hover:border-primary hover:text-primary flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border-[1.5px] transition-colors"
+                className="border-border bg-background text-muted-foreground hover:border-primary hover:text-primary flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border transition-colors"
                 aria-label="Search"
               >
                 <Search className="h-4 w-4" />

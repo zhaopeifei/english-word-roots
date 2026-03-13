@@ -6,12 +6,12 @@ const NotFoundPage = () => {
       <h1 className="text-foreground text-4xl font-semibold">Page not found</h1>
       <p className="text-muted-foreground">We could not locate the requested word root entry.</p>
       <div className="flex justify-center gap-4">
-        <Link href="/home" className="bg-brand rounded-md px-4 py-2 text-sm font-medium text-white">
+        <Link href="/home" className="bg-primary text-primary-foreground rounded-md px-4 py-2 text-sm font-medium">
           Return home
         </Link>
         <Link
           href="/explore"
-          className="border-brand text-brand rounded-md border px-4 py-2 text-sm font-medium"
+          className="border-primary text-primary rounded-md border px-4 py-2 text-sm font-medium"
         >
           Explore catalog
         </Link>

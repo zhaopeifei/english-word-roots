@@ -19,7 +19,7 @@ export const ThemeToggle = () => {
     <button
       type="button"
       onClick={toggleTheme}
-      className="border-border bg-background flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border-[1.5px] text-base transition-all hover:rotate-12 hover:border-[color:var(--secondary)]"
+      className="border-border bg-background flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border text-base transition-all hover:rotate-12 hover:border-primary"
       aria-label="Toggle theme"
     >
       {theme === 'dark' ? '🌙' : '☀️'}

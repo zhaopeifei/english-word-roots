@@ -12,28 +12,7 @@ interface AboutSectionProps {
 /*  Grimm's Law card styles                                            */
 /* ------------------------------------------------------------------ */
 
-const grimmStyles = [
-  { card: 'bg-card border-primary/15', accent: 'text-primary', iconBg: 'bg-primary/10' },
-  { card: 'bg-[var(--surface-purple)] border-accent/15', accent: 'text-accent', iconBg: 'bg-accent/10' },
-  { card: 'bg-[var(--surface-warm)] border-secondary/15', accent: 'text-secondary', iconBg: 'bg-secondary/10' },
-  { card: 'bg-card border-primary/15', accent: 'text-primary', iconBg: 'bg-primary/10' },
-  { card: 'bg-[var(--surface-purple)] border-accent/15', accent: 'text-accent', iconBg: 'bg-accent/10' },
-  { card: 'bg-[var(--surface-warm)] border-secondary/15', accent: 'text-secondary', iconBg: 'bg-secondary/10' },
-];
-
 const pillarIcons = ['📚', '🎨', '🌐'];
-
-const pillarStyles = [
-  { card: 'bg-card border-primary/15', accent: 'text-primary' },
-  { card: 'bg-[var(--surface-purple)] border-accent/15', accent: 'text-accent' },
-  { card: 'bg-[var(--surface-warm)] border-secondary/15', accent: 'text-secondary' },
-];
-
-const stepBadgeColors = [
-  'bg-primary text-white',
-  'bg-accent text-white',
-  'bg-secondary text-white',
-];
 
 /* ------------------------------------------------------------------ */
 /*  Component                                                          */
@@ -230,7 +209,7 @@ export const AboutSection = ({ totalRoots, totalWords, totalAffixes }: AboutSect
     <article className="space-y-10">
       {/* Hero */}
       <header className="space-y-4">
-        <span className="bg-primary/10 text-primary inline-block rounded-full px-3 py-1 text-sm font-medium">
+        <span className="bg-muted text-muted-foreground inline-block rounded-full px-3 py-1 text-sm font-medium">
           🌿 Etymology
         </span>
         <h1 className="font-heading text-foreground text-4xl font-bold tracking-tight sm:text-5xl">
@@ -240,7 +219,7 @@ export const AboutSection = ({ totalRoots, totalWords, totalAffixes }: AboutSect
       </header>
 
       {/* Intro */}
-      <section className="border-border from-bg-card rounded-[24px] border bg-gradient-to-br via-[var(--surface-warm)] to-[var(--surface-purple)] p-6">
+      <section className="border-border bg-card rounded-[24px] border p-6">
         <div className="space-y-4">
           {t.intro.map((paragraph) => (
             <p key={paragraph.slice(0, 40)} className="text-muted-foreground text-base leading-relaxed">
@@ -257,16 +236,15 @@ export const AboutSection = ({ totalRoots, totalWords, totalAffixes }: AboutSect
           <p className="text-muted-foreground max-w-2xl text-base">{t.grimmDescription}</p>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
-          {t.grimm.map((item, index) => {
-            const s = grimmStyles[index];
+          {t.grimm.map((item) => {
             return (
               <div
                 key={item.title}
-                className={`rounded-[20px] border p-5 space-y-2 ${s.card}`}
+                className="rounded-[20px] border border-border p-5 space-y-2"
               >
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">{item.icon}</span>
-                  <h3 className={`text-lg font-semibold ${s.accent}`}>{item.title}</h3>
+                  <h3 className="text-foreground text-lg font-semibold">{item.title}</h3>
                 </div>
                 <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
                 <p className="text-muted-foreground text-sm font-mono">{item.examples}</p>
@@ -286,7 +264,7 @@ export const AboutSection = ({ totalRoots, totalWords, totalAffixes }: AboutSect
           {t.learning.map((item, index) => (
             <div key={item.title} className="flex gap-4">
               <span
-                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${stepBadgeColors[index]}`}
+                className="bg-primary text-primary-foreground flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold"
               >
                 {index + 1}
               </span>
@@ -307,10 +285,10 @@ export const AboutSection = ({ totalRoots, totalWords, totalAffixes }: AboutSect
         {t.pillars.map((pillar, index) => (
           <div
             key={pillar.title}
-            className={`rounded-[20px] border p-6 ${pillarStyles[index].card}`}
+            className="rounded-[20px] border border-border p-6"
           >
             <span className="text-2xl">{pillarIcons[index]}</span>
-            <h3 className={`mt-3 text-lg font-semibold ${pillarStyles[index].accent}`}>
+            <h3 className="text-foreground mt-3 text-lg font-semibold">
               {pillar.title}
             </h3>
             <p className="text-muted-foreground mt-2 text-sm leading-relaxed">

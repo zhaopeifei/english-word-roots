@@ -57,7 +57,7 @@ export function TranslationButton() {
               onClick={() => selectLang(lang)}
               className={`block w-full rounded-md px-3 py-1.5 text-left text-sm transition-colors ${
                 activeLanguage === lang
-                  ? 'bg-primary text-white'
+                  ? 'bg-primary text-primary-foreground'
                   : 'text-foreground hover:bg-muted'
               }`}
             >
@@ -71,7 +71,7 @@ export function TranslationButton() {
         onClick={handleClick}
         className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-sm font-medium shadow-lg transition-colors ${
           isActive
-            ? 'bg-primary text-white'
+            ? 'bg-primary text-primary-foreground'
             : 'bg-popover text-muted-foreground border-border hover:text-foreground border'
         }`}
       >

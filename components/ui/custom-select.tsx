@@ -61,7 +61,7 @@ export const CustomSelect = ({
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className="border-border bg-background text-muted-foreground hover:border-primary hover:text-primary flex h-9 cursor-pointer items-center gap-1.5 rounded-full border-[1.5px] px-3 text-xs font-bold transition-colors"
+        className="border-border bg-background text-muted-foreground hover:border-primary hover:text-primary flex h-9 cursor-pointer items-center gap-1.5 rounded-full border px-3 text-xs font-bold transition-colors"
         aria-label={ariaLabel}
         aria-expanded={open}
         aria-haspopup="listbox"

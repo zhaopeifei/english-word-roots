@@ -42,28 +42,14 @@ const morphemeItemVariants = {
   },
 };
 
-const badgeColors = [
-  'bg-primary text-primary-foreground',
-  'bg-accent text-accent-foreground',
-  'bg-secondary text-secondary-foreground',
-  'bg-primary text-primary-foreground',
-  'bg-accent text-accent-foreground',
-];
+const badgeColor = 'bg-primary text-primary-foreground';
 
 // ---------------------------------------------------------------------------
 // Enrichment UI helpers
 // ---------------------------------------------------------------------------
 
-function getEtymologyTypeColor(type: string): string {
-  const colors: Record<string, string> = {
-    'root-derived': 'bg-green-50 text-green-700 dark:bg-green-900/50 dark:text-green-300',
-    'native': 'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300',
-    'loanword': 'bg-amber-50 text-amber-700 dark:bg-amber-900/50 dark:text-amber-300',
-    'blend': 'bg-violet-50 text-violet-700 dark:bg-violet-900/50 dark:text-violet-300',
-    'onomatopoeia': 'bg-pink-50 text-pink-700 dark:bg-pink-900/50 dark:text-pink-300',
-    'eponym': 'bg-cyan-50 text-cyan-700 dark:bg-cyan-900/50 dark:text-cyan-300',
-  };
-  return colors[type] ?? 'bg-muted text-muted-foreground';
+function getEtymologyTypeColor(): string {
+  return 'bg-muted text-muted-foreground';
 }
 
 function getEtymologyTypeLabel(type: string, locale: string): string {
@@ -112,7 +98,7 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
 
       {/* Pronunciation pills */}
       <div className="flex flex-wrap gap-3">
-        <span className="bg-card border-border inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm">
+        <span className="bg-muted inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm">
           <span>🇬🇧 UK</span>
           <span className="text-foreground font-mono">{word.pronunciation.uk.ipa}</span>
           {speechSupported && (
@@ -126,7 +112,7 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
             </button>
           )}
         </span>
-        <span className="bg-card border-border inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm">
+        <span className="bg-muted inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm">
           <span>🇺🇸 US</span>
           <span className="text-foreground font-mono">{word.pronunciation.us.ipa}</span>
           {speechSupported && (
@@ -157,21 +143,19 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
         );
       })()}
 
-      {/* Definition card */}
-      <section className="bg-card border-border rounded-[20px] border p-6">
-        <p className="text-primary text-xs font-bold uppercase tracking-wide">
-          {word.senses && word.senses.length > 0
+      {/* Definition */}
+      <section className="space-y-4">
+        <h2 className="font-heading text-foreground text-lg font-semibold">{word.senses && word.senses.length > 0
             ? dictionary.definitions
-            : dictionary.wordOverview}
-        </p>
+            : dictionary.wordOverview}</h2>
 
         {word.senses && word.senses.length > 0 ? (
-          <div className="mt-3 space-y-3">
+          <div className="space-y-3">
             {word.senses.map((sense) => (
-              <div key={sense.pos} className="flex gap-2">
-                <span className="text-muted-foreground mt-1 w-8 shrink-0 text-right font-mono text-sm">{sense.pos}</span>
+              <div key={sense.pos} className="flex gap-3">
+                <span className="text-muted-foreground w-8 shrink-0 text-right font-mono text-sm">{sense.pos}</span>
                 <div>
-                  <p className="text-foreground text-xl">
+                  <p className="text-foreground text-base">
                     {sense.definition.en.charAt(0).toUpperCase() + sense.definition.en.slice(1)}
                   </p>
                   {sense.definition.zh && (
@@ -184,19 +168,19 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
             ))}
           </div>
         ) : (
-          <p className="text-foreground mt-2 text-xl">{localizedDefinition}</p>
+          <p className="text-foreground text-base">{localizedDefinition}</p>
         )}
       </section>
 
       {/* Root Breakdown */}
       <section className="space-y-4">
         <div className="flex items-center gap-3">
-          <h2 className="font-heading text-foreground text-2xl">
+          <h2 className="font-heading text-foreground text-lg font-semibold">
             🧩 {dictionary.wordBreakdown}
           </h2>
           {/* B3: Etymology Type Badge */}
           {word.etymologyType && word.etymologyType !== 'unknown' && (
-            <span className={cn('rounded-full px-2.5 py-0.5 text-xs font-semibold', getEtymologyTypeColor(word.etymologyType))}>
+            <span className={cn('rounded-full px-2.5 py-0.5 text-xs font-semibold', getEtymologyTypeColor())}>
               {getEtymologyTypeLabel(word.etymologyType, locale)}
             </span>
           )}
@@ -237,7 +221,7 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
 
           <motion.div className="flex items-center gap-3" variants={morphemeItemVariants}>
             <span className="text-muted-foreground text-xl font-bold">=</span>
-            <span className="from-primary to-accent bg-gradient-to-r bg-clip-text text-2xl font-bold text-transparent">
+            <span className="text-primary text-2xl font-bold">
               {word.lemma}
             </span>
           </motion.div>
@@ -247,9 +231,54 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
         <p className="text-muted-foreground">{localizedMorphology}</p>
       </section>
 
+      {/* Collocations */}
+      {word.collocations && word.collocations.en?.length > 0 && (
+        <section className="space-y-4">
+          <h2 className="font-heading text-foreground text-lg font-semibold">{dictionary.collocations}</h2>
+          <ul className="space-y-2">
+            {word.collocations.en.map((collocation, idx) => {
+              const chineseTranslation = word.collocations?.zh?.[idx] ?? '';
+              return (
+                <li key={collocation} className="flex items-center gap-3">
+                  <span className="text-muted-foreground w-6 shrink-0 text-right font-mono text-sm font-normal">
+                    {idx + 1}.
+                  </span>
+                  <span
+                    className="text-foreground cursor-pointer text-base"
+                    onClick={() => speechSupported && speakSentence(collocation)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        speechSupported && speakSentence(collocation);
+                      }
+                    }}
+                  >
+                    {collocation}
+                  </span>
+                  {speechSupported && (
+                    <button
+                      type="button"
+                      onClick={() => speakSentence(collocation)}
+                      className="text-muted-foreground hover:text-primary shrink-0 cursor-pointer transition-colors"
+                      aria-label={`Play pronunciation of ${collocation}`}
+                    >
+                      <Volume2 className="h-4 w-4" />
+                    </button>
+                  )}
+                  {chineseTranslation && (
+                    <span className="text-muted-foreground shrink-0 text-sm">{chineseTranslation}</span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
+
       {/* Examples */}
       <section className="space-y-4">
-        <h2 className="font-heading text-foreground text-2xl">{dictionary.examples}</h2>
+        <h2 className="font-heading text-foreground text-lg font-semibold">{dictionary.examples}</h2>
 
         <ul className="space-y-4">
           {word.examples.map((example, idx) => {
@@ -261,10 +290,8 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
 
             return (
               <li key={`${englishText}-${idx}`} className="flex items-start gap-4">
-                <span
-                  className={`${badgeColors[idx % badgeColors.length]} flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold`}
-                >
-                  {idx + 1}
+                <span className="text-muted-foreground mt-0.5 w-6 shrink-0 text-right font-mono text-sm font-normal">
+                  {idx + 1}.
                 </span>
                 <div className="flex-1 space-y-1">
                   <div className="flex items-start gap-2">
@@ -290,30 +317,10 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
         </ul>
       </section>
 
-      {/* Collocations */}
-      {word.collocations && (word.collocations[locale] ?? word.collocations.en)?.length > 0 && (
-        <section className="space-y-4">
-          <h2 className="font-heading text-foreground text-2xl">{dictionary.collocations}</h2>
-          <div className="flex flex-wrap gap-2">
-            {(word.collocations[locale] ?? word.collocations.en).map((collocation) => (
-              <button
-                key={collocation}
-                type="button"
-                onClick={() => speechSupported && speakSentence(collocation)}
-                className="bg-card border-border inline-flex cursor-pointer items-center gap-1.5 rounded-full border px-4 py-2 text-sm transition-colors hover:border-primary"
-              >
-                {collocation}
-                {speechSupported && <Volume2 className="text-muted-foreground h-3.5 w-3.5" />}
-              </button>
-            ))}
-          </div>
-        </section>
-      )}
-
       {/* Related Words */}
       {word.relatedWords.length > 0 && (
         <section className="space-y-4">
-          <h2 className="font-heading text-foreground text-2xl">{dictionary.relatedWords}</h2>
+          <h2 className="font-heading text-foreground text-lg font-semibold">{dictionary.relatedWords}</h2>
           <div className="flex flex-wrap gap-2">
             {word.relatedWords.map((related) => (
               <Link
@@ -331,7 +338,7 @@ export const WordDetail = ({ word, parentRoot }: WordDetailProps) => {
       {/* Bottom back link */}
       <Link
         href={parentRoot ? `/root/${parentRoot.slug}` : '/root'}
-        className="bg-card hover:bg-primary inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition hover:text-white"
+        className="border-border text-foreground hover:text-primary hover:bg-muted inline-flex cursor-pointer items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-medium transition-colors"
       >
         ← {parentRoot
           ? `${locale === 'zh' ? '返回词根' : 'Back to'} ${parentRoot.variants[0] ?? parentRoot.slug}`

@@ -9,7 +9,8 @@
 | 文档 | 用途 |
 |------|------|
 | [docs/PROJECT.md](docs/PROJECT.md) | 项目愿景、教学方法论、数据架构、技术架构、路线图 |
-| [docs/STYLE-GUIDE.md](docs/STYLE-GUIDE.md) | 设计语言、颜色体系、排版规范、组件模式、禁用模式 |
+| [docs/DESIGN-GUIDE.md](docs/DESIGN-GUIDE.md) | 设计理念、颜色体系、排版规范、组件模式、禁止模式 |
+| [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) | 开发指南、常见问题、故障排除 |
 
 ## 核心约束
 
@@ -52,7 +53,7 @@ pnpm type-check   # TypeScript 类型检查
 - 只用语义化 CSS 变量，禁止硬编码颜色值（`bg-white` / `#hex`）
 - 动画库用 `motion/react`，禁止 `framer-motion`
 - 语素配色：root = 绿色实底 / prefix = 青色描边 / suffix = 紫色描边 / connector = 灰色描边
-- 详见 [STYLE-GUIDE.md](docs/STYLE-GUIDE.md) 的「禁用模式」章节
+- 详见 [DESIGN-GUIDE.md](docs/DESIGN-GUIDE.md) 的「禁止模式」章节
 
 ### 多语言
 

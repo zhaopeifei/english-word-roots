@@ -34,13 +34,7 @@ function getEtymologyTypeLabel(type: string, locale: string): string {
   return labels[type]?.[locale] ?? type;
 }
 
-const badgeColors = [
-  'bg-primary text-primary-foreground',
-  'bg-accent text-accent-foreground',
-  'bg-secondary text-secondary-foreground',
-  'bg-primary text-primary-foreground',
-  'bg-accent text-accent-foreground',
-];
+const badgeColor = 'bg-primary text-primary-foreground';
 
 interface WordDrawerContentProps {
   word: WordEntry;
@@ -63,7 +57,7 @@ export function WordDrawerContent({ word }: WordDrawerContentProps) {
 
       {/* Pronunciation */}
       <div className="flex flex-wrap gap-2">
-        <span className="bg-card border-border inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm">
+        <span className="bg-muted inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm">
           <span>🇬🇧</span>
           <span className="text-foreground font-mono text-xs">{word.pronunciation.uk.ipa}</span>
           {speechSupported && (
@@ -77,7 +71,7 @@ export function WordDrawerContent({ word }: WordDrawerContentProps) {
             </button>
           )}
         </span>
-        <span className="bg-card border-border inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm">
+        <span className="bg-muted inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm">
           <span>🇺🇸</span>
           <span className="text-foreground font-mono text-xs">{word.pronunciation.us.ipa}</span>
           {speechSupported && (
@@ -109,20 +103,20 @@ export function WordDrawerContent({ word }: WordDrawerContentProps) {
       })()}
 
       {/* Definition */}
-      <section className="bg-card border-border rounded-2xl border p-5">
-        <p className="text-primary text-xs font-bold uppercase tracking-wide">
+      <section className="space-y-3">
+        <h3 className="font-heading text-foreground text-lg font-semibold">
           {word.senses && word.senses.length > 0
             ? dictionary.definitions
             : dictionary.wordOverview}
-        </p>
+        </h3>
 
         {word.senses && word.senses.length > 0 ? (
-          <div className="mt-3 space-y-3">
+          <div className="space-y-2">
             {word.senses.map((sense) => (
               <div key={sense.pos} className="flex gap-2">
-                <span className="text-muted-foreground mt-0.5 w-8 shrink-0 text-right font-mono text-sm">{sense.pos}</span>
+                <span className="text-muted-foreground w-8 shrink-0 text-right font-mono text-sm">{sense.pos}</span>
                 <div>
-                  <p className="text-foreground text-lg">
+                  <p className="text-foreground">
                     {sense.definition.en.charAt(0).toUpperCase() + sense.definition.en.slice(1)}
                   </p>
                   {sense.definition.zh && (
@@ -135,14 +129,14 @@ export function WordDrawerContent({ word }: WordDrawerContentProps) {
             ))}
           </div>
         ) : (
-          <p className="text-foreground mt-1.5 text-lg">{localizedDefinition}</p>
+          <p className="text-foreground text-sm">{localizedDefinition}</p>
         )}
       </section>
 
       {/* Root breakdown (compact, no animation) */}
       <section className="space-y-3">
         <div className="flex items-center gap-2">
-          <h3 className="font-heading text-foreground text-lg font-bold">
+          <h3 className="font-heading text-foreground text-lg font-semibold">
             🧩 {dictionary.wordBreakdown}
           </h3>
           {word.etymologyType && word.etymologyType !== 'unknown' && (
@@ -185,39 +179,86 @@ export function WordDrawerContent({ word }: WordDrawerContentProps) {
         <p className="text-muted-foreground text-sm">{localizedMorphology}</p>
       </section>
 
+      {/* Collocations */}
+      {word.collocations && word.collocations.en?.length > 0 && (
+        <section className="space-y-3">
+          <h3 className="font-heading text-foreground text-lg font-semibold">
+            {dictionary.collocations}
+          </h3>
+          <ul className="space-y-2">
+            {word.collocations.en.map((collocation, idx) => {
+              const chineseTranslation = word.collocations?.zh?.[idx] ?? '';
+              return (
+                <li key={collocation} className="flex items-center gap-2 text-sm">
+                  <span className="text-muted-foreground w-5 shrink-0 text-right font-mono font-normal">
+                    {idx + 1}.
+                  </span>
+                  <span
+                    className="text-foreground cursor-pointer"
+                    onClick={() => speechSupported && speakSentence(collocation)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        speechSupported && speakSentence(collocation);
+                      }
+                    }}
+                  >
+                    {collocation}
+                  </span>
+                  {speechSupported && (
+                    <button
+                      type="button"
+                      onClick={() => speakSentence(collocation)}
+                      className="text-muted-foreground hover:text-primary shrink-0 cursor-pointer transition-colors"
+                      aria-label={`Play pronunciation of ${collocation}`}
+                    >
+                      <Volume2 className="h-3 w-3" />
+                    </button>
+                  )}
+                  {chineseTranslation && (
+                    <span className="text-muted-foreground shrink-0 text-xs">{chineseTranslation}</span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
+
       {/* Examples */}
       {word.examples.length > 0 && (
         <section className="space-y-3">
-          <h3 className="font-heading text-foreground text-lg font-bold">
+          <h3 className="font-heading text-foreground text-lg font-semibold">
             {dictionary.examples}
           </h3>
-          <ul className="space-y-3">
+          <ul className="space-y-2">
             {word.examples.map((example, idx) => {
               const englishText = (example.en ?? []).join(' ');
               const localizedText = (example[locale] ?? []).join(' ');
               const showTranslation = locale !== 'en' && localizedText.length > 0;
 
               return (
-                <li key={`ex-${idx}`} className="flex items-start gap-3">
-                  <span className={`${badgeColors[idx % badgeColors.length]} flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold`}>
-                    {idx + 1}
+                <li key={`ex-${idx}`} className="flex items-start gap-2 text-sm">
+                  <span className="text-muted-foreground w-5 shrink-0 text-right font-mono font-normal">
+                    {idx + 1}.
                   </span>
                   <div className="flex-1 space-y-0.5">
                     <div className="flex items-start gap-1.5">
-                      <p className="text-foreground flex-1">{englishText}</p>
+                      <p className="text-foreground">{englishText}</p>
                       {speechSupported && (
                         <button
                           type="button"
                           onClick={() => speakSentence(englishText)}
-                          className="text-muted-foreground hover:text-primary mt-0.5 shrink-0 cursor-pointer transition-colors"
+                          className="text-muted-foreground hover:text-primary shrink-0 cursor-pointer transition-colors"
                           aria-label="Play example sentence"
                         >
-                          <Volume2 className="h-3.5 w-3.5" />
+                          <Volume2 className="h-3 w-3" />
                         </button>
                       )}
                     </div>
                     {showTranslation && (
-                      <p className="text-muted-foreground text-sm">{localizedText}</p>
+                      <p className="text-muted-foreground text-xs">{localizedText}</p>
                     )}
                   </div>
                 </li>
@@ -227,32 +268,10 @@ export function WordDrawerContent({ word }: WordDrawerContentProps) {
         </section>
       )}
 
-      {/* Collocations */}
-      {word.collocations && (word.collocations[locale] ?? word.collocations.en)?.length > 0 && (
-        <section className="space-y-3">
-          <h3 className="font-heading text-foreground text-lg font-bold">
-            {dictionary.collocations}
-          </h3>
-          <div className="flex flex-wrap gap-1.5">
-            {(word.collocations[locale] ?? word.collocations.en).map((collocation) => (
-              <button
-                key={collocation}
-                type="button"
-                onClick={() => speechSupported && speakSentence(collocation)}
-                className="bg-card border-border inline-flex cursor-pointer items-center gap-1 rounded-full border px-3 py-1.5 text-sm transition-colors hover:border-primary"
-              >
-                {collocation}
-                {speechSupported && <Volume2 className="text-muted-foreground h-3 w-3" />}
-              </button>
-            ))}
-          </div>
-        </section>
-      )}
-
       {/* Related words */}
       {word.relatedWords.length > 0 && (
         <section className="space-y-3">
-          <h3 className="font-heading text-foreground text-lg font-bold">
+          <h3 className="font-heading text-foreground text-lg font-semibold">
             {dictionary.relatedWords}
           </h3>
           <div className="flex flex-wrap gap-1.5">

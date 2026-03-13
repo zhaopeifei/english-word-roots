@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'motion/react';
 import { useLanguage } from '@/components/language-provider';
-import type { RootEntry, WordEntry, SemanticDomain, MorphemeSegment } from '@/types/content';
+import type { RootEntry, WordEntry, MorphemeSegment } from '@/types/content';
 
 interface HomeScreenProps {
   roots: RootEntry[];
@@ -18,58 +18,6 @@ interface HomeScreenProps {
 /*  Helpers                                                            */
 /* ------------------------------------------------------------------ */
 
-const DOMAIN_EMOJI: Record<string, string> = {
-  life: '🧬',
-  animals: '🧬',
-  plants: '🧬',
-  body: '🧬',
-  health: '🧬',
-  time: '⏳',
-  earth: '🌍',
-  nature: '🌍',
-  water: '💧',
-  fire: '🔥',
-  light: '💡',
-  sound: '🔊',
-  mind: '🧠',
-  knowledge: '🧠',
-};
-
-function emojiForDomains(domains: SemanticDomain[]): string {
-  for (const d of domains) {
-    if (DOMAIN_EMOJI[d]) return DOMAIN_EMOJI[d];
-  }
-  return '📖';
-}
-
-/** Pick the first three color schemes, rotating by index. */
-const CARD_COLORS = [
-  {
-    border: 'border-primary/20',
-    bg: 'bg-card',
-    text: 'text-primary',
-    hoverBar: 'bg-primary',
-    badge: 'bg-card text-primary border border-primary/20',
-  },
-  {
-    border: 'border-accent/20',
-    bg: 'bg-[var(--surface-purple)]',
-    text: 'text-accent',
-    hoverBar: 'bg-accent',
-    badge: 'bg-[var(--surface-purple)] text-accent border border-accent/20',
-  },
-  {
-    border: 'border-secondary/20',
-    bg: 'bg-[var(--surface-warm)]',
-    text: 'text-secondary',
-    hoverBar: 'bg-secondary',
-    badge: 'bg-[var(--surface-warm)] text-secondary border border-secondary/20',
-  },
-] as const;
-
-function colorAt(index: number) {
-  return CARD_COLORS[index % 3];
-}
 
 /* ------------------------------------------------------------------ */
 /*  Morpheme pill                                                      */
@@ -266,32 +214,18 @@ export const HomeScreen = ({
 
   /* ---- pill badge colors ---- */
   const pillColors = [
-    'bg-card text-primary border border-primary/20',
-    'bg-[var(--surface-purple)] text-accent border border-accent/20',
-    'bg-[var(--surface-warm)] text-secondary border border-secondary/20',
+    'bg-muted text-muted-foreground border border-border',
+    'bg-muted text-muted-foreground border border-border',
+    'bg-muted text-muted-foreground border border-border',
   ];
 
   /* ---- method card styles ---- */
-  const methodStyles = [
-    {
-      iconBg: 'bg-primary/10',
-      iconText: 'text-primary',
-      border: 'border-primary/20',
-      bg: 'bg-card',
-    },
-    {
-      iconBg: 'bg-accent/10',
-      iconText: 'text-accent',
-      border: 'border-accent/20',
-      bg: 'bg-[var(--surface-purple)]',
-    },
-    {
-      iconBg: 'bg-secondary/10',
-      iconText: 'text-secondary',
-      border: 'border-secondary/20',
-      bg: 'bg-[var(--surface-warm)]',
-    },
-  ];
+  const methodStyle = {
+    iconBg: 'bg-muted',
+    iconText: 'text-foreground',
+    border: 'border-border',
+    bg: '',
+  };
 
   return (
     <div className="space-y-16">
@@ -332,14 +266,14 @@ export const HomeScreen = ({
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Link
               href="/root"
-              className="bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold shadow-md transition hover:opacity-90"
+              className="bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold shadow-md transition hover:bg-primary/90"
             >
               {t.hero.primaryCta}
               <span aria-hidden="true">→</span>
             </Link>
             <Link
               href="/about"
-              className="bg-accent text-accent-foreground inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold shadow-md transition hover:opacity-90"
+              className="border border-border text-foreground hover:text-primary inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold transition"
             >
               {t.hero.secondaryCta}
             </Link>
@@ -352,30 +286,15 @@ export const HomeScreen = ({
       {/* ============================================================ */}
       <section className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         {[
-          {
-            value: totalRoots,
-            label: t.stats.roots,
-            bg: 'bg-card',
-            text: 'text-primary',
-          },
-          {
-            value: totalWords,
-            label: t.stats.words,
-            bg: 'bg-[var(--surface-purple)]',
-            text: 'text-accent',
-          },
-          {
-            value: totalAffixes,
-            label: t.stats.affixes,
-            bg: 'bg-[var(--surface-warm)]',
-            text: 'text-secondary',
-          },
+          { value: totalRoots, label: t.stats.roots },
+          { value: totalWords, label: t.stats.words },
+          { value: totalAffixes, label: t.stats.affixes },
         ].map((stat) => (
           <div
             key={stat.label}
-            className={`border-border rounded-2xl border ${stat.bg} px-6 py-6 text-center`}
+            className="border-border rounded-2xl border px-6 py-6 text-center"
           >
-            <p className={`font-heading text-4xl font-bold ${stat.text}`}>{stat.value}</p>
+            <p className="font-heading text-primary text-4xl font-bold">{stat.value}</p>
             <p className="text-muted-foreground mt-1 text-sm">{stat.label}</p>
           </div>
         ))}
@@ -386,7 +305,7 @@ export const HomeScreen = ({
       {/* ============================================================ */}
       <section className="space-y-8">
         <div className="space-y-2">
-          <p className="text-accent text-sm font-semibold uppercase tracking-widest">
+          <p className="text-muted-foreground text-sm font-semibold uppercase tracking-widest">
             {t.method.label}
           </p>
           <h2 className="font-heading text-foreground text-3xl font-bold">{t.method.title}</h2>
@@ -394,15 +313,14 @@ export const HomeScreen = ({
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {t.method.cards.map((card, i) => {
-            const s = methodStyles[i];
+          {t.method.cards.map((card) => {
             return (
               <div
                 key={card.icon}
-                className={`rounded-2xl border ${s.border} ${s.bg} p-6 space-y-3`}
+                className={`rounded-2xl border ${methodStyle.border} p-6 space-y-3`}
               >
                 <div
-                  className={`inline-flex h-10 w-10 items-center justify-center rounded-xl ${s.iconBg} font-heading text-lg font-bold ${s.iconText}`}
+                  className={`inline-flex h-10 w-10 items-center justify-center rounded-xl ${methodStyle.iconBg} font-heading text-lg font-bold ${methodStyle.iconText}`}
                 >
                   {card.icon}
                 </div>
@@ -417,7 +335,7 @@ export const HomeScreen = ({
         <div className="text-center">
           <Link
             href="/about"
-            className="border-border bg-background text-foreground hover:border-accent/40 hover:text-accent inline-flex items-center gap-1 rounded-full border px-5 py-2 text-sm font-semibold transition"
+            className="border-border bg-background text-foreground hover:border-primary/40 hover:text-primary inline-flex items-center gap-1 rounded-full border px-5 py-2 text-sm font-semibold transition"
           >
             {t.method.cta}
             <span aria-hidden="true">→</span>
@@ -438,36 +356,23 @@ export const HomeScreen = ({
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {featuredRoots.map((root, i) => {
-            const c = colorAt(i);
-            const emoji = emojiForDomains(root.semanticDomains);
+          {featuredRoots.map((root) => {
             return (
               <Link
                 key={root.slug}
                 href={`/root/${root.slug}`}
-                className={`group relative flex flex-col gap-3 overflow-hidden rounded-2xl border ${c.border} ${c.bg} p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg`}
+                className="group flex flex-col gap-3 rounded-2xl border border-border p-5 transition-all duration-200 hover:-translate-y-1 hover:bg-muted hover:shadow-md"
               >
-                {/* colored top bar on hover */}
-                <div
-                  className={`absolute left-0 right-0 top-0 h-1 ${c.hoverBar} opacity-0 transition-opacity group-hover:opacity-100`}
-                />
-
-                {/* emoji + variants */}
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl" aria-hidden="true">
-                    {emoji}
+                {/* variants + origin */}
+                <div>
+                  <p className="font-heading text-foreground text-lg font-bold">
+                    {root.variants.join(' / ')}
+                  </p>
+                  <span
+                    className="bg-muted text-muted-foreground mt-1 inline-block rounded-full border border-border px-2 py-0.5 text-[10px] font-semibold"
+                  >
+                    {root.languageOfOrigin}
                   </span>
-                  <div>
-                    <p className={`font-heading text-lg font-bold ${c.text}`}>
-                      {root.variants.join(' / ')}
-                    </p>
-                    {/* origin badge */}
-                    <span
-                      className={`mt-0.5 inline-block rounded-full px-2 py-0.5 text-[10px] font-semibold ${c.badge}`}
-                    >
-                      {root.languageOfOrigin}
-                    </span>
-                  </div>
                 </div>
 
                 {/* overview */}
@@ -475,16 +380,10 @@ export const HomeScreen = ({
                   {root.overview[locale as 'en' | 'zh'] ?? root.overview.en}
                 </p>
 
-                {/* word count + arrow */}
-                <div className="mt-auto flex items-center justify-between">
+                {/* word count */}
+                <div className="mt-auto pt-2">
                   <span className="text-muted-foreground text-xs">
                     {root.associatedWords.length} {locale === 'zh' ? '个单词' : 'words'}
-                  </span>
-                  <span
-                    className={`${c.text} text-sm transition-transform group-hover:translate-x-1`}
-                    aria-hidden="true"
-                  >
-                    →
                   </span>
                 </div>
               </Link>
@@ -507,10 +406,10 @@ export const HomeScreen = ({
       {/*  MORPHEME BREAKDOWN                                          */}
       {/* ============================================================ */}
       {breakdownWord && (
-        <section className="border-border from-card overflow-hidden rounded-3xl border bg-gradient-to-br via-[var(--surface-purple)] to-[var(--surface-warm)] p-8 sm:p-12">
+        <section className="border-border bg-card overflow-hidden rounded-3xl border p-8 sm:p-12">
           <div className="mx-auto max-w-2xl space-y-8 text-center">
             <div className="space-y-2">
-              <p className="text-accent text-sm font-semibold uppercase tracking-widest">
+              <p className="text-muted-foreground text-sm font-semibold uppercase tracking-widest">
                 {t.breakdown.label}
               </p>
               <h2 className="font-heading text-foreground text-3xl font-bold">
@@ -553,7 +452,7 @@ export const HomeScreen = ({
                 {t.breakdown.result}
               </p>
               <p className="font-heading text-3xl font-bold">
-                <span className="from-primary via-accent to-secondary bg-gradient-to-r bg-clip-text text-transparent">
+                <span className="text-primary">
                   {breakdownWord.lemma}
                 </span>
               </p>
@@ -564,7 +463,7 @@ export const HomeScreen = ({
 
             <Link
               href={`/word/${breakdownWord.slug}`}
-              className="bg-primary text-primary-foreground inline-flex items-center gap-1 rounded-full px-5 py-2 text-sm font-semibold shadow transition hover:opacity-90"
+              className="bg-primary text-primary-foreground inline-flex items-center gap-1 rounded-full px-5 py-2 text-sm font-semibold shadow transition hover:bg-primary/90"
             >
               {t.breakdown.viewWord}
               <span aria-hidden="true">→</span>

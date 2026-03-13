@@ -5,14 +5,44 @@ import { useLanguage } from '@/components/language-provider';
 const PAGE_SIZE = 30;
 
 function getPageNumbers(current: number, total: number): (number | 'ellipsis')[] {
-  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
-  const pages: (number | 'ellipsis')[] = [1];
-  const start = Math.max(2, current - 1);
-  const end = Math.min(total - 1, current + 1);
+  const showCount = 7; // 显示 7 个连续页码
+
+  if (total <= showCount) {
+    return Array.from({ length: total }, (_, i) => i + 1);
+  }
+
+  const half = Math.floor(showCount / 2); // 3
+  let start = Math.max(1, current - half);
+  let end = Math.min(total, current + half);
+
+  // 窗口过小时自动扩展
+  if (end - start < showCount - 1) {
+    if (start === 1) {
+      end = Math.min(total, start + showCount - 1);
+    } else {
+      start = Math.max(1, end - showCount + 1);
+    }
+  }
+
+  const pages: (number | 'ellipsis')[] = [];
+
+  // 始终显示首页
+  pages.push(1);
+
+  // 如果窗口不是从 2 开始，加省略号
   if (start > 2) pages.push('ellipsis');
-  for (let i = start; i <= end; i++) pages.push(i);
+
+  // 显示窗口内的页码
+  for (let i = start; i <= end; i++) {
+    if (i !== 1 && i !== total) pages.push(i);
+  }
+
+  // 如果窗口不是到末页-1结束，加省略号
   if (end < total - 1) pages.push('ellipsis');
+
+  // 始终显示末页
   pages.push(total);
+
   return pages;
 }
 

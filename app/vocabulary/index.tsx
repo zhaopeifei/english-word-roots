@@ -6,7 +6,7 @@ import { useAuth } from '@/components/auth-provider';
 import { useMastery, type MasteryStatus, type ItemType } from '@/components/mastery-provider';
 import { useLanguage } from '@/components/language-provider';
 import { WordCard } from '@/components/word-card';
-import { MasteryButtons } from '@/components/mastery-buttons';
+import { RootCard } from '@/components/root-card';
 import { Pagination, PAGE_SIZE } from '@/components/pagination';
 import type { WordEntry, RootEntry } from '@/types/content';
 
@@ -16,46 +16,10 @@ import type { WordEntry, RootEntry } from '@/types/content';
 
 const STAT_CARDS: { value: MasteryStatus; emoji: string; label: Record<string, string>; color: string }[] = [
   { value: 'unknown', emoji: '🫘', label: { en: 'Unknown', zh: '不认识' }, color: 'border-border' },
-  { value: 'seen', emoji: '🌱', label: { en: 'Seen', zh: '见过' }, color: 'border-accent/30' },
-  { value: 'familiar', emoji: '🌿', label: { en: 'Familiar', zh: '熟悉' }, color: 'border-secondary/30' },
-  { value: 'mastered', emoji: '🌳', label: { en: 'Mastered', zh: '掌握' }, color: 'border-primary/30' },
+  { value: 'seen', emoji: '🌱', label: { en: 'Seen', zh: '见过' }, color: 'border-border' },
+  { value: 'familiar', emoji: '🌿', label: { en: 'Familiar', zh: '熟悉' }, color: 'border-border' },
+  { value: 'mastered', emoji: '🌳', label: { en: 'Mastered', zh: '掌握' }, color: 'border-border' },
 ];
-
-// ---------------------------------------------------------------------------
-// Root card (simplified, for vocabulary page)
-// ---------------------------------------------------------------------------
-
-const rootCardStyles = [
-  { bg: 'bg-card', border: 'border-[1.5px] border-primary/15 hover:border-primary' },
-  { bg: 'bg-[var(--surface-purple)]', border: 'border-[1.5px] border-accent/15 hover:border-accent' },
-  { bg: 'bg-[var(--surface-warm)]', border: 'border-[1.5px] border-secondary/15 hover:border-secondary' },
-] as const;
-
-function RootCard({ root, styleIndex }: { root: RootEntry; styleIndex: number }) {
-  const { locale } = useLanguage();
-  const style = rootCardStyles[styleIndex % 3];
-  const overview = root.overview[locale] ?? root.overview.en;
-
-  return (
-    <Link href={`/root/${root.slug}`} className="group block">
-      <article
-        className={`${style.bg} ${style.border} flex h-[170px] cursor-pointer flex-col rounded-[20px] p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg`}
-      >
-        <div className="flex items-center gap-2">
-          <h3 className="font-heading text-foreground text-xl font-bold">{root.slug}</h3>
-          <span className="text-muted-foreground text-sm">({root.variants.join(', ')})</span>
-        </div>
-        <p className="text-muted-foreground mt-2 line-clamp-2 text-sm leading-relaxed">
-          {overview}
-        </p>
-        <div className="mt-auto flex items-center justify-between gap-2 pt-2">
-          <span className="text-muted-foreground text-xs">{root.languageOfOrigin}</span>
-          <MasteryButtons type="root" slug={root.slug} />
-        </div>
-      </article>
-    </Link>
-  );
-}
 
 // ---------------------------------------------------------------------------
 // VocabularyPage
@@ -171,7 +135,7 @@ export const VocabularyPage = () => {
           <button
             type="button"
             onClick={() => signInWithGoogle()}
-            className="bg-primary hover:bg-primary/90 cursor-pointer rounded-full px-6 py-2.5 font-medium text-white transition-colors"
+            className="bg-primary hover:bg-primary/90 cursor-pointer rounded-full px-6 py-2.5 font-medium text-primary-foreground transition-colors"
           >
             {locale === 'zh' ? '使用 Google 登录' : 'Sign in with Google'}
           </button>
@@ -223,7 +187,7 @@ export const VocabularyPage = () => {
               key={card.value}
               type="button"
               onClick={() => { setStatusFilter(isActive ? 'all' : card.value); setCurrentPage(1); }}
-              className={`bg-card flex cursor-pointer items-center justify-center rounded-[16px] border-[1.5px] py-3.5 pl-1 pr-5 transition-all active:scale-95 ${card.color} ${
+              className={`bg-card flex cursor-pointer items-center justify-center rounded-[16px] border py-3.5 pl-1 pr-5 transition-all active:scale-95 ${card.color} ${
                 isActive ? 'ring-2 ring-primary/40 shadow-md' : 'hover:shadow-sm'
               }`}
             >
@@ -249,7 +213,7 @@ export const VocabularyPage = () => {
           <>
             <div ref={gridRef} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {pageWords.map((word, idx) => (
-                <WordCard key={word.slug} word={word} styleIndex={idx} />
+                <WordCard key={word.slug} word={word} />
               ))}
             </div>
             <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={goToPage} />
@@ -261,7 +225,7 @@ export const VocabularyPage = () => {
         <>
           <div ref={gridRef} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {pageRoots.map((root, idx) => (
-              <RootCard key={root.slug} root={root} styleIndex={idx} />
+              <RootCard key={root.slug} root={root} />
             ))}
           </div>
           <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={goToPage} />
@@ -293,7 +257,7 @@ function EmptyState({ locale, type, hasAny }: { locale: string; type: ItemType; 
       </p>
       <Link
         href={type === 'word' ? '/explore' : '/root'}
-        className="bg-primary hover:bg-primary/90 mt-4 inline-block rounded-full px-6 py-2.5 font-medium text-white transition-colors"
+        className="bg-primary hover:bg-primary/90 mt-4 inline-block rounded-full px-6 py-2.5 font-medium text-primary-foreground transition-colors"
       >
         {locale === 'zh' ? '去探索' : 'Start exploring'}
       </Link>

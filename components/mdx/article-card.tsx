@@ -7,38 +7,17 @@ import { useLanguage } from '@/components/language-provider';
 const difficultyConfig = {
   beginner: {
     label: { en: 'Beginner', zh: '入门' },
-    className: 'bg-primary/10 text-primary',
+    className: 'bg-muted text-muted-foreground',
   },
   intermediate: {
     label: { en: 'Intermediate', zh: '中级' },
-    className: 'bg-secondary/10 text-secondary',
+    className: 'bg-muted text-muted-foreground',
   },
   advanced: {
     label: { en: 'Advanced', zh: '高级' },
-    className: 'bg-accent/10 text-accent',
+    className: 'bg-muted text-muted-foreground',
   },
 } as const;
-
-const cardStyles = [
-  {
-    bg: 'bg-card',
-    border: 'border-[1.5px] border-primary/15 hover:border-primary',
-    tag: 'bg-primary/8 text-primary/80',
-    accent: 'text-primary',
-  },
-  {
-    bg: 'bg-[var(--surface-purple)]',
-    border: 'border-[1.5px] border-accent/15 hover:border-accent',
-    tag: 'bg-accent/8 text-accent/80',
-    accent: 'text-accent',
-  },
-  {
-    bg: 'bg-[var(--surface-warm)]',
-    border: 'border-[1.5px] border-secondary/15 hover:border-secondary',
-    tag: 'bg-secondary/8 text-secondary/80',
-    accent: 'text-secondary',
-  },
-];
 
 interface ArticleCardProps {
   article: ArticleWithSlug;
@@ -47,14 +26,13 @@ interface ArticleCardProps {
 
 export function ArticleCard({ article, index }: ArticleCardProps) {
   const { locale } = useLanguage();
-  const style = cardStyles[index % 3];
   const diff = difficultyConfig[article.difficulty];
   const href = `/${article.category}/${article.slug}`;
 
   return (
     <Link href={href} className="group block">
       <article
-        className={`${style.bg} ${style.border} flex h-full cursor-pointer flex-col rounded-[20px] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg`}
+        className="flex h-full cursor-pointer flex-col rounded-[20px] border border-border p-6 transition-all duration-200 hover:-translate-y-1 hover:bg-muted hover:shadow-md"
       >
         {/* Header: difficulty + reading time */}
         <div className="flex items-center gap-2">
@@ -84,7 +62,7 @@ export function ArticleCard({ article, index }: ArticleCardProps) {
             {article.tags.map((tag) => (
               <span
                 key={tag}
-                className={`${style.tag} rounded-full px-2.5 py-0.5 text-[11px] font-medium`}
+                className="bg-muted text-muted-foreground rounded-full px-2.5 py-0.5 text-[11px] font-medium"
               >
                 {tag}
               </span>
@@ -98,7 +76,7 @@ export function ArticleCard({ article, index }: ArticleCardProps) {
             {article.author} · {article.date}
           </span>
           <span
-            className={`${style.accent} flex h-8 w-8 items-center justify-center rounded-full border-[1.5px] border-current opacity-0 transition-opacity duration-200 group-hover:opacity-100`}
+            className="text-muted-foreground flex h-8 w-8 items-center justify-center rounded-full border border-border opacity-0 transition-opacity duration-200 group-hover:opacity-100"
           >
             <svg
               width="14"

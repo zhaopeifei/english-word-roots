@@ -60,7 +60,7 @@ export function ArticleList({ articles, title, subtitle }: ArticleListProps) {
             onClick={() => setTag(null)}
             className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors ${
               activeTag === null
-                ? 'bg-primary text-white'
+                ? 'bg-primary text-primary-foreground'
                 : 'bg-muted text-muted-foreground hover:bg-muted/80'
             }`}
           >
@@ -72,7 +72,7 @@ export function ArticleList({ articles, title, subtitle }: ArticleListProps) {
               onClick={() => setTag(tag === activeTag ? null : tag)}
               className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors ${
                 activeTag === tag
-                  ? 'bg-primary text-white'
+                  ? 'bg-primary text-primary-foreground'
                   : 'bg-muted text-muted-foreground hover:bg-muted/80'
               }`}
             >
